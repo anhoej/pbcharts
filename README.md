@@ -6,7 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-Yet another R package
+Yet another R package for making statistical process control charts.
 
 ## Installation
 
@@ -25,4 +25,4 @@ library(pbcharts)
 pbc(rnorm(24))
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-2-1.svg" width="100%" />
