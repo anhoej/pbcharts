@@ -1,8 +1,8 @@
 Version: 1.0
-ProjectId: 47a0c80f-80df-4ab0-9602-8296b8e9b450
+ProjectId: 82bb2e2b-b04f-4216-9f7d-c018c1664ae7
 
-RestoreWorkspace: Default
-SaveWorkspace: Default
+RestoreWorkspace: No
+SaveWorkspace: No
 AlwaysSaveHistory: Default
 
 EnableCodeIndexing: Yes
@@ -14,3 +14,10 @@ RnwWeave: Sweave
 LaTeX: pdfLaTeX
 
 AutoAppendNewline: Yes
+StripTrailingWhitespace: Yes
+LineEndingConversion: Posix
+
+BuildType: Package
+PackageUseDevtools: Yes
+PackageInstallArgs: --no-multiarch --with-keep.source
+PackageRoxygenize: rd,collate,namespace
