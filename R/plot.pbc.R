@@ -50,6 +50,7 @@ plot.pbc <- function(x, ...) {
   op <- graphics::par(mfrow = c(n_rows, n_cols),
                       mar   = c(3, 2, ifelse(n_facets == 1, 0, 2), 3),
                       oma   = c(2, 2.6, 3.5, 0))
+  on.exit(par(op))
   axis_par <- list(las       = 1,
                    lwd       = 0,
                    lwd.ticks = 1,
@@ -151,5 +152,5 @@ plot.pbc <- function(x, ...) {
                   adj   = 0)
 
   # Reset plot canvas.
-  graphics::par(op)
+  # graphics::par(op)
 }
