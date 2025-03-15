@@ -1,9 +1,13 @@
 Package: pbcharts
-Title: What the Package Does (One Line, Title Case)
+Title: Process Behaviour Charts
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person("Jacob", "Anhøj", , "jacob@anhoej.net", role = c("aut", "cre"))
+Description: `pbhcarts` constructs run charts and individuals control charts for
+  count and measurement data. The control limits in individual charts adjust
+  to subgroup sizes if a denominator is present as suggested by Taylor
+  Taylor (https://variation.com/normalized-individuals-control-chart/).
+  URL: https://github.com/anhoej/pbcharts
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
