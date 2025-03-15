@@ -3,10 +3,12 @@
 #' @param object A 'pbc' object.
 #' @param ... For compatibility with generic summary function.
 #'
-#' @returns
+#' @returns A data frame summarising each facets of a pcb object.
 #' @export
 #'
 #' @examples
+#' p <- pbc(rnorm(12), chart = 'i', plot = FALSE)
+#' summary(p)
 summary.pbc <- function(object, ...) {
   d      <- object$data
   freeze <- object$freeze
@@ -14,10 +16,9 @@ summary.pbc <- function(object, ...) {
   if (is.null(freeze))
     freeze <- NA
 
-  # freeze <- x$freeze
-  d <- split(d, d$facets)
+  d <- split(d, d$facet)
   d <- lapply(d, function(x) {
-    data.frame(facet = x$facet[1],
+    data.frame(facet        = x$facet[1],
                n            = nrow(x),
                n.useful     = sum(x$useful),
                freeze       = freeze,

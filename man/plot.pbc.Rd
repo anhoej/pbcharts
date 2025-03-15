@@ -11,6 +11,13 @@
 
 \item{...}{Unused, necessary for generic function.}
 }
+\value{
+Plots a process behaviour chart.
+}
 \description{
 Plot process behaviour chart
+}
+\examples{
+p <- pbc(rnorm(12), plot = FALSE)
+plot(p)
 }

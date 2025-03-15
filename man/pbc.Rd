@@ -19,8 +19,7 @@ pbc(
   xlab = "Subgroup",
   ylab = "Value",
   partlabs = c("phase 1", "phase 2"),
-  plot = TRUE,
-  print = FALSE
+  plot = TRUE
 )
 }
 \arguments{
@@ -51,19 +50,23 @@ proportions above 1 (100\%) (c(0, 1).}
 \item{freeze}{Integer indicating the index of the last subgroup in the
 baseline period (phase 1).}
 
-\item{title}{Character setting the main chart title}
-
-\item{xlab}{Character setting the main y axis label}
-
-\item{ylab}{Character setting the main x axis label}
+\item{title, xlab, ylab}{Characters setting the main chart title and axis
+labels.}
 
 \item{partlabs}{Character vector of length two setting the labels for phase 1
 and phase 2 periods.}
 
 \item{plot}{Logical, if TRUE (default), plots an SPC chart.}
-
-\item{print}{Logical, if TRUE, prints a data frame with coordinates.}
+}
+\value{
+A list of class 'pcb'
 }
 \description{
 Process behaviour chart
+}
+\examples{
+# Plot a run chart from 12 random normal values
+pbc(rnorm(12))
+# Plot a control chart from 12 random normal values
+pbc(rnorm(12), chart = 'i')
 }

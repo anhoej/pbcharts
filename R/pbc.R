@@ -17,18 +17,20 @@
 #' @param ncol Number of columns in faceted plot.
 #' @param freeze Integer indicating the index of the last subgroup in the
 #'               baseline period (phase 1).
-#' @param title Character setting the main chart title
-#' @param xlab Character setting the main y axis label
-#' @param ylab Character setting the main x axis label
+#' @param title,xlab,ylab Characters setting the main chart title and axis
+#'               labels.
 #' @param partlabs Character vector of length two setting the labels for phase 1
 #'                 and phase 2 periods.
 #' @param plot Logical, if TRUE (default), plots an SPC chart.
-#' @param print Logical, if TRUE, prints a data frame with coordinates.
 #'
-#' @returns
+#' @returns A list of class 'pcb'
 #' @export
 #'
 #' @examples
+#' # Plot a run chart from 12 random normal values
+#' pbc(rnorm(12))
+#' # Plot a control chart from 12 random normal values
+#' pbc(rnorm(12), chart = 'i')
 pbc <- function(x,
                 num      = NULL,
                 den      = 1,
@@ -43,8 +45,7 @@ pbc <- function(x,
                 xlab     = 'Subgroup',
                 ylab     = 'Value',
                 partlabs = c('phase 1', 'phase 2'),
-                plot     = TRUE,
-                print    = FALSE) {
+                plot     = TRUE) {
   # Get data from data frame if data argument is provided, or else get data
   # from the parent environment.
   x   <- eval(substitute(x), data, parent.frame())
@@ -116,11 +117,6 @@ pbc <- function(x,
   # Make plot.
   if (plot) {
     plot.pbc(d)
-  }
-
-  # Print data frame.
-  if (print) {
-    print(d$data)
   }
 
   # Make data frame an 'spc' object and return invisibly.

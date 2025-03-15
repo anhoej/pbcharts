@@ -11,6 +11,13 @@
 
 \item{...}{For compatibility with generic summary function.}
 }
+\value{
+A data frame summarising each facets of a pcb object.
+}
 \description{
 Summarise pbc object
+}
+\examples{
+p <- pbc(rnorm(12), chart = 'i', plot = FALSE)
+summary(p)
 }
