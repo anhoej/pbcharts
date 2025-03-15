@@ -3,3 +3,4 @@
 ^LICENSE\.md$
 ^pbcharts\.Rproj$
 ^README\.Rmd$
+^data-raw$

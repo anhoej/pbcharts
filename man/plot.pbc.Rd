@@ -12,7 +12,7 @@
 \item{...}{Unused, necessary for generic function.}
 }
 \value{
-Plots a process behaviour chart.
+NULL, plots a process behaviour chart.
 }
 \description{
 Plot process behaviour chart

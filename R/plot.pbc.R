@@ -3,7 +3,7 @@
 #' @param x List of class 'pbc'.
 #' @param ... Unused, necessary for generic function.
 #'
-#' @returns Plots a process behaviour chart.
+#' @returns NULL, plots a process behaviour chart.
 #' @export
 #'
 #' @examples
@@ -51,7 +51,7 @@ plot.pbc <- function(x, ...) {
   # Prepare plot canvas.
   op <- graphics::par(mfrow = c(n_rows, n_cols),
                       mar   = c(3, 2, ifelse(n_facets == 1, 0, 2), 3),
-                      oma   = c(2, 2.6, 3.5, 0))
+                      oma   = c(2, 2.6, ifelse(is.null(x$title), 1, 3.5), 0))
   on.exit(graphics::par(op))
   axis_par <- list(las       = 1,
                    lwd       = 0,
