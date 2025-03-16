@@ -11,12 +11,12 @@
 #'             'run' (default), and 'i'.
 #' @param multiply Number to multiply y axis by, e.g. 100 to get percentages rather
 #'            than proportions.
+#' @param freeze Integer indicating the index of the last subgroup in the
+#'               baseline period (phase 1).
 #' @param ylim Numeric vector (y1, y2) setting the y axis limits. Useful e.g.
 #'             for preventing negative negative control limits (c(0, NA) or
 #'             proportions above 1 (100%) (c(0, 1).
 #' @param ncol Number of columns in faceted plot.
-#' @param freeze Integer indicating the index of the last subgroup in the
-#'               baseline period (phase 1).
 #' @param title,xlab,ylab Characters setting the main chart title and axis
 #'               labels.
 #' @param partlabs Character vector of length two setting the labels for phase 1
@@ -29,6 +29,7 @@
 #' @examples
 #' # Plot a run chart from 12 random normal values
 #' pbc(rnorm(12))
+#'
 #' # Plot a control chart from 12 random normal values
 #' pbc(rnorm(12), chart = 'i')
 pbc <- function(x,
@@ -38,9 +39,9 @@ pbc <- function(x,
                 data     = NULL,
                 chart    = c('run', 'i'),
                 multiply = 1,
+                freeze   = NULL,
                 ylim     = NULL,
                 ncol     = NULL,
-                freeze   = NULL,
                 title    = NULL,
                 xlab     = 'Subgroup',
                 ylab     = 'Value',
@@ -48,10 +49,10 @@ pbc <- function(x,
                 plot     = TRUE) {
   # Get data from data frame if data argument is provided, or else get data
   # from the parent environment.
-  x   <- eval(substitute(x), data, parent.frame())
-  num <- eval(substitute(num), data, parent.frame())
-  den <- eval(substitute(den), data, parent.frame())
-  facet   <- eval(substitute(facet), data, parent.frame())
+  x     <- eval(substitute(x), data, parent.frame())
+  num   <- eval(substitute(num), data, parent.frame())
+  den   <- eval(substitute(den), data, parent.frame())
+  facet <- eval(substitute(facet), data, parent.frame())
 
   # Get chart function
   chart     <- match.arg(chart)
@@ -91,7 +92,7 @@ pbc <- function(x,
   d <- lapply(d, chart.fun, freeze)
   d <- do.call(rbind, args = c(d, make.row.names = F))
 
-  # Set y limits
+  # Censor control limits to ylim argument.
   if (!is.null(ylim)) {
     d$lcl <- pmax(d$lcl, ylim[1], na.rm = TRUE)
     d$ucl <- pmin(d$ucl, ylim[2], na.rm = TRUE)
@@ -114,7 +115,7 @@ pbc <- function(x,
             partlabs = partlabs,
             data     = d)
 
-  # Make plot.
+  # Draw plot.
   if (plot) {
     plot.pbc(d)
   }

@@ -12,9 +12,9 @@ pbc(
   data = NULL,
   chart = c("run", "i"),
   multiply = 1,
+  freeze = NULL,
   ylim = NULL,
   ncol = NULL,
-  freeze = NULL,
   title = NULL,
   xlab = "Subgroup",
   ylab = "Value",
@@ -41,14 +41,14 @@ plot on the y axis (numerator).}
 \item{multiply}{Number to multiply y axis by, e.g. 100 to get percentages rather
 than proportions.}
 
+\item{freeze}{Integer indicating the index of the last subgroup in the
+baseline period (phase 1).}
+
 \item{ylim}{Numeric vector (y1, y2) setting the y axis limits. Useful e.g.
 for preventing negative negative control limits (c(0, NA) or
 proportions above 1 (100\%) (c(0, 1).}
 
 \item{ncol}{Number of columns in faceted plot.}
-
-\item{freeze}{Integer indicating the index of the last subgroup in the
-baseline period (phase 1).}
 
 \item{title, xlab, ylab}{Characters setting the main chart title and axis
 labels.}
@@ -67,6 +67,7 @@ Process behaviour chart
 \examples{
 # Plot a run chart from 12 random normal values
 pbc(rnorm(12))
+
 # Plot a control chart from 12 random normal values
 pbc(rnorm(12), chart = 'i')
 }

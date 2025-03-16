@@ -3,10 +3,10 @@ Title: Process Behaviour Charts
 Version: 0.0.0.9000
 Authors@R: 
     person("Jacob", "Anhøj", , "jacob@anhoej.net", role = c("aut", "cre"))
-Description: `pbhcarts` draws run charts and individuals control charts for
+Description: `pbcharts` draws run charts and individuals control charts for
   count and measurement data. The control limits in individual charts adjust
-  to subgroup sizes if a denominator is present as suggested by Taylor
-  Taylor (https://variation.com/normalized-individuals-control-chart/).
+  to varying subgroup sizes if a denominator is present as suggested by Taylor (2017)
+  <https://variation.com/normalized-individuals-control-chart/>.
 URL: https://github.com/anhoej/pbcharts
 License: MIT + file LICENSE
 Encoding: UTF-8

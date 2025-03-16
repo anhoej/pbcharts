@@ -24,13 +24,15 @@ plot.pbc <- function(x, ...) {
     base <- seq_len(freeze)
   }
 
-  # Get range for y axes.
+  # Get axis ranges.
   ylim <- range(d$y,
                 d$lcl,
                 d$ucl,
                 na.rm = TRUE)
 
-  # Get x axis format.
+  xlim <- range(d$x)
+
+  # Get x axis class
   if (inherits(d$x, 'Date')) {
     x_class <- graphics::axis.Date
   } else if (inherits(d$x, 'POSIXct')) {
@@ -91,6 +93,7 @@ plot.pbc <- function(x, ...) {
          type = 'n',
          axes = F,
          ylim = ylim,
+         xlim = xlim,
          ylab = '',
          xlab = '')
 
