@@ -2,6 +2,9 @@
 #   expect_equal(2 * 2, 4)
 # })
 
+# Prevent the creation of Rplots.pdf file
+pdf(NULL)
+
 test_that('pbc works', {
   expect_no_error(pbc(csection$avg_delay))
   expect_no_error(pbc(month, avg_delay * n, n,
