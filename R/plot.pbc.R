@@ -109,18 +109,18 @@ plot.pbc <- function(x, ...) {
       #                   as.numeric(x$x[freeze + 1]))),
       #        lty = 'dotted')
       graphics::mtext(x$partlabs[1],
-                      at   = mean(c(as.numeric(d$x[1]),
-                                    as.numeric(d$x[freeze]))),
+                      at   = mean(c(as.numeric(i$x[1]),
+                                    as.numeric(i$x[x$freeze]))),
                       cex  = 0.7,
                       line = -0.9)
       graphics::mtext(x$partlabs[2],
-                      at   = mean(c(as.numeric(d$x[freeze] + 1),
-                                    as.numeric(utils::tail(d$x, 1)))),
+                      at   = mean(c(as.numeric(i$x[x$freeze + 1]),
+                                    as.numeric(max(i$x)))),
                       cex  = 0.7,
                       line = -0.9)
     }
 
-    # Add axes, box, and centre line label.
+# Add axes, box, and centre line label.
     graphics::box(bty = 'l', col = col2)
     do.call(x_class, c(1, axis_par))          # x axis
     do.call(graphics::axis, c(2, axis_par))   # y axis
