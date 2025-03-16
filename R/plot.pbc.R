@@ -10,30 +10,27 @@
 #' p <- pbc(rnorm(12), plot = FALSE)
 #' plot(p)
 plot.pbc <- function(x, ...) {
-  d <- x$data
+  # Set overall adjustment factor for text elements.
+  cex.adj <- 0.9
 
-  # To silence the "no visible binding" warning.
-  # freeze <- NULL
-  freeze <- x$freeze
+  # Get data.
+  d       <- x$data
+  freeze  <- x$freeze
 
-  col1 <- 'steelblue'
-  col2 <- 'grey30'
-  col3 <- 'tomato'
-  col4 <- 'gray'
-
-  if (is.null(x$freeze)) {
+  # Get indices of phase 1 period (<= freeze).
+  if (is.null(freeze)) {
     base <- seq_along(d$x)
   } else {
-    base <- seq_len(x$freeze)
+    base <- seq_len(freeze)
   }
 
-  # Make room for data and control limits on the y axes.
+  # Get range for y axes.
   ylim <- range(d$y,
                 d$lcl,
                 d$ucl,
                 na.rm = TRUE)
 
-  # Find x axis format.
+  # Get x axis format.
   if (inherits(d$x, 'Date')) {
     x_class <- graphics::axis.Date
   } else if (inherits(d$x, 'POSIXct')) {
@@ -42,36 +39,46 @@ plot.pbc <- function(x, ...) {
     x_class <- graphics::axis
   }
 
-  # Calculate plots layout.
+  # Calculate facets layout.
   n_facets <- length(unique(d$facet))
   n_cols   <- ifelse(is.null(x$ncol),
                      ceiling(sqrt(n_facets)),
                      ncol)
   n_rows   <- ceiling(n_facets / n_cols)
 
-  # Prepare plot canvas.
-  cex.adj <- 0.9
-  op <- graphics::par(mfrow = c(n_rows, n_cols),
-                      mar   = c(3, 2, ifelse(n_facets == 1, 0, 2), 3),
-                      oma   = c(2, 2.6, ifelse(is.null(x$title), 1, 3.5), 0),
-                      cex = 0.9,
+  # Prepare graphical parameters.
+  op <- graphics::par(mfrow    = c(n_rows, n_cols),
+                      mar      = c(3, 2, ifelse(n_facets == 1, 0, 2), 3),
+                      oma      = c(2, 2.6, ifelse(is.null(x$title), 1, 3.5), 0),
+                      cex      = cex.adj,
                       cex.axis = cex.adj,
                       cex.main = cex.adj,
-                      cex.lab = cex.adj)
+                      cex.lab  = cex.adj)
   on.exit(graphics::par(op))
+
+  col1 <- 'steelblue'
+  col2 <- 'grey30'
+  col3 <- 'tomato'
+  col4 <- 'gray'
+
   axis_par <- list(las       = 1,
                    lwd       = 0,
                    lwd.ticks = 1,
                    tcl       = -0.2,
                    col       = col2)
 
-  # Populate facet.
+  # Draw facets.
   d <- split(d, d$facet)
   for(i in d) {
+
     dotcol                 <- ifelse(i$useful, col1, col4)
     dotcol[i$sigma.signal] <- col3
-    clcol                  <- ifelse(i$runs.signal[1], col3, col2)
-    cltyp                  <- ifelse(i$runs.signal[1], 'dashed', 'solid')
+    clcol                  <- ifelse(i$runs.signal[1],
+                                     col3,
+                                     col2)
+    cltyp                  <- ifelse(i$runs.signal[1],
+                                     'dashed',
+                                     'solid')
     clcol2                 <- ifelse(i$runs.signal[freeze + 1],
                                      col3,
                                      col2)
@@ -79,7 +86,7 @@ plot.pbc <- function(x, ...) {
                                      'dashed',
                                      'solid')
 
-    # Prepare plot.
+    # Prepare canvas.
     plot(i$x, i$y,
          type = 'n',
          axes = F,
@@ -87,33 +94,36 @@ plot.pbc <- function(x, ...) {
          ylab = '',
          xlab = '')
 
-    # Add lines and points to plot.
-    graphics::lines(i$x[base], i$cl[base],
+    # Add box and axes.
+    graphics::box(bty = 'l', col = col2)
+    do.call(x_class, c(1, axis_par))          # x axis
+    do.call(graphics::axis, c(2, axis_par))   # y axis
+
+    # Add lines and points.
+    graphics::lines(i$x[base], i$cl[base],     # centre line
                     col = clcol,
                     lty = cltyp)
     graphics::lines(i$x[-base], i$cl[-base],
                     col = clcol2,
                     lty = cltyp2)
-    graphics::lines(i$x[base], i$lcl[base],
-                    col = col2)
-    graphics::lines(i$x[base], i$ucl[base],
+    graphics::lines(i$x[base], i$lcl[base],    # lower control limit
                     col = col2)
     graphics::lines(i$x[-base], i$lcl[-base],
                     col = col2)
+    graphics::lines(i$x[base], i$ucl[base],    # upper control limit
+                    col = col2)
     graphics::lines(i$x[-base], i$ucl[-base],
                     col = col2)
-    graphics::lines(i$x, i$y,
+    graphics::lines(i$x, i$y,                  # data line
                     col = col1,
                     lwd = 2.5)
-    graphics::points(i$x, i$y,
+    graphics::points(i$x, i$y,                 # data points
                      cex = 0.8,
                      col = dotcol,
                      pch = 19)
 
+    # Add part labels.
     if (!is.null(freeze)) {
-      # abline(v = mean(c(as.numeric(i$x[freeze]),
-      #                   as.numeric(i$x[freeze + 1]))),
-      #        lty = 'dotted')
       graphics::mtext(x$partlabs[1],
                       at   = mean(c(as.numeric(i$x[1]),
                                     as.numeric(i$x[x$freeze]))),
@@ -124,13 +134,13 @@ plot.pbc <- function(x, ...) {
                                     as.numeric(max(i$x)))),
                       cex  = 0.7,
                       line = -0.9)
+      # abline(v = mean(c(as.numeric(i$x[freeze]),
+      #                   as.numeric(i$x[freeze + 1]))),
+      #        lty = 'dotted')
     }
 
-# Add axes, box, and centre line label.
-    graphics::box(bty = 'l', col = col2)
-    do.call(x_class, c(1, axis_par))          # x axis
-    do.call(graphics::axis, c(2, axis_par))   # y axis
-    graphics::mtext(formatC(i$cl[1]),                   # cl label
+    # Add centre line label.
+    graphics::mtext(formatC(i$cl[1]),
                     side = 4,
                     at   = i$cl[1],
                     adj  = 0,
@@ -146,17 +156,17 @@ plot.pbc <- function(x, ...) {
   }
 
   # Main title and axis labels.
-  graphics::mtext(x$xlab,
+  graphics::mtext(x$xlab,           # x axis label
                   side  = 1,
                   line  = 0.5,
                   cex   = cex.adj,
                   outer = TRUE)
-  graphics::mtext(x$ylab,
+  graphics::mtext(x$ylab,           # y axis label
                   side  = 2,
                   line  = 1,
                   cex   = cex.adj,
                   outer = TRUE)
-  graphics::mtext(x$title,
+  graphics::mtext(x$title,          # main title
                   side  = 3,
                   line  = 1.3,
                   outer = TRUE,

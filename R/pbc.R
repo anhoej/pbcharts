@@ -106,13 +106,13 @@ pbc <- function(x,
   d$lcl <- d$lcl * multiply
   d$ucl <- d$ucl * multiply
 
-  d <- list(title = title,
-            ncol = ncol,
-            freeze = freeze,
-            xlab = xlab,
-            ylab = ylab,
+  d <- list(title    = title,
+            xlab     = xlab,
+            ylab     = ylab,
+            ncol     = ncol,
+            freeze   = freeze,
             partlabs = partlabs,
-            data = d)
+            data     = d)
 
   # Make plot.
   if (plot) {
