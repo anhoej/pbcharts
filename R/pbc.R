@@ -93,8 +93,8 @@ pbc <- function(x,
 
   # Set y limits
   if (!is.null(ylim)) {
-    d$lcl <- pmax(d$lcl, ylim[1])
-    d$ucl <- pmin(d$ucl, ylim[2])
+    d$lcl <- pmax(d$lcl, ylim[1], na.rm = TRUE)
+    d$ucl <- pmin(d$ucl, ylim[2], na.rm = TRUE)
   }
 
   # Find useful data points (not on centre line).

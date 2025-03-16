@@ -13,7 +13,8 @@ plot.pbc <- function(x, ...) {
   d <- x$data
 
   # To silence the "no visible binding" warning.
-  freeze <- NULL
+  # freeze <- NULL
+  freeze <- x$freeze
 
   col1 <- 'steelblue'
   col2 <- 'grey30'
@@ -49,14 +50,19 @@ plot.pbc <- function(x, ...) {
   n_rows   <- ceiling(n_facets / n_cols)
 
   # Prepare plot canvas.
+  cex.adj <- 0.9
   op <- graphics::par(mfrow = c(n_rows, n_cols),
                       mar   = c(3, 2, ifelse(n_facets == 1, 0, 2), 3),
-                      oma   = c(2, 2.6, ifelse(is.null(x$title), 1, 3.5), 0))
+                      oma   = c(2, 2.6, ifelse(is.null(x$title), 1, 3.5), 0),
+                      cex = 0.9,
+                      cex.axis = cex.adj,
+                      cex.main = cex.adj,
+                      cex.lab = cex.adj)
   on.exit(graphics::par(op))
   axis_par <- list(las       = 1,
                    lwd       = 0,
                    lwd.ticks = 1,
-                   tcl       = -0.3,
+                   tcl       = -0.2,
                    col       = col2)
 
   # Populate facet.
@@ -66,10 +72,10 @@ plot.pbc <- function(x, ...) {
     dotcol[i$sigma.signal] <- col3
     clcol                  <- ifelse(i$runs.signal[1], col3, col2)
     cltyp                  <- ifelse(i$runs.signal[1], 'dashed', 'solid')
-    clcol2                 <- ifelse(i$runs.signal[x$freeze + 1],
+    clcol2                 <- ifelse(i$runs.signal[freeze + 1],
                                      col3,
                                      col2)
-    cltyp2                 <- ifelse(i$runs.signal[x$freeze + 1],
+    cltyp2                 <- ifelse(i$runs.signal[freeze + 1],
                                      'dashed',
                                      'solid')
 
@@ -104,9 +110,9 @@ plot.pbc <- function(x, ...) {
                      col = dotcol,
                      pch = 19)
 
-    if (!is.null(x$freeze)) {
-      # abline(v = mean(c(as.numeric(x$x[freeze]),
-      #                   as.numeric(x$x[freeze + 1]))),
+    if (!is.null(freeze)) {
+      # abline(v = mean(c(as.numeric(i$x[freeze]),
+      #                   as.numeric(i$x[freeze + 1]))),
       #        lty = 'dotted')
       graphics::mtext(x$partlabs[1],
                       at   = mean(c(as.numeric(i$x[1]),
@@ -133,24 +139,28 @@ plot.pbc <- function(x, ...) {
 
     # Add facet labels
     if (n_facets > 1)
-      graphics::title(main = i$facet[1], adj = 0, font.main = 1, line = 1.2)
+      graphics::title(main      = i$facet[1],
+                      adj       = 0,
+                      font.main = 1,
+                      line      = 1.2)
   }
 
   # Main title and axis labels.
   graphics::mtext(x$xlab,
                   side  = 1,
                   line  = 0.5,
+                  cex   = cex.adj,
                   outer = TRUE)
   graphics::mtext(x$ylab,
                   side  = 2,
                   line  = 1,
+                  cex   = cex.adj,
                   outer = TRUE)
   graphics::mtext(x$title,
                   side  = 3,
                   line  = 1.3,
                   outer = TRUE,
                   font  = 1,
-                  cex   = 1.2,
                   adj   = 0)
 
   # Reset plot canvas.
