@@ -11,16 +11,29 @@
 #' }
 "csection"
 
-#' Hospital Mortality
+#' On-time CT scan
 #'
-#' Patients who die during hospitalisation
+#' Patients with acute abdomen CT scanned within 3 hours after arrival.
 #'
-#' @format ## `hospital_mortality`
-#' A data frame with 135 rows and 4 columns:
+#' @format ## `ontime_ct`
+#' A data frame with 24 rows and 3 columns:
 #' \describe{
-#'   \item{hospital}{Hospital.}
 #'   \item{month}{First day of month.}
-#'   \item{deaths}{Number of patients who died during hospitalisation.}
-#'   \item{discharges}{Number of discharged patients.}
+#'   \item{ontime}{Number of patients scanned within 3 hours.}
+#'   \item{cases}{Number of patients with acute abdomen.}
+#'}
+"ontime_ct"
+
+#' Bacteremia Mortality
+#'
+#' 30-day mortality after bacteremia
+#'
+#' @format ## `bacteremia_mortality`
+#' A data frame with 143 rows and 4 columns:
+#' \describe{
+#'   \item{hospital}{Hospital code.}
+#'   \item{month}{First day of month}
+#'   \item{deatsh}{Number of bacteremia patients who died within 30 days from infection.}
+#'   \item{cases}{Number of patients with bacteremia.}
 #' }
-"hospital_mortality"
+"bacteremia_mortality"
