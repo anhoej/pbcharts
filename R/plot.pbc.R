@@ -72,16 +72,15 @@ plot.pbc <- function(x, ...) {
   # Draw facets.
   d <- split(d, d$facet)
   for(i in d) {
-
     dotcol                 <- ifelse(i$useful, col1, col4)
     dotcol[i$sigma.signal] <- col3
-    clcol                  <- ifelse(i$runs.signal[1],
+    clcol                  <- ifelse(i$runs.signal[1],          # phase 1 CL
                                      col3,
                                      col2)
     cltyp                  <- ifelse(i$runs.signal[1],
                                      'dashed',
                                      'solid')
-    clcol2                 <- ifelse(i$runs.signal[freeze + 1],
+    clcol2                 <- ifelse(i$runs.signal[freeze + 1],  # phase 2 CL
                                      col3,
                                      col2)
     cltyp2                 <- ifelse(i$runs.signal[freeze + 1],
