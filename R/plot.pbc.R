@@ -49,6 +49,11 @@ plot.pbc <- function(x, ...) {
   n_rows   <- ceiling(n_facets / n_cols)
 
   # Prepare graphical parameters.
+  col1 <- 'steelblue'
+  col2 <- 'grey30'
+  col3 <- 'tomato'
+  col4 <- 'gray'
+
   op <- graphics::par(mfrow    = c(n_rows, n_cols),
                       mar      = c(3, 2, ifelse(n_facets == 1, 0, 2), 3),
                       oma      = c(2, 2.6, ifelse(is.null(x$title), 1, 3.5), 0),
@@ -57,11 +62,6 @@ plot.pbc <- function(x, ...) {
                       cex.main = cex.adj,
                       cex.lab  = cex.adj)
   on.exit(graphics::par(op))
-
-  col1 <- 'steelblue'
-  col2 <- 'grey30'
-  col3 <- 'tomato'
-  col4 <- 'gray'
 
   axis_par <- list(las       = 1,
                    lwd       = 0,
@@ -72,15 +72,16 @@ plot.pbc <- function(x, ...) {
   # Draw facets.
   d <- split(d, d$facet)
   for(i in d) {
+    # Set colours and centre line types.
     dotcol                 <- ifelse(i$useful, col1, col4)
     dotcol[i$sigma.signal] <- col3
-    clcol                  <- ifelse(i$runs.signal[1],          # phase 1 CL
+    clcol                  <- ifelse(i$runs.signal[1],          # phase 1
                                      col3,
                                      col2)
     cltyp                  <- ifelse(i$runs.signal[1],
                                      'dashed',
                                      'solid')
-    clcol2                 <- ifelse(i$runs.signal[freeze + 1],  # phase 2 CL
+    clcol2                 <- ifelse(i$runs.signal[freeze + 1],  # phase 2
                                      col3,
                                      col2)
     cltyp2                 <- ifelse(i$runs.signal[freeze + 1],
@@ -126,12 +127,12 @@ plot.pbc <- function(x, ...) {
 
     # Add part labels.
     if (!is.null(freeze)) {
-      graphics::mtext(x$partlabs[1],
+      graphics::mtext(x$partlabs[1],                               # phase 1
                       at   = mean(c(as.numeric(i$x[1]),
                                     as.numeric(i$x[x$freeze]))),
                       cex  = 0.7,
                       line = -0.9)
-      graphics::mtext(x$partlabs[2],
+      graphics::mtext(x$partlabs[2],                                # phase 2
                       at   = mean(c(as.numeric(i$x[x$freeze + 1]),
                                     as.numeric(max(i$x)))),
                       cex  = 0.7,
