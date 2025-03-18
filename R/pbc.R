@@ -1,7 +1,7 @@
 #' Process behaviour chart
 #'
 #' @param x Numeric or date(time) vector of subgroup values to plot along the x
-#'         axis. Or, if y is NULL, x values will be used for y coordinates.
+#'          axis. Or, if y is NULL, x values will be used for y coordinates.
 #' @param num Numeric vector of measures or counts to
 #'            plot on the y axis (numerator).
 #' @param den Numeric vector of subgroup sizes (denominator).
@@ -9,17 +9,18 @@
 #' @param data Data frame containing the variables used in the plot.
 #' @param chart Character value indicating the chart type. Possible values are:
 #'             'run' (default), and 'i'.
-#' @param multiply Number to multiply y axis by, e.g. 100 to get percentages rather
-#'            than proportions.
 #' @param freeze Integer indicating the index of the last subgroup in the
 #'               baseline period (phase 1).
+#' @param multiply Number to multiply y axis by, e.g. 100 to get percentages
+#'                 rather than proportions.
+#' @param ncol Number of columns in faceted plot.
 #' @param ylim Numeric vector (y1, y2) setting the y axis limits. Useful e.g.
 #'             for preventing negative negative control limits (c(0, NA) or
 #'             proportions above 1 (100%) (c(0, 1).
-#' @param ncol Number of columns in faceted plot.
-#' @param fixedscales Logical, if TRUE (default) makes a common scale for y axes.
+#' @param fixedscales Logical, if TRUE (default) makes a common scale for y
+#'                    axes.
 #' @param title,xlab,ylab Characters setting the main chart title and axis
-#'               labels.
+#'                        labels.
 #' @param partlabs Character vector of length two setting the labels for phase 1
 #'                 and phase 2 periods.
 #' @param plot Logical, if TRUE (default), plots an SPC chart.
@@ -39,10 +40,10 @@ pbc <- function(x,
                 facet        = NULL,
                 data     = NULL,
                 chart    = c('run', 'i'),
-                multiply = 1,
                 freeze   = NULL,
-                ylim     = NULL,
+                multiply = 1,
                 ncol     = NULL,
+                ylim     = NULL,
                 fixedscales = TRUE,
                 title    = NULL,
                 xlab     = 'Subgroup',
@@ -78,7 +79,7 @@ pbc <- function(x,
   den[xna] <- NA
 
   # Ignore invalid freeze argument.
-  if (freeze < 2 | freeze > length(unique(x)) - 2) {
+  if (!is.null(freeze) && (freeze < 2 || freeze > length(unique(x)) - 2)) {
     freeze <- NULL
     message('Invalid freeze argument, ignoring.')
   }
