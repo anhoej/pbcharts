@@ -15,6 +15,7 @@ pbc(
   freeze = NULL,
   ylim = NULL,
   ncol = NULL,
+  fixedscales = TRUE,
   title = NULL,
   xlab = "Subgroup",
   ylab = "Value",
@@ -49,6 +50,8 @@ for preventing negative negative control limits (c(0, NA) or
 proportions above 1 (100\%) (c(0, 1).}
 
 \item{ncol}{Number of columns in faceted plot.}
+
+\item{fixedscales}{Logical, if TRUE (default) makes a common scale for y axes.}
 
 \item{title, xlab, ylab}{Characters setting the main chart title and axis
 labels.}

@@ -17,6 +17,7 @@
 #'             for preventing negative negative control limits (c(0, NA) or
 #'             proportions above 1 (100%) (c(0, 1).
 #' @param ncol Number of columns in faceted plot.
+#' @param fixedscales Logical, if TRUE (default) makes a common scale for y axes.
 #' @param title,xlab,ylab Characters setting the main chart title and axis
 #'               labels.
 #' @param partlabs Character vector of length two setting the labels for phase 1
@@ -42,6 +43,7 @@ pbc <- function(x,
                 freeze   = NULL,
                 ylim     = NULL,
                 ncol     = NULL,
+                fixedscales = TRUE,
                 title    = NULL,
                 xlab     = 'Subgroup',
                 ylab     = 'Value',
@@ -111,6 +113,7 @@ pbc <- function(x,
             xlab     = xlab,
             ylab     = ylab,
             ncol     = ncol,
+            fixedscales = fixedscales,
             freeze   = freeze,
             partlabs = partlabs,
             data     = d)

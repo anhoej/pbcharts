@@ -29,6 +29,9 @@ test_that('pbc works', {
                       data = bacteremia_mortality))
   expect_no_error(pbc(month, deaths, cases, hospital,
                       data = bacteremia_mortality,
+                      fixedscales = F))
+  expect_no_error(pbc(month, deaths, cases, hospital,
+                      data = bacteremia_mortality,
                       chart = 'i'))
   expect_no_error(pbc(month, deaths, cases, hospital,
                       data = bacteremia_mortality,
