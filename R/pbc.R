@@ -60,7 +60,6 @@ pbc <- function(x,
   chart     <- match.arg(chart)
   chart.fun <- get(paste0('pbc.', chart))
 
-
   # If num argument is missing, use x instead.
   if (is.null(num)) {
     num <- x
@@ -77,6 +76,12 @@ pbc <- function(x,
   xna    <- !stats::complete.cases(num, den)
   num[xna] <- NA
   den[xna] <- NA
+
+  # Ignore invalid freeze argument.
+  if (freeze < 2 | freeze > length(unique(x)) - 2) {
+    freeze <- NULL
+    message('Invalid freeze argument, ignoring.')
+  }
 
   # Make y values to plot.
   y <- num / den
