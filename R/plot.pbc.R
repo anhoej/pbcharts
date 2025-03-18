@@ -10,12 +10,11 @@
 #' p <- pbc(rnorm(12), plot = FALSE)
 #' plot(p)
 plot.pbc <- function(x, ...) {
-  # Set overall adjustment factor for text elements.
-  cex.adj <- 0.9
-
+  # Begin prepare canvas ----
   # Get data.
-  d       <- x$data
-  freeze  <- x$freeze
+  d           <- x$data
+  freeze      <- x$freeze
+  fixedscales <- x$fixedscales
 
   # Get indices of phase 1 period (<= freeze).
   if (is.null(freeze)) {
@@ -48,11 +47,13 @@ plot.pbc <- function(x, ...) {
                      ncol)
   n_rows   <- ceiling(n_facets / n_cols)
 
-  # Prepare graphical parameters.
+  # Set colours and graphical parameters.
   col1 <- 'steelblue'
   col2 <- 'grey30'
   col3 <- 'tomato'
   col4 <- 'gray'
+
+  cex.adj <- 0.9
 
   op <- graphics::par(mfrow    = c(n_rows, n_cols),
                       mar      = c(3, 2, ifelse(n_facets == 1, 0, 2), 3),
@@ -68,8 +69,9 @@ plot.pbc <- function(x, ...) {
                    lwd.ticks = 1,
                    tcl       = -0.2,
                    col       = col2)
+  # End prepare canvas ----
 
-  # Draw facets.
+  # Begin draw facets ----
   d <- split(d, d$facet)
   for(i in d) {
     # Set colours and centre line types.
@@ -87,6 +89,14 @@ plot.pbc <- function(x, ...) {
     cltyp2                 <- ifelse(i$runs.signal[freeze + 1],
                                      'dashed',
                                      'solid')
+
+    # Free y axis scales if fixedscales argument is FALSE
+    if (!fixedscales) {
+      ylim <- range(i$y,
+                    i$lcl,
+                    i$ucl,
+                    na.rm = TRUE)
+    }
 
     # Prepare canvas.
     plot(i$x, i$y,
@@ -157,8 +167,9 @@ plot.pbc <- function(x, ...) {
                       font.main = 1,
                       line      = 1.2)
   }
+  # End draw facets ----
 
-  # Main title and axis labels.
+  # Begin finish plot ----
   graphics::mtext(x$xlab,           # x axis label
                   side  = 1,
                   line  = 0.5,
@@ -175,7 +186,5 @@ plot.pbc <- function(x, ...) {
                   outer = TRUE,
                   font  = 1,
                   adj   = 0)
-
-  # Reset plot canvas.
-  # graphics::par(op)
+# End finish plot ----
 }
