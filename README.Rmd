@@ -13,9 +13,11 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   fig.height = 4,
   fig.width = 8,
-  # out.width = "100%",
+  out.width = "100%",
   dev = 'png'
 )
+
+set.seed(1)
 ```
 
 # Process Behaviour Charts
@@ -77,7 +79,7 @@ pbc(month, avg_delay * n, n,  # multiply numerator and denominator to keep scale
     chart = 'i')
 ```
 
-I prime chart of bacteremia mortality in six hospitals:
+Faceted I prime chart of bacteremia mortality in six hospitals:
 
 ```{r, fig.height=7}
 pbc(month, deaths, cases,
@@ -100,5 +102,11 @@ p <- pbc(month, deaths, cases, hospital,
          plot  = FALSE)
 
 summary(p)
+```
+
+Plot a pbc object:
+
+```{r, fig.height=7}
+plot(p)
 ```
 

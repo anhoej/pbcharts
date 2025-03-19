@@ -38,7 +38,7 @@ library(pbcharts)
 pbc(rnorm(24))
 ```
 
-![](man/figures/README-unnamed-chunk-2-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
 
 Draw an individuals (I) control chart:
 
@@ -46,7 +46,7 @@ Draw an individuals (I) control chart:
 pbc(rnorm(24), chart = 'i')
 ```
 
-![](man/figures/README-unnamed-chunk-3-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
 Signal special causes from data points outside control limits (red
 points) and unusually long or few runs (red and dashed centre line):
@@ -55,7 +55,7 @@ points) and unusually long or few runs (red and dashed centre line):
 pbc(1:11, chart = 'i')
 ```
 
-![](man/figures/README-unnamed-chunk-4-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
 I chart of average decision to delivery times for grade 2 caesarian
 sections:
@@ -66,7 +66,7 @@ data  = csection,
 chart = 'i')
 ```
 
-![](man/figures/README-unnamed-chunk-5-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
 Normalised I chart (or I prime chart) of C. section data taking varying
 subgroup sizes into account:
@@ -77,9 +77,9 @@ pbc(month, avg_delay * n, n,  # multiply numerator and denominator to keep scale
     chart = 'i')
 ```
 
-![](man/figures/README-unnamed-chunk-6-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
-I prime chart of bacteremia mortality in six hospitals:
+Faceted I prime chart of bacteremia mortality in six hospitals:
 
 ``` r
 pbc(month, deaths, cases,
@@ -93,7 +93,7 @@ pbc(month, deaths, cases,
     xlab     = 'Month')
 ```
 
-![](man/figures/README-unnamed-chunk-7-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
 
 Print a summary:
 
@@ -119,3 +119,11 @@ summary(p)
 #> 5           0
 #> 6           0
 ```
+
+Plot a pbc object:
+
+``` r
+plot(p)
+```
+
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
