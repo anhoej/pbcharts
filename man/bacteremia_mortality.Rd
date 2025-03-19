@@ -20,6 +20,6 @@ A data frame with 143 rows and 4 columns:
 bacteremia_mortality
 }
 \description{
-30-day mortality after bacteremia
+30-day mortality after bacteremia.
 }
 \keyword{datasets}

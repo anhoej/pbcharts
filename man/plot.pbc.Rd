@@ -20,4 +20,5 @@ Plot process behaviour chart
 \examples{
 p <- pbc(rnorm(12), plot = FALSE)
 plot(p)
+
 }

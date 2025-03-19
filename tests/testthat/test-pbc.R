@@ -22,7 +22,7 @@ test_that('Faceting works', {
                       data = bacteremia_mortality))
   expect_no_error(pbc(month, deaths, cases, hospital,
                       data = bacteremia_mortality,
-                      fixedscales = F))
+                      yfixed = F))
   expect_no_error(pbc(month, deaths, cases, hospital,
                       data = bacteremia_mortality,
                       chart = 'i'))
@@ -64,5 +64,5 @@ test_that('signals and summary work', {
     summary(pbc(-6:6, chart = 'i'))$cl, 0)
   expect_equal(
     summary(pbc(-6:6, chart = 'i'))$avg_ucl, 2.66,
-    tolerance = 0.01)
+    tolerance = 0.005)
 })

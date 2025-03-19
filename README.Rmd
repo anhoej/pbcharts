@@ -1,0 +1,104 @@
+---
+output: github_document
+editor_options: 
+  chunk_output_type: console
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  fig.height = 4,
+  fig.width = 8,
+  # out.width = "100%",
+  dev = 'png'
+)
+```
+
+# Process Behaviour Charts
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+<!-- badges: end -->
+
+Run charts and individuals control charts for statistical quality control and improvement. 
+
+Control limits adjust to varying subgroup sizes as suggested by Taylor (2017) <https://variation.com/normalized-individuals-control-chart/> making `pbcharts` useful for a wide range of measurement and count data and a convenient replacement for classic Shewhart control charts.
+
+`pbcharts` allows for faceted plots (small multiples) on one categorical variable.
+
+`pbcharts` uses only functions from base R making in fast and robust.
+
+## Installation
+
+You can install the development version of pbcharts from [GitHub](https://github.com/anhoej/pbcharts) with:
+
+```
+devtools::install_github("anhoej/pbcharts")
+```
+
+## Examples
+
+Draw a run chart of 24 random normal values:
+
+```{r}
+library(pbcharts)
+pbc(rnorm(24))
+```
+
+Draw an individuals (I) control chart:
+
+```{r}
+pbc(rnorm(24), chart = 'i')
+```
+
+Signal special causes from data points outside control limits (red points) and unusually long or few runs (red and dashed centre line):
+
+```{r}
+pbc(1:11, chart = 'i')
+```
+
+I chart of average decision to delivery times for grade 2 caesarian sections:
+
+```{r}
+pbc(month, avg_delay, 
+data  = csection, 
+chart = 'i')
+```
+
+Normalised I chart (or I prime chart) of C. section data taking varying subgroup sizes into account:
+
+```{r}
+pbc(month, avg_delay * n, n,  # multiply numerator and denominator to keep scale
+    data = csection,
+    chart = 'i')
+```
+
+I prime chart of bacteremia mortality in six hospitals:
+
+```{r, fig.height=7}
+pbc(month, deaths, cases,
+    facet    = hospital,                # facet plot by hospital
+    data     = bacteremia_mortality,
+    chart    = 'i',
+    multiply = 100,                     # show percent rather than proportions
+    ylim     = c(0, NA),                # suppress negative control limits
+    title    = 'Bacteremia mortality',
+    ylab     = '%',
+    xlab     = 'Month')
+```
+
+Print a summary:
+
+```{r}
+p <- pbc(month, deaths, cases, hospital,
+         data  = bacteremia_mortality,
+         chart = 'i',
+         plot  = FALSE)
+
+summary(p)
+```
+

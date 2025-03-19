@@ -17,7 +17,7 @@
 #' @param ylim Numeric vector (y1, y2) setting the y axis limits. Useful e.g.
 #'             for preventing negative negative control limits (c(0, NA) or
 #'             proportions above 1 (100%) (c(0, 1).
-#' @param fixedscales Logical, if TRUE (default) makes a common scale for y
+#' @param yfixed Logical, if TRUE (default) makes a common scale for y
 #'                    axes.
 #' @param title,xlab,ylab Characters setting the main chart title and axis
 #'                        labels.
@@ -25,7 +25,7 @@
 #'                 and phase 2 periods.
 #' @param plot Logical, if TRUE (default), plots an SPC chart.
 #'
-#' @returns A list of class 'pcb'
+#' @returns A list of class 'pbc'
 #' @export
 #'
 #' @examples
@@ -34,6 +34,7 @@
 #'
 #' # Plot a control chart from 12 random normal values
 #' pbc(rnorm(12), chart = 'i')
+#'
 pbc <- function(x,
                 num      = NULL,
                 den      = 1,
@@ -44,7 +45,7 @@ pbc <- function(x,
                 multiply = 1,
                 ncol     = NULL,
                 ylim     = NULL,
-                fixedscales = TRUE,
+                yfixed   = TRUE,
                 title    = NULL,
                 xlab     = 'Subgroup',
                 ylab     = 'Value',
@@ -119,7 +120,7 @@ pbc <- function(x,
             xlab     = xlab,
             ylab     = ylab,
             ncol     = ncol,
-            fixedscales = fixedscales,
+            yfixed = yfixed,
             freeze   = freeze,
             partlabs = partlabs,
             data     = d)

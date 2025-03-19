@@ -9,12 +9,13 @@
 #' @examples
 #' p <- pbc(rnorm(12), plot = FALSE)
 #' plot(p)
+#'
 plot.pbc <- function(x, ...) {
-  # Begin prepare canvas ----
+  # Begin prepare canvas -------------------------------------------------------
   # Get data.
   d           <- x$data
   freeze      <- x$freeze
-  fixedscales <- x$fixedscales
+  yfixed <- x$yfixed
 
   # Get indices of phase 1 period (<= freeze).
   if (is.null(freeze)) {
@@ -43,8 +44,8 @@ plot.pbc <- function(x, ...) {
   # Calculate facets layout.
   n_facets <- length(unique(d$facet))
   n_cols   <- ifelse(is.null(x$ncol),
-                     ceiling(sqrt(n_facets)),
-                     ncol)
+                     floor(sqrt(n_facets)),
+                     x$ncol)
   n_rows   <- ceiling(n_facets / n_cols)
 
   # Set colours and graphical parameters.
@@ -69,9 +70,9 @@ plot.pbc <- function(x, ...) {
                    lwd.ticks = 1,
                    tcl       = -0.2,
                    col       = col2)
-  # End prepare canvas ----
+  # End prepare canvas ---------------------------------------------------------
 
-  # Begin draw facets ----
+  # Begin draw facets ----------------------------------------------------------
   d <- split(d, d$facet)
   for(i in d) {
     # Set colours and centre line types.
@@ -90,8 +91,8 @@ plot.pbc <- function(x, ...) {
                                      'dashed',
                                      'solid')
 
-    # Free y axis scales if fixedscales argument is FALSE
-    if (!fixedscales) {
+    # Free y axis scales if yfixed argument is FALSE
+    if (!yfixed) {
       ylim <- range(i$y,
                     i$lcl,
                     i$ucl,
@@ -167,9 +168,9 @@ plot.pbc <- function(x, ...) {
                       font.main = 1,
                       line      = 1.2)
   }
-  # End draw facets ----
+  # End draw facets ------------------------------------------------------------
 
-  # Begin finish plot ----
+  # Begin finish plot ----------------------------------------------------------
   graphics::mtext(x$xlab,           # x axis label
                   side  = 1,
                   line  = 0.5,
@@ -186,5 +187,5 @@ plot.pbc <- function(x, ...) {
                   outer = TRUE,
                   font  = 1,
                   adj   = 0)
-# End finish plot ----
+  # End finish plot --------------------------------------------------------------
 }

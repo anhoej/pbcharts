@@ -26,7 +26,7 @@
 
 #' Bacteremia Mortality
 #'
-#' 30-day mortality after bacteremia
+#' 30-day mortality after bacteremia.
 #'
 #' @format ## `bacteremia_mortality`
 #' A data frame with 143 rows and 4 columns:

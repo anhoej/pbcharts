@@ -15,7 +15,7 @@ pbc(
   multiply = 1,
   ncol = NULL,
   ylim = NULL,
-  fixedscales = TRUE,
+  yfixed = TRUE,
   title = NULL,
   xlab = "Subgroup",
   ylab = "Value",
@@ -51,7 +51,7 @@ rather than proportions.}
 for preventing negative negative control limits (c(0, NA) or
 proportions above 1 (100\%) (c(0, 1).}
 
-\item{fixedscales}{Logical, if TRUE (default) makes a common scale for y
+\item{yfixed}{Logical, if TRUE (default) makes a common scale for y
 axes.}
 
 \item{title, xlab, ylab}{Characters setting the main chart title and axis
@@ -63,7 +63,7 @@ and phase 2 periods.}
 \item{plot}{Logical, if TRUE (default), plots an SPC chart.}
 }
 \value{
-A list of class 'pcb'
+A list of class 'pbc'
 }
 \description{
 Process behaviour chart
@@ -74,4 +74,5 @@ pbc(rnorm(12))
 
 # Plot a control chart from 12 random normal values
 pbc(rnorm(12), chart = 'i')
+
 }
