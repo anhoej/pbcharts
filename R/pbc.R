@@ -1,5 +1,9 @@
 #' Process behaviour chart
 #'
+#' Draws run and control charts.
+#'
+#' See examples at \url{https://github.com/anhoej/pbcharts/}.
+#'
 #' @param x Numeric or date(time) vector of subgroup values to plot along the x
 #'          axis. Or, if y is NULL, x values will be used for y coordinates.
 #' @param num Numeric vector of measures or counts to
@@ -25,7 +29,7 @@
 #'                 and phase 2 periods.
 #' @param plot Logical, if TRUE (default), plots an SPC chart.
 #'
-#' @returns A list of class 'pbc'
+#' @returns Invisibly returns a list of class 'pbc'.
 #' @export
 #'
 #' @examples

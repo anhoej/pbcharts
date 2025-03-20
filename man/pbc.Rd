@@ -63,10 +63,13 @@ and phase 2 periods.}
 \item{plot}{Logical, if TRUE (default), plots an SPC chart.}
 }
 \value{
-A list of class 'pbc'
+Invisibly returns a list of class 'pbc'.
 }
 \description{
-Process behaviour chart
+Draws run and control charts.
+}
+\details{
+See examples at \url{https://github.com/anhoej/pbcharts/}.
 }
 \examples{
 # Plot a run chart from 12 random normal values

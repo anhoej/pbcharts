@@ -12,10 +12,12 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 Run charts and individuals control charts for statistical quality
 control and improvement.
 
-Control limits adjust to varying subgroup sizes as suggested by Taylor
-(2017) <https://variation.com/normalized-individuals-control-chart/>
-making `pbcharts` useful for a wide range of measurement and count data
-and a convenient replacement for classic Shewhart control charts.
+`pbcharts` implements the I prime (or normalised I) control chart
+suggested by Taylor (2017)
+<https://variation.com/normalized-individuals-control-chart/>. The I
+prime chart adjusts the control limits to varying subgroup sizes making
+`pbcharts` useful for a wide range of measurement and count data and a
+convenient replacement for classic Shewhart control charts.
 
 `pbcharts` allows for faceted plots (small multiples) on one categorical
 variable.
@@ -49,7 +51,7 @@ pbc(rnorm(24), chart = 'i')
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
 Signal special causes from data points outside control limits (red
-points) and unusually long or few runs (red and dashed centre line):
+points) and(or) unusually long or few runs (red and dashed centre line):
 
 ``` r
 pbc(1:11, chart = 'i')
@@ -127,3 +129,42 @@ plot(p)
 ```
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+
+## Procedure for calculating centre line and conrol limits
+
+We use the following symbols:
+
+- n = numerators
+- d = denominators
+- o = number of data values
+- i = i<sup>th</sup> data value
+
+Values to plot:
+
+$$
+y = \frac{n}{d}
+$$
+
+Centre line:
+
+$$
+CL = \frac{\sum{n}}{\sum{d}}
+$$
+
+Standard deviation of i<sup>th</sup> data point:
+
+$$
+s_i = \sqrt{\frac{\pi}{2}}\frac{\vert{}y_i-y_{i-1}\vert{}}{\sqrt{\frac{1}{d_i}+\frac{1}{d_{i-1}}}}
+$$
+
+Average standard deviation:
+
+$$
+\bar{s} = \frac{\sum{s}}{o}
+$$
+
+Control limits:
+
+$$
+\text{control limits} = CL \pm 3 \frac{\bar{s}}{\sqrt{d_i}}
+$$
