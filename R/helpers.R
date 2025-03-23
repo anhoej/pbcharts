@@ -43,17 +43,62 @@ pbc.i <- function(x, freeze) {
   d1    <- abs(diff(x$y[base], na.rm = TRUE))
   d2    <- sqrt((1 / x$den[1:(l - 1)]) + (1 / x$den[2:l]))
   s     <- sqrt(pi / 2) * d1 / d2
-  as    <- mean(s, na.rm = TRUE)
+  sbar  <- mean(s, na.rm = TRUE)
 
   # Remove s values above upper limit before calculating stdev
-  uls   <- as * 3.2665
+  uls   <- sbar* 3.2665
   s     <- s[s < uls]
-  as    <- mean(s, na.rm = TRUE)
-  stdev <- as * sqrt(1 / x$den)
+  sbar  <- mean(s, na.rm = TRUE)
+  stdev <- sbar* sqrt(1 / x$den)
 
   # Control limits
   x$lcl <- x$cl - 3 * stdev
   x$ucl <- x$cl + 3 * stdev
+
+  # Sigma signal
+  x$sigma.signal                        <- (x$y < x$lcl | x$y > x$ucl)
+  x$sigma.signal[is.na(x$sigma.signal)] <- FALSE
+
+  x
+}
+
+# Moving S prime chart
+pbc.ms <- function(x, freeze) {
+  # Get indices of baseline period (<= freeze)
+  if (is.null(freeze)) {
+    base <- seq_along(x$x)
+  } else {
+    base <- seq_len(freeze)
+  }
+
+  # # Centre line
+  # x$cl <- stats::weighted.mean(x$y[base], x$den[base], na.rm = TRUE)
+
+  # # Runs analysis
+  # x$runs.signal        <- runs.analysis(x$y[base], x$cl[1])
+  # x$runs.signal[-base] <- runs.analysis(x$y[-base], x$cl[1])
+
+  # Standard deviation
+  l     <- length(base)
+  d1    <- abs(diff(x$y[base], na.rm = TRUE))
+  d2    <- sqrt((1 / x$den[1:(l - 1)]) + (1 / x$den[2:l]))
+  s     <- sqrt(pi / 2) * d1 / d2
+  sbar  <- mean(s, na.rm = TRUE)
+
+  # # Remove s values above upper limit before calculating stdev
+  # uls   <- sbar* 3.2665
+  # s     <- s[s < uls]
+  # sbar  <- mean(s, na.rm = TRUE)
+  # stdev <- sbar* sqrt(1 / x$den)
+
+  # Control limits
+  # x$lcl <- x$cl - 3 * stdev
+  # x$ucl <- x$cl + 3 * stdev
+  x$y <- c(NA, s)
+  x$cl <- sbar
+  x$ucl <- 3.2665 * sbar
+  x$lcl <- NA
+  x$runs.signal <- FALSE
 
   # Sigma signal
   x$sigma.signal                        <- (x$y < x$lcl | x$y > x$ucl)

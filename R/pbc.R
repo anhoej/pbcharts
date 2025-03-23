@@ -12,7 +12,7 @@
 #' @param facet Character (or factor) vector used for faceting.
 #' @param data Data frame containing the variables used in the plot.
 #' @param chart Character value indicating the chart type. Possible values are:
-#'             'run' (default), and 'i'.
+#'             'run' (default), 'i', and 'ms'.
 #' @param freeze Integer indicating the index of the last subgroup in the
 #'               baseline period (phase 1).
 #' @param multiply Number to multiply y axis by, e.g. 100 to get percentages
@@ -44,7 +44,7 @@ pbc <- function(x,
                 den      = 1,
                 facet        = NULL,
                 data     = NULL,
-                chart    = c('run', 'i'),
+                chart    = c('run', 'i', 'ms'),
                 freeze   = NULL,
                 multiply = 1,
                 ncol     = NULL,

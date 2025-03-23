@@ -28,7 +28,7 @@ set.seed(1)
 
 Run charts and individuals control charts for statistical quality control and improvement. 
 
-`pbcharts` implements the I prime (or normalised I) control chart suggested by Taylor (2017) <https://variation.com/normalized-individuals-control-chart/>. The I prime chart adjusts the control limits to varying subgroup sizes making `pbcharts` useful for a wide range of measurement and count data and a convenient replacement for classic Shewhart control charts.
+`pbcharts` implements the I prime (or normalised I) control chart suggested by Taylor (2017) <https://variation.com/normalized-individuals-control-chart/>. The I prime chart adjusts the control limits to varying subgroup sizes making `pbcharts` useful for a wide range of measurement and count data and a convenient replacement for the classic Shewhart control charts.
 
 `pbcharts` allows for faceted plots (small multiples) on one categorical variable.
 

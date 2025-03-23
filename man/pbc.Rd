@@ -10,7 +10,7 @@ pbc(
   den = 1,
   facet = NULL,
   data = NULL,
-  chart = c("run", "i"),
+  chart = c("run", "i", "ms"),
   freeze = NULL,
   multiply = 1,
   ncol = NULL,
@@ -37,7 +37,7 @@ plot on the y axis (numerator).}
 \item{data}{Data frame containing the variables used in the plot.}
 
 \item{chart}{Character value indicating the chart type. Possible values are:
-'run' (default), and 'i'.}
+'run' (default), 'i', and 'ms'.}
 
 \item{freeze}{Integer indicating the index of the last subgroup in the
 baseline period (phase 1).}

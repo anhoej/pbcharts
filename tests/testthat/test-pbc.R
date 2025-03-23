@@ -15,6 +15,9 @@ test_that('pbc works', {
   expect_no_error(pbc(month, ontime, cases,
                       data = ontime_ct,
                       chart = 'i'))
+  expect_no_error(pbc(month, ontime, cases,
+                      data = ontime_ct,
+                      chart = 'ms'))
 })
 
 test_that('Faceting works', {

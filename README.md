@@ -17,7 +17,7 @@ suggested by Taylor (2017)
 <https://variation.com/normalized-individuals-control-chart/>. The I
 prime chart adjusts the control limits to varying subgroup sizes making
 `pbcharts` useful for a wide range of measurement and count data and a
-convenient replacement for classic Shewhart control charts.
+convenient replacement for the classic Shewhart control charts.
 
 `pbcharts` allows for faceted plots (small multiples) on one categorical
 variable.
