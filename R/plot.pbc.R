@@ -47,8 +47,11 @@ plot.pbc <- function(x, ...) {
                      floor(sqrt(n_facets)),
                      x$ncol)
   n_rows   <- ceiling(n_facets / n_cols)
-  outer_y <- seq(1, n_facets, by = n_cols)
-  outer_x <- seq(n_facets - n_cols + 1, n_facets)
+  mfrow    <- c(n_rows, n_cols)
+  # mfrow    <- grDevices::n2mfrow(n_facets),
+
+  outer_y  <- seq(1, n_facets, by = n_cols)
+  outer_x  <- seq(n_facets - n_cols + 1, n_facets)
 
   # Set colours and graphical parameters.
   col1 <- 'steelblue'
@@ -59,7 +62,7 @@ plot.pbc <- function(x, ...) {
   cex.adj <- 0.9
 
   op <- graphics::par(
-    mfrow    = c(n_rows, n_cols),
+    mfrow    = mfrow, #c(n_rows, n_cols),
     mar      = c(1.5, 1.2, ifelse(n_facets == 1, 0, 2), 3),
     oma      = c(2.5, 4.1, ifelse(is.null(x$title), 1, 2.6), 0),
     cex      = cex.adj,
