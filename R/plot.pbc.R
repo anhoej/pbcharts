@@ -159,12 +159,12 @@ plot.pbc <- function(x, ...) {
                       at   = mean(c(as.numeric(i$x[1]),
                                     as.numeric(i$x[x$freeze]))),
                       cex  = 0.7,
-                      line = -0.9)
+                      line = -0.3)
       graphics::mtext(x$partlabs[2],                                # phase 2
                       at   = mean(c(as.numeric(i$x[x$freeze + 1]),
                                     as.numeric(max(i$x)))),
                       cex  = 0.7,
-                      line = -0.9)
+                      line = -0.3)
       # abline(v = mean(c(as.numeric(i$x[freeze]),
       #                   as.numeric(i$x[freeze + 1]))),
       #        lty = 'dotted')

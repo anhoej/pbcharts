@@ -40,6 +40,16 @@ test_that('Faceting works', {
 })
 
 test_that('freeze argument works', {
+  expect_no_error(pbc(month, deaths, facet = hospital,
+                      data = bacteremia_mortality,
+                      chart = 'i',
+                      freeze = 12,
+                      yfixed = FALSE))
+
+  expect_no_error(pbc(month, ontime,
+                      data = ontime_ct,
+                      chart = 'i',
+                      freeze = 12))
   expect_no_error(pbc(month, ontime, cases,
                       data = ontime_ct,
                       chart = 'i',
