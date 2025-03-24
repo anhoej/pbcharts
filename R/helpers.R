@@ -1,7 +1,7 @@
 # Limits functions #############################################################
 
 # Run chart
-pbc.run <- function(x, freeze) {
+pbc.run <- function(x, freeze, exclude) {
   if (is.null(freeze)) {
     base <- seq_along(x$x)
   } else {
@@ -23,7 +23,7 @@ pbc.run <- function(x, freeze) {
 }
 
 # I prime chart
-pbc.i <- function(x, freeze) {
+pbc.i <- function(x, freeze, exclude) {
   # Get indices of baseline period (<= freeze)
   if (is.null(freeze)) {
     base <- seq_along(x$x)
@@ -63,7 +63,7 @@ pbc.i <- function(x, freeze) {
 }
 
 # Moving S prime chart
-pbc.ms <- function(x, freeze) {
+pbc.ms <- function(x, freeze, exclude) {
   # Indices of baseline period (<= freeze)
   if (is.null(freeze)) {
     base <- seq_along(x$x)

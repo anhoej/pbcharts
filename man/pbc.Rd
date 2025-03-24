@@ -12,6 +12,7 @@ pbc(
   data = NULL,
   chart = c("run", "i", "ms"),
   freeze = NULL,
+  exclude = NULL,
   multiply = 1,
   ncol = NULL,
   ylim = NULL,
@@ -41,6 +42,8 @@ plot on the y axis (numerator).}
 
 \item{freeze}{Integer indicating the index of the last subgroup in the
 baseline period (phase 1).}
+
+\item{exclude}{Integer vector of indices to exclude from calculations.}
 
 \item{multiply}{Number to multiply y axis by, e.g. 100 to get percentages
 rather than proportions.}

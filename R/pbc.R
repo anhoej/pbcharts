@@ -15,6 +15,7 @@
 #'             'run' (default), 'i', and 'ms'.
 #' @param freeze Integer indicating the index of the last subgroup in the
 #'               baseline period (phase 1).
+#' @param exclude Integer vector of indices to exclude from calculations.
 #' @param multiply Number to multiply y axis by, e.g. 100 to get percentages
 #'                 rather than proportions.
 #' @param ncol Number of columns in faceted plot.
@@ -46,6 +47,7 @@ pbc <- function(x,
                 data     = NULL,
                 chart    = c('run', 'i', 'ms'),
                 freeze   = NULL,
+                exclude  = NULL,
                 multiply = 1,
                 ncol     = NULL,
                 ylim     = NULL,
@@ -102,7 +104,7 @@ pbc <- function(x,
 
   # Calculate sigma limits and perform runs analysis to each facet.
   d <- split(d, facet)
-  d <- lapply(d, chart.fun, freeze)
+  d <- lapply(d, chart.fun, freeze, exclude)
   d <- do.call(rbind, args = c(d, make.row.names = F))
 
   # Censor control limits to ylim argument.
