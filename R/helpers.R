@@ -8,12 +8,26 @@ pbc.run <- function(x, freeze, exclude) {
     base <- seq_len(freeze)
   }
 
+  # Ignore excluded values from calculations
+  y <- x$y
+
+  if (!is.null(exclude)) {
+    y[exclude] <- NA
+  }
+
   # Centre line
-  x$cl  <- stats::median(x$y[base], na.rm = TRUE)
+  x$cl  <- stats::median(y[base], na.rm = TRUE)
 
   # Runs signal
-  x$runs.signal <- runs.analysis(x$y[base], x$cl[1])
-  x$runs.signal[-base] <- runs.analysis(x$y[-base], x$cl[1])
+  x$runs.signal        <- runs.analysis(y[base], x$cl[1])
+  x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[1])
+
+  # # Centre line
+  # x$cl  <- stats::median(x$y[base], na.rm = TRUE)
+  #
+  # # Runs signal
+  # x$runs.signal <- runs.analysis(x$y[base], x$cl[1])
+  # x$runs.signal[-base] <- runs.analysis(x$y[-base], x$cl[1])
 
   # Control limits
   x$lcl <- NA_real_
@@ -31,12 +45,21 @@ pbc.i <- function(x, freeze, exclude) {
     base <- seq_len(freeze)
   }
 
+  # Ignore excluded values from calculations
+  y   <- x$y
+  den <- x$den
+
+  if (!is.null(exclude)) {
+    y[exclude]   <- NA
+    den[exclude] <- NA
+  }
+
   # Centre line
-  x$cl <- stats::weighted.mean(x$y[base], x$den[base], na.rm = TRUE)
+  x$cl <- stats::weighted.mean(y[base], den[base], na.rm = TRUE)
 
   # Runs analysis
-  x$runs.signal        <- runs.analysis(x$y[base], x$cl[1])
-  x$runs.signal[-base] <- runs.analysis(x$y[-base], x$cl[1])
+  x$runs.signal        <- runs.analysis(y[base], x$cl[1])
+  x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[1])
 
   # Standard deviation
   l     <- length(base)
@@ -71,12 +94,23 @@ pbc.ms <- function(x, freeze, exclude) {
     base <- seq_len(freeze)
   }
 
+  # Ignore excluded values from calculations
+  y   <- x$y
+  den <- x$den
+
+  if (!is.null(exclude)) {
+    y[exclude]   <- NA
+    den[exclude] <- NA
+  }
+
+### OBS: how to handle freeze and exclude arguments?!!!!! ######################
   # Standard deviation
-  l     <- length(base)
-  d1    <- abs(diff(x$y[base], na.rm = TRUE))
-  d2    <- sqrt((1 / x$den[1:(l - 1)]) + (1 / x$den[2:l]))
+  l     <- length(x$y)
+  d1    <- abs(diff(y, na.rm = TRUE))
+  d2    <- sqrt((1 / den[1:(l - 1)]) + (1 / den[2:l]))
   s     <- sqrt(pi / 2) * d1 / d2
-  sbar  <- mean(s, na.rm = TRUE)
+  sbar  <- mean(s[base[-length(base)]], na.rm = TRUE)
+################################################################################
 
   # Values and centre line
   x$y  <- c(NA, s)

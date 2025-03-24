@@ -128,6 +128,7 @@ pbc <- function(x,
             ncol     = ncol,
             yfixed = yfixed,
             freeze   = freeze,
+            exclude  = exclude,
             partlabs = partlabs,
             data     = d)
 

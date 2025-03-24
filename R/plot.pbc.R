@@ -15,6 +15,7 @@ plot.pbc <- function(x, ...) {
   # Get data.
   d           <- x$data
   freeze      <- x$freeze
+  exclude <- x$exclude
   yfixed <- x$yfixed
 
   # Get indices of phase 1 period (<= freeze).
@@ -88,6 +89,7 @@ plot.pbc <- function(x, ...) {
     # Set colours and centre line types.
     dotcol                 <- ifelse(i$useful, col1, col4)
     dotcol[i$sigma.signal] <- col3
+    dotcol[exclude]        <- col4
     clcol                  <- ifelse(i$runs.signal[1],          # phase 1
                                      col3,
                                      col2)
