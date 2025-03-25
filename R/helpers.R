@@ -1,7 +1,8 @@
 # Limits functions #############################################################
 
 # Run chart
-pbc.run <- function(x, freeze, exclude) {
+pbc.run <- function(x, freeze, split, exclude) {
+  # Indices of baseline period (<= freeze)
   if (is.null(freeze)) {
     base <- seq_along(x$x)
   } else {
@@ -18,6 +19,10 @@ pbc.run <- function(x, freeze, exclude) {
   # Centre line
   x$cl  <- stats::median(y[base], na.rm = TRUE)
 
+  if (split) {
+    x$cl[-base]  <- stats::median(y[-base], na.rm = TRUE)
+  }
+
   # Runs signal
   x$runs.signal        <- runs.analysis(y[base], x$cl[1])
   x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[-base][1])
@@ -30,15 +35,13 @@ pbc.run <- function(x, freeze, exclude) {
 }
 
 # I prime chart
-pbc.i <- function(x, freeze, exclude) {
-  # Get indices of baseline period (<= freeze)
+pbc.i <- function(x, freeze, split, exclude) {
+  # Indices of baseline period (<= freeze)
   if (is.null(freeze)) {
     base <- seq_along(x$x)
   } else {
     base <- seq_len(freeze)
   }
-
-  # base.len <- length(base)
 
   # Ignore excluded values from calculations
   y   <- x$y
@@ -49,18 +52,31 @@ pbc.i <- function(x, freeze, exclude) {
     den[exclude] <- NA
   }
 
+  # Centre line
+  x$cl <- stats::weighted.mean(y[base], den[base], na.rm = TRUE)
+
+  if (!is.null(split)) {
+  }
+
   # Standard deviation - add NA to make s same length as y.
-  s    <- c(NA, moving.s(y, den))
-  sbar <- mean(s[base], na.rm = TRUE)
+  s <- c(NA, moving.s(y, den))
 
   # Remove s values above upper limit before calculating stdev
+  sbar       <- mean(s[base], na.rm = TRUE)
   uls        <- sbar* 3.2665
   s[s > uls] <- NA
   sbar       <- mean(s[base], na.rm = TRUE)
   stdev      <- sbar * sqrt(1 / x$den)
 
-  # Centre line
-  x$cl <- stats::weighted.mean(y[base], den[base], na.rm = TRUE)
+  # stdev and centre line after split
+  if (split) {
+    sbar         <- mean(s[-base], na.rm = TRUE)
+    uls          <- sbar * 3.2665
+    s[s > uls]   <- NA
+    sbar         <- mean(s[-base], na.rm = TRUE)
+    stdev[-base] <- sbar * sqrt(1 / x$den[-base])
+    x$cl[-base]  <- stats::weighted.mean(y[-base], den[-base], na.rm = TRUE)
+  }
 
   # Runs analysis
   x$runs.signal        <- runs.analysis(y[base], x$cl[1])
@@ -78,15 +94,13 @@ pbc.i <- function(x, freeze, exclude) {
 }
 
 # Moving S prime chart
-pbc.ms <- function(x, freeze, exclude) {
+pbc.ms <- function(x, freeze, split, exclude) {
   # Indices of baseline period (<= freeze)
   if (is.null(freeze)) {
     base <- seq_along(x$x)
   } else {
     base <- seq_len(freeze)
   }
-
-  base.len <- length(base)
 
   # Ignore excluded values from calculations
   y   <- x$y
@@ -98,14 +112,19 @@ pbc.ms <- function(x, freeze, exclude) {
   }
 
   s    <- c(NA, moving.s(y, den))
-  sbar <- mean(s[base], na.rm = TRUE)
+  # sbar <- mean(s[base], na.rm = TRUE)
+  #   sbar[-base]         <- mean(s[-base], na.rm = TRUE)
 
   # Y values and centre line
-  x$y  <- s #c(NA, s)
-  x$cl <- sbar
+  x$y         <- s
+  x$cl        <- mean(s[base], na.rm = TRUE)
+
+  if (split) {
+    x$cl[-base] <- mean(s[-base], na.rm = TRUE)
+  }
 
   # Control limits
-  x$ucl <- 3.2665 * sbar
+  x$ucl <- 3.2665 * x$cl #sbar
   x$lcl <- NA
 
   # Signals

@@ -64,6 +64,31 @@ test_that('freeze argument works', {
                      freeze = 1))
 })
 
+test_that('split argument works', {
+  expect_no_error(pbc(month, deaths, facet = hospital,
+                      data = bacteremia_mortality,
+                      chart = 'i',
+                      split = 12,
+                      yfixed = FALSE))
+
+  expect_no_error(pbc(month, ontime,
+                      data = ontime_ct,
+                      chart = 'i',
+                      split = 12))
+  expect_no_error(pbc(month, ontime, cases,
+                      data = ontime_ct,
+                      chart = 'i',
+                      split = 12))
+  expect_message(pbc(month, ontime, cases,
+                     data = ontime_ct,
+                     chart = 'i',
+                     spli = 24))
+  expect_message(pbc(month, ontime, cases,
+                     data = ontime_ct,
+                     chart = 'i',
+                     split = 1))
+})
+
 test_that('signals and summary work', {
   expect_equal(
     summary(pbc(1:12, chart = 'i'))$sigma.signal, 6)

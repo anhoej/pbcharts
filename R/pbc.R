@@ -14,7 +14,9 @@
 #' @param chart Character value indicating the chart type. Possible values are:
 #'             'run' (default), 'i', and 'ms'.
 #' @param freeze Integer indicating the index of the last subgroup in the
-#'               baseline period (phase 1).
+#'               baseline period (phase 1). Ignored if split is not NULL.
+#' @param split Integer indicating the index of the last subgroup before
+#'              splitting the graph.
 #' @param exclude Integer vector of indices to exclude from calculations.
 #' @param multiply Number to multiply y axis by, e.g. 100 to get percentages
 #'                 rather than proportions.
@@ -47,6 +49,7 @@ pbc <- function(x,
                 data     = NULL,
                 chart    = c('run', 'i', 'ms'),
                 freeze   = NULL,
+                split    = NULL,
                 exclude  = NULL,
                 multiply = 1,
                 ncol     = NULL,
@@ -91,6 +94,16 @@ pbc <- function(x,
     message('Invalid freeze argument, ignoring.')
   }
 
+  # Handle split argument
+  if (!is.null(split) && (split < 2 || split > length(unique(x)) - 2)) {
+    message('Invalid split argument, ignoring')
+  } else if (!is.null(split)) {
+    freeze <- split
+    split <- TRUE
+  } else {
+    split <- FALSE
+  }
+
   # Ignore invalid exclude argument
   if (!is.null(exclude) && (exclude > length(unique(x)) || exclude < 1)) {
     exclude <- NULL
@@ -110,7 +123,7 @@ pbc <- function(x,
 
   # Calculate sigma limits and perform runs analysis to each facet.
   d <- split(d, facet)
-  d <- lapply(d, chart.fun, freeze, exclude)
+  d <- lapply(d, chart.fun, freeze, split, exclude)
   d <- do.call(rbind, args = c(d, make.row.names = FALSE))
 
   # Censor control limits to ylim argument.
@@ -134,6 +147,7 @@ pbc <- function(x,
             ncol     = ncol,
             yfixed   = yfixed,
             freeze   = freeze,
+            split    = split,
             exclude  = exclude,
             partlabs = partlabs,
             data     = d)

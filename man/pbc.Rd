@@ -12,6 +12,7 @@ pbc(
   data = NULL,
   chart = c("run", "i", "ms"),
   freeze = NULL,
+  split = NULL,
   exclude = NULL,
   multiply = 1,
   ncol = NULL,
@@ -41,7 +42,10 @@ plot on the y axis (numerator).}
 'run' (default), 'i', and 'ms'.}
 
 \item{freeze}{Integer indicating the index of the last subgroup in the
-baseline period (phase 1).}
+baseline period (phase 1). Ignored if split is not NULL.}
+
+\item{split}{Integer indicating the index of the last subgroup before
+splitting the graph.}
 
 \item{exclude}{Integer vector of indices to exclude from calculations.}
 
