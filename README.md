@@ -19,10 +19,16 @@ prime chart adjusts the control limits to varying subgroup sizes making
 `pbcharts` useful for a wide range of measurement and count data and a
 convenient replacement for the classic Shewhart control charts.
 
-`pbcharts` allows for faceted plots (small multiples) on one categorical
-variable.
-
 `pbcharts` uses only functions from base R making in fast and robust.
+
+- Facet plots (small multiples) on one categorical variable.
+
+- Freeze calculations of centre line and control limits to a baseline
+  period.
+
+- Split charts into two periods.
+
+- Exclude individual data points from calculations.
 
 ## Installation
 
