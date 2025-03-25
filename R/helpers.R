@@ -22,13 +22,6 @@ pbc.run <- function(x, freeze, exclude) {
   x$runs.signal        <- runs.analysis(y[base], x$cl[1])
   x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[-base][1])
 
-  # # Centre line
-  # x$cl  <- stats::median(x$y[base], na.rm = TRUE)
-  #
-  # # Runs signal
-  # x$runs.signal <- runs.analysis(x$y[base], x$cl[1])
-  # x$runs.signal[-base] <- runs.analysis(x$y[-base], x$cl[1])
-
   # Control limits
   x$lcl <- NA_real_
   x$ucl <- NA_real_
@@ -59,13 +52,6 @@ pbc.i <- function(x, freeze, exclude) {
   # Standard deviation - add NA to make s same length as y.
   s    <- c(NA, moving.s(y, den))
   sbar <- mean(s[base], na.rm = TRUE)
-
-  # l     <- length(base)
-  # d1    <- abs(diff(y[base], na.rm = TRUE))
-  # l     <- length(y)
-  # d1    <- abs(diff(y, na.rm = TRUE))
-  # d2    <- sqrt((1 / den[1:(l - 1)]) + (1 / den[2:l]))
-  # s     <- sqrt(pi / 2) * d1 / d2
 
   # Remove s values above upper limit before calculating stdev
   uls        <- sbar* 3.2665
@@ -111,11 +97,6 @@ pbc.ms <- function(x, freeze, exclude) {
     den[exclude] <- NA
   }
 
-  # Standard deviation
-  # l     <- length(y)
-  # d1    <- abs(diff(y, na.rm = TRUE))
-  # d2    <- sqrt((1 / den[1:(l - 1)]) + (1 / den[2:l]))
-  # s     <- sqrt(pi / 2) * d1 / d2
   s    <- c(NA, moving.s(y, den))
   sbar <- mean(s[base], na.rm = TRUE)
 

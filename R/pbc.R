@@ -43,7 +43,7 @@
 pbc <- function(x,
                 num      = NULL,
                 den      = 1,
-                facet        = NULL,
+                facet    = NULL,
                 data     = NULL,
                 chart    = c('run', 'i', 'ms'),
                 freeze   = NULL,
@@ -111,7 +111,7 @@ pbc <- function(x,
   # Calculate sigma limits and perform runs analysis to each facet.
   d <- split(d, facet)
   d <- lapply(d, chart.fun, freeze, exclude)
-  d <- do.call(rbind, args = c(d, make.row.names = F))
+  d <- do.call(rbind, args = c(d, make.row.names = FALSE))
 
   # Censor control limits to ylim argument.
   if (!is.null(ylim)) {
