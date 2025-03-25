@@ -21,16 +21,24 @@ convenient replacement for the classic Shewhart control charts.
 
 `pbcharts` uses only functions from base R making in fast and robust.
 
-- Facet plots (small multiples) on one categorical variable.
+`pbcharts` is currently able to:
 
-- Freeze calculations of centre line and control limits to a baseline
-  period.
+- facet plots (small multiples) on one categorical variable;
 
-- Split charts into two periods.
+- freeze calculations of centre line and control limits to a baseline
+  period;
 
-- Exclude individual data points from calculations.
+- split charts into two periods;
 
-Please report any issues at <https://github.com/anhoej/pbcharts/issues>
+- exclude individual data points from calculations;
+
+- test for special cause variation using runs analysis and control
+  limits;
+
+- signal special causes using clear visual clues.
+
+`pbcharts` is in early develpment. Please report any issues at
+<https://github.com/anhoej/pbcharts/issues>
 
 ## Installation
 
@@ -72,8 +80,8 @@ sections:
 
 ``` r
 pbc(month, avg_delay, 
-data  = csection, 
-chart = 'i')
+    data  = csection, 
+    chart = 'i')
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
