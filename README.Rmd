@@ -40,6 +40,8 @@ Run charts and individuals control charts for statistical quality control and im
 
 * Exclude individual data points from calculations.
 
+Please report any issues at https://github.com/anhoej/pbcharts/issues
+
 ## Installation
 
 You can install the development version of pbcharts from [GitHub](https://github.com/anhoej/pbcharts) with:

@@ -30,6 +30,8 @@ convenient replacement for the classic Shewhart control charts.
 
 - Exclude individual data points from calculations.
 
+Please report any issues at <https://github.com/anhoej/pbcharts/issues>
+
 ## Installation
 
 You can install the development version of pbcharts from
