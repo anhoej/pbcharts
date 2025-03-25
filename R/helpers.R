@@ -45,6 +45,8 @@ pbc.i <- function(x, freeze, exclude) {
     base <- seq_len(freeze)
   }
 
+  base.len <- length(base)
+
   # Ignore excluded values from calculations
   y   <- x$y
   den <- x$den
@@ -54,25 +56,29 @@ pbc.i <- function(x, freeze, exclude) {
     den[exclude] <- NA
   }
 
+  s    <- moving.s(y, den)
+  sbar <- mean(s[base[-base.len]], na.rm = TRUE)
+
+  # Standard deviation
+  # l     <- length(base)
+  # d1    <- abs(diff(y[base], na.rm = TRUE))
+  # l     <- length(y)
+  # d1    <- abs(diff(y, na.rm = TRUE))
+  # d2    <- sqrt((1 / den[1:(l - 1)]) + (1 / den[2:l]))
+  # s     <- sqrt(pi / 2) * d1 / d2
+
+  # Remove s values above upper limit before calculating stdev
+  uls   <- sbar* 3.2665
+  s[s > uls] <- NA
+  sbar  <- mean(s[base[-base.len]], na.rm = TRUE)
+  stdev <- sbar* sqrt(1 / x$den)
+
   # Centre line
   x$cl <- stats::weighted.mean(y[base], den[base], na.rm = TRUE)
 
   # Runs analysis
   x$runs.signal        <- runs.analysis(y[base], x$cl[1])
   x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[1])
-
-  # Standard deviation
-  l     <- length(base)
-  d1    <- abs(diff(x$y[base], na.rm = TRUE))
-  d2    <- sqrt((1 / x$den[1:(l - 1)]) + (1 / x$den[2:l]))
-  s     <- sqrt(pi / 2) * d1 / d2
-  sbar  <- mean(s, na.rm = TRUE)
-
-  # Remove s values above upper limit before calculating stdev
-  uls   <- sbar* 3.2665
-  s     <- s[s < uls]
-  sbar  <- mean(s, na.rm = TRUE)
-  stdev <- sbar* sqrt(1 / x$den)
 
   # Control limits
   x$lcl <- x$cl - 3 * stdev
@@ -94,6 +100,8 @@ pbc.ms <- function(x, freeze, exclude) {
     base <- seq_len(freeze)
   }
 
+  base.len <- length(base)
+
   # Ignore excluded values from calculations
   y   <- x$y
   den <- x$den
@@ -103,16 +111,15 @@ pbc.ms <- function(x, freeze, exclude) {
     den[exclude] <- NA
   }
 
-### OBS: how to handle freeze and exclude arguments?!!!!! ######################
   # Standard deviation
-  l     <- length(x$y)
-  d1    <- abs(diff(y, na.rm = TRUE))
-  d2    <- sqrt((1 / den[1:(l - 1)]) + (1 / den[2:l]))
-  s     <- sqrt(pi / 2) * d1 / d2
-  sbar  <- mean(s[base[-length(base)]], na.rm = TRUE)
-################################################################################
+  # l     <- length(y)
+  # d1    <- abs(diff(y, na.rm = TRUE))
+  # d2    <- sqrt((1 / den[1:(l - 1)]) + (1 / den[2:l]))
+  # s     <- sqrt(pi / 2) * d1 / d2
+  s    <- moving.s(y, den)
+  sbar <- mean(s[base[-base.len]], na.rm = TRUE)
 
-  # Values and centre line
+  # Y values and centre line
   x$y  <- c(NA, s)
   x$cl <- sbar
 
@@ -170,4 +177,13 @@ runs.analysis <- function(x, cl) {
 
   # Return result.
   longest.run > longest.run.max | n.crossings < n.crossings.min
+}
+
+# Moving s function ############################################################
+moving.s <- function(y, den) {
+  l     <- length(y)
+  d1    <- abs(diff(y, na.rm = TRUE))
+  d2    <- sqrt((1 / den[1:(l - 1)]) + (1 / den[2:l]))
+  s     <- sqrt(pi / 2) * d1 / d2
+  s
 }
