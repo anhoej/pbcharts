@@ -91,6 +91,12 @@ pbc <- function(x,
     message('Invalid freeze argument, ignoring.')
   }
 
+  # Ignore invalid exclude argument
+  if (!is.null(exclude) && (exclude > length(unique(x)) || exclude < 1)) {
+    exclude <- NULL
+    message('Invalid exclude argument, ignoring.')
+  }
+
   # Make y values to plot.
   y <- num / den
 
@@ -126,7 +132,7 @@ pbc <- function(x,
             xlab     = xlab,
             ylab     = ylab,
             ncol     = ncol,
-            yfixed = yfixed,
+            yfixed   = yfixed,
             freeze   = freeze,
             exclude  = exclude,
             partlabs = partlabs,
