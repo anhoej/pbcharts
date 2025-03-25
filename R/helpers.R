@@ -20,7 +20,7 @@ pbc.run <- function(x, freeze, exclude) {
 
   # Runs signal
   x$runs.signal        <- runs.analysis(y[base], x$cl[1])
-  x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[1])
+  x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[-base][1])
 
   # # Centre line
   # x$cl  <- stats::median(x$y[base], na.rm = TRUE)
@@ -45,7 +45,7 @@ pbc.i <- function(x, freeze, exclude) {
     base <- seq_len(freeze)
   }
 
-  base.len <- length(base)
+  # base.len <- length(base)
 
   # Ignore excluded values from calculations
   y   <- x$y
@@ -56,10 +56,10 @@ pbc.i <- function(x, freeze, exclude) {
     den[exclude] <- NA
   }
 
-  s    <- moving.s(y, den)
-  sbar <- mean(s[base[-base.len]], na.rm = TRUE)
+  # Standard deviation - add NA to make s same length as y.
+  s    <- c(NA, moving.s(y, den))
+  sbar <- mean(s[base], na.rm = TRUE)
 
-  # Standard deviation
   # l     <- length(base)
   # d1    <- abs(diff(y[base], na.rm = TRUE))
   # l     <- length(y)
@@ -68,17 +68,17 @@ pbc.i <- function(x, freeze, exclude) {
   # s     <- sqrt(pi / 2) * d1 / d2
 
   # Remove s values above upper limit before calculating stdev
-  uls   <- sbar* 3.2665
+  uls        <- sbar* 3.2665
   s[s > uls] <- NA
-  sbar  <- mean(s[base[-base.len]], na.rm = TRUE)
-  stdev <- sbar* sqrt(1 / x$den)
+  sbar       <- mean(s[base], na.rm = TRUE)
+  stdev      <- sbar * sqrt(1 / x$den)
 
   # Centre line
   x$cl <- stats::weighted.mean(y[base], den[base], na.rm = TRUE)
 
   # Runs analysis
   x$runs.signal        <- runs.analysis(y[base], x$cl[1])
-  x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[1])
+  x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[-base][1])
 
   # Control limits
   x$lcl <- x$cl - 3 * stdev
@@ -116,11 +116,11 @@ pbc.ms <- function(x, freeze, exclude) {
   # d1    <- abs(diff(y, na.rm = TRUE))
   # d2    <- sqrt((1 / den[1:(l - 1)]) + (1 / den[2:l]))
   # s     <- sqrt(pi / 2) * d1 / d2
-  s    <- moving.s(y, den)
-  sbar <- mean(s[base[-base.len]], na.rm = TRUE)
+  s    <- c(NA, moving.s(y, den))
+  sbar <- mean(s[base], na.rm = TRUE)
 
   # Y values and centre line
-  x$y  <- c(NA, s)
+  x$y  <- s #c(NA, s)
   x$cl <- sbar
 
   # Control limits
@@ -139,7 +139,7 @@ pbc.ms <- function(x, freeze, exclude) {
 # Runs analysis function #######################################################
 #
 #  Tests data for non-random variation in the form of unusually long runs or
-#  unusually few crossings. Called from the pbc() function.
+#  unusually few crossings.
 #
 #  Returns a logical, TRUE if non-random variation is found.
 #
@@ -179,7 +179,15 @@ runs.analysis <- function(x, cl) {
   longest.run > longest.run.max | n.crossings < n.crossings.min
 }
 
-# Moving s function ############################################################
+# Moving S function ############################################################
+#
+# Calculates normalised moving standard deviations.
+#
+# Returns a vector of length one less than the input variables.
+#
+# y:   Numerator values.
+# den: Denominator values.
+
 moving.s <- function(y, den) {
   l     <- length(y)
   d1    <- abs(diff(y, na.rm = TRUE))
