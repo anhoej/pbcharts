@@ -16,12 +16,13 @@ summary.pbc <- function(object, ...) {
 
   if (is.null(freeze))
     freeze <- NA
-  d <- split(d, d$facet)
+  d <- split(d, list(d$facet, d$phase))
   d <- lapply(d, function(x) {
     data.frame(facet        = x$facet[1],
+               phase        = x$phase[1],
                n            = nrow(x),
                n.useful     = sum(x$useful, na.rm = TRUE) - length(exclude),
-               freeze       = freeze,
+               # freeze       = freeze,
                avg_lcl      = mean(x$lcl, na.rm = TRUE),
                cl           = mean(x$cl, na.rm = TRUE),
                avg_ucl      = mean(x$ucl, na.rm = TRUE),

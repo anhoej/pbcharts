@@ -109,7 +109,7 @@ pbc <- function(x,
     split <- FALSE
   }
 
-  # Indices of baseline period (<= freeze)
+  # Indices of baseline period (<= freeze/split)
   if (is.null(freeze)) {
     base <- seq_len(x.len)
   } else {
@@ -136,8 +136,12 @@ pbc <- function(x,
 
   # Calculate sigma limits and perform runs analysis to each facet.
   d <- split(d, facet)
-  d <- lapply(d, chart.fun, base, freeze, split, exclude)
+  d <- lapply(d, chart.fun, base, split, exclude)
   d <- do.call(rbind, args = c(d, make.row.names = FALSE))
+
+  # Sigma signal
+  d$sigma.signal <- (d$y < d$lcl | d$y > d$ucl)
+  # d$sigma.signal[is.na(d$sigma.signal)] <- FALSE
 
   # Censor control limits to ylim argument.
   if (!is.null(ylim)) {
@@ -154,6 +158,9 @@ pbc <- function(x,
   d$lcl <- d$lcl * multiply
   d$ucl <- d$ucl * multiply
 
+  d <- d[c('facet', 'phase', 'x', 'num', 'den', 'y',
+           'lcl', 'cl', 'ucl', 'useful', 'runs.signal', 'sigma.signal')]
+
   d <- list(title    = title,
             xlab     = xlab,
             ylab     = ylab,
@@ -164,6 +171,7 @@ pbc <- function(x,
             split    = split,
             exclude  = exclude,
             partlabs = partlabs,
+            chart    = chart,
             data     = d)
 
   # Draw plot.

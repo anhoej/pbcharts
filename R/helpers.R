@@ -1,7 +1,7 @@
 # Limits functions #############################################################
 
 # Run chart
-pbc.run <- function(x, base, freeze, split, exclude) {
+pbc.run <- function(x, base, split, exclude) {
   # Ignore excluded values from calculations
   y <- x$y
 
@@ -37,7 +37,7 @@ pbc.run <- function(x, base, freeze, split, exclude) {
 }
 
 # I prime chart
-pbc.i <- function(x, base, freeze, split, exclude) {
+pbc.i <- function(x, base, split, exclude) {
   # Ignore excluded values from calculations
   y   <- x$y
   den <- x$den
@@ -49,9 +49,6 @@ pbc.i <- function(x, base, freeze, split, exclude) {
 
   # Centre line
   x$cl <- stats::weighted.mean(y[base], den[base], na.rm = TRUE)
-
-  if (!is.null(split)) {
-  }
 
   # Standard deviation - add NA to make s same length as y.
   s <- c(NA, moving.s(y, den))
@@ -81,9 +78,9 @@ pbc.i <- function(x, base, freeze, split, exclude) {
   x$lcl <- x$cl - 3 * stdev
   x$ucl <- x$cl + 3 * stdev
 
-  # Sigma signal
-  x$sigma.signal                        <- (x$y < x$lcl | x$y > x$ucl)
-  x$sigma.signal[is.na(x$sigma.signal)] <- FALSE
+  # # Sigma signal
+  # x$sigma.signal                        <- (x$y < x$lcl | x$y > x$ucl)
+  # x$sigma.signal[is.na(x$sigma.signal)] <- FALSE
 
   # Useful data points
   x$useful              <- TRUE
@@ -98,7 +95,7 @@ pbc.i <- function(x, base, freeze, split, exclude) {
 }
 
 # Moving S prime chart
-pbc.ms <- function(x, base, freeze, split, exclude) {
+pbc.ms <- function(x, base, split, exclude) {
   # Ignore excluded values from calculations
   y   <- x$y
   den <- x$den
@@ -108,9 +105,8 @@ pbc.ms <- function(x, base, freeze, split, exclude) {
     den[exclude] <- NA
   }
 
+  # Standard deviation - add NA to make s same length as y.
   s    <- c(NA, moving.s(y, den))
-  # sbar <- mean(s[base], na.rm = TRUE)
-  #   sbar[-base]         <- mean(s[-base], na.rm = TRUE)
 
   # Y values and centre line
   x$y         <- s
