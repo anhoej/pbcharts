@@ -67,6 +67,7 @@ pbc <- function(x,
   den   <- eval(substitute(den), data, parent.frame())
   facet <- eval(substitute(facet), data, parent.frame())
 
+
   # Get chart function
   chart     <- match.arg(chart)
   chart.fun <- get(paste0('pbc.', chart))
@@ -77,6 +78,9 @@ pbc <- function(x,
     x   <- seq_along(num)
   }
 
+  # Get number of subgroups
+  x.len <- length(unique(x))
+
   # Make sure that the num and den vectors are of the same length.
   if (length(den) == 1) {
     den <- rep(den, length(num))
@@ -84,18 +88,19 @@ pbc <- function(x,
 
   # Make sure that numerators and denominators are balanced. If one is missing,
   # the other should be missing too.
-  xna    <- !stats::complete.cases(num, den)
+  xna      <- !stats::complete.cases(num, den)
   num[xna] <- NA
   den[xna] <- NA
 
   # Ignore invalid freeze argument.
-  if (!is.null(freeze) && (freeze < 2 || freeze > length(unique(x)) - 2)) {
+  if (!is.null(freeze) && (freeze < 2 || freeze > x.len - 2)) {
     freeze <- NULL
     message('Invalid freeze argument, ignoring.')
   }
 
   # Handle split argument
-  if (!is.null(split) && (split < 2 || split > length(unique(x)) - 2)) {
+  if (!is.null(split) && (split < 2 || split > x.len - 2)) {
+    split <- FALSE
     message('Invalid split argument, ignoring')
   } else if (!is.null(split)) {
     freeze <- split
@@ -104,26 +109,34 @@ pbc <- function(x,
     split <- FALSE
   }
 
+  # Indices of baseline period (<= freeze)
+  if (is.null(freeze)) {
+    base <- seq_len(x.len)
+  } else {
+    base <- seq_len(freeze)
+  }
+
   # Ignore invalid exclude argument
-  if (!is.null(exclude) && (exclude > length(unique(x)) || exclude < 1)) {
+  if (!is.null(exclude) &&
+      (any(exclude > length(unique(x))) || any(exclude < 1))) {
     exclude <- NULL
     message('Invalid exclude argument, ignoring.')
   }
 
-  # Make y values to plot.
-  y <- num / den
-
   # Make dummy facet if facet is null
   if (is.null(facet)) {
-    facet <- rep('1', length(num))
+    facet <- rep('1', length(x))
   }
+
+  # Make y values to plot.
+  y <- num / den
 
   # Make data frame.
   d <- data.frame(x, num, den, y, facet)
 
   # Calculate sigma limits and perform runs analysis to each facet.
   d <- split(d, facet)
-  d <- lapply(d, chart.fun, freeze, split, exclude)
+  d <- lapply(d, chart.fun, base, freeze, split, exclude)
   d <- do.call(rbind, args = c(d, make.row.names = FALSE))
 
   # Censor control limits to ylim argument.
@@ -133,7 +146,7 @@ pbc <- function(x,
   }
 
   # Find useful data points (not on centre line).
-  d$useful <- d$y != d$cl
+  # d$useful <- d$y != d$cl
 
   # Multiply y coordinates if needed.
   d$y   <- d$y * multiply
@@ -144,6 +157,7 @@ pbc <- function(x,
   d <- list(title    = title,
             xlab     = xlab,
             ylab     = ylab,
+            base     = base,
             ncol     = ncol,
             yfixed   = yfixed,
             freeze   = freeze,

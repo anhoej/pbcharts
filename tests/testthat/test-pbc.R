@@ -82,7 +82,7 @@ test_that('split argument works', {
   expect_message(pbc(month, ontime, cases,
                      data = ontime_ct,
                      chart = 'i',
-                     spli = 24))
+                     split = 24))
   expect_message(pbc(month, ontime, cases,
                      data = ontime_ct,
                      chart = 'i',

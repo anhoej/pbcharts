@@ -15,7 +15,7 @@ plot.pbc <- function(x, ...) {
   # Get data.
   d       <- x$data
   freeze  <- x$freeze
-  split   <- !is.null(x$split)
+  split   <- x$split
   exclude <- x$exclude
   yfixed  <- x$yfixed
 
@@ -160,10 +160,11 @@ plot.pbc <- function(x, ...) {
                       col = col1,
                       lwd = 2.5)
     } else {
-      graphics::lines(i$x, i$y,       # data line
+      graphics::lines(i$x, i$y,
                       col = col1,
                       lwd = 2.5)
     }
+
     graphics::points(i$x, i$y,                  # data points
                      cex = 0.8,
                      col = dotcol,
@@ -186,14 +187,23 @@ plot.pbc <- function(x, ...) {
       #        lty = 'dotted')
     }
 
-    # Add centre line label.
-    graphics::mtext(formatC(i$cl[1], digits = 2, format = 'fg'),
+    # Add centre line label(s).
+    graphics::mtext(formatC(utils::tail(i$cl, 1), digits = 2, format = 'fg'),
                     side = 4,
                     # at   = i$cl[1],
                     at   = utils::tail(i$cl, 1),
-                    adj  = 0,
+                    adj  = 0.6,
                     las  = 1,
                     cex  = 0.7)
+
+    if (split) {
+      graphics::text(x$freeze, i$cl[1],
+                     labels = formatC(i$cl[1], digits = 2, format = 'fg'),
+                      adj  = -0.4,
+                      las  = 1,
+                      cex  = 0.7)
+
+    }
 
     # Add facet labels
     if (n_facets > 1)

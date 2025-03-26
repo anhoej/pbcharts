@@ -1,14 +1,7 @@
 # Limits functions #############################################################
 
 # Run chart
-pbc.run <- function(x, freeze, split, exclude) {
-  # Indices of baseline period (<= freeze)
-  if (is.null(freeze)) {
-    base <- seq_along(x$x)
-  } else {
-    base <- seq_len(freeze)
-  }
-
+pbc.run <- function(x, base, freeze, split, exclude) {
   # Ignore excluded values from calculations
   y <- x$y
 
@@ -31,18 +24,20 @@ pbc.run <- function(x, freeze, split, exclude) {
   x$lcl <- NA_real_
   x$ucl <- NA_real_
 
+  # Useful data points
+  x$useful              <- TRUE
+  x$useful[exclude]     <- FALSE
+  x$useful[x$y == x$cl] <- FALSE
+
+  # Phase: 1 = before freeze/split, 2 = after freeze/split
+  x$phase        <- '1'
+  x$phase[-base] <- '2'
+
   x
 }
 
 # I prime chart
-pbc.i <- function(x, freeze, split, exclude) {
-  # Indices of baseline period (<= freeze)
-  if (is.null(freeze)) {
-    base <- seq_along(x$x)
-  } else {
-    base <- seq_len(freeze)
-  }
-
+pbc.i <- function(x, base, freeze, split, exclude) {
   # Ignore excluded values from calculations
   y   <- x$y
   den <- x$den
@@ -90,18 +85,20 @@ pbc.i <- function(x, freeze, split, exclude) {
   x$sigma.signal                        <- (x$y < x$lcl | x$y > x$ucl)
   x$sigma.signal[is.na(x$sigma.signal)] <- FALSE
 
+  # Useful data points
+  x$useful              <- TRUE
+  x$useful[exclude]     <- FALSE
+  x$useful[x$y == x$cl] <- FALSE
+
+  # Phase: 1 = before freeze/split, 2 = after freeze/split
+  x$phase        <- '1'
+  x$phase[-base] <- '2'
+
   x
 }
 
 # Moving S prime chart
-pbc.ms <- function(x, freeze, split, exclude) {
-  # Indices of baseline period (<= freeze)
-  if (is.null(freeze)) {
-    base <- seq_along(x$x)
-  } else {
-    base <- seq_len(freeze)
-  }
-
+pbc.ms <- function(x, base, freeze, split, exclude) {
   # Ignore excluded values from calculations
   y   <- x$y
   den <- x$den
@@ -124,13 +121,22 @@ pbc.ms <- function(x, freeze, split, exclude) {
   }
 
   # Control limits
-  x$ucl <- 3.2665 * x$cl #sbar
+  x$ucl <- 3.2665 * x$cl
   x$lcl <- NA
 
   # Signals
   x$runs.signal                         <- FALSE
   x$sigma.signal                        <- x$y > x$ucl
   x$sigma.signal[is.na(x$sigma.signal)] <- FALSE
+
+  # Useful data points
+  x$useful              <- TRUE
+  x$useful[exclude]     <- FALSE
+  x$useful[x$y == x$cl] <- FALSE
+
+  # Phase: 1 = before freeze/split, 2 = after freeze/split
+  x$phase        <- '1'
+  x$phase[-base] <- '2'
 
   x
 }
