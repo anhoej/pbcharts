@@ -54,18 +54,20 @@ pbc.i <- function(x, base, split, exclude) {
   s <- c(NA, moving.s(y, den))
 
   # Remove s values above upper limit before calculating stdev
-  sbar       <- mean(s[base], na.rm = TRUE)
-  uls        <- sbar* 3.2665
-  s[s > uls] <- NA
-  sbar       <- mean(s[base], na.rm = TRUE)
-  stdev      <- sbar * sqrt(1 / x$den)
+  # sbar       <- mean(s[base], na.rm = TRUE)
+  # uls        <- sbar* 3.2665
+  # s[s > uls] <- NA
+  # sbar       <- mean(s[base], na.rm = TRUE)
+  sbar  <- sbar(s[base])
+  stdev <- sbar * sqrt(1 / x$den)
 
   # stdev and centre line after split
   if (split) {
-    sbar         <- mean(s[-base], na.rm = TRUE)
-    uls          <- sbar * 3.2665
-    s[s > uls]   <- NA
-    sbar         <- mean(s[-base], na.rm = TRUE)
+    # sbar         <- mean(s[-base], na.rm = TRUE)
+    # uls          <- sbar * 3.2665
+    # s[s > uls]   <- NA
+    # sbar         <- mean(s[-base], na.rm = TRUE)
+    sbar         <- sbar(s[-base])
     stdev[-base] <- sbar * sqrt(1 / x$den[-base])
     x$cl[-base]  <- stats::weighted.mean(y[-base], den[-base], na.rm = TRUE)
   }
@@ -196,4 +198,17 @@ moving.s <- function(y, den) {
   d2    <- sqrt((1 / den[1:(l - 1)]) + (1 / den[2:l]))
   s     <- sqrt(pi / 2) * d1 / d2
   s
+}
+
+# Sbar function ################################################################
+#
+# Calculates screened Sbar values.
+#
+# Returns a number, the screened average moving S.
+
+sbar <- function(s) {
+  sbar       <- mean(s, na.rm = TRUE)
+  uls        <- sbar* 3.2665
+  s[s > uls] <- NA
+  mean(s, na.rm = TRUE)
 }
