@@ -37,3 +37,16 @@
 #'   \item{cases}{Number of patients with bacteremia.}
 #' }
 "bacteremia_mortality"
+
+#' Diabetes HbA1c
+#'
+#' HbA1c measurements in children with diabetes
+#'
+#' @format
+#' A data frame with 43 columns and 3 variables:
+#' \describe{
+#'   \item{month}{month of measurements.}
+#'   \item{avg_hba1c}{average of HbA1c measurements.}
+#'   \item{n}{number of patients who visited the clinic}
+#' }
+"hba1c"

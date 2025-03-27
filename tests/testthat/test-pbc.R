@@ -103,4 +103,20 @@ test_that('signals and summary work', {
   expect_equal(
     summary(pbc(-6:6, chart = 'i'))$avg_ucl, 2.66,
     tolerance = 0.005)
+  expect_equal(summary(pbc(month, avg_hba1c,
+                           data = hba1c,
+                           chart = 'i'))$avg_ucl, 65.66,
+               tolerance = 0.005)
+  expect_equal(summary(pbc(month, avg_hba1c,
+                           data  = hba1c,
+                           chart = 'i'))$sigma.signal, 1,
+               tolerance = 0.005)
+  expect_equal(summary(pbc(month, avg_hba1c * n, n,
+                           data  = hba1c,
+                           chart = 'i'))$avg_ucl, 65.15,
+               tolerance = 0.005)
+  expect_equal(summary(pbc(month, avg_hba1c * n, n,
+                           data  = hba1c,
+                           chart = 'i'))$sigma.signal, 0,
+               tolerance = 0.005)
 })
