@@ -11,21 +11,15 @@
 #' plot(p)
 #'
 plot.pbc <- function(x, ...) {
-  # Begin prepare canvas -------------------------------------------------------
-  # Get data.
+  # Get data -------------------------------------------------------------------
   d       <- x$data
   freeze  <- x$freeze
   split   <- x$split
   exclude <- x$exclude
   yfixed  <- x$yfixed
+  base    <- x$base
 
-  # Get indices of phase 1 period (<= freeze).
-  if (is.null(freeze)) {
-    base <- seq_along(d$x)
-  } else {
-    base <- seq_len(freeze)
-  }
-
+  # Prepare canvas -------------------------------------------------------
   # Get axis ranges.
   ylim <- range(d$y,
                 d$lcl,
@@ -34,7 +28,7 @@ plot.pbc <- function(x, ...) {
 
   xlim <- range(d$x)
 
-  # Get x axis class
+  # Get x axis class.
   if (inherits(d$x, 'Date')) {
     x_class <- graphics::axis.Date
   } else if (inherits(d$x, 'POSIXct')) {
@@ -50,7 +44,6 @@ plot.pbc <- function(x, ...) {
                      x$ncol)
   n_rows   <- ceiling(n_facets / n_cols)
   mfrow    <- c(n_rows, n_cols)
-  # mfrow    <- grDevices::n2mfrow(n_facets),
 
   outer_y  <- seq(1, n_facets, by = n_cols)
   outer_x  <- seq(n_facets - n_cols + 1, n_facets)
@@ -64,7 +57,7 @@ plot.pbc <- function(x, ...) {
   cex.adj <- 0.9
 
   op <- graphics::par(
-    mfrow    = mfrow, #c(n_rows, n_cols),
+    mfrow    = mfrow,
     mar      = c(1.5, 1.2, ifelse(n_facets == 1, 0, 2), 3),
     oma      = c(2.5, 4.1, ifelse(is.null(x$title), 1, 2.6), 0),
     cex      = cex.adj,
@@ -80,9 +73,8 @@ plot.pbc <- function(x, ...) {
                    lwd.ticks = 1,
                    tcl       = -0.2,
                    col       = col2)
-  # End prepare canvas ---------------------------------------------------------
 
-  # Begin draw facets ----------------------------------------------------------
+  # Draw facets ----------------------------------------------------------
   d <- split(d, d$facet)
   j <- 0
   for(i in d) {
@@ -182,15 +174,11 @@ plot.pbc <- function(x, ...) {
                                     as.numeric(max(i$x)))),
                       cex  = 0.7,
                       line = -0.3)
-      # abline(v = mean(c(as.numeric(i$x[freeze]),
-      #                   as.numeric(i$x[freeze + 1]))),
-      #        lty = 'dotted')
     }
 
     # Add centre line label(s).
-    graphics::mtext(formatC(utils::tail(i$cl, 1), digits = 2, format = 'fg'),
+    graphics::mtext(formatC(i$cl[-base][1], digits = 2, format = 'fg'),
                     side = 4,
-                    # at   = i$cl[1],
                     at   = utils::tail(i$cl, 1),
                     adj  = 0.6,
                     las  = 1,
@@ -199,9 +187,9 @@ plot.pbc <- function(x, ...) {
     if (split) {
       graphics::text(x$freeze, i$cl[1],
                      labels = formatC(i$cl[1], digits = 2, format = 'fg'),
-                      adj  = -0.4,
-                      las  = 1,
-                      cex  = 0.7)
+                     adj  = -0.4,
+                     las  = 1,
+                     cex  = 0.7)
 
     }
 
@@ -212,9 +200,8 @@ plot.pbc <- function(x, ...) {
                       font.main = 1,
                       line      = 1.2)
   }
-  # End draw facets ------------------------------------------------------------
 
-  # Begin finish plot ----------------------------------------------------------
+  # Finish plot ----------------------------------------------------------
   graphics::mtext(x$xlab,           # x axis label
                   side  = 1,
                   line  = 1.3,
@@ -231,5 +218,4 @@ plot.pbc <- function(x, ...) {
                   outer = TRUE,
                   font  = 1,
                   adj   = 0)
-  # End finish plot --------------------------------------------------------------
 }
