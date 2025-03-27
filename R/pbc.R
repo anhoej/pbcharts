@@ -134,7 +134,7 @@ pbc <- function(x,
   # Make data frame.
   d <- data.frame(x, num, den, y, facet)
 
-  # Calculate sigma limits and perform runs analysis to each facet.
+  # Do calculations for each facet.
   d <- split(d, facet)
   d <- lapply(d, chart.fun, base, split, exclude)
   d <- lapply(d, function(x) {
@@ -145,20 +145,17 @@ pbc <- function(x,
     x$phase[-base]        <- '2'
     x
   })
+
   d <- do.call(rbind, args = c(d, make.row.names = FALSE))
 
   # Sigma signal
   d$sigma.signal <- (d$y < d$lcl | d$y > d$ucl)
-  # d$sigma.signal[is.na(d$sigma.signal)] <- FALSE
 
   # Censor control limits to ylim argument.
   if (!is.null(ylim)) {
     d$lcl <- pmax(d$lcl, ylim[1], na.rm = TRUE)
     d$ucl <- pmin(d$ucl, ylim[2], na.rm = TRUE)
   }
-
-  # Find useful data points (not on centre line).
-  # d$useful <- d$y != d$cl
 
   # Multiply y coordinates if needed.
   d$y   <- d$y * multiply
