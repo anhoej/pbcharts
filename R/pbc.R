@@ -141,6 +141,8 @@ pbc <- function(x,
     x$useful              <- TRUE
     x$useful[exclude]     <- FALSE
     x$useful[x$y == x$cl] <- FALSE
+    x$phase               <- '1'
+    x$phase[-base]        <- '2'
     x
   })
   d <- do.call(rbind, args = c(d, make.row.names = FALSE))

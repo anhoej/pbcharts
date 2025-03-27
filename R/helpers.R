@@ -24,10 +24,6 @@ pbc.run <- function(x, base, split, exclude) {
   x$lcl <- NA_real_
   x$ucl <- NA_real_
 
-  # Phase: 1 = before freeze/split, 2 = after freeze/split
-  x$phase        <- '1'
-  x$phase[-base] <- '2'
-
   x
 }
 
@@ -50,11 +46,11 @@ pbc.i <- function(x, base, split, exclude) {
   sbar  <- sbar(s[base])
   stdev <- sbar * sqrt(1 / x$den)
 
-  # stdev and centre line after split
+  # Centre line and stdev after split
   if (split) {
+    x$cl[-base]  <- stats::weighted.mean(y[-base], den[-base], na.rm = TRUE)
     sbar         <- sbar(s[-base])
     stdev[-base] <- sbar * sqrt(1 / x$den[-base])
-    x$cl[-base]  <- stats::weighted.mean(y[-base], den[-base], na.rm = TRUE)
   }
 
   # Runs analysis
@@ -64,10 +60,6 @@ pbc.i <- function(x, base, split, exclude) {
   # Control limits
   x$lcl <- x$cl - 3 * stdev
   x$ucl <- x$cl + 3 * stdev
-
-  # Phase: 1 = before freeze/split, 2 = after freeze/split
-  x$phase        <- '1'
-  x$phase[-base] <- '2'
 
   x
 }
@@ -100,10 +92,6 @@ pbc.ms <- function(x, base, split, exclude) {
 
   # Don't do runs analysis
   x$runs.signal <- FALSE
-
-  # Phase: 1 = before freeze/split, 2 = after freeze/split
-  x$phase        <- '1'
-  x$phase[-base] <- '2'
 
   x
 }
