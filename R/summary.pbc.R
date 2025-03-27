@@ -22,7 +22,6 @@ summary.pbc <- function(object, ...) {
                phase        = x$phase[1],
                n            = nrow(x),
                n.useful     = sum(x$useful, na.rm = TRUE) - length(exclude),
-               # freeze       = freeze,
                avg_lcl      = mean(x$lcl, na.rm = TRUE),
                cl           = mean(x$cl, na.rm = TRUE),
                avg_ucl      = mean(x$ucl, na.rm = TRUE),
