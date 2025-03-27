@@ -24,11 +24,6 @@ pbc.run <- function(x, base, split, exclude) {
   x$lcl <- NA_real_
   x$ucl <- NA_real_
 
-  # Useful data points
-  x$useful              <- TRUE
-  x$useful[exclude]     <- FALSE
-  x$useful[x$y == x$cl] <- FALSE
-
   # Phase: 1 = before freeze/split, 2 = after freeze/split
   x$phase        <- '1'
   x$phase[-base] <- '2'
@@ -51,22 +46,12 @@ pbc.i <- function(x, base, split, exclude) {
   x$cl <- stats::weighted.mean(y[base], den[base], na.rm = TRUE)
 
   # Standard deviation - add NA to make s same length as y.
-  s <- c(NA, moving.s(y, den))
-
-  # Remove s values above upper limit before calculating stdev
-  # sbar       <- mean(s[base], na.rm = TRUE)
-  # uls        <- sbar* 3.2665
-  # s[s > uls] <- NA
-  # sbar       <- mean(s[base], na.rm = TRUE)
+  s     <- c(NA, moving.s(y, den))
   sbar  <- sbar(s[base])
   stdev <- sbar * sqrt(1 / x$den)
 
   # stdev and centre line after split
   if (split) {
-    # sbar         <- mean(s[-base], na.rm = TRUE)
-    # uls          <- sbar * 3.2665
-    # s[s > uls]   <- NA
-    # sbar         <- mean(s[-base], na.rm = TRUE)
     sbar         <- sbar(s[-base])
     stdev[-base] <- sbar * sqrt(1 / x$den[-base])
     x$cl[-base]  <- stats::weighted.mean(y[-base], den[-base], na.rm = TRUE)
@@ -79,15 +64,6 @@ pbc.i <- function(x, base, split, exclude) {
   # Control limits
   x$lcl <- x$cl - 3 * stdev
   x$ucl <- x$cl + 3 * stdev
-
-  # # Sigma signal
-  # x$sigma.signal                        <- (x$y < x$lcl | x$y > x$ucl)
-  # x$sigma.signal[is.na(x$sigma.signal)] <- FALSE
-
-  # Useful data points
-  x$useful              <- TRUE
-  x$useful[exclude]     <- FALSE
-  x$useful[x$y == x$cl] <- FALSE
 
   # Phase: 1 = before freeze/split, 2 = after freeze/split
   x$phase        <- '1'
@@ -122,15 +98,8 @@ pbc.ms <- function(x, base, split, exclude) {
   x$ucl <- 3.2665 * x$cl
   x$lcl <- NA
 
-  # Signals
-  x$runs.signal                         <- FALSE
-  x$sigma.signal                        <- x$y > x$ucl
-  x$sigma.signal[is.na(x$sigma.signal)] <- FALSE
-
-  # Useful data points
-  x$useful              <- TRUE
-  x$useful[exclude]     <- FALSE
-  x$useful[x$y == x$cl] <- FALSE
+  # Don't do runs analysis
+  x$runs.signal <- FALSE
 
   # Phase: 1 = before freeze/split, 2 = after freeze/split
   x$phase        <- '1'

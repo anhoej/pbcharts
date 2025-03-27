@@ -137,6 +137,12 @@ pbc <- function(x,
   # Calculate sigma limits and perform runs analysis to each facet.
   d <- split(d, facet)
   d <- lapply(d, chart.fun, base, split, exclude)
+  d <- lapply(d, function(x) {
+    x$useful              <- TRUE
+    x$useful[exclude]     <- FALSE
+    x$useful[x$y == x$cl] <- FALSE
+    x
+  })
   d <- do.call(rbind, args = c(d, make.row.names = FALSE))
 
   # Sigma signal
