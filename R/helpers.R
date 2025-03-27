@@ -202,7 +202,7 @@ moving.s <- function(y, den) {
 
 # Sbar function ################################################################
 #
-# Calculates screened Sbar values.
+# Calculates screened Sbar.
 #
 # Returns a number, the screened average moving S.
 
