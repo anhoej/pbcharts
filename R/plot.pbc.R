@@ -177,9 +177,9 @@ plot.pbc <- function(x, ...) {
     }
 
     # Add centre line label(s).
-    graphics::mtext(formatC(i$cl[-base][1], digits = 2, format = 'fg'),
+    graphics::mtext(formatC(i$cl[length(i$cl)], digits = 2, format = 'fg'),
                     side = 4,
-                    at   = utils::tail(i$cl, 1),
+                    at   = i$cl[length(i$cl)],
                     adj  = 0.6,
                     las  = 1,
                     cex  = 0.7)
