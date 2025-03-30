@@ -55,18 +55,35 @@ pbc <- function(x,
                 ncol     = NULL,
                 ylim     = NULL,
                 yfixed   = TRUE,
-                title    = NULL,
+                title    = '', #NULL,
                 xlab     = 'Subgroup',
                 ylab     = 'Value',
                 partlabs = c('phase 1', 'phase 2'),
                 plot     = TRUE) {
+  # Build title
+  if (!is.null(title) && title == '') {
+    title       <- deparse(substitute(num))
+
+    if (title == 'NULL')
+      title <- deparse(substitute(x))
+
+    denominator <- deparse(substitute(den))
+
+    if (denominator != 1)
+      title <- paste(title, '/', denominator)
+
+    if (multiply != 1)
+      title <- paste(title, 'x', multiply)
+
+    title <- paste(toupper(match.arg(chart)), 'Chart', 'of', title)
+  }
+
   # Get data from data frame if data argument is provided, or else get data
   # from the parent environment.
   x     <- eval(substitute(x), data, parent.frame())
   num   <- eval(substitute(num), data, parent.frame())
   den   <- eval(substitute(den), data, parent.frame())
   facet <- eval(substitute(facet), data, parent.frame())
-
 
   # Get chart function
   chart     <- match.arg(chart)
