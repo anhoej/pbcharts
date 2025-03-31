@@ -18,7 +18,7 @@ pbc(
   ncol = NULL,
   ylim = NULL,
   yfixed = TRUE,
-  title = NULL,
+  title = "",
   xlab = "Subgroup",
   ylab = "Value",
   partlabs = c("phase 1", "phase 2"),
@@ -62,7 +62,7 @@ proportions above 1 (100\%) (c(0, 1).}
 axes.}
 
 \item{title, xlab, ylab}{Characters setting the main chart title and axis
-labels.}
+labels. Use NULL to suppress.}
 
 \item{partlabs}{Character vector of length two setting the labels for phase 1
 and phase 2 periods.}

@@ -27,7 +27,7 @@
 #' @param yfixed Logical, if TRUE (default) makes a common scale for y
 #'                    axes.
 #' @param title,xlab,ylab Characters setting the main chart title and axis
-#'                        labels.
+#'                        labels. Use NULL to suppress.
 #' @param partlabs Character vector of length two setting the labels for phase 1
 #'                 and phase 2 periods.
 #' @param plot Logical, if TRUE (default), plots an SPC chart.
@@ -157,7 +157,7 @@ pbc <- function(x,
   d <- lapply(d, function(x) {
     x$useful              <- TRUE
     x$useful[exclude]     <- FALSE
-    x$useful[x$y == x$cl] <- FALSE
+    x$useful[x$y == x$cl | is.na(x$y)] <- FALSE
     x$phase               <- '1'
     x$phase[-base]        <- '2'
     x
