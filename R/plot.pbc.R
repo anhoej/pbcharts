@@ -166,11 +166,11 @@ plot.pbc <- function(x, ...) {
     if (!is.null(freeze)) {
       graphics::mtext(x$partlabs[1],                                # phase 1
                       at   = mean(c(as.numeric(i$x[1]),
-                                    as.numeric(i$x[x$freeze]))),
+                                    as.numeric(i$x[freeze]))),
                       cex  = 0.7,
                       line = -0.3)
       graphics::mtext(x$partlabs[2],                                # phase 2
-                      at   = mean(c(as.numeric(i$x[x$freeze + 1]),
+                      at   = mean(c(as.numeric(i$x[freeze + 1]),
                                     as.numeric(max(i$x)))),
                       cex  = 0.7,
                       line = -0.3)
@@ -185,12 +185,11 @@ plot.pbc <- function(x, ...) {
                     cex  = 0.7)
 
     if (split) {
-      graphics::text(x$freeze, i$cl[1],
+      graphics::text(i$x[freeze], i$cl[1],
                      labels = formatC(i$cl[1], digits = 2, format = 'fg'),
-                     adj  = -0.4,
+                     adj  = -0.2,
                      las  = 1,
                      cex  = 0.7)
-
     }
 
     # Add facet labels
