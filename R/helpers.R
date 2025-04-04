@@ -9,16 +9,14 @@ pbc.run <- function(x, base, split, exclude) {
     y[exclude] <- NA
   }
 
-  # Centre line
-  x$cl  <- stats::median(y[base], na.rm = TRUE)
+  # Centre line and runs analysis
+  x$cl          <- stats::median(y[base], na.rm = TRUE)
+  x$runs.signal <- runs.analysis(y[base], x$cl[1])
 
   if (split) {
-    x$cl[-base]  <- stats::median(y[-base], na.rm = TRUE)
+    x$cl[-base]          <- stats::median(y[-base], na.rm = TRUE)
+    x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[-base][1])
   }
-
-  # Runs signal
-  x$runs.signal        <- runs.analysis(y[base], x$cl[1])
-  x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[-base][1])
 
   # Control limits
   x$lcl <- NA_real_
@@ -38,24 +36,23 @@ pbc.i <- function(x, base, split, exclude) {
     den[exclude] <- NA
   }
 
-  # Centre line
-  x$cl <- stats::weighted.mean(y[base], den[base], na.rm = TRUE)
+  # Centre line, runs analysis, and standard deviation
+  x$cl          <- stats::weighted.mean(y[base],
+                                        den[base],
+                                        na.rm = TRUE)
+  x$runs.signal <- runs.analysis(y[base], x$cl[1])
+  s             <- c(NA, moving.s(y, den))
+  sbar          <- sbar(s[base])
+  stdev         <- sbar * sqrt(1 / x$den)
 
-  # Standard deviation - add NA to make s same length as y.
-  s     <- c(NA, moving.s(y, den))
-  sbar  <- sbar(s[base])
-  stdev <- sbar * sqrt(1 / x$den)
-
-  # Centre line and stdev after split
   if (split) {
-    x$cl[-base]  <- stats::weighted.mean(y[-base], den[-base], na.rm = TRUE)
-    sbar         <- sbar(s[-base])
-    stdev[-base] <- sbar * sqrt(1 / x$den[-base])
+    x$cl[-base]          <- stats::weighted.mean(y[-base],
+                                                 den[-base],
+                                                 na.rm = TRUE)
+    x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[-base][1])
+    sbar                 <- sbar(s[-base])
+    stdev[-base]         <- sbar * sqrt(1 / x$den[-base])
   }
-
-  # Runs analysis
-  x$runs.signal        <- runs.analysis(y[base], x$cl[1])
-  x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[-base][1])
 
   # Control limits
   x$lcl <- x$cl - 3 * stdev
