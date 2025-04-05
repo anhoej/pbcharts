@@ -10,12 +10,12 @@ pbc.run <- function(x, base, split, exclude) {
   }
 
   # Centre line and runs analysis
-  x$cl          <- stats::median(y[base], na.rm = TRUE)
-  x$runs.signal <- runs.analysis(y[base], x$cl[1])
+  x$cl                 <- stats::median(y[base], na.rm = TRUE)
+  x$runs.signal        <- runs.analysis(y[base], x$cl[1])
   x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[-base][1])
 
   if (split) {
-    x$cl[-base]          <- stats::median(y[-base], na.rm = TRUE)
+    x$cl[-base] <- stats::median(y[-base], na.rm = TRUE)
   }
 
   # Control limits
@@ -37,21 +37,21 @@ pbc.i <- function(x, base, split, exclude) {
   }
 
   # Centre line, runs analysis, and standard deviation
-  x$cl          <- stats::weighted.mean(y[base],
-                                        den[base],
-                                        na.rm = TRUE)
-  x$runs.signal <- runs.analysis(y[base], x$cl[1])
+  x$cl                 <- stats::weighted.mean(y[base],
+                                               den[base],
+                                               na.rm = TRUE)
+  x$runs.signal        <- runs.analysis(y[base], x$cl[1])
   x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[-base][1])
-  s             <- c(NA, moving.s(y, den))
-  sbar          <- sbar(s[base])
-  stdev         <- sbar * sqrt(1 / x$den)
+  s                    <- c(NA, moving.s(y, den))
+  sbar                 <- sbar(s[base])
+  stdev                <- sbar * sqrt(1 / x$den)
 
   if (split) {
-    x$cl[-base]          <- stats::weighted.mean(y[-base],
-                                                 den[-base],
-                                                 na.rm = TRUE)
-    sbar                 <- sbar(s[-base])
-    stdev[-base]         <- sbar * sqrt(1 / x$den[-base])
+    x$cl[-base]  <- stats::weighted.mean(y[-base],
+                                         den[-base],
+                                         na.rm = TRUE)
+    sbar         <- sbar(s[-base])
+    stdev[-base] <- sbar * sqrt(1 / x$den[-base])
   }
 
   # Control limits
@@ -103,13 +103,12 @@ pbc.ms <- function(x, base, split, exclude) {
 #
 #  x:  Numeric vector.
 #  cl: Single number, target value.
-
+#
 runs.analysis <- function(x, cl) {
   if (!length(x))
     return(FALSE)
 
   n.obs <- length(x)
-  print(n.obs)
 
   # Trichotomise data according to position relative to CL:
   # -1 = below, 0 = on, 1 = above.
@@ -148,7 +147,7 @@ runs.analysis <- function(x, cl) {
 #
 # y:   Numerator values.
 # den: Denominator values.
-
+#
 moving.s <- function(y, den) {
   l     <- length(y)
   d1    <- abs(diff(y, na.rm = TRUE))
