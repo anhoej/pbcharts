@@ -28,8 +28,6 @@
 #'                    axes.
 #' @param title,xlab,ylab Characters setting the main chart title and axis
 #'                        labels. Use NULL to suppress.
-#' @param partlabs Character vector of length two setting the labels for phase 1
-#'                 and phase 2 periods.
 #' @param plot Logical, if TRUE (default), plots an SPC chart.
 #'
 #' @returns Invisibly returns a list of class 'pbc'.
@@ -58,7 +56,6 @@ pbc <- function(x,
                 title    = '', #NULL,
                 xlab     = 'Subgroup',
                 ylab     = 'Value',
-                partlabs = c('phase 1', 'phase 2'),
                 plot     = TRUE) {
   # Build title
   if (!is.null(title) && title == '') {
@@ -115,13 +112,9 @@ pbc <- function(x,
     message('Invalid freeze argument, ignoring.')
   }
 
-  # OBS: temporary dummy variable for testing
-  # part <- split
-  # parts <- make.parts(split, x.len)
-
   # Handle split argument
-  if (!is.null(split) && (split < 2 || split > x.len - 2)) {
-    split <- FALSE
+  if (!is.null(split) && (any(split < 2) || any(split > x.len - 2))) {
+    split <- NULL
     message('Invalid split argument, ignoring')
   }
   # else if (!is.null(split)) {
@@ -205,7 +198,8 @@ pbc <- function(x,
   d <- d[order(d$facet, d$part, d$x),]
 
   d <- d[c('facet', 'part', 'xx', 'x', 'num', 'den', 'y',
-           'lcl', 'cl', 'ucl', 'runs.signal', 'sigma.signal', 'baseline', 'include')]
+           'lcl', 'cl', 'ucl', 'runs.signal', 'sigma.signal',
+           'baseline', 'include', 'n.obs', 'n.useful')]
 
   d <- list(title    = title,
             xlab     = xlab,
@@ -216,7 +210,6 @@ pbc <- function(x,
             freeze   = freeze,
             split    = split,
             exclude  = exclude,
-            partlabs = partlabs,
             chart    = chart,
             data     = d)
 

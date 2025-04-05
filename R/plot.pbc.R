@@ -12,13 +12,13 @@
 #'
 plot.pbc <- function(x, ...) {
   # Get data -------------------------------------------------------------------
-  d       <- x$data
-  freeze  <- x$freeze
+  d      <- x$data
+  base   <- x$base
+  freeze <- x$freeze
+  yfixed <- x$yfixed
+  parts  <- unique(d$part)
   # split   <- x$split
   # exclude <- x$exclude
-  yfixed  <- x$yfixed
-  base    <- x$base
-  parts <- unique(d$part)
 
   # Prepare canvas -------------------------------------------------------
   # Get axis ranges.
@@ -29,7 +29,7 @@ plot.pbc <- function(x, ...) {
 
   xlim <- range(d$x)
 
-  # Get x axis class.
+  # Get x axis function.
   if (inherits(d$x, 'Date')) {
     x_class <- graphics::axis.Date
   } else if (inherits(d$x, 'POSIXct')) {
@@ -46,6 +46,7 @@ plot.pbc <- function(x, ...) {
   n_rows   <- ceiling(n_facets / n_cols)
   mfrow    <- c(n_rows, n_cols)
 
+  # Get indices of outer plots for axis tick labels.
   outer_y  <- seq(1, n_facets, by = n_cols)
   outer_x  <- seq(n_facets - n_cols + 1, n_facets)
 
@@ -59,6 +60,7 @@ plot.pbc <- function(x, ...) {
 
   op <- graphics::par(
     mfrow    = mfrow,
+    xpd      = NA,
     mar      = c(1.5, 1.2, ifelse(n_facets == 1, 0, 2), 3),
     oma      = c(2.5, 4.1, ifelse(is.null(x$title), 1, 2.6), 0),
     cex      = cex.adj,
@@ -137,15 +139,17 @@ plot.pbc <- function(x, ...) {
       ip <- i[i$part == p,]
 
       # Set colours and centre line types.
-      dotcol                 <- ifelse(ip$include, col1, col4)
+      dotcol                  <- ifelse(ip$include, col1, col4)
       dotcol[ip$sigma.signal] <- col3
-      dotcol[!ip$include]     <- col4
-      clcol                  <- ifelse(ip$runs.signal[1],
-                                       col3,
-                                       col2)
-      cltyp                  <- ifelse(ip$runs.signal[1],
-                                       'dashed',
-                                       'solid')
+      dotcol[ip$y == ip$cl]   <- col4
+      # dotcol[!ip$include]     <- col4
+
+      clcol                   <- ifelse(ip$runs.signal[1],
+                                        col3,
+                                        col2)
+      cltyp                   <- ifelse(ip$runs.signal[1],
+                                        'dashed',
+                                        'solid')
 
       graphics::lines(ip$x, ip$cl,      # centre line
                       col = clcol,
@@ -158,9 +162,14 @@ plot.pbc <- function(x, ...) {
                       col = col1,
                       lwd = 2.5)
       graphics::points(ip$x, ip$y,      # data points
-                       cex = 0.8,
+                       cex = ifelse(dotcol == col1, 0.8, 1),
                        col = dotcol,
                        pch = 19)
+      graphics::text(max(ip$x), ip$cl[1],  # centre line label
+                     labels = formatC(i$cl[1], digits = 2, format = 'fg'),
+                     adj    = -0.2,
+                     las    = 1,
+                     cex    = 0.7)
     }
 
     # graphics::lines(i$x[base], i$cl[base],      # centre line
@@ -223,12 +232,12 @@ plot.pbc <- function(x, ...) {
     #                    cex  = 0.7)
     #   }
     #
-    #   # Add facet labels
-    #   if (n_facets > 1)
-    #     graphics::title(main      = i$facet[1],
-    #                     adj       = 0,
-    #                     font.main = 1,
-    #                     line      = 1.2)
+    # Add facet labels
+    if (n_facets > 1)
+      graphics::title(main      = i$facet[1],
+                      adj       = 0,
+                      font.main = 1,
+                      line      = 1.2)
   }
 
   # Finish plot ----------------------------------------------------------

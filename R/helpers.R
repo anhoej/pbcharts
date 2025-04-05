@@ -110,12 +110,11 @@ pbc.ms <- function(x, base, split, exclude) {
 # Runs analysis function #######################################################
 #
 #  Tests data for non-random variation in the form of unusually long runs or
-#  unusually few crossings.
+#  unusually few crossings. Called from the pbc() function.
 #
-#  Returns a logical, TRUE if non-random variation is found.
+#  Returns a data frame
 #
-#  x:  Numeric vector.
-#  cl: Single number, target value.
+#  x:  Data frame from pbc().
 #
 runs.analysis <- function(x) {
   runs     <- sign(x$y[x$include] - x$cl[x$include])

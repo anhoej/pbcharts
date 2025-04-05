@@ -10,18 +10,14 @@
 #' p <- pbc(rnorm(12), chart = 'i', plot = FALSE)
 #' summary(p)
 summary.pbc <- function(object, ...) {
-  d       <- object$data
-  freeze  <- object$freeze
-  exclude <- object$exclude
+  d <- object$data
 
-  if (is.null(freeze))
-    freeze <- NA
-  d <- split(d, list(d$facet, d$phase))
+  d <- split(d, ~ facet + part) # list(d$facet, d$phase))
   d <- lapply(d, function(x) {
     data.frame(facet        = x$facet[1],
-               phase        = x$phase[1],
-               n            = nrow(x),
-               n.useful     = sum(x$useful, na.rm = TRUE) - length(exclude),
+               part        = x$part[1],
+               n.obs        = x$n.obs[1],
+               n.useful     = x$n.useful[1],
                avg_lcl      = mean(x$lcl, na.rm = TRUE),
                cl           = mean(x$cl, na.rm = TRUE),
                avg_ucl      = mean(x$ucl, na.rm = TRUE),

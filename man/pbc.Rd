@@ -21,7 +21,6 @@ pbc(
   title = "",
   xlab = "Subgroup",
   ylab = "Value",
-  partlabs = c("phase 1", "phase 2"),
   plot = TRUE
 )
 }
@@ -63,9 +62,6 @@ axes.}
 
 \item{title, xlab, ylab}{Characters setting the main chart title and axis
 labels. Use NULL to suppress.}
-
-\item{partlabs}{Character vector of length two setting the labels for phase 1
-and phase 2 periods.}
 
 \item{plot}{Logical, if TRUE (default), plots an SPC chart.}
 }

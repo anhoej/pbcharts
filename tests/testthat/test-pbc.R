@@ -95,7 +95,7 @@ test_that('signals and summary work', {
   expect_equal(
     summary(pbc(1:12, chart = 'i'))$runs.signal, 1)
   expect_equal(
-    summary(pbc(1:11, chart = 'i'))$n, 11)
+    summary(pbc(1:11, chart = 'i'))$n.obs, 11)
   expect_equal(
     summary(pbc(1:11, chart = 'i'))$n.useful, 10)
   expect_equal(
