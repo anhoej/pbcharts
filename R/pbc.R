@@ -115,16 +115,21 @@ pbc <- function(x,
     message('Invalid freeze argument, ignoring.')
   }
 
+  # OBS: temporary dummy variable for testing
+  # part <- split
+  # parts <- make.parts(split, x.len)
+
   # Handle split argument
   if (!is.null(split) && (split < 2 || split > x.len - 2)) {
     split <- FALSE
     message('Invalid split argument, ignoring')
-  } else if (!is.null(split)) {
-    freeze <- split
-    split <- TRUE
-  } else {
-    split <- FALSE
   }
+  # else if (!is.null(split)) {
+  #   freeze <- split
+  #   split <- TRUE
+  # } else {
+  #   split <- FALSE
+  # }
 
   # Indices of baseline period (<= freeze/split)
   if (is.null(freeze)) {
@@ -152,21 +157,38 @@ pbc <- function(x,
   d <- data.frame(x, num, den, y, facet)
 
   # Do calculations for each facet.
-  d <- split(d, facet)
-  d <- lapply(d, chart.fun, base, split, exclude)
+  d <- split(d, ~ facet)
+
   d <- lapply(d, function(x) {
-    x$useful              <- TRUE
-    x$useful[exclude]     <- FALSE
-    x$useful[x$y == x$cl | is.na(x$y)] <- FALSE
-    x$phase               <- '1'
-    x$phase[-base]        <- '2'
+    x$part     <- make.parts(split, nrow(x))
+    x$xx       <- seq_along(x$part)
     x
   })
 
   d <- do.call(rbind, args = c(d, make.row.names = FALSE))
 
+  d$baseline <- d$xx <= min(freeze, Inf)
+  d$include  <- !d$xx %in% exclude
+  d$base     <- d$baseline & d$include
+
+  d <- split(d, ~ facet + part)
+  d <- lapply(d, chart.fun)
+  d <- lapply(d, runs.analysis)
+
+  # d <- lapply(d, chart.fun, base, split, exclude)
+  # d <- lapply(d, function(x) {
+  #   x$useful              <- TRUE
+  #   x$useful[exclude]     <- FALSE
+  #   x$useful[x$y == x$cl | is.na(x$y)] <- FALSE
+  #   x$phase               <- '1'
+  #   x$phase[-base]        <- '2'
+  #   x
+  # })
+
+  d <- do.call(rbind, args = c(d, make.row.names = FALSE))
+
   # Sigma signal
-  d$sigma.signal <- (d$y < d$lcl | d$y > d$ucl)
+  d$sigma.signal <- d$y < d$lcl | d$y > d$ucl
 
   # Censor control limits to ylim argument.
   if (!is.null(ylim)) {
@@ -180,8 +202,10 @@ pbc <- function(x,
   d$lcl <- d$lcl * multiply
   d$ucl <- d$ucl * multiply
 
-  d <- d[c('facet', 'phase', 'x', 'num', 'den', 'y',
-           'lcl', 'cl', 'ucl', 'useful', 'runs.signal', 'sigma.signal')]
+  d <- d[order(d$facet, d$part, d$x),]
+
+  d <- d[c('facet', 'part', 'xx', 'x', 'num', 'den', 'y',
+           'lcl', 'cl', 'ucl', 'runs.signal', 'sigma.signal', 'baseline', 'include')]
 
   d <- list(title    = title,
             xlab     = xlab,

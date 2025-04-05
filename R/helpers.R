@@ -2,21 +2,23 @@
 
 # Run chart
 pbc.run <- function(x, base, split, exclude) {
-  # Ignore excluded values from calculations
-  y <- x$y
+  x$cl  <- stats::median(x$y[x$base], na.rm = TRUE)
 
-  if (!is.null(exclude)) {
-    y[exclude] <- NA
-  }
-
-  # Centre line and runs analysis
-  x$cl                 <- stats::median(y[base], na.rm = TRUE)
-  x$runs.signal        <- runs.analysis(y[base], x$cl[1])
-  x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[-base][1])
-
-  if (split) {
-    x$cl[-base] <- stats::median(y[-base], na.rm = TRUE)
-  }
+  # # Ignore excluded values from calculations
+  # y <- x$y
+  #
+  # if (!is.null(exclude)) {
+  #   y[exclude] <- NA
+  # }
+  #
+  # # Centre line and runs analysis
+  # x$cl                 <- stats::median(y[base], na.rm = TRUE)
+  # x$runs.signal        <- runs.analysis(y[base], x$cl[1])
+  # x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[-base][1])
+  #
+  # if (split) {
+  #   x$cl[-base] <- stats::median(y[-base], na.rm = TRUE)
+  # }
 
   # Control limits
   x$lcl <- NA_real_
@@ -27,32 +29,39 @@ pbc.run <- function(x, base, split, exclude) {
 
 # I prime chart
 pbc.i <- function(x, base, split, exclude) {
-  # Ignore excluded values from calculations
-  y   <- x$y
-  den <- x$den
+  x$cl <- stats::weighted.mean(x$y[x$base],
+                               x$den[x$base],
+                               na.rm = TRUE)
+  s     <- c(NA, moving.s(x$y, x$den))
+  sbar  <- sbar(s[x$base])
+  stdev <- sbar * sqrt(1 / x$den)
 
-  if (!is.null(exclude)) {
-    y[exclude]   <- NA
-    den[exclude] <- NA
-  }
-
-  # Centre line, runs analysis, and standard deviation
-  x$cl                 <- stats::weighted.mean(y[base],
-                                               den[base],
-                                               na.rm = TRUE)
-  x$runs.signal        <- runs.analysis(y[base], x$cl[1])
-  x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[-base][1])
-  s                    <- c(NA, moving.s(y, den))
-  sbar                 <- sbar(s[base])
-  stdev                <- sbar * sqrt(1 / x$den)
-
-  if (split) {
-    x$cl[-base]  <- stats::weighted.mean(y[-base],
-                                         den[-base],
-                                         na.rm = TRUE)
-    sbar         <- sbar(s[-base])
-    stdev[-base] <- sbar * sqrt(1 / x$den[-base])
-  }
+  # # Ignore excluded values from calculations
+  # y   <- x$y
+  # den <- x$den
+  #
+  # if (!is.null(exclude)) {
+  #   y[exclude]   <- NA
+  #   den[exclude] <- NA
+  # }
+  #
+  # # Centre line, runs analysis, and standard deviation
+  # x$cl                 <- stats::weighted.mean(y[base],
+  #                                              den[base],
+  #                                              na.rm = TRUE)
+  # x$runs.signal        <- runs.analysis(y[base], x$cl[1])
+  # x$runs.signal[-base] <- runs.analysis(y[-base], x$cl[-base][1])
+  # s                    <- c(NA, moving.s(y, den))
+  # sbar                 <- sbar(s[base])
+  # stdev                <- sbar * sqrt(1 / x$den)
+  #
+  # if (split) {
+  #   x$cl[-base]  <- stats::weighted.mean(y[-base],
+  #                                        den[-base],
+  #                                        na.rm = TRUE)
+  #   sbar         <- sbar(s[-base])
+  #   stdev[-base] <- sbar * sqrt(1 / x$den[-base])
+  # }
 
   # Control limits
   x$lcl <- x$cl - 3 * stdev
@@ -63,32 +72,36 @@ pbc.i <- function(x, base, split, exclude) {
 
 # Moving S prime chart
 pbc.ms <- function(x, base, split, exclude) {
-  # Ignore excluded values from calculations
-  y   <- x$y
-  den <- x$den
+  s    <- c(NA, moving.s(x$y, x$den))
+  x$y  <- s
+  x$cl <- mean(s[x$base], na.rm = TRUE)
 
-  if (!is.null(exclude)) {
-    y[exclude]   <- NA
-    den[exclude] <- NA
-  }
-
-  # Standard deviation - add NA to make s same length as y.
-  s    <- c(NA, moving.s(y, den))
-
-  # Y values and centre line
-  x$y         <- s
-  x$cl        <- mean(s[base], na.rm = TRUE)
-
-  if (split) {
-    x$cl[-base] <- mean(s[-base], na.rm = TRUE)
-  }
+  # # Ignore excluded values from calculations
+  # y   <- x$y
+  # den <- x$den
+  #
+  # if (!is.null(exclude)) {
+  #   y[exclude]   <- NA
+  #   den[exclude] <- NA
+  # }
+  #
+  # # Standard deviation - add NA to make s same length as y.
+  # s    <- c(NA, moving.s(y, den))
+  #
+  # # Y values and centre line
+  # x$y         <- s
+  # x$cl        <- mean(s[base], na.rm = TRUE)
+  #
+  # if (split) {
+  #   x$cl[-base] <- mean(s[-base], na.rm = TRUE)
+  # }
 
   # Control limits
   x$ucl <- 3.2665 * x$cl
   x$lcl <- NA
 
-  # Don't do runs analysis
-  x$runs.signal <- FALSE
+  # # Don't do runs analysis
+  # x$runs.signal <- FALSE
 
   x
 }
@@ -104,40 +117,75 @@ pbc.ms <- function(x, base, split, exclude) {
 #  x:  Numeric vector.
 #  cl: Single number, target value.
 #
-runs.analysis <- function(x, cl) {
-  if (!length(x))
-    return(FALSE)
+runs.analysis <- function(x) {
+  runs     <- sign(x$y[x$include] - x$cl[x$include])
+  runs     <- runs[runs != 0 & !is.na(runs)]
+  n.useful <- length(runs)
+  n.obs    <- nrow(x)
 
-  n.obs <- length(x)
+  if (n.useful) {
+    run.lengths      <- rle(runs)$lengths
+    n.runs           <- length(run.lengths)
+    longest.run      <- max(run.lengths)
+    longest.run.max  <- round(log2(n.useful)) + 3  # Schilling 2012
+    n.crossings      <- max(n.runs - 1, 0)
+    n.crossings.min  <- stats::qbinom(0.05,        # Chen 2010
+                                      max(n.useful - 1, 0), 0.5)
+    runs.signal      <- longest.run > longest.run.max ||
+      n.crossings < n.crossings.min
+  } else {
+    longest.run     <- NA
+    longest.run.max <- NA
+    n.crossings     <- NA
+    n.crossings.min <- NA
+    runs.signal     <- FALSE
+  }
 
-  # Trichotomise data according to position relative to CL:
-  # -1 = below, 0 = on, 1 = above.
-  runs <- sign(x - cl)
+  x$n.obs           <- n.obs
+  x$n.useful        <- n.useful
+  x$longest.run     <- longest.run
+  x$longest.run.max <- longest.run.max
+  x$n.crossings     <- n.crossings
+  x$n.crossings.min <- n.crossings.min
+  x$runs.signal     <- runs.signal
 
-  # Remove NAs and data points on the centre line.
-  runs <- runs[runs != 0 & !is.na(runs)]
-
-  # Find run lengths.
-  run.lengths <- rle(runs)$lengths
-
-  # Find number of useful observations (data points not on centre line).
-  n.useful <- sum(run.lengths)
-
-  # Find longest run above or below centre line.
-  longest.run <- max(run.lengths)
-
-  # Find number of crossings.
-  n.crossings <- length(run.lengths) - 1
-
-  # Find upper limit for longest run.
-  longest.run.max <- round(log2(n.useful)) + 3
-
-  # Find lower limit for number of crossing.
-  n.crossings.min <- stats::qbinom(0.05, n.useful - 1, 0.5)
-
-  # Return result.
-  longest.run > longest.run.max | n.crossings < n.crossings.min
+  x
 }
+
+# runs.analysis <- function(x, cl) {
+#   if (!length(x))
+#     return(FALSE)
+#
+#   n.obs <- length(x)
+#
+#   # Trichotomise data according to position relative to CL:
+#   # -1 = below, 0 = on, 1 = above.
+#   runs <- sign(x - cl)
+#
+#   # Remove NAs and data points on the centre line.
+#   runs <- runs[runs != 0 & !is.na(runs)]
+#
+#   # Find run lengths.
+#   run.lengths <- rle(runs)$lengths
+#
+#   # Find number of useful observations (data points not on centre line).
+#   n.useful <- sum(run.lengths)
+#
+#   # Find longest run above or below centre line.
+#   longest.run <- max(run.lengths)
+#
+#   # Find number of crossings.
+#   n.crossings <- length(run.lengths) - 1
+#
+#   # Find upper limit for longest run.
+#   longest.run.max <- round(log2(n.useful)) + 3
+#
+#   # Find lower limit for number of crossing.
+#   n.crossings.min <- stats::qbinom(0.05, n.useful - 1, 0.5)
+#
+#   # Return result.
+#   longest.run > longest.run.max | n.crossings < n.crossings.min
+# }
 
 # Moving S function ############################################################
 #
@@ -169,7 +217,7 @@ sbar <- function(s) {
   mean(s, na.rm = TRUE)
 }
 
-# Make parts function
+# Make parts function ##########################################################
 make.parts <- function(x, n) {
   x <- unique(c(0, x))
   x <- sort(x)
