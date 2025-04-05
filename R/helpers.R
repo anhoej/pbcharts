@@ -168,3 +168,10 @@ sbar <- function(s) {
   s[s > uls] <- NA
   mean(s, na.rm = TRUE)
 }
+
+# Make parts function
+make.parts <- function(x, n) {
+  x <- unique(c(0, x))
+  x <- sort(x)
+  rep(seq_along(x), diff(c(x, n)))
+}
