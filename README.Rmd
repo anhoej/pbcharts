@@ -1,5 +1,6 @@
 ---
 output: github_document
+date: "`r Sys.Date()`"
 editor_options: 
   chunk_output_type: console
 ---
@@ -21,7 +22,6 @@ set.seed(1)
 ```
 
 # Process Behaviour Charts
-
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
