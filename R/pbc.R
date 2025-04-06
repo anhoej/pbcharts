@@ -53,13 +53,14 @@ pbc <- function(x,
                 ncol     = NULL,
                 ylim     = NULL,
                 yfixed   = TRUE,
-                title    = '', #NULL,
+                title    = '',
                 xlab     = 'Subgroup',
                 ylab     = 'Value',
                 plot     = TRUE) {
+
   # Build title
   if (!is.null(title) && title == '') {
-    title       <- deparse(substitute(num))
+    title <- deparse(substitute(num))
 
     if (title == 'NULL')
       title <- deparse(substitute(x))
@@ -72,7 +73,7 @@ pbc <- function(x,
     if (multiply != 1)
       title <- paste(title, 'x', multiply)
 
-    title <- paste(toupper(match.arg(chart)), 'Chart', 'of', title)
+    title <- paste(toupper(match.arg(chart)), 'chart of', title)
   }
 
   # Get data from data frame if data argument is provided, or else get data
@@ -95,6 +96,11 @@ pbc <- function(x,
   # Get number of subgroups
   x.len <- length(unique(x))
 
+  # Make dummy facet if facet is null
+  if (is.null(facet)) {
+    facet <- 1 #rep(1, length(x))
+  }
+
   # Make sure that the num and den vectors are of the same length.
   if (length(den) == 1) {
     den <- rep(den, length(num))
@@ -106,24 +112,6 @@ pbc <- function(x,
   num[xna] <- NA
   den[xna] <- NA
 
-  # Ignore invalid freeze argument.
-  if (!is.null(freeze) && (freeze < 2 || freeze > x.len - 2)) {
-    freeze <- NULL
-    message('Invalid freeze argument, ignoring.')
-  }
-
-  # Handle split argument
-  if (!is.null(split) && (any(split < 2) || any(split > x.len - 2))) {
-    split <- NULL
-    message('Invalid split argument, ignoring')
-  }
-  # else if (!is.null(split)) {
-  #   freeze <- split
-  #   split <- TRUE
-  # } else {
-  #   split <- FALSE
-  # }
-
   # Indices of baseline period (<= freeze/split)
   if (is.null(freeze)) {
     base <- seq_len(x.len)
@@ -132,15 +120,27 @@ pbc <- function(x,
   }
 
   # Ignore invalid exclude argument
-  if (!is.null(exclude) &&
-      (any(exclude > length(unique(x))) || any(exclude < 1))) {
+  if (any(exclude > length(unique(x))) || any(exclude < 1)) {
     exclude <- NULL
     message('Invalid exclude argument, ignoring.')
   }
 
-  # Make dummy facet if facet is null
-  if (is.null(facet)) {
-    facet <- rep('1', length(x))
+  # Ignore invalid freeze argument.
+  if (!is.null(freeze) && (freeze < 2 || freeze > x.len - 2)) {
+    freeze <- NULL
+    message('Invalid freeze argument, ignoring.')
+  }
+
+  # Ignore invalid split argument
+  if ((any(split < 2) || any(split > x.len - 2))) {
+    split <- NULL
+    message('Invalid split argument, ignoring')
+  }
+
+  # Ignore freeze when split is set
+  if (!is.null(split) && !is.null(freeze)) {
+    freeze <- NULL
+    message('Ignoring freeze when split is set')
   }
 
   # Make y values to plot.
@@ -149,42 +149,31 @@ pbc <- function(x,
   # Make data frame.
   d <- data.frame(x, num, den, y, facet)
 
-  # Do calculations for each facet.
+  # Split facets by split argument.
   d <- split(d, ~ facet)
-
   d <- lapply(d, function(x) {
-    x$part     <- make.parts(split, nrow(x))
-    x$xx       <- seq_along(x$part)
+    x$part <- make.parts(split, nrow(x))
+    x$xx   <- seq_along(x$part)
     x
   })
-
   d <- do.call(rbind, args = c(d, make.row.names = FALSE))
 
+  # Helper variables
   d$baseline <- d$xx <= min(freeze, Inf)
   d$include  <- !d$xx %in% exclude
   d$base     <- d$baseline & d$include
 
+  # Control limits and runs analysis for each facet and part.
   d <- split(d, ~ facet + part)
   d <- lapply(d, chart.fun)
   d <- lapply(d, runs.analysis)
-
-  # d <- lapply(d, chart.fun, base, split, exclude)
-  # d <- lapply(d, function(x) {
-  #   x$useful              <- TRUE
-  #   x$useful[exclude]     <- FALSE
-  #   x$useful[x$y == x$cl | is.na(x$y)] <- FALSE
-  #   x$phase               <- '1'
-  #   x$phase[-base]        <- '2'
-  #   x
-  # })
-
   d <- do.call(rbind, args = c(d, make.row.names = FALSE))
 
   # Sigma signal
   d$sigma.signal <- d$y < d$lcl | d$y > d$ucl
 
   # Censor control limits to ylim argument.
-  if (!is.null(ylim)) {
+  if (!is.null(ylim) && chart != 'run') {
     d$lcl <- pmax(d$lcl, ylim[1], na.rm = TRUE)
     d$ucl <- pmin(d$ucl, ylim[2], na.rm = TRUE)
   }
@@ -197,7 +186,7 @@ pbc <- function(x,
 
   d <- d[order(d$facet, d$part, d$x),]
 
-  d <- d[c('facet', 'part', 'xx', 'x', 'num', 'den', 'y',
+  d <- d[c('facet', 'part', 'x', 'num', 'den', 'y',
            'lcl', 'cl', 'ucl', 'runs.signal', 'sigma.signal',
            'baseline', 'include', 'n.obs', 'n.useful')]
 
