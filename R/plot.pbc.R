@@ -13,14 +13,11 @@
 plot.pbc <- function(x, ...) {
   # Get data -------------------------------------------------------------------
   d      <- x$data
-  base   <- x$base
   freeze <- x$freeze
   yfixed <- x$yfixed
   parts  <- unique(d$part)
-  # split   <- x$split
-  # exclude <- x$exclude
 
-  # Prepare canvas -------------------------------------------------------
+  # Prepare canvas -------------------------------------------------------------
   # Get axis ranges.
   ylim <- range(d$y,
                 d$lcl,
@@ -77,27 +74,11 @@ plot.pbc <- function(x, ...) {
                    tcl       = -0.2,
                    col       = col2)
 
-  # Draw facets ----------------------------------------------------------
+  # Draw facets ----------------------------------------------------------------
   d <- split(d, d$facet)
   j <- 0
   for(i in d) {
     j <- j + 1
-    # # Set colours and centre line types.
-    # dotcol                 <- ifelse(i$include, col1, col4)
-    # dotcol[i$sigma.signal] <- col3
-    # dotcol[!i$include]     <- col4
-    # clcol                  <- ifelse(i$runs.signal[1],          # phase 1
-    #                                  col3,
-    #                                  col2)
-    # cltyp                  <- ifelse(i$runs.signal[1],
-    #                                  'dashed',
-    #                                  'solid')
-    # clcol2                 <- ifelse(i$runs.signal[freeze + 1],  # phase 2
-    #                                  col3,
-    #                                  col2)
-    # cltyp2                 <- ifelse(i$runs.signal[freeze + 1],
-    #                                  'dashed',
-    #                                  'solid')
 
     # Free y axis scales if yfixed argument is FALSE
     if (!yfixed) {
@@ -142,7 +123,6 @@ plot.pbc <- function(x, ...) {
       dotcol                  <- ifelse(ip$include, col1, col4)
       dotcol[ip$sigma.signal] <- col3
       dotcol[ip$y == ip$cl]   <- col4
-      # dotcol[!ip$include]     <- col4
 
       clcol                   <- ifelse(ip$runs.signal[1],
                                         col3,
@@ -172,66 +152,6 @@ plot.pbc <- function(x, ...) {
                      cex    = 0.7)
     }
 
-    # graphics::lines(i$x[base], i$cl[base],      # centre line
-    #                 col = clcol,
-    #                 lty = cltyp)
-    # graphics::lines(i$x[-base], i$cl[-base],
-    #                 col = clcol2,
-    #                 lty = cltyp2)
-    # graphics::lines(i$x[base], i$lcl[base],     # lower control limit
-    #                 col = col2)
-    # graphics::lines(i$x[-base], i$lcl[-base],
-    #                 col = col2)
-    # graphics::lines(i$x[base], i$ucl[base],     # upper control limit
-    #                 col = col2)
-    # graphics::lines(i$x[-base], i$ucl[-base],
-    #                 col = col2)
-
-    # if (split) {
-    # graphics::lines(i$x[base], i$y[base],       # data line
-    #                 col = col1,
-    #                 lwd = 2.5)
-    # graphics::lines(i$x[-base], i$y[-base],
-    #                 col = col1,
-    #                 lwd = 2.5)
-    # } else {
-    #   graphics::lines(i$x, i$y,
-    #                   col = col1,
-    #                   lwd = 2.5)
-    # }
-
-
-    #   # Add part labels.
-    #   if (!is.null(freeze)) {
-    #     graphics::mtext(x$partlabs[1],                                # phase 1
-    #                     at   = mean(c(as.numeric(i$x[1]),
-    #                                   as.numeric(i$x[freeze]))),
-    #                     cex  = 0.7,
-    #                     line = -0.3)
-    #     graphics::mtext(x$partlabs[2],                                # phase 2
-    #                     at   = mean(c(as.numeric(i$x[freeze + 1]),
-    #                                   as.numeric(max(i$x)))),
-    #                     cex  = 0.7,
-    #                     line = -0.3)
-    #   }
-    #
-    #   # Add centre line label(s).
-    #   graphics::mtext(formatC(i$cl[length(i$cl)], digits = 2, format = 'fg'),
-    #                   side = 4,
-    #                   line = -1,
-    #                   at   = i$cl[length(i$cl)],
-    #                   adj  = -0.2,
-    #                   las  = 1,
-    #                   cex  = 0.7)
-    #
-    #   if (split) {
-    #     graphics::text(i$x[freeze], i$cl[1],
-    #                    labels = formatC(i$cl[1], digits = 2, format = 'fg'),
-    #                    adj  = -0.2,
-    #                    las  = 1,
-    #                    cex  = 0.7)
-    #   }
-    #
     # Add facet labels
     if (n_facets > 1)
       graphics::title(main      = i$facet[1],
@@ -240,7 +160,7 @@ plot.pbc <- function(x, ...) {
                       line      = 1.2)
   }
 
-  # Finish plot ----------------------------------------------------------
+  # Finish plot ----------------------------------------------------------------
   graphics::mtext(x$xlab,           # x axis label
                   side  = 1,
                   line  = 1.3,
