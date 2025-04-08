@@ -112,13 +112,6 @@ pbc <- function(x,
   num[xna] <- NA
   den[xna] <- NA
 
-  # # Indices of baseline period (<= freeze/split)
-  # if (is.null(freeze)) {
-  #   base <- seq_len(x.len)
-  # } else {
-  #   base <- seq_len(freeze)
-  # }
-
   # Ignore invalid exclude argument
   if (any(exclude > length(unique(x))) || any(exclude < 1)) {
     exclude <- NULL
@@ -193,7 +186,6 @@ pbc <- function(x,
   d <- list(title    = title,
             xlab     = xlab,
             ylab     = ylab,
-            # base     = base,
             ncol     = ncol,
             yfixed   = yfixed,
             freeze   = freeze,
