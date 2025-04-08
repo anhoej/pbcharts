@@ -58,7 +58,7 @@ plot.pbc <- function(x, ...) {
   op <- graphics::par(
     mfrow    = mfrow,
     xpd      = NA,
-    mar      = c(1.5, 1.2, ifelse(n_facets == 1, 0, 2), 3),
+    mar      = c(1.5, 1.0, ifelse(n_facets == 1, 0, 1.5), 1),
     oma      = c(2.5, 4.1, ifelse(is.null(x$title), 1, 2.6), 0),
     cex      = cex.adj,
     cex.axis = cex.adj,
@@ -157,7 +157,7 @@ plot.pbc <- function(x, ...) {
       graphics::title(main      = i$facet[1],
                       adj       = 0,
                       font.main = 1,
-                      line      = 1.2)
+                      line      = 0.8)
   }
 
   # Finish plot ----------------------------------------------------------------
