@@ -112,12 +112,12 @@ pbc <- function(x,
   num[xna] <- NA
   den[xna] <- NA
 
-  # Indices of baseline period (<= freeze/split)
-  if (is.null(freeze)) {
-    base <- seq_len(x.len)
-  } else {
-    base <- seq_len(freeze)
-  }
+  # # Indices of baseline period (<= freeze/split)
+  # if (is.null(freeze)) {
+  #   base <- seq_len(x.len)
+  # } else {
+  #   base <- seq_len(freeze)
+  # }
 
   # Ignore invalid exclude argument
   if (any(exclude > length(unique(x))) || any(exclude < 1)) {
@@ -159,9 +159,9 @@ pbc <- function(x,
   d <- do.call(rbind, args = c(d, make.row.names = FALSE))
 
   # Helper variables
-  d$baseline <- d$xx <= min(freeze, Inf)
-  d$include  <- !d$xx %in% exclude
-  d$base     <- d$baseline & d$include
+  d$freeze  <- d$xx <= min(freeze, Inf)
+  d$include <- !d$xx %in% exclude
+  d$base    <- d$freeze & d$include
 
   # Control limits and runs analysis for each facet and part.
   d <- split(d, ~ facet + part)
@@ -188,12 +188,12 @@ pbc <- function(x,
 
   d <- d[c('facet', 'part', 'x', 'num', 'den', 'y',
            'lcl', 'cl', 'ucl', 'runs.signal', 'sigma.signal',
-           'baseline', 'include', 'n.obs', 'n.useful')]
+           'freeze', 'include', 'base', 'n.obs', 'n.useful')]
 
   d <- list(title    = title,
             xlab     = xlab,
             ylab     = ylab,
-            base     = base,
+            # base     = base,
             ncol     = ncol,
             yfixed   = yfixed,
             freeze   = freeze,

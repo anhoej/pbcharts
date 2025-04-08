@@ -91,7 +91,7 @@ plot.pbc <- function(x, ...) {
     # Prepare canvas.
     plot(i$x, i$y,
          type = 'n',
-         axes = F,
+         axes = FALSE,
          ylim = ylim,
          xlim = xlim,
          ylab = '',
@@ -116,6 +116,7 @@ plot.pbc <- function(x, ...) {
     graphics::abline(v = mean(c(i$x[freeze], i$x[freeze + 1])),
                      lty = 3)
 
+    # Draw parts
     for(p in parts) {
       ip <- i[i$part == p,]
 
@@ -131,17 +132,17 @@ plot.pbc <- function(x, ...) {
                                         'dashed',
                                         'solid')
 
-      graphics::lines(ip$x, ip$cl,      # centre line
+      graphics::lines(ip$x, ip$cl,         # centre line
                       col = clcol,
                       lty = cltyp)
-      graphics::lines(ip$x, ip$lcl,     # lower control limit
+      graphics::lines(ip$x, ip$lcl,        # lower control limit
                       col = col2)
-      graphics::lines(ip$x, ip$ucl,     # upper control limit
+      graphics::lines(ip$x, ip$ucl,        # upper control limit
                       col = col2)
-      graphics::lines(ip$x, ip$y,       # data line
+      graphics::lines(ip$x, ip$y,          # data line
                       col = col1,
                       lwd = 2.5)
-      graphics::points(ip$x, ip$y,      # data points
+      graphics::points(ip$x, ip$y,         # data points
                        cex = ifelse(dotcol == col1, 0.8, 1),
                        col = dotcol,
                        pch = 19)
