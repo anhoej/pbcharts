@@ -58,8 +58,8 @@ plot.pbc <- function(x, ...) {
   op <- graphics::par(
     mfrow    = mfrow,
     xpd      = NA,
-    mar      = c(1.5, 1.0, ifelse(n_facets == 1, 0, 1.5), 1),
-    oma      = c(2.5, 4.1, ifelse(is.null(x$title), 1, 2.6), 0),
+    mar      = c(1.5, 0.7, ifelse(n_facets == 1, 0, 1.5), 1),
+    oma      = c(2.5, 4.1, ifelse(is.null(x$title), 1, 2.6), 0.5),
     cex      = cex.adj,
     cex.axis = cex.adj,
     cex.main = cex.adj,
