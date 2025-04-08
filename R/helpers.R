@@ -28,12 +28,12 @@ pbc.i <- function(x) {
 
   # Standard deviation
   s          <- c(NA, moving.s(x$y, x$den))
-  sbar       <- mean(s, na.rm = TRUE)
+  sbar       <- mean(s[x$base], na.rm = TRUE)
 
   # Remove values above upper control limit
   uls        <- sbar* 3.2665
   s[s > uls] <- NA
-  sbar       <- mean(s, na.rm = TRUE)
+  sbar       <- mean(s[x$base], na.rm = TRUE)
 
   stdev <- sbar * sqrt(1 / x$den)
 
