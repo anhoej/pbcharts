@@ -81,4 +81,26 @@ pbc(rnorm(12))
 # Plot a control chart from 12 random normal values
 pbc(rnorm(12), chart = 'i')
 
+# Plot a control chart of bacteremia mortality faceted by hospital
+pbc(month, deaths, cases,
+    facet = hospital,
+    data  = bacteremia_mortality,
+    chart = 'i')
+
+# Assign output to variable
+p <- pbc(month, deaths, cases,
+         facet = hospital,
+         data  = bacteremia_mortality,
+         chart = 'i',
+         plot = FALSE)
+
+# Plot pbc object
+plot(p)
+
+# Print summary of pbc object
+summary(p)
+
+# Print pbc object
+print(p)
+
 }

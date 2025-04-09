@@ -40,6 +40,28 @@
 #' # Plot a control chart from 12 random normal values
 #' pbc(rnorm(12), chart = 'i')
 #'
+#' # Plot a control chart of bacteremia mortality faceted by hospital
+#' pbc(month, deaths, cases,
+#'     facet = hospital,
+#'     data  = bacteremia_mortality,
+#'     chart = 'i')
+#'
+#' # Assign output to variable
+#' p <- pbc(month, deaths, cases,
+#'          facet = hospital,
+#'          data  = bacteremia_mortality,
+#'          chart = 'i',
+#'          plot = FALSE)
+#'
+#' # Plot pbc object
+#' plot(p)
+#'
+#' # Print summary of pbc object
+#' summary(p)
+#'
+#' # Print pbc object
+#' print(p)
+#'
 pbc <- function(x,
                 num      = NULL,
                 den      = 1,
@@ -147,6 +169,7 @@ pbc <- function(x,
   d <- lapply(d, function(x) {
     x$part <- make.parts(split, nrow(x))
     x$xx   <- seq_along(x$part)
+
     x
   })
   d <- do.call(rbind, args = c(d, make.row.names = FALSE))
@@ -163,7 +186,8 @@ pbc <- function(x,
   d <- do.call(rbind, args = c(d, make.row.names = FALSE))
 
   # Sigma signal
-  d$sigma.signal <- d$y < d$lcl | d$y > d$ucl
+  d$sigma.signal             <- d$y < d$lcl | d$y > d$ucl
+  d$sigma.signal[!d$include] <- FALSE
 
   # Censor control limits to ylim argument.
   if (!is.null(ylim) && chart != 'run') {
@@ -180,6 +204,7 @@ pbc <- function(x,
   d <- d[order(d$facet, d$part, d$x),]
 
   d <- d[c('facet', 'part', 'x', 'num', 'den', 'y',
+           'longest.run', 'longest.run.max', 'n.crossings', 'n.crossings.min',
            'lcl', 'cl', 'ucl', 'runs.signal', 'sigma.signal',
            'freeze', 'include', 'base', 'n.obs', 'n.useful')]
 

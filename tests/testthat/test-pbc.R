@@ -103,6 +103,12 @@ test_that('signals and summary work', {
   expect_equal(
     summary(pbc(-6:6, chart = 'i'))$avg_ucl, 2.66,
     tolerance = 0.005)
+  expect_equal(
+    summary(pbc(-6:6, chart = 'i'))$sigma.signal, 8,
+    tolerance = 0.005)
+  expect_equal(
+    summary(pbc(-6:6, chart = 'i', exclude = c(1, 13)))$sigma.signal, 6,
+    tolerance = 0.005)
   expect_equal(summary(pbc(month, avg_hba1c,
                            data = hba1c,
                            chart = 'i'))$avg_ucl, 65.66,
