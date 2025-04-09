@@ -34,32 +34,32 @@
 #' @export
 #'
 #' @examples
-#' # Plot a run chart from 12 random normal values
+#' # Plot a run chart from 12 random normal values:
 #' pbc(rnorm(12))
 #'
-#' # Plot a control chart from 12 random normal values
+#' # Plot a control chart:
 #' pbc(rnorm(12), chart = 'i')
 #'
-#' # Plot a control chart of bacteremia mortality faceted by hospital
+#' # Plot a control chart of bacteremia mortality faceted by hospital:
 #' pbc(month, deaths, cases,
 #'     facet = hospital,
 #'     data  = bacteremia_mortality,
 #'     chart = 'i')
 #'
-#' # Assign output to variable
+#' # Assign output to variable:
 #' p <- pbc(month, deaths, cases,
 #'          facet = hospital,
 #'          data  = bacteremia_mortality,
 #'          chart = 'i',
-#'          plot = FALSE)
+#'          plot  = FALSE)
 #'
-#' # Plot pbc object
+#' # Plot pbc object:
 #' plot(p)
 #'
-#' # Print summary of pbc object
+#' # Print summary of pbc object:
 #' summary(p)
 #'
-#' # Print pbc object
+#' # Print pbc object:
 #' print(p)
 #'
 pbc <- function(x,

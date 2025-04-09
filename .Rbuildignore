@@ -4,3 +4,4 @@
 ^pbcharts\.Rproj$
 ^README\.Rmd$
 ^data-raw$
+^\.Renviron
