@@ -31,7 +31,7 @@ pbc.i <- function(x) {
   sbar       <- mean(s[x$base], na.rm = TRUE)
 
   # Remove values above upper control limit
-  uls        <- sbar* 3.2665
+  uls        <- sbar * 3.2665
   s[s > uls] <- NA
   sbar       <- mean(s[x$base], na.rm = TRUE)
 
