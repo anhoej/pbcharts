@@ -1,4 +1,4 @@
-2025-04-06
+2025-05-29
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -76,8 +76,8 @@ pbc(1:11, chart = 'i')
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
-I chart of average decision to delivery times for grade 2 caesarian
-sections:
+Standard I chart (subgroup size = 1) of average decision to delivery
+times for grade 2 caesarian sections:
 
 ``` r
 pbc(month, avg_delay, 
@@ -87,7 +87,7 @@ pbc(month, avg_delay,
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
-Normalised I chart (or I prime chart) of C. section data taking varying
+I’-chart (pronounced I-prime chart) of C. section data taking varying
 subgroup sizes into account:
 
 ``` r
@@ -98,7 +98,7 @@ pbc(month, avg_delay * n, n,  # multiply numerator and denominator to keep scale
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
-Faceted I prime chart of bacteremia mortality in six hospitals:
+Faceted I’-chart of bacteremia mortality in six hospitals:
 
 ``` r
 pbc(month, deaths, cases,
@@ -130,13 +130,13 @@ summary(p)
 #> 4   HVH    1    24       24  0.03687151 0.1912378 0.3456042            0
 #> 5   NOH    1    24       24  0.03417518 0.1527016 0.2712281            0
 #> 6    RH    1    24       24 -0.05822942 0.1398685 0.3379664            0
-#>   runs.signal
-#> 1           0
-#> 2           0
-#> 3           0
-#> 4           0
-#> 5           0
-#> 6           0
+#>   runs.signal longest.run longest.run.max n.crossings n.crossings.min
+#> 1           0           5               8          12               8
+#> 2           0           3               8          13               7
+#> 3           0           5               8          15               8
+#> 4           0           4               8          15               8
+#> 5           0           5               8          11               8
+#> 6           0           3               8          16               8
 ```
 
 Plot a pbc object:

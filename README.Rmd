@@ -78,7 +78,7 @@ Signal special causes from data points outside control limits (red points) and(o
 pbc(1:11, chart = 'i')
 ```
 
-I chart of average decision to delivery times for grade 2 caesarian sections:
+Standard I chart (subgroup size = 1) of average decision to delivery times for grade 2 caesarian sections:
 
 ```{r}
 pbc(month, avg_delay, 
@@ -86,7 +86,7 @@ pbc(month, avg_delay,
     chart = 'i')
 ```
 
-Normalised I chart (or I prime chart) of C. section data taking varying subgroup sizes into account:
+I'-chart (pronounced I-prime chart) of C. section data taking varying subgroup sizes into account:
 
 ```{r}
 pbc(month, avg_delay * n, n,  # multiply numerator and denominator to keep scale
@@ -94,7 +94,7 @@ pbc(month, avg_delay * n, n,  # multiply numerator and denominator to keep scale
     chart = 'i')
 ```
 
-Faceted I prime chart of bacteremia mortality in six hospitals:
+Faceted I'-chart of bacteremia mortality in six hospitals:
 
 ```{r, fig.height=7}
 pbc(month, deaths, cases,
