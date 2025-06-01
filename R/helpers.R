@@ -10,7 +10,9 @@
 # Run chart
 pbc.run <- function(x) {
   # Centre line
-  x$cl  <- stats::median(x$y[x$base], na.rm = TRUE)
+  if(all(is.na(x$cl))) {
+    x$cl  <- stats::median(x$y[x$base], na.rm = TRUE)
+  }
 
   # Control limits
   x$lcl <- NA_real_
@@ -22,20 +24,26 @@ pbc.run <- function(x) {
 # I prime chart
 pbc.i <- function(x) {
   # Centre line
-  x$cl <- stats::weighted.mean(x$y[x$base],
-                               x$den[x$base],
-                               na.rm = TRUE)
+  if (all(is.na(x$cl))) {
+    x$cl <- stats::weighted.mean(x$y[x$base],
+                                 x$den[x$base],
+                                 na.rm = TRUE)
+  }
 
   # Standard deviation
-  s          <- c(NA, moving.s(x$y, x$den))
-  sbar       <- mean(s[x$base], na.rm = TRUE)
+  if (all(is.na(x$sd))) {
+    s          <- c(NA, moving.s(x$y, x$den))
+    sbar       <- mean(s[x$base], na.rm = TRUE)
 
-  # Remove values above upper control limit
-  uls        <- sbar * 3.2665
-  s[s > uls] <- NA
-  sbar       <- mean(s[x$base], na.rm = TRUE)
+    # Remove values above upper control limit
+    uls        <- sbar * 3.2665
+    s[s > uls] <- NA
+    sbar       <- mean(s[x$base], na.rm = TRUE)
 
-  stdev <- sbar * sqrt(1 / x$den)
+    stdev <- sbar * sqrt(1 / x$den)
+  } else {
+    stdev <- x$sd
+  }
 
   # Control limits
   x$lcl <- x$cl - 3 * stdev

@@ -26,6 +26,8 @@
 #'             proportions above 1 (100%) (c(0, 1).
 #' @param yfixed Logical, if TRUE (default) makes a common scale for y
 #'                    axes.
+#' @param cl Numberic, single value indicating the centre line (if known).
+#' @param sd Numeric, single value indicating the standard deviation (if known).
 #' @param title,xlab,ylab Characters setting the main chart title and axis
 #'                        labels. Use NULL to suppress.
 #' @param plot Logical, if TRUE (default), plots an SPC chart.
@@ -75,6 +77,8 @@ pbc <- function(x,
                 ncol     = NULL,
                 ylim     = NULL,
                 yfixed   = TRUE,
+                cl       = NULL,
+                sd       = NULL,
                 title    = '',
                 xlab     = 'Subgroup',
                 ylab     = 'Value',
@@ -163,6 +167,8 @@ pbc <- function(x,
 
   # Make data frame.
   d <- data.frame(x, num, den, y, facet)
+  d$cl      <- ifelse(is.null(cl), NA, cl)
+  d$sd      <- ifelse(is.null(sd), NA, sd)
 
   # Split facets by split argument.
   d <- split(d, ~ facet)

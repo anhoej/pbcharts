@@ -126,3 +126,7 @@ test_that('signals and summary work', {
                            chart = 'i'))$sigma.signal, 0,
                tolerance = 0.005)
 })
+
+test_that('cl and sd arguments work', {
+  expect_no_error(pbc(rnorm(12), chart = 'i', cl = 0, sd = 1))
+})
