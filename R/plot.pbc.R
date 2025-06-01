@@ -83,7 +83,7 @@ plot.pbc <- function(x, ...) {
   # Draw facets ----------------------------------------------------------------
   d <- split(d, d$facet)
   j <- 0
-  for(i in d) {
+  for (i in d) {
     j <- j + 1
 
     # Free y axis scales if yfixed argument is FALSE
@@ -123,7 +123,7 @@ plot.pbc <- function(x, ...) {
                      lty = 3)
 
     # Draw parts
-    for(p in parts) {
+    for (p in parts) {
       ip <- i[i$part == p,]
 
       # Set colours and centre line types.
