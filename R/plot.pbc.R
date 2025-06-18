@@ -153,7 +153,7 @@ plot.pbc <- function(x, ...) {
                        col = dotcol,
                        pch = 19)
       graphics::text(max(ip$x), ip$cl[1],  # centre line label
-                     labels = formatC(i$cl[1], digits = 2, format = 'fg'),
+                     labels = formatC(ip$cl[1], digits = 2, format = 'fg'),
                      adj    = -0.2,
                      las    = 1,
                      cex    = 0.7)
