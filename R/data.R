@@ -50,3 +50,16 @@
 #'   \item{n}{number of patients who visited the clinic}
 #' }
 "hba1c"
+
+#' Clostridium difficile infections
+#'
+#' A dataset with data on hospital acquired Clostridium difficile infections
+#' (CDI) before and after an intervention to reduce the risk of CDI.
+#'
+#' @format A data frame with 36 rows and 5 variables: \itemize{ \item {month}
+#'   Month of observation. \item{n} Number of hospital acquired CDI. \item{days}
+#'   Number of risk days. A risk day is a patient day without CDI. \item{period}
+#'   Factor indicating the period 'pre' or 'post' intervention. \item{notes}
+#'   Annotations. }
+#' @source www.esundhed.dk (Amager Hvidovre Hospital).
+"cdi"
