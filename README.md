@@ -106,14 +106,14 @@ pbc(month, avg_hba1c,
 
 <img src="man/figures/README-unnamed-chunk-7-1.svg" width="100%" />
 
-I’ chart of average HbA1c in children with diabetes with denominator
+I’ chart of average HbA1c in children with diabetes using subgroups
 (number of children):
 
 ``` r
 pbc(month, avg_hba1c * n, n,
     data  = hba1c,
     chart = 'i',
-    title = 'I\' chart of average HbA1c in children with diabetes',
+    title = "I' chart of average HbA1c in children with diabetes",
     ylab  = 'mmol/mol',
     xlab  = 'Month')
 ```
@@ -180,6 +180,66 @@ plot(p)
 
 <img src="man/figures/README-unnamed-chunk-9-1.svg" width="100%" />
 
+Hospital infection rates:
+
+``` r
+pbc(month, n, days,
+    data     = cdi,
+    multiply = 10000,
+    title    = 'Hospital associated C. diff. infections',
+    ylab     = 'Count per 10,000 risk days',
+    xlab     = 'Month')
+```
+
+<img src="man/figures/README-unnamed-chunk-10-1.svg" width="100%" />
+
+Freeze calculation of centre and control lines to period before
+intervention:
+
+``` r
+pbc(month, n, days,
+    data     = cdi,
+    chart    = 'i',
+    multiply = 10000,
+    freeze   = 24,
+    title    = 'Hospital associated C. diff. infections',
+    ylab     = 'Count per 10,000 risk days',
+    xlab     = 'Month')
+```
+
+<img src="man/figures/README-unnamed-chunk-11-1.svg" width="100%" />
+
+Split chart after intervention:
+
+``` r
+pbc(month, n, days,
+    data     = cdi,
+    chart    = 'i',
+    multiply = 10000,
+    split    = 24,
+    title    = 'Hospital associated C. diff. infections',
+    ylab     = 'Count per 10,000 risk days',
+    xlab     = 'Month')
+```
+
+<img src="man/figures/README-unnamed-chunk-12-1.svg" width="100%" />
+
+Ignore freak data point \#20:
+
+``` r
+pbc(month, n, days,
+    data     = cdi,
+    chart    = 'i',
+    multiply = 10000,
+    split    = 24,
+    exclude  = 20,
+    title    = 'Hospital associated C. diff. infections',
+    ylab     = 'Count per 10,000 risk days',
+    xlab     = 'Month')
+```
+
+<img src="man/figures/README-unnamed-chunk-13-1.svg" width="100%" />
+
 Faceted I’ chart of bacteremia mortality in six hospitals:
 
 ``` r
@@ -194,7 +254,7 @@ pbc(month, deaths, cases,
     xlab     = 'Month')
 ```
 
-<img src="man/figures/README-unnamed-chunk-10-1.svg" width="100%" />
+<img src="man/figures/README-unnamed-chunk-14-1.svg" width="100%" />
 
 ## Procedure for calculating centre line and conrol limits
 
