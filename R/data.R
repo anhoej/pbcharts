@@ -46,7 +46,7 @@
 #' A data frame with 43 columns and 3 variables:
 #' \describe{
 #'   \item{month}{month of measurements.}
-#'   \item{avg_hba1c}{average of HbA1c measurements.}
+#'   \item{avg_hba1c}{average of HbA1c measurements (mmol/mol).}
 #'   \item{n}{number of patients who visited the clinic}
 #' }
 "hba1c"

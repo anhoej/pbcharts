@@ -1,10 +1,10 @@
 # Diabetes HbA1c
-# 
+#
 # HbA1c measurements in children with diabetes
-# 
+#
 # Variables:
 #   month (date): month of measurements
-#   avg_hba1c (numeric): average of HbA1c measurements
+#   avg_hba1c (numeric): average of HbA1c measurements (mmol/mol)
 #   n (integer): number of patients who visited the clinic
 
 month,avg_hba1c,n

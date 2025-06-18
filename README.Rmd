@@ -27,27 +27,24 @@ set.seed(1)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
-Run charts and individuals control charts for statistical quality control and improvement. 
+An R package for run charts and individuals control charts for statistical quality control and improvement. 
 
-`pbcharts` implements the I prime (I' or normalised I) control chart suggested by Taylor (2017) <https://variation.com/normalized-individuals-control-chart/>. The I' chart adjusts the control limits to varying subgroup sizes making `pbcharts` useful for a wide range of measurement and count data and a convenient replacement for the classic Shewhart control charts.
+pbcharts implements the I prime (I' or normalised I) control chart suggested by Taylor <https://variation.com/normalized-individuals-control-chart/>.
 
-`pbcharts` uses only functions from base R making in fast and robust.
+The I' chart adjusts control limits to varying subgroup sizes making pbcharts useful for a wide range of measurement and count data and a convenient replacement for the classic Shewhart control charts.
 
-`pbcharts` is currently able to:
+pbcharts uses only functions from base R making in fast and robust.
 
-* facet plots (small multiples) on one categorical variable;
-
-* freeze calculations of centre line and control limits to a baseline period;
-
-* split charts into two periods;
-
-* exclude individual data points from calculations;
+pbcharts is currently able to:
 
 * test for special cause variation using runs analysis and control limits;
+* signal special causes using clear visual clues;
+* freeze calculations of centre line and control limits to a baseline period;
+* split charts into separate periods;
+* exclude individual data points from calculations;
+* facet plots (small multiples) on one categorical variable.
 
-* signal special causes using clear visual clues.
-
-`pbcharts` is in early develpment. Please report any issues at https://github.com/anhoej/pbcharts/issues
+pbcharts is in early develpment. Please report any issues at https://github.com/anhoej/pbcharts/issues
 
 ## Installation
 
@@ -93,6 +90,51 @@ pbc(month, avg_delay * n, n,  # multiply numerator and denominator to keep scale
     data = csection,
     chart = 'i')
 ```
+
+Standard I chart of average HbA1c in children with diabetes:
+
+```{r}
+pbc(month, avg_hba1c,
+    data  = hba1c,
+    chart = 'i',
+    title = 'I chart of average HbA1c in children with diabetes',
+    ylab  = 'mmol/mol',
+    xlab  = 'Month')
+```
+
+I' chart of average HbA1c in children with diabetes with denominator (number of children):
+
+```{r}
+pbc(month, avg_hba1c * n, n,
+    data  = hba1c,
+    chart = 'i',
+    title = 'I\' chart of average HbA1c in children with diabetes',
+    ylab  = 'mmol/mol',
+    xlab  = 'Month')
+```
+
+Structure and summary of a pbc object:
+
+```{r}
+# save pbc object while suppressing plotting
+p <- pbc(month, avg_hba1c * n, n,
+         data  = hba1c,
+         chart = 'i',
+         title = 'I\' chart of average HbA1c in children with diabetes',
+         ylab  = 'mmol/mol',
+         xlab  = 'Month',
+         plot = FALSE)
+
+# print structure
+str(p)
+
+# print summary
+summary(p)
+
+# plot chart
+plot(p)
+```
+
 
 Faceted I' chart of bacteremia mortality in six hospitals:
 
@@ -163,3 +205,27 @@ Control limits:
 $$
 \text{control limits} = CL \pm 3 \frac{\bar{s}}{\sqrt{d_i}}
 $$
+
+## Tests for special cause variation
+
+pbc employs three tests for special cause variation:
+
+* **Data points outside the control limits**.
+
+* **Unusually long runs**: A run is one or more consecutive data points on the same side of the centre line. Data points that fall directly on the centre line neither break nor contribute to the run. The upper 95% prediction limit for longest run in a random process is approximately $log_2(n)+3$ (rounded to the nearest integer), where $n$ is the number of useful data points (data points not on the centre line).
+
+* **Unusually few crossings**: A crossing is when two consecutive data points are on opposite sides of the centre line. In a random process, the number of crossings follows a binomial distribution. The lower 5% prediction limit for number of crossings is found using the cumulative probability distribution, `qbinom(p = 0.05, size = n - 1, prob = 0.5)`.
+
+Critical values for runs and crossing:
+
+```{r, results='asis', echo=FALSE}
+n <- 10:100
+x <- data.frame(
+  `Number of useful observations`       = n,
+  `Upper limit for longest run`         = round(log2(n) + 3),
+  `Lower limit for number of crossings` = qbinom(0.05, n - 1, 0.5),
+  check.names                           = FALSE)
+
+knitr::kable(x)
+```
+

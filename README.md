@@ -10,35 +10,31 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
-Run charts and individuals control charts for statistical quality
-control and improvement.
+An R package for run charts and individuals control charts for
+statistical quality control and improvement.
 
-`pbcharts` implements the I prime (I’ or normalised I) control chart
-suggested by Taylor (2017)
-<https://variation.com/normalized-individuals-control-chart/>. The I’
-chart adjusts the control limits to varying subgroup sizes making
-`pbcharts` useful for a wide range of measurement and count data and a
+pbcharts implements the I prime (I’ or normalised I) control chart
+suggested by Taylor
+<https://variation.com/normalized-individuals-control-chart/>.
+
+The I’ chart adjusts control limits to varying subgroup sizes making
+pbcharts useful for a wide range of measurement and count data and a
 convenient replacement for the classic Shewhart control charts.
 
-`pbcharts` uses only functions from base R making in fast and robust.
+pbcharts uses only functions from base R making in fast and robust.
 
-`pbcharts` is currently able to:
-
-- facet plots (small multiples) on one categorical variable;
-
-- freeze calculations of centre line and control limits to a baseline
-  period;
-
-- split charts into two periods;
-
-- exclude individual data points from calculations;
+pbcharts is currently able to:
 
 - test for special cause variation using runs analysis and control
   limits;
+- signal special causes using clear visual clues;
+- freeze calculations of centre line and control limits to a baseline
+  period;
+- split charts into separate periods;
+- exclude individual data points from calculations;
+- facet plots (small multiples) on one categorical variable.
 
-- signal special causes using clear visual clues.
-
-`pbcharts` is in early develpment. Please report any issues at
+pbcharts is in early develpment. Please report any issues at
 <https://github.com/anhoej/pbcharts/issues>
 
 ## Installation
@@ -97,6 +93,93 @@ pbc(month, avg_delay * n, n,  # multiply numerator and denominator to keep scale
 
 <img src="man/figures/README-unnamed-chunk-6-1.svg" width="100%" />
 
+Standard I chart of average HbA1c in children with diabetes:
+
+``` r
+pbc(month, avg_hba1c,
+    data  = hba1c,
+    chart = 'i',
+    title = 'I chart of average HbA1c in children with diabetes',
+    ylab  = 'mmol/mol',
+    xlab  = 'Month')
+```
+
+<img src="man/figures/README-unnamed-chunk-7-1.svg" width="100%" />
+
+I’ chart of average HbA1c in children with diabetes with denominator
+(number of children):
+
+``` r
+pbc(month, avg_hba1c * n, n,
+    data  = hba1c,
+    chart = 'i',
+    title = 'I\' chart of average HbA1c in children with diabetes',
+    ylab  = 'mmol/mol',
+    xlab  = 'Month')
+```
+
+<img src="man/figures/README-unnamed-chunk-8-1.svg" width="100%" />
+
+Structure and summary of a pbc object:
+
+``` r
+# save pbc object while suppressing plotting
+p <- pbc(month, avg_hba1c * n, n,
+         data  = hba1c,
+         chart = 'i',
+         title = 'I\' chart of average HbA1c in children with diabetes',
+         ylab  = 'mmol/mol',
+         xlab  = 'Month',
+         plot = FALSE)
+
+# print structure
+str(p)
+#> List of 10
+#>  $ title  : chr "I' chart of average HbA1c in children with diabetes"
+#>  $ xlab   : chr "Month"
+#>  $ ylab   : chr "mmol/mol"
+#>  $ ncol   : NULL
+#>  $ yfixed : logi TRUE
+#>  $ freeze : NULL
+#>  $ split  : NULL
+#>  $ exclude: NULL
+#>  $ chart  : chr "i"
+#>  $ data   :'data.frame': 43 obs. of  20 variables:
+#>   ..$ facet          : num [1:43] 1 1 1 1 1 1 1 1 1 1 ...
+#>   ..$ part           : int [1:43] 1 1 1 1 1 1 1 1 1 1 ...
+#>   ..$ x              : Date[1:43], format: "2019-03-01" "2019-04-01" ...
+#>   ..$ num            : num [1:43] 12695 12229 12310 14381 5988 ...
+#>   ..$ den            : num [1:43] 214 203 212 238 96 248 234 168 194 226 ...
+#>   ..$ y              : num [1:43] 59.3 60.2 58.1 60.4 62.4 ...
+#>   ..$ longest.run    : int [1:43] 6 6 6 6 6 6 6 6 6 6 ...
+#>   ..$ longest.run.max: num [1:43] 8 8 8 8 8 8 8 8 8 8 ...
+#>   ..$ n.crossings    : num [1:43] 18 18 18 18 18 18 18 18 18 18 ...
+#>   ..$ n.crossings.min: num [1:43] 16 16 16 16 16 16 16 16 16 16 ...
+#>   ..$ lcl            : num [1:43] 56.1 56 56 56.3 54 ...
+#>   ..$ cl             : num [1:43] 60.3 60.3 60.3 60.3 60.3 ...
+#>   ..$ ucl            : num [1:43] 64.6 64.7 64.6 64.3 66.6 ...
+#>   ..$ runs.signal    : logi [1:43] FALSE FALSE FALSE FALSE FALSE FALSE ...
+#>   ..$ sigma.signal   : logi [1:43] FALSE FALSE FALSE FALSE FALSE FALSE ...
+#>   ..$ freeze         : logi [1:43] TRUE TRUE TRUE TRUE TRUE TRUE ...
+#>   ..$ include        : logi [1:43] TRUE TRUE TRUE TRUE TRUE TRUE ...
+#>   ..$ base           : logi [1:43] TRUE TRUE TRUE TRUE TRUE TRUE ...
+#>   ..$ n.obs          : int [1:43] 43 43 43 43 43 43 43 43 43 43 ...
+#>   ..$ n.useful       : int [1:43] 43 43 43 43 43 43 43 43 43 43 ...
+#>  - attr(*, "class")= chr [1:2] "pbc" "list"
+
+# print summary
+summary(p)
+#>   facet part n.obs n.useful  avg_lcl       cl  avg_ucl sigma.signal runs.signal
+#> 1     1    1    43       43 55.47002 60.31032 65.15062            0           0
+#>   longest.run longest.run.max n.crossings n.crossings.min
+#> 1           6               8          18              16
+
+# plot chart
+plot(p)
+```
+
+<img src="man/figures/README-unnamed-chunk-9-1.svg" width="100%" />
+
 Faceted I’ chart of bacteremia mortality in six hospitals:
 
 ``` r
@@ -111,7 +194,7 @@ pbc(month, deaths, cases,
     xlab     = 'Month')
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.svg" width="100%" />
+<img src="man/figures/README-unnamed-chunk-10-1.svg" width="100%" />
 
 Print a summary:
 
@@ -144,7 +227,7 @@ Plot a pbc object:
 plot(p)
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.svg" width="100%" />
+<img src="man/figures/README-unnamed-chunk-12-1.svg" width="100%" />
 
 ## Procedure for calculating centre line and conrol limits
 
@@ -184,3 +267,119 @@ Control limits:
 $$
 \text{control limits} = CL \pm 3 \frac{\bar{s}}{\sqrt{d_i}}
 $$
+
+## Tests for special cause variation
+
+pbc employs three tests for special cause variation:
+
+- **Data points outside the control limits**.
+
+- **Unusually long runs**: A run is one or more consecutive data points
+  on the same side of the centre line. Data points that fall directly on
+  the centre line neither break nor contribute to the run. The upper 95%
+  prediction limit for longest run in a random process is approximately
+  $log_2(n)+3$ (rounded to the nearest integer), where $n$ is the number
+  of useful data points (data points not on the centre line).
+
+- **Unusually few crossings**: A crossing is when two consecutive data
+  points are on opposite sides of the centre line. In a random process,
+  the number of crossings follows a binomial distribution. The lower 5%
+  prediction limit for number of crossings is found using the cumulative
+  probability distribution,
+  `qbinom(p = 0.05, size = n - 1, prob = 0.5)`.
+
+Critical values for runs and crossing:
+
+| Number of useful observations | Upper limit for longest run | Lower limit for number of crossings |
+|---:|---:|---:|
+| 10 | 6 | 2 |
+| 11 | 6 | 2 |
+| 12 | 7 | 3 |
+| 13 | 7 | 3 |
+| 14 | 7 | 4 |
+| 15 | 7 | 4 |
+| 16 | 7 | 4 |
+| 17 | 7 | 5 |
+| 18 | 7 | 5 |
+| 19 | 7 | 6 |
+| 20 | 7 | 6 |
+| 21 | 7 | 6 |
+| 22 | 7 | 7 |
+| 23 | 8 | 7 |
+| 24 | 8 | 8 |
+| 25 | 8 | 8 |
+| 26 | 8 | 8 |
+| 27 | 8 | 9 |
+| 28 | 8 | 9 |
+| 29 | 8 | 10 |
+| 30 | 8 | 10 |
+| 31 | 8 | 11 |
+| 32 | 8 | 11 |
+| 33 | 8 | 11 |
+| 34 | 8 | 12 |
+| 35 | 8 | 12 |
+| 36 | 8 | 13 |
+| 37 | 8 | 13 |
+| 38 | 8 | 14 |
+| 39 | 8 | 14 |
+| 40 | 8 | 14 |
+| 41 | 8 | 15 |
+| 42 | 8 | 15 |
+| 43 | 8 | 16 |
+| 44 | 8 | 16 |
+| 45 | 8 | 17 |
+| 46 | 9 | 17 |
+| 47 | 9 | 17 |
+| 48 | 9 | 18 |
+| 49 | 9 | 18 |
+| 50 | 9 | 19 |
+| 51 | 9 | 19 |
+| 52 | 9 | 20 |
+| 53 | 9 | 20 |
+| 54 | 9 | 21 |
+| 55 | 9 | 21 |
+| 56 | 9 | 21 |
+| 57 | 9 | 22 |
+| 58 | 9 | 22 |
+| 59 | 9 | 23 |
+| 60 | 9 | 23 |
+| 61 | 9 | 24 |
+| 62 | 9 | 24 |
+| 63 | 9 | 25 |
+| 64 | 9 | 25 |
+| 65 | 9 | 25 |
+| 66 | 9 | 26 |
+| 67 | 9 | 26 |
+| 68 | 9 | 27 |
+| 69 | 9 | 27 |
+| 70 | 9 | 28 |
+| 71 | 9 | 28 |
+| 72 | 9 | 29 |
+| 73 | 9 | 29 |
+| 74 | 9 | 29 |
+| 75 | 9 | 30 |
+| 76 | 9 | 30 |
+| 77 | 9 | 31 |
+| 78 | 9 | 31 |
+| 79 | 9 | 32 |
+| 80 | 9 | 32 |
+| 81 | 9 | 33 |
+| 82 | 9 | 33 |
+| 83 | 9 | 34 |
+| 84 | 9 | 34 |
+| 85 | 9 | 34 |
+| 86 | 9 | 35 |
+| 87 | 9 | 35 |
+| 88 | 9 | 36 |
+| 89 | 9 | 36 |
+| 90 | 9 | 37 |
+| 91 | 10 | 37 |
+| 92 | 10 | 38 |
+| 93 | 10 | 38 |
+| 94 | 10 | 39 |
+| 95 | 10 | 39 |
+| 96 | 10 | 39 |
+| 97 | 10 | 40 |
+| 98 | 10 | 40 |
+| 99 | 10 | 41 |
+| 100 | 10 | 41 |
