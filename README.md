@@ -196,39 +196,6 @@ pbc(month, deaths, cases,
 
 <img src="man/figures/README-unnamed-chunk-10-1.svg" width="100%" />
 
-Print a summary:
-
-``` r
-p <- pbc(month, deaths, cases, hospital,
-         data  = bacteremia_mortality,
-         chart = 'i',
-         plot  = FALSE)
-
-summary(p)
-#>   facet part n.obs n.useful     avg_lcl        cl   avg_ucl sigma.signal
-#> 1   BFH    1    24       24 -0.01152474 0.1722846 0.3560940            0
-#> 2   BOH    1    23       23 -0.35972445 0.1842105 0.7281455            0
-#> 3   HGH    1    24       24  0.07612754 0.2088608 0.3415940            0
-#> 4   HVH    1    24       24  0.03687151 0.1912378 0.3456042            0
-#> 5   NOH    1    24       24  0.03417518 0.1527016 0.2712281            0
-#> 6    RH    1    24       24 -0.05822942 0.1398685 0.3379664            0
-#>   runs.signal longest.run longest.run.max n.crossings n.crossings.min
-#> 1           0           5               8          12               8
-#> 2           0           3               8          13               7
-#> 3           0           5               8          15               8
-#> 4           0           4               8          15               8
-#> 5           0           5               8          11               8
-#> 6           0           3               8          16               8
-```
-
-Plot a pbc object:
-
-``` r
-plot(p)
-```
-
-<img src="man/figures/README-unnamed-chunk-12-1.svg" width="100%" />
-
 ## Procedure for calculating centre line and conrol limits
 
 We use the following symbols:
@@ -270,23 +237,32 @@ $$
 
 ## Tests for special cause variation
 
-pbc employs three tests for special cause variation:
+pbc applies three tests to detect special cause variation:
 
-- **Data points outside the control limits**.
+- **Data points outside the control limits**<br> Any point falling
+  outside the control limits indicates potential special cause
+  variation.
 
-- **Unusually long runs**: A run is one or more consecutive data points
-  on the same side of the centre line. Data points that fall directly on
-  the centre line neither break nor contribute to the run. The upper 95%
-  prediction limit for longest run in a random process is approximately
-  $log_2(n)+3$ (rounded to the nearest integer), where $n$ is the number
-  of useful data points (data points not on the centre line).
+- **Unusually long runs**<br> A run consists of one or more consecutive
+  data points on the same side of the centre line. Data points that fall
+  exactly on the centre line neither contribute to nor interrupt a run.
+  For a random process, the upper 95% prediction limit for the longest
+  run is approximately `log₂(n) + 3`, rounded to the nearest whole
+  number, where n is the number of useful data points (i.e. those not on
+  the centre line).
 
-- **Unusually few crossings**: A crossing is when two consecutive data
-  points are on opposite sides of the centre line. In a random process,
-  the number of crossings follows a binomial distribution. The lower 5%
-  prediction limit for number of crossings is found using the cumulative
-  probability distribution,
+- **Unusually few crossings**\<br\< A crossing occurs when two
+  consecutive data points fall on opposite sides of the centre line. In
+  a random process, the number of crossings follows a binomial
+  distribution. The lower 5% prediction limit can be found using the
+  cumulative distribution function:
   `qbinom(p = 0.05, size = n - 1, prob = 0.5)`.
+
+Data points outside the control limits are highlighted, and the centre
+line is dashed and coloured if either of the two runs tests is positive.
+
+In run charts, the centre line represents the median; in control charts,
+it represents the (weighted) mean.
 
 Critical values for runs and crossing:
 
