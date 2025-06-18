@@ -62,9 +62,9 @@ proportions above 1 (100\%) (c(0, 1).}
 \item{yfixed}{Logical, if TRUE (default) makes a common scale for y
 axes.}
 
-\item{cl}{Numberic, centre line (if known).}
+\item{cl}{Numberic, single value indicating the centre line (if known).}
 
-\item{sd}{Numeric, standard deviation (if known).}
+\item{sd}{Numeric, single value indicating the standard deviation (if known).}
 
 \item{title, xlab, ylab}{Characters setting the main chart title and axis
 labels. Use NULL to suppress.}

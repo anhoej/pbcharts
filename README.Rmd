@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
   fig.height = 4,
   fig.width = 8,
   out.width = "100%",
-  dev = 'png'
+  dev = 'svg'
 )
 
 set.seed(1)
@@ -29,7 +29,7 @@ set.seed(1)
 
 Run charts and individuals control charts for statistical quality control and improvement. 
 
-`pbcharts` implements the I prime (or normalised I) control chart suggested by Taylor (2017) <https://variation.com/normalized-individuals-control-chart/>. The I prime chart adjusts the control limits to varying subgroup sizes making `pbcharts` useful for a wide range of measurement and count data and a convenient replacement for the classic Shewhart control charts.
+`pbcharts` implements the I prime (I' or normalised I) control chart suggested by Taylor (2017) <https://variation.com/normalized-individuals-control-chart/>. The I' chart adjusts the control limits to varying subgroup sizes making `pbcharts` useful for a wide range of measurement and count data and a convenient replacement for the classic Shewhart control charts.
 
 `pbcharts` uses only functions from base R making in fast and robust.
 
@@ -78,7 +78,7 @@ Signal special causes from data points outside control limits (red points) and(o
 pbc(1:11, chart = 'i')
 ```
 
-Standard I chart (subgroup size = 1) of average decision to delivery times for grade 2 caesarian sections:
+Standard I chart (subgroup size = 1) of average decision to delivery times for grade 2 caesarian sections (C-section):
 
 ```{r}
 pbc(month, avg_delay, 
@@ -86,7 +86,7 @@ pbc(month, avg_delay,
     chart = 'i')
 ```
 
-I'-chart (pronounced I-prime chart) of C. section data taking varying subgroup sizes into account:
+I' chart of C-section data taking varying subgroup sizes into account:
 
 ```{r}
 pbc(month, avg_delay * n, n,  # multiply numerator and denominator to keep scale
@@ -94,7 +94,7 @@ pbc(month, avg_delay * n, n,  # multiply numerator and denominator to keep scale
     chart = 'i')
 ```
 
-Faceted I'-chart of bacteremia mortality in six hospitals:
+Faceted I' chart of bacteremia mortality in six hospitals:
 
 ```{r, fig.height=7}
 pbc(month, deaths, cases,

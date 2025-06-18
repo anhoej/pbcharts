@@ -1,4 +1,4 @@
-2025-05-29
+2025-06-18
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -13,10 +13,10 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 Run charts and individuals control charts for statistical quality
 control and improvement.
 
-`pbcharts` implements the I prime (or normalised I) control chart
+`pbcharts` implements the I prime (I’ or normalised I) control chart
 suggested by Taylor (2017)
-<https://variation.com/normalized-individuals-control-chart/>. The I
-prime chart adjusts the control limits to varying subgroup sizes making
+<https://variation.com/normalized-individuals-control-chart/>. The I’
+chart adjusts the control limits to varying subgroup sizes making
 `pbcharts` useful for a wide range of measurement and count data and a
 convenient replacement for the classic Shewhart control charts.
 
@@ -57,7 +57,7 @@ library(pbcharts)
 pbc(rnorm(24))
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-2-1.svg" width="100%" />
 
 Draw an individuals (I) control chart:
 
@@ -65,7 +65,7 @@ Draw an individuals (I) control chart:
 pbc(rnorm(24), chart = 'i')
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-1.svg" width="100%" />
 
 Signal special causes from data points outside control limits (red
 points) and(or) unusually long or few runs (red and dashed centre line):
@@ -74,10 +74,10 @@ points) and(or) unusually long or few runs (red and dashed centre line):
 pbc(1:11, chart = 'i')
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.svg" width="100%" />
 
 Standard I chart (subgroup size = 1) of average decision to delivery
-times for grade 2 caesarian sections:
+times for grade 2 caesarian sections (C-section):
 
 ``` r
 pbc(month, avg_delay, 
@@ -85,10 +85,9 @@ pbc(month, avg_delay,
     chart = 'i')
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.svg" width="100%" />
 
-I’-chart (pronounced I-prime chart) of C. section data taking varying
-subgroup sizes into account:
+I’ chart of C-section data taking varying subgroup sizes into account:
 
 ``` r
 pbc(month, avg_delay * n, n,  # multiply numerator and denominator to keep scale
@@ -96,9 +95,9 @@ pbc(month, avg_delay * n, n,  # multiply numerator and denominator to keep scale
     chart = 'i')
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.svg" width="100%" />
 
-Faceted I’-chart of bacteremia mortality in six hospitals:
+Faceted I’ chart of bacteremia mortality in six hospitals:
 
 ``` r
 pbc(month, deaths, cases,
@@ -112,7 +111,7 @@ pbc(month, deaths, cases,
     xlab     = 'Month')
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-7-1.svg" width="100%" />
 
 Print a summary:
 
@@ -145,7 +144,7 @@ Plot a pbc object:
 plot(p)
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-9-1.svg" width="100%" />
 
 ## Procedure for calculating centre line and conrol limits
 
