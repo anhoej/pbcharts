@@ -108,7 +108,7 @@ plot.pbc <- function(x, ...) {
     graphics::box(bty = 'l', col = col2)
 
     # ypct <- F
-    yticks <- axTicks(2)
+    yticks <- graphics::axTicks(2)
     if (j %in% outer_y | !yfixed) {
       ylabs <- yticks
       if (ypct) {

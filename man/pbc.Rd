@@ -18,6 +18,7 @@ pbc(
   ncol = NULL,
   ylim = NULL,
   yfixed = TRUE,
+  ypct = FALSE,
   cl = NULL,
   sd = NULL,
   title = "",
@@ -61,6 +62,9 @@ proportions above 1 (100\%) (c(0, 1).}
 
 \item{yfixed}{Logical, if TRUE (default) makes a common scale for y
 axes.}
+
+\item{ypct}{Logical, if TRUE displays the y axis labels as percentages and
+censores the y axis 0\% and 100\%.}
 
 \item{cl}{Numberic, single value indicating the centre line (if known).}
 
