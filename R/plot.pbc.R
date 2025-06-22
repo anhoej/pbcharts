@@ -15,6 +15,7 @@ plot.pbc <- function(x, ...) {
   d      <- x$data
   freeze <- x$freeze
   yfixed <- x$yfixed
+  ypct   <- x$ypct
   parts  <- unique(d$part)
 
   # Prepare canvas -------------------------------------------------------------
@@ -106,6 +107,17 @@ plot.pbc <- function(x, ...) {
     # Add box and axes.
     graphics::box(bty = 'l', col = col2)
 
+    # ypct <- F
+    yticks <- axTicks(2)
+    if (j %in% outer_y | !yfixed) {
+      ylabs <- yticks
+      if (ypct) {
+        ylabs <- paste0(yticks * 100, '%')
+      }
+    } else {
+      FALSE
+    }
+
     do.call(x_class,                            # x axis
             c(1, axis_par,
               labels = ifelse(j %in% outer_x,
@@ -114,9 +126,14 @@ plot.pbc <- function(x, ...) {
 
     do.call(graphics::axis,                     # y axis
             c(2, axis_par,
-              labels = ifelse(j %in% outer_y | !yfixed,
-                              TRUE,
-                              FALSE)))
+              list(at = yticks,
+                   labels = ylabs
+                   # labels = ifelse(j %in% outer_y | !yfixed,
+                   #               TRUE,
+                   #               FALSE)
+              )
+            )
+    )
 
     # Add lines and points.
     graphics::abline(v = mean(c(i$x[freeze], i$x[freeze + 1])),

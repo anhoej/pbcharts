@@ -26,6 +26,7 @@
 #'             proportions above 1 (100%) (c(0, 1).
 #' @param yfixed Logical, if TRUE (default) makes a common scale for y
 #'                    axes.
+#' @param ypct Logical, if TRUE display y axis labels as percentages.
 #' @param cl Numberic, single value indicating the centre line (if known).
 #' @param sd Numeric, single value indicating the standard deviation (if known).
 #' @param title,xlab,ylab Characters setting the main chart title and axis
@@ -77,6 +78,7 @@ pbc <- function(x,
                 ncol     = NULL,
                 ylim     = NULL,
                 yfixed   = TRUE,
+                ypct     = FALSE,
                 cl       = NULL,
                 sd       = NULL,
                 title    = '',
@@ -196,6 +198,10 @@ pbc <- function(x,
   d$sigma.signal[!d$include] <- FALSE
 
   # Censor control limits to ylim argument.
+  if (ypct) {
+    ylim[1] <- 0
+    ylim[2] <- 1
+  }
   if (!is.null(ylim) && chart != 'run') {
     d$lcl <- pmax(d$lcl, ylim[1], na.rm = TRUE)
     d$ucl <- pmin(d$ucl, ylim[2], na.rm = TRUE)
@@ -219,6 +225,7 @@ pbc <- function(x,
             ylab     = ylab,
             ncol     = ncol,
             yfixed   = yfixed,
+            ypct     = ypct,
             freeze   = freeze,
             split    = split,
             exclude  = exclude,
