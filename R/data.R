@@ -33,7 +33,7 @@
 #' \describe{
 #'   \item{hospital}{Hospital code.}
 #'   \item{month}{First day of month}
-#'   \item{deatsh}{Number of bacteremia patients who died within 30 days from infection.}
+#'   \item{deaths}{Number of bacteremia patients who died within 30 days from infection.}
 #'   \item{cases}{Number of patients with bacteremia.}
 #' }
 "bacteremia_mortality"
