@@ -60,11 +60,11 @@ plot.pbc <- function(x, ...) {
     mfrow    = mfrow,
     xpd      = NA,
     mar      = c(1.5,
-                 2.8,
+                 1.5,
                  ifelse(n_facets == 1, 0, 1.5),
                  ifelse(yfixed, 1, 2.7)),
     oma      = c(2.5,
-                 2.6,
+                 2.8,
                  ifelse(is.null(x$title), 1, 2.6),
                  0.5),
     cex      = cex.adj,
@@ -115,7 +115,7 @@ plot.pbc <- function(x, ...) {
         ylabs <- paste0(yticks * 100, '%')
       }
     } else {
-      FALSE
+      ylabs <- FALSE
     }
 
     do.call(x_class,                            # x axis
@@ -125,14 +125,10 @@ plot.pbc <- function(x, ...) {
                               FALSE)))
 
     do.call(graphics::axis,                     # y axis
-            c(2, axis_par,
+            c(2,
+              axis_par,
               list(at = yticks,
-                   labels = ylabs
-                   # labels = ifelse(j %in% outer_y | !yfixed,
-                   #               TRUE,
-                   #               FALSE)
-              )
-            )
+                   labels = ylabs))
     )
 
     # Add lines and points.
@@ -198,7 +194,7 @@ plot.pbc <- function(x, ...) {
                   outer = TRUE)
   graphics::mtext(x$ylab,           # y axis label
                   side  = 2,
-                  line  = 1.5,
+                  line  = 1.7,
                   cex   = cex.adj,
                   outer = TRUE)
   graphics::mtext(x$title,          # main title
