@@ -169,8 +169,14 @@ plot.pbc <- function(x, ...) {
                        cex = ifelse(dotcol == col1, 0.8, 1),
                        col = dotcol,
                        pch = 19)
+
+      if (ypct) {
+        cllab <- paste0(formatC(ip$cl[1] * 100, digits = 2, format = 'fg'), '%')
+      } else {
+        cllab <- formatC(ip$cl[1], digits = 2, format = 'fg')
+      }
       graphics::text(max(ip$x), ip$cl[1],  # centre line label
-                     labels = formatC(ip$cl[1], digits = 2, format = 'fg'),
+                     labels = cllab,
                      adj    = -0.2,
                      las    = 1,
                      cex    = 0.7)

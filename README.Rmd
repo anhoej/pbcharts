@@ -200,7 +200,7 @@ pbc(month, deaths, cases,
     xlab     = 'Month')
 ```
 
-## Procedure for calculating centre line and conrol limits
+## Procedure for calculating centre line and control limits
 
 We use the following symbols:
 

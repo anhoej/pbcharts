@@ -1,4 +1,4 @@
-2025-06-18
+2025-06-24
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -134,12 +134,13 @@ p <- pbc(month, avg_hba1c * n, n,
 
 # print structure
 str(p)
-#> List of 10
+#> List of 11
 #>  $ title  : chr "I' chart of average HbA1c in children with diabetes"
 #>  $ xlab   : chr "Month"
 #>  $ ylab   : chr "mmol/mol"
 #>  $ ncol   : NULL
 #>  $ yfixed : logi TRUE
+#>  $ ypct   : logi FALSE
 #>  $ freeze : NULL
 #>  $ split  : NULL
 #>  $ exclude: NULL
@@ -256,7 +257,7 @@ pbc(month, deaths, cases,
 
 <img src="man/figures/README-unnamed-chunk-14-1.svg" width="100%" />
 
-## Procedure for calculating centre line and conrol limits
+## Procedure for calculating centre line and control limits
 
 We use the following symbols:
 
