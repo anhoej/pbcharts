@@ -6,7 +6,7 @@
 \alias{pbcharts-package}
 \title{pbcharts: Process Behaviour Charts}
 \description{
-Run charts and individuals control charts for statistical quality control and improvement. Control limits adjust to varying subgroup sizes as suggested by Taylor (2017) \url{https://variation.com/normalized-individuals-control-chart/} making `pbcharts` useful for a wide range of measurement and count data and a convenient replacement for classic Shewhart control charts.
+Run charts and individuals control charts for statistical quality control and improvement. Control limits accommodate varying subgroup sizes as suggested by Taylor (2017) \url{https://variation.com/normalized-individuals-control-chart/} making `pbcharts` useful for a wide range of measurement and count data and a convenient replacement for classic Shewhart control charts.
 }
 \seealso{
 Useful links:
