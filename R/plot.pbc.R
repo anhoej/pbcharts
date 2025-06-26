@@ -58,7 +58,7 @@ plot.pbc <- function(x, ...) {
 
   op <- graphics::par(
     mfrow    = mfrow,
-    xpd      = NA,
+    # xpd      = NA,
     mar      = c(1.5,
                  1.5,
                  ifelse(n_facets == 1, 0, 1.5),
@@ -107,8 +107,8 @@ plot.pbc <- function(x, ...) {
     # Add box and axes.
     graphics::box(bty = 'l', col = col2)
 
-    # ypct <- F
     yticks <- graphics::axTicks(2)
+
     if (j %in% outer_y | !yfixed) {
       ylabs <- yticks
       if (ypct) {
@@ -132,10 +132,10 @@ plot.pbc <- function(x, ...) {
     )
 
     # Add lines and points.
-    graphics::abline(v = mean(c(i$x[freeze], i$x[freeze + 1])),
+    graphics::abline(v = mean(c(i$x[freeze], i$x[freeze + 1])),  # freeze line
                      lty = 3)
 
-    # Draw parts
+    # Draw parts.
     for (p in parts) {
       ip <- i[i$part == p,]
 
@@ -171,14 +171,16 @@ plot.pbc <- function(x, ...) {
       } else {
         cllab <- formatC(ip$cl[1], digits = 2, format = 'fg')
       }
+
       graphics::text(max(ip$x), ip$cl[1],  # centre line label
                      labels = cllab,
+                     xpd    = NA,
                      adj    = -0.2,
                      las    = 1,
                      cex    = 0.7)
     }
 
-    # Add facet labels
+    # Add facet labels.
     if (n_facets > 1)
       graphics::title(main      = i$facet[1],
                       adj       = 0,
