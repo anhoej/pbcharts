@@ -203,10 +203,15 @@ pbc <- function(x,
     ylim[1] <- 0
     ylim[2] <- 1
   }
+
   if (!is.null(ylim) && chart != 'run') {
     d$lcl <- pmax(d$lcl, ylim[1], na.rm = TRUE)
     d$ucl <- pmin(d$ucl, ylim[2], na.rm = TRUE)
   }
+
+  # Remove control limits from empty subgroups.
+  d$lcl[is.na(d$y)] <- NA
+  d$ucl[is.na(d$y)] <- NA
 
   # Multiply y coordinates if needed.
   d$y   <- d$y * multiply
