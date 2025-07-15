@@ -219,6 +219,8 @@ pbc <- function(x,
   d$lcl <- d$lcl * multiply
   d$ucl <- d$ucl * multiply
 
+  d <- droplevels(d)
+
   d <- d[order(d$facet, d$part, d$x),]
 
   d <- d[c('facet', 'part', 'x', 'num', 'den', 'y',
