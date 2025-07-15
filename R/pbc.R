@@ -169,9 +169,10 @@ pbc <- function(x,
   y <- num / den
 
   # Make data frame.
-  d <- data.frame(x, num, den, y, facet)
-  d$cl      <- ifelse(is.null(cl), NA, cl)
-  d$sd      <- ifelse(is.null(sd), NA, sd)
+  d    <- data.frame(x, num, den, y, facet)
+  d    <- droplevels(d)
+  d$cl <- ifelse(is.null(cl), NA, cl)
+  d$sd <- ifelse(is.null(sd), NA, sd)
 
   # Split facets by split argument.
   d <- split(d, ~ facet)
@@ -182,6 +183,7 @@ pbc <- function(x,
     x
   })
   d <- do.call(rbind, args = c(d, make.row.names = FALSE))
+
 
   # Helper variables
   d$freeze  <- d$xx <= min(freeze, Inf)
@@ -218,8 +220,6 @@ pbc <- function(x,
   d$cl  <- d$cl * multiply
   d$lcl <- d$lcl * multiply
   d$ucl <- d$ucl * multiply
-
-  d <- droplevels(d)
 
   d <- d[order(d$facet, d$part, d$x),]
 
