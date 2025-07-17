@@ -56,9 +56,9 @@ rather than proportions.}
 
 \item{ncol}{Number of columns in faceted plot.}
 
-\item{ylim}{Numeric vector (y1, y2) setting the y axis limits. Useful e.g.
-for preventing negative negative control limits (c(0, NA) or
-proportions above 1 (100\%) (c(0, 1).}
+\item{ylim}{Numeric vector (y1, y2) setting the y axis limits. Useful
+for preventing negative negative control limits (c(0, NA)) or
+proportions above 1 (c(0, 1)).}
 
 \item{yfixed}{Logical, if TRUE (default) makes a common scale for y
 axes.}

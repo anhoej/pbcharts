@@ -21,9 +21,9 @@
 #' @param multiply Number to multiply y axis by, e.g. 100 to get percentages
 #'                 rather than proportions.
 #' @param ncol Number of columns in faceted plot.
-#' @param ylim Numeric vector (y1, y2) setting the y axis limits. Useful e.g.
-#'             for preventing negative negative control limits (c(0, NA) or
-#'             proportions above 1 (100%) (c(0, 1).
+#' @param ylim Numeric vector (y1, y2) setting the y axis limits. Useful
+#'             for preventing negative negative control limits (c(0, NA)) or
+#'             proportions above 1 (c(0, 1)).
 #' @param yfixed Logical, if TRUE (default) makes a common scale for y
 #'               axes.
 #' @param ypct Logical, if TRUE displays the y axis labels as percentages and
