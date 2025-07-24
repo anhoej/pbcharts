@@ -18,24 +18,14 @@ plot.pbc <- function(x, ...) {
   ypct   <- x$ypct
   parts  <- unique(d$part)
 
+  # Set constants --------------------------------------------------------------
+  col1    <- 'steelblue'
+  col2    <- 'grey30'
+  col3    <- 'tomato'
+  col4    <- 'gray'
+  cex.adj <- 0.9
+
   # Prepare canvas -------------------------------------------------------------
-  # Get axis ranges.
-  ylim <- range(d$y,
-                d$lcl,
-                d$ucl,
-                na.rm = TRUE)
-
-  xlim <- range(d$x)
-
-  # Get x axis function.
-  if (inherits(d$x, 'Date')) {
-    x_class <- graphics::axis.Date
-  } else if (inherits(d$x, 'POSIXct')) {
-    x_class <- graphics::axis.POSIXct
-  } else {
-    x_class <- graphics::axis
-  }
-
   # Calculate facets layout.
   n_facets <- length(unique(d$facet))
   n_cols   <- ifelse(is.null(x$ncol),
@@ -44,21 +34,13 @@ plot.pbc <- function(x, ...) {
   n_rows   <- ceiling(n_facets / n_cols)
   mfrow    <- c(n_rows, n_cols)
 
-  # Get indices of outer plots for axis tick labels.
-  outer_y  <- seq(1, n_facets, by = n_cols)
+  # Get indices of bottommost and leftmost facets for tick labels.
   outer_x  <- seq(n_facets - n_cols + 1, n_facets)
+  outer_y  <- seq(1, n_facets, by = n_cols)
 
-  # Set colours and graphical parameters.
-  col1 <- 'steelblue'
-  col2 <- 'grey30'
-  col3 <- 'tomato'
-  col4 <- 'gray'
-
-  cex.adj <- 0.9
-
+  # Set graphical parameters
   op <- graphics::par(
     mfrow    = mfrow,
-    # xpd      = NA,
     mar      = c(1.5,
                  1.5,
                  ifelse(n_facets == 1, 0, 1.5),
@@ -81,13 +63,29 @@ plot.pbc <- function(x, ...) {
                    tcl       = -0.2,
                    col       = col2)
 
+  # Get x axis function.
+  if (inherits(d$x, 'Date')) {
+    x_class <- graphics::axis.Date
+  } else if (inherits(d$x, 'POSIXct')) {
+    x_class <- graphics::axis.POSIXct
+  } else {
+    x_class <- graphics::axis
+  }
+
+  # Get axis ranges.
+  xlim <- range(d$x)
+  ylim <- range(d$y,
+                d$lcl,
+                d$ucl,
+                na.rm = TRUE)
+
   # Draw facets ----------------------------------------------------------------
   d <- split(d, d$facet)
   j <- 0
   for (i in d) {
     j <- j + 1
 
-    # Free y axis scales if yfixed argument is FALSE
+    # Get y axis range for free axis.
     if (!yfixed) {
       ylim <- range(i$y,
                     i$lcl,
@@ -112,7 +110,7 @@ plot.pbc <- function(x, ...) {
     if (j %in% outer_y | !yfixed) {
       ylabs <- yticks
       if (ypct) {
-        ylabs <- paste0(yticks * 100, '%')
+        ylabs <- paste0(ylabs * 100, '%')
       }
     } else {
       ylabs <- FALSE
@@ -132,7 +130,7 @@ plot.pbc <- function(x, ...) {
     )
 
     # Add lines and points.
-    graphics::abline(v = mean(c(i$x[freeze], i$x[freeze + 1])),  # freeze line
+    graphics::abline(v   = mean(c(i$x[freeze], i$x[freeze + 1])),  # freeze line
                      lty = 3)
 
     # Draw parts.
@@ -140,16 +138,11 @@ plot.pbc <- function(x, ...) {
       ip <- i[i$part == p,]
 
       # Set colours and centre line types.
+      clcol                   <- ifelse(ip$runs.signal[1], col3, col2)
+      cltyp                   <- ifelse(ip$runs.signal[1], 'dashed', 'solid')
       dotcol                  <- ifelse(ip$include, col1, col4)
       dotcol[ip$sigma.signal] <- col3
       dotcol[ip$y == ip$cl]   <- col4
-
-      clcol                   <- ifelse(ip$runs.signal[1],
-                                        col3,
-                                        col2)
-      cltyp                   <- ifelse(ip$runs.signal[1],
-                                        'dashed',
-                                        'solid')
 
       graphics::lines(ip$x, ip$cl,         # centre line
                       col = clcol,
