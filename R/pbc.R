@@ -5,7 +5,7 @@
 #' See examples at \url{https://github.com/anhoej/pbcharts/}.
 #'
 #' @param x Numeric or date(time) vector of subgroup values to plot along the x
-#'          axis. Or, if y is NULL, x values will be used for y coordinates.
+#'          axis. Or, if num is NULL, x values will be used for y coordinates.
 #' @param num Numeric vector of measures or counts to
 #'            plot on the y axis (numerator).
 #' @param den Numeric vector of subgroup sizes (denominator).
