@@ -204,6 +204,7 @@ pbc <- function(x,
   if (ypct) {
     ylim[1] <- 0
     ylim[2] <- 1
+    ylab    <- NULL
   }
 
   if (!is.null(ylim) && chart != 'run') {
