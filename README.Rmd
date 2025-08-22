@@ -183,7 +183,7 @@ pbc(month, deaths, cases,
     facet    = hospital,                # facet plot by hospital
     data     = bacteremia_mortality,
     chart    = 'i',
-    ypct     = TRUE,                    # show percent rather than proportions
+    ypct     = TRUE,                    # show percentage rather than proportions
     title    = 'Bacteremia mortality',
     ylab     = '%',
     xlab     = 'Month')
