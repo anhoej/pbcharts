@@ -1,5 +1,7 @@
 ---
-output: github_document
+output:
+  github_document:
+    toc: true
 date: "`r Sys.Date()`"
 editor_options: 
   chunk_output_type: console
@@ -22,6 +24,8 @@ set.seed(1)
 ```
 
 # Process Behaviour Charts
+
+-- Yet another R package for statistical process control charts
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
@@ -56,6 +60,8 @@ devtools::install_github("anhoej/pbcharts")
 
 ## Examples
 
+### Basic usage
+
 Draw a run chart of 24 random normal values:
 
 ```{r}
@@ -74,6 +80,8 @@ Signal special causes from data points outside control limits (red points) and(o
 ```{r}
 pbc(1:11, chart = 'i')
 ```
+
+### Plotting measurement data
 
 Standard I chart (subgroup size = 1) of average decision to delivery times for grade 2 caesarian sections (C-section):
 
@@ -113,27 +121,7 @@ pbc(month, avg_hba1c * n, n,
     xlab  = 'Month')
 ```
 
-Structure and summary of a pbc object:
-
-```{r}
-# save pbc object while suppressing plotting
-p <- pbc(month, avg_hba1c * n, n,
-         data  = hba1c,
-         chart = 'i',
-         title = 'I\' chart of average HbA1c in children with diabetes',
-         ylab  = 'mmol/mol',
-         xlab  = 'Month',
-         plot = FALSE)
-
-# print structure
-str(p)
-
-# print summary
-summary(p)
-
-# plot chart
-plot(p)
-```
+### Plotting count data
 
 Hospital infection rates:
 
@@ -186,6 +174,8 @@ pbc(month, n, days,
     xlab     = 'Month')
 ```
 
+### Facetted charts for multidimensional data
+
 Faceted I' chart of bacteremia mortality in six hospitals:
 
 ```{r, fig.height=7}
@@ -193,11 +183,39 @@ pbc(month, deaths, cases,
     facet    = hospital,                # facet plot by hospital
     data     = bacteremia_mortality,
     chart    = 'i',
-    multiply = 100,                     # show percent rather than proportions
-    ylim     = c(0, NA),                # suppress negative control limits
+    ypct     = TRUE,                    # show percent rather than proportions
     title    = 'Bacteremia mortality',
     ylab     = '%',
     xlab     = 'Month')
+```
+
+### Structure and summary of a pbc object
+
+Saving a pbc object
+
+```{r}
+# save pbc object while suppressing plotting
+p <- pbc(month, deaths, cases,
+         facet    = hospital,
+         data     = bacteremia_mortality,
+         chart    = 'i',
+         ypct     = TRUE,
+         title    = 'Bacteremia mortality',
+         ylab     = '%',
+         xlab     = 'Month',
+         plot     = FALSE)             # Suppress plotting
+
+# print structure
+str(p)
+
+# extract list element
+p$title
+
+# print summary
+summary(p)
+
+# plot chart
+plot(p)
 ```
 
 ## Procedure for calculating centre line and control limits

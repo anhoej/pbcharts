@@ -1,8 +1,25 @@
-2025-06-24
+2025-08-22
+
+- [Process Behaviour Charts](#process-behaviour-charts)
+  - [Installation](#installation)
+  - [Examples](#examples)
+    - [Basic usage](#basic-usage)
+    - [Plotting measurement data](#plotting-measurement-data)
+    - [Plotting count data](#plotting-count-data)
+    - [Facetted charts for multidimensional
+      data](#facetted-charts-for-multidimensional-data)
+    - [Structure and summary of a pbc
+      object](#structure-and-summary-of-a-pbc-object)
+  - [Procedure for calculating centre line and control
+    limits](#procedure-for-calculating-centre-line-and-control-limits)
+  - [Tests for special cause
+    variation](#tests-for-special-cause-variation)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # Process Behaviour Charts
+
+– Yet another R package for statistical process control charts
 
 <!-- badges: start -->
 
@@ -46,6 +63,8 @@ You can install the development version of pbcharts from
 
 ## Examples
 
+### Basic usage
+
 Draw a run chart of 24 random normal values:
 
 ``` r
@@ -71,6 +90,8 @@ pbc(1:11, chart = 'i')
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.svg" width="100%" />
+
+### Plotting measurement data
 
 Standard I chart (subgroup size = 1) of average decision to delivery
 times for grade 2 caesarian sections (C-section):
@@ -120,66 +141,7 @@ pbc(month, avg_hba1c * n, n,
 
 <img src="man/figures/README-unnamed-chunk-8-1.svg" width="100%" />
 
-Structure and summary of a pbc object:
-
-``` r
-# save pbc object while suppressing plotting
-p <- pbc(month, avg_hba1c * n, n,
-         data  = hba1c,
-         chart = 'i',
-         title = 'I\' chart of average HbA1c in children with diabetes',
-         ylab  = 'mmol/mol',
-         xlab  = 'Month',
-         plot = FALSE)
-
-# print structure
-str(p)
-#> List of 11
-#>  $ title  : chr "I' chart of average HbA1c in children with diabetes"
-#>  $ xlab   : chr "Month"
-#>  $ ylab   : chr "mmol/mol"
-#>  $ ncol   : NULL
-#>  $ yfixed : logi TRUE
-#>  $ ypct   : logi FALSE
-#>  $ freeze : NULL
-#>  $ split  : NULL
-#>  $ exclude: NULL
-#>  $ chart  : chr "i"
-#>  $ data   :'data.frame': 43 obs. of  20 variables:
-#>   ..$ facet          : num [1:43] 1 1 1 1 1 1 1 1 1 1 ...
-#>   ..$ part           : int [1:43] 1 1 1 1 1 1 1 1 1 1 ...
-#>   ..$ x              : Date[1:43], format: "2019-03-01" "2019-04-01" ...
-#>   ..$ num            : num [1:43] 12695 12229 12310 14381 5988 ...
-#>   ..$ den            : num [1:43] 214 203 212 238 96 248 234 168 194 226 ...
-#>   ..$ y              : num [1:43] 59.3 60.2 58.1 60.4 62.4 ...
-#>   ..$ longest.run    : int [1:43] 6 6 6 6 6 6 6 6 6 6 ...
-#>   ..$ longest.run.max: num [1:43] 8 8 8 8 8 8 8 8 8 8 ...
-#>   ..$ n.crossings    : num [1:43] 18 18 18 18 18 18 18 18 18 18 ...
-#>   ..$ n.crossings.min: num [1:43] 16 16 16 16 16 16 16 16 16 16 ...
-#>   ..$ lcl            : num [1:43] 56.1 56 56 56.3 54 ...
-#>   ..$ cl             : num [1:43] 60.3 60.3 60.3 60.3 60.3 ...
-#>   ..$ ucl            : num [1:43] 64.6 64.7 64.6 64.3 66.6 ...
-#>   ..$ runs.signal    : logi [1:43] FALSE FALSE FALSE FALSE FALSE FALSE ...
-#>   ..$ sigma.signal   : logi [1:43] FALSE FALSE FALSE FALSE FALSE FALSE ...
-#>   ..$ freeze         : logi [1:43] TRUE TRUE TRUE TRUE TRUE TRUE ...
-#>   ..$ include        : logi [1:43] TRUE TRUE TRUE TRUE TRUE TRUE ...
-#>   ..$ base           : logi [1:43] TRUE TRUE TRUE TRUE TRUE TRUE ...
-#>   ..$ n.obs          : int [1:43] 43 43 43 43 43 43 43 43 43 43 ...
-#>   ..$ n.useful       : int [1:43] 43 43 43 43 43 43 43 43 43 43 ...
-#>  - attr(*, "class")= chr [1:2] "pbc" "list"
-
-# print summary
-summary(p)
-#>   facet part n.obs n.useful  avg_lcl       cl  avg_ucl sigma.signal runs.signal
-#> 1     1    1    43       43 55.47002 60.31032 65.15062            0           0
-#>   longest.run longest.run.max n.crossings n.crossings.min
-#> 1           6               8          18              16
-
-# plot chart
-plot(p)
-```
-
-<img src="man/figures/README-unnamed-chunk-9-1.svg" width="100%" />
+### Plotting count data
 
 Hospital infection rates:
 
@@ -192,7 +154,7 @@ pbc(month, n, days,
     xlab     = 'Month')
 ```
 
-<img src="man/figures/README-unnamed-chunk-10-1.svg" width="100%" />
+<img src="man/figures/README-unnamed-chunk-9-1.svg" width="100%" />
 
 Freeze calculation of centre and control lines to period before
 intervention:
@@ -208,7 +170,7 @@ pbc(month, n, days,
     xlab     = 'Month')
 ```
 
-<img src="man/figures/README-unnamed-chunk-11-1.svg" width="100%" />
+<img src="man/figures/README-unnamed-chunk-10-1.svg" width="100%" />
 
 Split chart after intervention:
 
@@ -223,7 +185,7 @@ pbc(month, n, days,
     xlab     = 'Month')
 ```
 
-<img src="man/figures/README-unnamed-chunk-12-1.svg" width="100%" />
+<img src="man/figures/README-unnamed-chunk-11-1.svg" width="100%" />
 
 Ignore freak data point \#20:
 
@@ -239,7 +201,9 @@ pbc(month, n, days,
     xlab     = 'Month')
 ```
 
-<img src="man/figures/README-unnamed-chunk-13-1.svg" width="100%" />
+<img src="man/figures/README-unnamed-chunk-12-1.svg" width="100%" />
+
+### Facetted charts for multidimensional data
 
 Faceted I’ chart of bacteremia mortality in six hospitals:
 
@@ -248,11 +212,89 @@ pbc(month, deaths, cases,
     facet    = hospital,                # facet plot by hospital
     data     = bacteremia_mortality,
     chart    = 'i',
-    multiply = 100,                     # show percent rather than proportions
-    ylim     = c(0, NA),                # suppress negative control limits
+    ypct     = TRUE,                    # show percent rather than proportions
     title    = 'Bacteremia mortality',
     ylab     = '%',
     xlab     = 'Month')
+```
+
+<img src="man/figures/README-unnamed-chunk-13-1.svg" width="100%" />
+
+### Structure and summary of a pbc object
+
+Saving a pbc object
+
+``` r
+# save pbc object while suppressing plotting
+p <- pbc(month, deaths, cases,
+         facet    = hospital,
+         data     = bacteremia_mortality,
+         chart    = 'i',
+         ypct     = TRUE,
+         title    = 'Bacteremia mortality',
+         ylab     = '%',
+         xlab     = 'Month',
+         plot     = FALSE)             # Suppress plotting
+
+# print structure
+str(p)
+#> List of 11
+#>  $ title  : chr "Bacteremia mortality"
+#>  $ xlab   : chr "Month"
+#>  $ ylab   : NULL
+#>  $ ncol   : NULL
+#>  $ yfixed : logi TRUE
+#>  $ ypct   : logi TRUE
+#>  $ freeze : NULL
+#>  $ split  : NULL
+#>  $ exclude: NULL
+#>  $ chart  : chr "i"
+#>  $ data   :'data.frame': 143 obs. of  20 variables:
+#>   ..$ facet          : chr [1:143] "BFH" "BFH" "BFH" "BFH" ...
+#>   ..$ part           : int [1:143] 1 1 1 1 1 1 1 1 1 1 ...
+#>   ..$ x              : Date[1:143], format: "2017-01-01" "2017-02-01" ...
+#>   ..$ num            : int [1:143] 19 5 5 11 11 12 9 12 8 4 ...
+#>   ..$ den            : int [1:143] 64 47 46 51 54 64 51 61 55 51 ...
+#>   ..$ y              : num [1:143] 0.297 0.106 0.109 0.216 0.204 ...
+#>   ..$ longest.run    : int [1:143] 5 5 5 5 5 5 5 5 5 5 ...
+#>   ..$ longest.run.max: num [1:143] 8 8 8 8 8 8 8 8 8 8 ...
+#>   ..$ n.crossings    : num [1:143] 12 12 12 12 12 12 12 12 12 12 ...
+#>   ..$ n.crossings.min: num [1:143] 8 8 8 8 8 8 8 8 8 8 ...
+#>   ..$ lcl            : num [1:143] 0.00207 0 0 0 0 ...
+#>   ..$ cl             : num [1:143] 0.172 0.172 0.172 0.172 0.172 ...
+#>   ..$ ucl            : num [1:143] 0.342 0.371 0.373 0.363 0.358 ...
+#>   ..$ runs.signal    : logi [1:143] FALSE FALSE FALSE FALSE FALSE FALSE ...
+#>   ..$ sigma.signal   : logi [1:143] FALSE FALSE FALSE FALSE FALSE FALSE ...
+#>   ..$ freeze         : logi [1:143] TRUE TRUE TRUE TRUE TRUE TRUE ...
+#>   ..$ include        : logi [1:143] TRUE TRUE TRUE TRUE TRUE TRUE ...
+#>   ..$ base           : logi [1:143] TRUE TRUE TRUE TRUE TRUE TRUE ...
+#>   ..$ n.obs          : int [1:143] 24 24 24 24 24 24 24 24 24 24 ...
+#>   ..$ n.useful       : int [1:143] 24 24 24 24 24 24 24 24 24 24 ...
+#>  - attr(*, "class")= chr [1:2] "pbc" "list"
+
+# extract list element
+p$title
+#> [1] "Bacteremia mortality"
+
+# print summary
+summary(p)
+#>   facet part n.obs n.useful     avg_lcl        cl   avg_ucl sigma.signal
+#> 1   BFH    1    24       24 0.001045397 0.1722846 0.3560940            0
+#> 2   BOH    1    23       23 0.000000000 0.1842105 0.7281455            0
+#> 3   HGH    1    24       24 0.076127536 0.2088608 0.3415940            0
+#> 4   HVH    1    24       24 0.036871508 0.1912378 0.3456042            0
+#> 5   NOH    1    24       24 0.034837526 0.1527016 0.2712281            0
+#> 6    RH    1    24       24 0.000000000 0.1398685 0.3379664            0
+#>   runs.signal longest.run longest.run.max n.crossings n.crossings.min
+#> 1           0           5               8          12               8
+#> 2           0           3               8          13               7
+#> 3           0           5               8          15               8
+#> 4           0           4               8          15               8
+#> 5           0           5               8          11               8
+#> 6           0           3               8          16               8
+
+# plot chart
+plot(p)
 ```
 
 <img src="man/figures/README-unnamed-chunk-14-1.svg" width="100%" />
