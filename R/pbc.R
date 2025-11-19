@@ -125,9 +125,19 @@ pbc <- function(x,
   # Get number of subgroups
   x.len <- length(unique(x))
 
-  # Make dummy facet if facet is null
+  # Make facet variable
   if (is.null(facet)) {
-    facet <- 1 #rep(1, length(x))
+    facet <- 1
+  } else {
+    if (!is.list(facet)) {
+      facet <- list(facet)
+    }
+
+    if (length(facet) == 2 && is.null(ncol)) {
+      ncol <- length(unique(facet[[length(facet)]]))
+    }
+
+    facet <- do.call(paste, c(facet, sep = ' | '))
   }
 
   # Make sure that the num and den vectors are of the same length.
