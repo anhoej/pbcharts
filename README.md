@@ -1,4 +1,4 @@
-2025-08-22
+2025-11-20
 
 - [Process Behaviour Charts](#process-behaviour-charts)
   - [Installation](#installation)
@@ -49,7 +49,7 @@ pbcharts is currently able to:
   period;
 - split charts into separate periods;
 - exclude individual data points from calculations;
-- facet plots (small multiples) on one categorical variable.
+- facet plots (small multiples) on one or more categorical variables.
 
 pbcharts is in early develpment. Please report any issues at
 <https://github.com/anhoej/pbcharts/issues>
@@ -220,6 +220,21 @@ pbc(month, deaths, cases,
 
 <img src="man/figures/README-unnamed-chunk-13-1.svg" width="100%" />
 
+Two-way faceted chart of avoidable hospitalisation in 65+ years citizens
+from 5 diagnoses in 9 municipalities.
+
+``` r
+pbc(month, admissions, population,
+    facet = list(diagnosis, municipality),
+    data = avoidable_hospitalisations,
+    multiply = 10000,
+    title = 'Avoidable hospitalisations',
+    ylab = 'Count per 10,000 population',
+    xlab = 'Month')
+```
+
+<img src="man/figures/README-unnamed-chunk-14-1.svg" width="100%" />
+
 ### Structure and summary of a pbc object
 
 Saving a pbc object
@@ -297,7 +312,7 @@ summary(p)
 plot(p)
 ```
 
-<img src="man/figures/README-unnamed-chunk-14-1.svg" width="100%" />
+<img src="man/figures/README-unnamed-chunk-15-1.svg" width="100%" />
 
 ## Procedure for calculating centre line and control limits
 
