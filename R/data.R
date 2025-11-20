@@ -63,3 +63,18 @@
 #'   Annotations. }
 #' @source www.esundhed.dk (Amager Hvidovre Hospital).
 "cdi"
+
+#' Avoidable hospitalisations
+#'
+#' Potentially avoidable hospitalisations in 65+ years citizens from five
+#' diagnoses and nine municipalities.
+#'
+#' @format A data frame with 3600 rows and 5 variables:
+#' \itemize{
+#' \item {municipality} Three-letter abbreviation of municipality.
+#' \item {diagnosis} Diagnosis that caused the admission.
+#' \item {month} First day of admission month.
+#' \item {admissions} Number of admissions.
+#' \item {population} Number of people in target population.
+#' }
+"avoidable_hospitalisations"

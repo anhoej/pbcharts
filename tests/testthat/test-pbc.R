@@ -21,6 +21,7 @@ test_that('pbc works', {
 })
 
 test_that('Faceting works', {
+  # one-way faceting
   expect_no_error(pbc(month, deaths, cases, hospital,
                       data = bacteremia_mortality))
   expect_no_error(pbc(month, deaths, cases, hospital,
@@ -37,6 +38,11 @@ test_that('Faceting works', {
                       ylab = '%',
                       xlab = 'Month',
                       ylim = c(0, NA)))
+  # two-way faceting
+  expect_no_error(pbc(month, admissions, population,
+                      facet = list(diagnosis, municipality),
+                      data = avoidable_hospitalisations,
+                      multiply = 10000))
 })
 
 test_that('freeze argument works', {

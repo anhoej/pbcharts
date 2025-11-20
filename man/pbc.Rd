@@ -36,7 +36,7 @@ plot on the y axis (numerator).}
 
 \item{den}{Numeric vector of subgroup sizes (denominator).}
 
-\item{facet}{Character (or factor) vector used for faceting.}
+\item{facet}{List of variable(s) used for faceting.}
 
 \item{data}{Data frame containing the variables used in the plot.}
 

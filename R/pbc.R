@@ -9,7 +9,7 @@
 #' @param num Numeric vector of measures or counts to
 #'            plot on the y axis (numerator).
 #' @param den Numeric vector of subgroup sizes (denominator).
-#' @param facet Character (or factor) vector used for faceting.
+#' @param facet List of variable(s) used for faceting.
 #' @param data Data frame containing the variables used in the plot.
 #' @param chart Character value indicating the chart type. Possible values are:
 #'             'run' (default), 'i', and 'ms'.
