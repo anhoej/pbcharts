@@ -39,10 +39,9 @@ test_that('Faceting works', {
                       xlab = 'Month',
                       ylim = c(0, NA)))
   # two-way faceting
-  expect_no_error(pbc(month, admissions, population,
-                      facet = list(diagnosis, municipality),
-                      data = avoidable_hospitalisations,
-                      multiply = 10000))
+  expect_no_error(pbc(qrt, avg_days,
+                      facet = list(region, operation),
+                      data = waiting_times))
 })
 
 test_that('freeze argument works', {

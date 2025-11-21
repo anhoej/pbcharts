@@ -64,17 +64,17 @@
 #' @source www.esundhed.dk (Amager Hvidovre Hospital).
 "cdi"
 
-#' Avoidable hospitalisations
+#' Waiting times
 #'
-#' Potentially avoidable hospitalisations in 65+ years citizens from five
-#' diagnoses and nine municipalities.
+#' Average waiting times for 5 types of elective surgery in 5 regions.
 #'
-#' @format A data frame with 3600 rows and 5 variables:
-#' \itemize{
-#' \item {municipality} Three-letter abbreviation of municipality.
-#' \item {diagnosis} Diagnosis that caused the admission.
-#' \item {month} First day of admission month.
-#' \item {admissions} Number of admissions.
-#' \item {population} Number of people in target population.
+#' @format A dataframe with 630 rows and 5 variables.
+#' \describe{
+#'     \item{qrt}{First day of quarter.}
+#'     \item{region}{Region.}
+#'     \item{operation}{Type of operation.}
+#'     \item{avg_days}{Average waiting time in days.}
+#'     \item{n}{Number of operations.}
 #' }
-"avoidable_hospitalisations"
+"waiting_times"
+

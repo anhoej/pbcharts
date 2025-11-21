@@ -1,4 +1,4 @@
-2025-11-20
+2025-11-21
 
 - [Process Behaviour Charts](#process-behaviour-charts)
   - [Installation](#installation)
@@ -220,17 +220,16 @@ pbc(month, deaths, cases,
 
 <img src="man/figures/README-unnamed-chunk-13-1.svg" width="100%" />
 
-Two-way faceted chart of avoidable hospitalisation in 65+ years citizens
-from 5 diagnoses in 9 municipalities.
+Two-way faceted chart of average waiting times for 5 types of elective
+surgery in 5 regions.
 
 ``` r
-pbc(month, admissions, population,
-    facet = list(diagnosis, municipality),
-    data = avoidable_hospitalisations,
-    multiply = 10000,
-    title = 'Avoidable hospitalisations',
-    ylab = 'Count per 10,000 population',
-    xlab = 'Month')
+pbc(qrt, avg_days,
+    facet = list(region, operation), # facet by region and operation
+    data = waiting_times,
+    title = 'Average waiting times for elective surgery',
+    ylab = 'Days',
+    xlab = 'Quarter')
 ```
 
 <img src="man/figures/README-unnamed-chunk-14-1.svg" width="100%" />
