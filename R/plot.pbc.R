@@ -24,6 +24,7 @@ plot.pbc <- function(x, ...) {
   col3    <- 'tomato'
   col4    <- 'gray'
   cex.adj <- 0.9
+  facet.grid <- nchar(d$facet[1]) - nchar(gsub('\\|', '', d$facet[1])) == 1
 
   # Prepare canvas -------------------------------------------------------------
   # Calculate facets layout.
@@ -38,17 +39,20 @@ plot.pbc <- function(x, ...) {
   outer_x  <- seq(n_facets - n_cols + 1, n_facets)
   outer_y  <- seq(1, n_facets, by = n_cols)
 
+  outer_top <- 1:n_cols
+  outer_left <- seq(n_cols, n_facets, by = n_cols)
+
   # Set graphical parameters
   op <- graphics::par(
     mfrow    = mfrow,
     mar      = c(1.5,
                  1.5,
-                 ifelse(n_facets == 1, 0, 1.5),
+                 ifelse(n_facets > 1 && !facet.grid, 1.5, 0.2),
                  ifelse(yfixed, 1, 2.7)),
     oma      = c(2.5,
                  2.8,
-                 ifelse(is.null(x$title), 1, 2.6),
-                 0.5),
+                 ifelse(is.null(x$title), 1, 3),
+                 ifelse(facet.grid, 1.7, 0)),
     cex      = cex.adj,
     cex.axis = cex.adj,
     cex.main = cex.adj,
@@ -171,14 +175,44 @@ plot.pbc <- function(x, ...) {
                      adj    = -0.2,
                      las    = 1,
                      cex    = 0.7)
+
+      # ---- testing two-way faceting ----
+      if (facet.grid) {
+        facet1 <- strsplit(ip$facet[1], ' | ')[[1]][1]
+        facet2 <- strsplit(ip$facet[1], ' | ')[[1]][3]
+
+        if (j %in% outer_left) {
+          graphics::text(par('usr')[2], mean(par('usr')[3:4]),
+                         labels = facet1,
+                         xpd = NA,
+                         srt = -90,
+                         adj = c(0.5, -3),
+                         cex = 0.8)
+        }
+
+        if (j %in% outer_top) {
+          graphics::title(main      = facet2,
+                          xpd       = NA,
+                          adj       = 0,
+                          font.main = 1,
+                          line      = 0.6)
+        }
+      } else if (n_facets > 1) {
+        graphics::title(main      = i$facet[1],
+                        adj       = 0,
+                        font.main = 1,
+                        line      = 0.8)
+      }
+      # ---- end testing ----
     }
 
     # Add facet labels.
-    if (n_facets > 1)
-      graphics::title(main      = i$facet[1],
-                      adj       = 0,
-                      font.main = 1,
-                      line      = 0.8)
+    # if (n_facets > 1 && !facet.grid) {
+    #   graphics::title(main      = i$facet[1],
+    #                   adj       = 0,
+    #                   font.main = 1,
+    #                   line      = 0.8)
+    # }
   }
 
   # Finish plot ----------------------------------------------------------------
@@ -194,7 +228,7 @@ plot.pbc <- function(x, ...) {
                   outer = TRUE)
   graphics::mtext(x$title,          # main title
                   side  = 3,
-                  line  = 1.3,
+                  line  = 1.5,
                   outer = TRUE,
                   font  = 1,
                   adj   = 0)
