@@ -182,7 +182,8 @@ plot.pbc <- function(x, ...) {
         facet2 <- strsplit(ip$facet[1], ' | ')[[1]][3]
 
         if (j %in% outer_left) {
-          graphics::text(par('usr')[2], mean(par('usr')[3:4]),
+          graphics::text(graphics::par('usr')[2],
+                         mean(graphics::par('usr')[3:4]),
                          labels = facet1,
                          xpd = NA,
                          srt = -90,
