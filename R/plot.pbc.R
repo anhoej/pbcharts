@@ -176,15 +176,16 @@ plot.pbc <- function(x, ...) {
                      las    = 1,
                      cex    = 0.7)
 
+      # Add facet labels.
       # ---- testing two-way faceting ----
       if (facet.grid) {
-        facet1 <- strsplit(ip$facet[1], ' | ')[[1]][1]
-        facet2 <- strsplit(ip$facet[1], ' | ')[[1]][3]
+        facet.row <- sub(' \\|.*$', '', ip$facet[1])
+        facet.col <- sub('^.* \\| ', '', ip$facet[1])
 
         if (j %in% outer_left) {
           graphics::text(graphics::par('usr')[2],
                          mean(graphics::par('usr')[3:4]),
-                         labels = facet1,
+                         labels = facet.row,
                          xpd = NA,
                          srt = -90,
                          adj = c(0.5, -3),
@@ -192,12 +193,13 @@ plot.pbc <- function(x, ...) {
         }
 
         if (j %in% outer_top) {
-          graphics::title(main      = facet2,
+          graphics::title(main      = facet.col,
                           xpd       = NA,
                           adj       = 0,
                           font.main = 1,
                           line      = 0.6)
         }
+
       } else if (n_facets > 1) {
         graphics::title(main      = i$facet[1],
                         adj       = 0,
@@ -207,7 +209,6 @@ plot.pbc <- function(x, ...) {
       # ---- end testing ----
     }
 
-    # Add facet labels.
     # if (n_facets > 1 && !facet.grid) {
     #   graphics::title(main      = i$facet[1],
     #                   adj       = 0,
