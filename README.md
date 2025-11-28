@@ -1,4 +1,4 @@
-2025-11-25
+2025-11-28
 
 - [Process Behaviour Charts](#process-behaviour-charts)
   - [Installation](#installation)
@@ -107,12 +107,16 @@ pbc(month, avg_delay,
 I’ chart of C-section data taking varying subgroup sizes into account:
 
 ``` r
-pbc(month, avg_delay * n, n,  # multiply numerator and denominator to keep scale
+pbc(month, avg_delay * n, n,  # multiply numerator by denominator to keep scale
     data = csection,
     chart = 'i')
 ```
 
 <img src="man/figures/README-unnamed-chunk-6-1.svg" width="100%" />
+
+Notice that pbc() always plots the numerator divided by the denominator.
+Consequently, if the numerators have already been averaged, it is
+necessary to multiply the numerator by the denominator before plotting.
 
 Standard I chart of average HbA1c in children with diabetes:
 
