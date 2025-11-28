@@ -31,14 +31,16 @@ An R package for run charts and individuals control charts for
 statistical quality control and improvement.
 
 pbcharts implements the I prime (I’ or normalised I) control chart
-suggested by Taylor
+suggested by Taylor:
 <https://variation.com/normalized-individuals-control-chart/>.
 
 The I’ chart adjusts control limits to varying subgroup sizes making
 pbcharts useful for a wide range of measurement and count data and a
 convenient replacement for the classic Shewhart control charts.
 
-pbcharts uses only functions from base R making in fast and robust.
+Following the [tinyverse principles](https://www.tinyverse.org/),
+pbcharts relies solely on base R functions, avoiding external package
+dependencies – making it both fast and robust.
 
 pbcharts is currently able to:
 
@@ -52,7 +54,7 @@ pbcharts is currently able to:
 - facet plots (small multiples) on one or more categorical variables.
 
 pbcharts is in early develpment. Please report any issues at
-<https://github.com/anhoej/pbcharts/issues>
+<https://github.com/anhoej/pbcharts/issues>.
 
 ## Installation
 
@@ -358,7 +360,8 @@ $$
 
 ## Tests for special cause variation
 
-pbc applies three tests to detect special cause variation:
+pbc() applies [three tests](https://doi.org/10.1186/s12874-018-0564-0)
+to detect special cause variation:
 
 - **Data points outside the control limits**<br> Any point falling
   outside the control limits indicates potential special cause
