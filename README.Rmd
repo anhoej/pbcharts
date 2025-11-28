@@ -19,8 +19,6 @@ knitr::opts_chunk$set(
   out.width = "100%",
   dev = 'svg'
 )
-
-set.seed(1)
 ```
 
 # Process Behaviour Charts
@@ -65,8 +63,11 @@ devtools::install_github("anhoej/pbcharts")
 Draw a run chart of 24 random normal values:
 
 ```{r}
-library(pbcharts)
-pbc(rnorm(24))
+library(pbcharts)  # load pbcharts
+
+set.seed(1)        # lock random number generator
+
+pbc(rnorm(24))     # plot run chart of 24 random normal values
 ```
 
 Draw an individuals (I) control chart:

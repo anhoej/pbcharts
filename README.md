@@ -70,8 +70,11 @@ You can install the development version of pbcharts from
 Draw a run chart of 24 random normal values:
 
 ``` r
-library(pbcharts)
-pbc(rnorm(24))
+library(pbcharts)  # load pbcharts
+
+set.seed(1)        # lock random number generator
+
+pbc(rnorm(24))     # plot run chart of 24 random normal values
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.svg" width="100%" />
