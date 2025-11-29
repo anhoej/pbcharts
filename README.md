@@ -40,7 +40,7 @@ convenient replacement for the classic Shewhart control charts.
 
 Following the [tinyverse principles](https://www.tinyverse.org/),
 pbcharts relies solely on base R functions, avoiding external package
-dependencies – making it both fast and robust.
+dependencies, and making it both fast and robust.
 
 pbcharts is currently able to:
 

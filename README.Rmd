@@ -35,7 +35,7 @@ pbcharts implements the I prime (I' or normalised I) control chart suggested by 
 
 The I' chart adjusts control limits to varying subgroup sizes making pbcharts useful for a wide range of measurement and count data and a convenient replacement for the classic Shewhart control charts.
 
-Following the [tinyverse principles](https://www.tinyverse.org/), pbcharts relies solely on base R functions, avoiding external package dependencies -- making it both fast and robust.
+Following the [tinyverse principles](https://www.tinyverse.org/), pbcharts relies solely on base R functions, avoiding external package dependencies, and making it both fast and robust.
 
 pbcharts is currently able to:
 
