@@ -82,6 +82,8 @@ Signal special causes from data points outside control limits (red points) and(o
 pbc(1:11, chart = 'i')
 ```
 
+See below for the rules applied to signal special cause variation.
+
 ### Plotting measurement data
 
 Standard I chart (subgroup size = 1) of average decision to delivery times for grade 2 caesarian sections (C-section):

@@ -1,4 +1,4 @@
-2025-11-28
+2025-11-29
 
 - [Process Behaviour Charts](#process-behaviour-charts)
   - [Installation](#installation)
@@ -95,6 +95,8 @@ pbc(1:11, chart = 'i')
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.svg" width="100%" />
+
+See below for the rules applied to signal special cause variation.
 
 ### Plotting measurement data
 
