@@ -237,10 +237,10 @@ surgery in 5 regions.
 ``` r
 pbc(qrt, avg_days,
     facet = list(region, operation), # facet by region and operation
-    data = waiting_times,
+    data  = waiting_times,
     title = 'Average waiting times for elective surgery',
-    ylab = 'Days',
-    xlab = 'Quarter')
+    ylab  = 'Days',
+    xlab  = 'Quarter')
 ```
 
 <img src="man/figures/README-unnamed-chunk-14-1.svg" width="100%" />
