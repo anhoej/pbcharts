@@ -8,7 +8,7 @@
 #
 #
 # Run chart
-pbc.run <- function(x) {
+pbc.run <- function(x, screenms) {
   # Centre line
   if(all(is.na(x$cl))) {
     x$cl  <- stats::median(x$y[x$base], na.rm = TRUE)
@@ -22,7 +22,7 @@ pbc.run <- function(x) {
 }
 
 # I prime chart
-pbc.i <- function(x) {
+pbc.i <- function(x, screenms) {
   # Centre line
   if (all(is.na(x$cl))) {
     x$cl <- stats::weighted.mean(x$y[x$base],
@@ -35,10 +35,12 @@ pbc.i <- function(x) {
     s          <- c(NA, moving.s(x$y, x$den))
     sbar       <- mean(s[x$base], na.rm = TRUE)
 
-    # Remove values above upper control limit
-    uls        <- sbar * 3.2665
-    s[s > uls] <- NA
-    sbar       <- mean(s[x$base], na.rm = TRUE)
+    if (screenms) {
+      # Remove values above upper control limit
+      uls        <- sbar * 3.2665
+      s[s > uls] <- NA
+      sbar       <- mean(s[x$base], na.rm = TRUE)
+    }
 
     stdev <- sbar * sqrt(1 / x$den)
   } else {
@@ -53,7 +55,7 @@ pbc.i <- function(x) {
 }
 
 # Moving S prime chart
-pbc.ms <- function(x) {
+pbc.ms <- function(x, screenms) {
   # Centre line
   s    <- c(NA, moving.s(x$y, x$den))
   x$y  <- s

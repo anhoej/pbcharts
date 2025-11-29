@@ -14,6 +14,7 @@ pbc(
   freeze = NULL,
   split = NULL,
   exclude = NULL,
+  screenms = FALSE,
   multiply = 1,
   ncol = NULL,
   ylim = NULL,
@@ -50,6 +51,10 @@ baseline period (phase 1). Ignored if split is not NULL.}
 splitting the graph.}
 
 \item{exclude}{Integer vector of indices to exclude from calculations.}
+
+\item{screenms}{Logical, screen moving standard deviations before calculating
+control limits by removing values above upper control limit
+(3.2665).}
 
 \item{multiply}{Number to multiply y axis by, e.g. 100 to get percentages
 rather than proportions.}

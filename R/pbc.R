@@ -18,6 +18,9 @@
 #' @param split Integer indicating the index of the last subgroup before
 #'              splitting the graph.
 #' @param exclude Integer vector of indices to exclude from calculations.
+#' @param screenms Logical, screen moving standard deviations before calculating
+#'                 control limits by removing values above upper control limit
+#'                 (3.2665).
 #' @param multiply Number to multiply y axis by, e.g. 100 to get percentages
 #'                 rather than proportions.
 #' @param ncol Number of columns in faceted plot.
@@ -75,6 +78,7 @@ pbc <- function(x,
                 freeze   = NULL,
                 split    = NULL,
                 exclude  = NULL,
+                screenms = FALSE,
                 multiply = 1,
                 ncol     = NULL,
                 ylim     = NULL,
@@ -202,7 +206,7 @@ pbc <- function(x,
 
   # Control limits and runs analysis for each facet and part.
   d <- split(d, ~ facet + part)
-  d <- lapply(d, chart.fun)
+  d <- lapply(d, chart.fun, screenms)
   d <- lapply(d, runs.analysis)
   d <- do.call(rbind, args = c(d, make.row.names = FALSE))
 

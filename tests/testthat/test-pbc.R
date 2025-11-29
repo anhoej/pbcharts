@@ -132,6 +132,18 @@ test_that('signals and summary work', {
                tolerance = 0.005)
 })
 
+test_that('screenms argument works', {
+  set.seed(44)
+  y <- rnorm(24)
+
+  expect_equal(
+    summary(pbc(y, chart = 'ms'))$sigma.signal, 1)
+  expect_equal(
+    summary(pbc(y, chart = 'i'))$sigma.signal, 0)
+  expect_equal(
+    summary(pbc(y, chart = 'i', screenms = TRUE))$sigma.signal, 1)
+})
+
 test_that('cl and sd arguments work', {
   expect_no_error(pbc(rnorm(12), chart = 'i', cl = 0, sd = 1))
 })
