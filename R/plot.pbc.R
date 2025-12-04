@@ -163,37 +163,35 @@ plot.pbc <- function(x, ...) {
                        col = dotcol,
                        pch = 19)
 
+      clval  <- ip$cl[1]
+      lclval <- mean(ip$lcl, na.rm = TRUE)
+      uclval <- mean(ip$ucl, na.rm = TRUE)
+
       if (ypct) {
-        cllab <- paste0(formatC(ip$cl[1] * 100, digits = 2, format = 'fg'), '%')
-        lcllab <- paste0(formatC(mean(ip$lcl) * 100,
-                                digits = 2,
-                                format = 'fg'),
-                        '%')
-        ucllab <- paste0(formatC(mean(ip$ucl) * 100,
-                                digits = 2,
-                                format = 'fg'),
-                        '%')
+        cllab  <- paste0(formatC(clval * 100, digits = 2, format = 'fg'), '%')
+        lcllab <- paste0(formatC(lclval * 100, digits = 2, format = 'fg'), '%')
+        ucllab <- paste0(formatC(uclval * 100, digits = 2, format = 'fg'), '%')
       } else {
-        cllab <- formatC(ip$cl[1], digits = 2, format = 'fg')
-        ucllab <- formatC(mean(ip$ucl), digits = 2, format = 'fg')
-        lcllab <- formatC(mean(ip$lcl), digits = 2, format = 'fg')
+        cllab  <- formatC(clval, digits = 2, format = 'fg')
+        ucllab <- formatC(uclval, digits = 2, format = 'fg')
+        lcllab <- formatC(lclval, digits = 2, format = 'fg')
       }
 
-      graphics::text(max(ip$x), ip$cl[1],  # centre line label
+      graphics::text(max(ip$x), clval,  # centre line label
                      labels = cllab,
                      xpd    = NA,
                      adj    = -0.2,
                      las    = 1,
                      cex    = 0.7)
 
-      graphics::text(max(ip$x), mean(ip$ucl),  # UCL label
+      graphics::text(max(ip$x), uclval,  # UCL label
                      labels = ucllab,
                      xpd    = NA,
                      adj    = -0.2,
                      las    = 1,
                      cex    = 0.7)
 
-      graphics::text(max(ip$x), mean(ip$lcl),  # LCL label
+      graphics::text(max(ip$x), lclval,  # LCL label
                      labels = lcllab,
                      xpd    = NA,
                      adj    = -0.2,
