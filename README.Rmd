@@ -181,6 +181,7 @@ pbc(month, n, days,
 
 ### Facetted charts for multidimensional data
 
+
 Faceted I' chart of bacteremia mortality in six hospitals:
 
 ```{r, fig.height=7}

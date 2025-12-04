@@ -165,12 +165,36 @@ plot.pbc <- function(x, ...) {
 
       if (ypct) {
         cllab <- paste0(formatC(ip$cl[1] * 100, digits = 2, format = 'fg'), '%')
+        lcllab <- paste0(formatC(mean(ip$lcl) * 100,
+                                digits = 2,
+                                format = 'fg'),
+                        '%')
+        ucllab <- paste0(formatC(mean(ip$ucl) * 100,
+                                digits = 2,
+                                format = 'fg'),
+                        '%')
       } else {
         cllab <- formatC(ip$cl[1], digits = 2, format = 'fg')
+        ucllab <- formatC(mean(ip$ucl), digits = 2, format = 'fg')
+        lcllab <- formatC(mean(ip$lcl), digits = 2, format = 'fg')
       }
 
       graphics::text(max(ip$x), ip$cl[1],  # centre line label
                      labels = cllab,
+                     xpd    = NA,
+                     adj    = -0.2,
+                     las    = 1,
+                     cex    = 0.7)
+
+      graphics::text(max(ip$x), mean(ip$ucl),  # UCL label
+                     labels = ucllab,
+                     xpd    = NA,
+                     adj    = -0.2,
+                     las    = 1,
+                     cex    = 0.7)
+
+      graphics::text(max(ip$x), mean(ip$lcl),  # LCL label
+                     labels = lcllab,
                      xpd    = NA,
                      adj    = -0.2,
                      las    = 1,
