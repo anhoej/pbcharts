@@ -398,12 +398,11 @@ to detect special cause variation:
   number, where n is the number of useful data points (i.e. those not on
   the centre line).
 
-- **Unusually few crossings**\<br\< A crossing occurs when two
-  consecutive data points fall on opposite sides of the centre line. In
-  a random process, the number of crossings follows a binomial
-  distribution. The lower 5% prediction limit can be found using the
-  cumulative distribution function:
-  `qbinom(p = 0.05, size = n - 1, prob = 0.5)`.
+- **Unusually few crossings**<br> A crossing occurs when two consecutive
+  data points fall on opposite sides of the centre line. In a random
+  process, the number of crossings follows a binomial distribution. The
+  lower 5% prediction limit can be found using the cumulative
+  distribution function: `qbinom(p = 0.05, size = n - 1, prob = 0.5)`.
 
 Data points outside the control limits are highlighted, and the centre
 line is dashed and coloured if either of the two runs tests is positive.
