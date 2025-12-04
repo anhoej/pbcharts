@@ -280,6 +280,7 @@ Control limits:
 $$
 \text{control limits} = CL \pm 3 \frac{\bar{s}}{\sqrt{d_i}}
 $$
+
 ## Tests for special cause variation
 
 pbc() applies [three tests](https://doi.org/10.1186/s12874-018-0564-0) to detect special cause variation:

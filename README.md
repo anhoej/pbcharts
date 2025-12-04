@@ -12,6 +12,8 @@
       object](#structure-and-summary-of-a-pbc-object)
   - [Procedure for calculating centre line and control
     limits](#procedure-for-calculating-centre-line-and-control-limits)
+  - [Tests for special cause
+    variation](#tests-for-special-cause-variation)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -377,7 +379,9 @@ Control limits:
 
 $$
 \text{control limits} = CL \pm 3 \frac{\bar{s}}{\sqrt{d_i}}
-$$ \## Tests for special cause variation
+$$
+
+## Tests for special cause variation
 
 pbc() applies [three tests](https://doi.org/10.1186/s12874-018-0564-0)
 to detect special cause variation:
