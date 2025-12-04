@@ -62,16 +62,16 @@ rather than proportions.}
 \item{ncol}{Number of columns in faceted plot.}
 
 \item{ylim}{Numeric vector (y1, y2) setting the y axis limits. Useful
-for preventing negative negative control limits (c(0, NA)) or
-proportions above 1 (c(0, 1)).}
+for preventing negative negative control limits (ylim = c(0, NA))
+or proportions above 1 (ylim = c(0, 1)).}
 
 \item{yfixed}{Logical, if TRUE (default) makes a common scale for y
-axes.}
+axes in faceted plots.}
 
 \item{ypct}{Logical, if TRUE displays the y axis labels as percentages and
-censores the y axis 0\% and 100\%.}
+censors the y axis at 0\% and 100\%.}
 
-\item{cl}{Numberic, single value indicating the centre line (if known).}
+\item{cl}{Numeric, single value indicating the centre line (if known).}
 
 \item{sd}{Numeric, single value indicating the standard deviation (if known).}
 

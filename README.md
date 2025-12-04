@@ -53,7 +53,7 @@ pbcharts is currently able to:
 - exclude individual data points from calculations;
 - facet plots (small multiples) on one or more categorical variables.
 
-pbcharts is in early develpment. Please report any issues at
+pbcharts is in early development. Please report any issues at
 <https://github.com/anhoej/pbcharts/issues>.
 
 ## Installation

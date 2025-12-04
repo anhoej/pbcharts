@@ -25,13 +25,13 @@
 #'                 rather than proportions.
 #' @param ncol Number of columns in faceted plot.
 #' @param ylim Numeric vector (y1, y2) setting the y axis limits. Useful
-#'             for preventing negative negative control limits (c(0, NA)) or
-#'             proportions above 1 (c(0, 1)).
+#'             for preventing negative negative control limits (ylim = c(0, NA))
+#'             or proportions above 1 (ylim = c(0, 1)).
 #' @param yfixed Logical, if TRUE (default) makes a common scale for y
-#'               axes.
+#'               axes in faceted plots.
 #' @param ypct Logical, if TRUE displays the y axis labels as percentages and
-#'             censores the y axis 0% and 100%.
-#' @param cl Numberic, single value indicating the centre line (if known).
+#'             censors the y axis at 0% and 100%.
+#' @param cl Numeric, single value indicating the centre line (if known).
 #' @param sd Numeric, single value indicating the standard deviation (if known).
 #' @param title,xlab,ylab Characters setting the main chart title and axis
 #'                        labels. Use NULL to suppress.
