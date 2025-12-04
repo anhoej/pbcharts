@@ -12,8 +12,6 @@
       object](#structure-and-summary-of-a-pbc-object)
   - [Procedure for calculating centre line and control
     limits](#procedure-for-calculating-centre-line-and-control-limits)
-  - [Tests for special cause
-    variation](#tests-for-special-cause-variation)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -74,7 +72,9 @@ library(pbcharts)  # load pbcharts
 
 set.seed(1)        # lock random number generator
 
-pbc(rnorm(24))     # plot run chart of 24 random normal values
+y <- rnorm(24)     # generate random numbers to plot
+
+pbc(y)             # plot run chart of 24 random normal values
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.svg" width="100%" />
@@ -82,10 +82,18 @@ pbc(rnorm(24))     # plot run chart of 24 random normal values
 Draw an individuals (I) control chart:
 
 ``` r
-pbc(rnorm(24), chart = 'i')
+pbc(y, chart = 'i')
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.svg" width="100%" />
+
+Draw a moving standard deviations control chart:
+
+``` r
+pbc(y, chart = 'ms')
+```
+
+<img src="man/figures/README-unnamed-chunk-4-1.svg" width="100%" />
 
 Signal special causes from data points outside control limits (red
 points) and(or) unusually long or few runs (red and dashed centre line):
@@ -94,7 +102,7 @@ points) and(or) unusually long or few runs (red and dashed centre line):
 pbc(1:11, chart = 'i')
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.svg" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.svg" width="100%" />
 
 See below for the rules applied to signal special cause variation.
 
@@ -109,7 +117,7 @@ pbc(month, avg_delay,
     chart = 'i')
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.svg" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.svg" width="100%" />
 
 I’ chart of C-section data taking varying subgroup sizes into account:
 
@@ -119,7 +127,7 @@ pbc(month, avg_delay * n, n,  # multiply numerator by denominator to keep scale
     chart = 'i')
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.svg" width="100%" />
+<img src="man/figures/README-unnamed-chunk-7-1.svg" width="100%" />
 
 Notice that pbc() always plots the numerator divided by the denominator.
 Consequently, if the numerators have already been averaged, it is
@@ -136,7 +144,7 @@ pbc(month, avg_hba1c,
     xlab  = 'Month')
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.svg" width="100%" />
+<img src="man/figures/README-unnamed-chunk-8-1.svg" width="100%" />
 
 I’ chart of average HbA1c in children with diabetes using subgroups
 (number of children):
@@ -150,11 +158,11 @@ pbc(month, avg_hba1c * n, n,
     xlab  = 'Month')
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-1.svg" width="100%" />
+<img src="man/figures/README-unnamed-chunk-9-1.svg" width="100%" />
 
 ### Plotting count data
 
-Hospital infection rates:
+Run chart of hospital infection rates:
 
 ``` r
 pbc(month, n, days,
@@ -165,7 +173,7 @@ pbc(month, n, days,
     xlab     = 'Month')
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.svg" width="100%" />
+<img src="man/figures/README-unnamed-chunk-10-1.svg" width="100%" />
 
 Freeze calculation of centre and control lines to period before
 intervention:
@@ -181,7 +189,7 @@ pbc(month, n, days,
     xlab     = 'Month')
 ```
 
-<img src="man/figures/README-unnamed-chunk-10-1.svg" width="100%" />
+<img src="man/figures/README-unnamed-chunk-11-1.svg" width="100%" />
 
 Split chart after intervention:
 
@@ -196,23 +204,31 @@ pbc(month, n, days,
     xlab     = 'Month')
 ```
 
-<img src="man/figures/README-unnamed-chunk-11-1.svg" width="100%" />
-
-Ignore freak data point \#20:
-
-``` r
-pbc(month, n, days,
-    data     = cdi,
-    chart    = 'i',
-    multiply = 10000,
-    split    = 24,
-    exclude  = 20,
-    title    = 'Hospital associated C. diff. infections',
-    ylab     = 'Count per 10,000 risk days',
-    xlab     = 'Month')
-```
-
 <img src="man/figures/README-unnamed-chunk-12-1.svg" width="100%" />
+
+<!-- Ignore freak data point #20: -->
+
+<!-- ```{r} -->
+
+<!-- pbc(month, n, days, -->
+
+<!--     data     = cdi, -->
+
+<!--     chart    = 'i', -->
+
+<!--     multiply = 10000, -->
+
+<!--     split    = 24, -->
+
+<!--     exclude  = 20, -->
+
+<!--     title    = 'Hospital associated C. diff. infections', -->
+
+<!--     ylab     = 'Count per 10,000 risk days', -->
+
+<!--     xlab     = 'Month') -->
+
+<!-- ``` -->
 
 ### Facetted charts for multidimensional data
 
@@ -361,9 +377,7 @@ Control limits:
 
 $$
 \text{control limits} = CL \pm 3 \frac{\bar{s}}{\sqrt{d_i}}
-$$
-
-## Tests for special cause variation
+$$ \## Tests for special cause variation
 
 pbc() applies [three tests](https://doi.org/10.1186/s12874-018-0564-0)
 to detect special cause variation:

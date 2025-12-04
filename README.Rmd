@@ -67,13 +67,21 @@ library(pbcharts)  # load pbcharts
 
 set.seed(1)        # lock random number generator
 
-pbc(rnorm(24))     # plot run chart of 24 random normal values
+y <- rnorm(24)     # generate random numbers to plot
+
+pbc(y)             # plot run chart of 24 random normal values
 ```
 
 Draw an individuals (I) control chart:
 
 ```{r}
-pbc(rnorm(24), chart = 'i')
+pbc(y, chart = 'i')
+```
+
+Draw a moving standard deviations control chart:
+
+```{r}
+pbc(y, chart = 'ms')
 ```
 
 Signal special causes from data points outside control limits (red points) and(or) unusually long or few runs (red and dashed centre line):
@@ -128,7 +136,7 @@ pbc(month, avg_hba1c * n, n,
 
 ### Plotting count data
 
-Hospital infection rates:
+Run chart of hospital infection rates:
 
 ```{r}
 pbc(month, n, days,
@@ -165,19 +173,19 @@ pbc(month, n, days,
     xlab     = 'Month')
 ```
 
-Ignore freak data point #20:
+<!-- Ignore freak data point #20: -->
 
-```{r}
-pbc(month, n, days,
-    data     = cdi,
-    chart    = 'i',
-    multiply = 10000,
-    split    = 24,
-    exclude  = 20,
-    title    = 'Hospital associated C. diff. infections',
-    ylab     = 'Count per 10,000 risk days',
-    xlab     = 'Month')
-```
+<!-- ```{r} -->
+<!-- pbc(month, n, days, -->
+<!--     data     = cdi, -->
+<!--     chart    = 'i', -->
+<!--     multiply = 10000, -->
+<!--     split    = 24, -->
+<!--     exclude  = 20, -->
+<!--     title    = 'Hospital associated C. diff. infections', -->
+<!--     ylab     = 'Count per 10,000 risk days', -->
+<!--     xlab     = 'Month') -->
+<!-- ``` -->
 
 ### Facetted charts for multidimensional data
 
@@ -272,7 +280,6 @@ Control limits:
 $$
 \text{control limits} = CL \pm 3 \frac{\bar{s}}{\sqrt{d_i}}
 $$
-
 ## Tests for special cause variation
 
 pbc() applies [three tests](https://doi.org/10.1186/s12874-018-0564-0) to detect special cause variation:
@@ -302,4 +309,3 @@ x <- data.frame(
 
 knitr::kable(x)
 ```
-
