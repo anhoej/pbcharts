@@ -21,6 +21,8 @@ knitr::opts_chunk$set(
 )
 ```
 
+test
+
 # Process Behaviour Charts
 
 -- Yet another R package for statistical process control charts
@@ -217,7 +219,7 @@ pbc(qrt, avg_days,
 
 Saving a pbc object
 
-```{r}
+```{r, fig.height=8}
 # save pbc object while suppressing plotting
 p <- pbc(month, deaths, cases,
          facet    = hospital,
