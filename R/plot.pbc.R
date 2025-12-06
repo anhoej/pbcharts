@@ -168,32 +168,32 @@ plot.pbc <- function(x, ...) {
       lclval <- mean(ip$lcl, na.rm = TRUE)
       uclval <- mean(ip$ucl, na.rm = TRUE)
 
-      if (ypct) {
-        cllab  <- paste0(formatC(clval * 100, digits = 2, format = 'fg'), '%')
-        lcllab <- paste0(formatC(lclval * 100, digits = 2, format = 'fg'), '%')
-        ucllab <- paste0(formatC(uclval * 100, digits = 2, format = 'fg'), '%')
-      } else {
-        cllab  <- formatC(clval, digits = 2, format = 'fg')
-        ucllab <- formatC(uclval, digits = 2, format = 'fg')
-        lcllab <- formatC(lclval, digits = 2, format = 'fg')
-      }
+      # if (ypct) {
+      #   cllab  <- paste0(formatC(clval * 100, digits = 2, format = 'fg'), '%')
+      #   lcllab <- paste0(formatC(lclval * 100, digits = 2, format = 'fg'), '%')
+      #   ucllab <- paste0(formatC(uclval * 100, digits = 2, format = 'fg'), '%')
+      # } else {
+      #   cllab  <- formatC(clval, digits = 2, format = 'fg')
+      #   ucllab <- formatC(uclval, digits = 2, format = 'fg')
+      #   lcllab <- formatC(lclval, digits = 2, format = 'fg')
+      # }
 
       graphics::text(max(ip$x), clval,  # centre line label
-                     labels = cllab,
+                     labels = format_labs(clval, ypct), #cllab,
                      xpd    = NA,
                      adj    = -0.2,
                      las    = 1,
                      cex    = 0.7)
 
       graphics::text(max(ip$x), uclval,  # UCL label
-                     labels = ucllab,
+                     labels = format_labs(uclval, ypct), #ucllab,
                      xpd    = NA,
                      adj    = -0.2,
                      las    = 1,
                      cex    = 0.7)
 
       graphics::text(max(ip$x), lclval,  # LCL label
-                     labels = lcllab,
+                     labels = format_labs(lclval, ypct), #lcllab,
                      xpd    = NA,
                      adj    = -0.2,
                      las    = 1,

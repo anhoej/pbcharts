@@ -10,7 +10,7 @@
 # Run chart
 pbc.run <- function(x, screenms) {
   # Centre line
-  if(all(is.na(x$cl))) {
+  if (all(is.na(x$cl))) {
     x$cl  <- stats::median(x$y[x$base], na.rm = TRUE)
   }
 
@@ -54,7 +54,7 @@ pbc.i <- function(x, screenms) {
   x
 }
 
-# Moving S prime chart
+# Moving S chart
 pbc.ms <- function(x, screenms) {
   # Centre line
   s    <- c(NA, moving.s(x$y, x$den))
@@ -67,7 +67,6 @@ pbc.ms <- function(x, screenms) {
 
   x
 }
-
 
 # Runs analysis function #######################################################
 #
@@ -131,8 +130,31 @@ moving.s <- function(y, den) {
 }
 
 # Make parts function ##########################################################
+#
+# Creates helper variable to split charts.
+#
+# x: Integer indicating the the last subgroup before splitting the graph.
+# n: Integer indicating the number of subgroups in chart.
+#
 make.parts <- function(x, n) {
   x <- unique(c(0, x))
   x <- sort(x)
   rep(seq_along(x), diff(c(x, n)))
+}
+
+# Make labels function #########################################################
+#
+# Create nice labels for centre and control lines.
+# x:    Value to convert to string.
+# ypct: Logical, show label as percentage.
+#
+format_labs <- function(x, ypct) {
+  if (ypct) {
+    x <- formatC(x * 100, digits = 2, format = 'fg')
+    x <- paste0(x, '%')
+  } else {
+    x <- formatC(x, digits = 2, format = 'fg')
+  }
+
+  x
 }
