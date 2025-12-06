@@ -19,11 +19,11 @@ plot.pbc <- function(x, ...) {
   parts  <- unique(d$part)
 
   # Set constants --------------------------------------------------------------
-  col1    <- 'steelblue'
-  col2    <- 'grey30'
-  col3    <- 'tomato'
-  col4    <- 'gray'
-  cex.adj <- 0.9
+  col1       <- 'steelblue'  # line
+  col2       <- 'grey30'     # non-data elements, e.g. axes and control limits
+  col3       <- 'tomato'     # signal
+  col4       <- 'gray'       # ignored datapoints
+  cex.adj    <- 0.9
   facet.grid <- nchar(d$facet[1]) - nchar(gsub('\\|', '', d$facet[1])) == 1
 
   # Prepare canvas -------------------------------------------------------------
