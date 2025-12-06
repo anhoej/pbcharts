@@ -111,11 +111,13 @@ plot.pbc <- function(x, ...) {
 
     yticks <- graphics::axTicks(2)
 
-    if (j %in% outer_y | !yfixed) {
+    if (j %in% outer_y || !yfixed) {
       ylabs <- yticks
+
       if (ypct) {
         ylabs <- paste0(ylabs * 100, '%')
       }
+
     } else {
       ylabs <- FALSE
     }
@@ -127,9 +129,8 @@ plot.pbc <- function(x, ...) {
                               FALSE)))
 
     do.call(graphics::axis,                     # y axis
-            c(2,
-              axis_par,
-              list(at = yticks,
+            c(2, axis_par,
+              list(at     = yticks,
                    labels = ylabs))
     )
 
