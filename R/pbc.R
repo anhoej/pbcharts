@@ -138,7 +138,7 @@ pbc <- function(x,
     }
 
     if (length(facet) == 2 && is.null(ncol)) {
-      ncol <- length(unique(facet[[length(facet)]]))
+      ncol <- length(unique(facet[[2]]))
     }
 
     facet <- do.call(paste, c(facet, sep = ' | '))
@@ -197,7 +197,6 @@ pbc <- function(x,
     x
   })
   d <- do.call(rbind, args = c(d, make.row.names = FALSE))
-
 
   # Helper variables
   d$freeze  <- d$xx <= min(freeze, Inf)
