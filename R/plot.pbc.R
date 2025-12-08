@@ -23,6 +23,7 @@ plot.pbc <- function(x, ...) {
   col2       <- 'grey30'     # non-data elements, e.g. axes and control limits
   col3       <- 'tomato'     # signal
   col4       <- 'gray'       # ignored datapoints
+  col5       <- 'darkgreen'  # target line
   cex.adj    <- 0.9
   facet.grid <- nchar(d$facet[1]) - nchar(gsub('\\|', '', d$facet[1])) == 1
 
@@ -81,6 +82,7 @@ plot.pbc <- function(x, ...) {
   ylim <- range(d$y,
                 d$lcl,
                 d$ucl,
+                d$target,
                 na.rm = TRUE)
 
   # Draw facets ----------------------------------------------------------------
@@ -94,6 +96,7 @@ plot.pbc <- function(x, ...) {
       ylim <- range(i$y,
                     i$lcl,
                     i$ucl,
+                    i$target,
                     na.rm = TRUE)
     }
 
@@ -164,36 +167,40 @@ plot.pbc <- function(x, ...) {
                        col = dotcol,
                        pch = 19)
 
-      clval  <- ip$cl[1]
-      lclval <- mean(ip$lcl, na.rm = TRUE)
-      uclval <- mean(ip$ucl, na.rm = TRUE)
+      # testing target line
+      graphics::lines(ip$x, ip$target,     # target line
+                      col = col5,
+                      lty = 'dashed')
+      # end testing target line
 
-      # if (ypct) {
-      #   cllab  <- paste0(formatC(clval * 100, digits = 2, format = 'fg'), '%')
-      #   lcllab <- paste0(formatC(lclval * 100, digits = 2, format = 'fg'), '%')
-      #   ucllab <- paste0(formatC(uclval * 100, digits = 2, format = 'fg'), '%')
-      # } else {
-      #   cllab  <- formatC(clval, digits = 2, format = 'fg')
-      #   ucllab <- formatC(uclval, digits = 2, format = 'fg')
-      #   lcllab <- formatC(lclval, digits = 2, format = 'fg')
-      # }
+      clval     <- ip$cl[1]
+      lclval    <- mean(ip$lcl, na.rm = TRUE)
+      uclval    <- mean(ip$ucl, na.rm = TRUE)
+      targetval <- ip$target[nrow(ip)]
 
       graphics::text(max(ip$x), clval,  # centre line label
-                     labels = format_labs(clval, ypct), #cllab,
+                     labels = format_labs(clval, ypct),
                      xpd    = NA,
                      adj    = -0.2,
                      las    = 1,
                      cex    = 0.7)
 
       graphics::text(max(ip$x), uclval,  # UCL label
-                     labels = format_labs(uclval, ypct), #ucllab,
+                     labels = format_labs(uclval, ypct),
                      xpd    = NA,
                      adj    = -0.2,
                      las    = 1,
                      cex    = 0.7)
 
       graphics::text(max(ip$x), lclval,  # LCL label
-                     labels = format_labs(lclval, ypct), #lcllab,
+                     labels = format_labs(lclval, ypct),
+                     xpd    = NA,
+                     adj    = -0.2,
+                     las    = 1,
+                     cex    = 0.7)
+
+      graphics::text(max(ip$x), targetval,  # target label
+                     labels = format_labs(targetval, ypct),
                      xpd    = NA,
                      adj    = -0.2,
                      las    = 1,

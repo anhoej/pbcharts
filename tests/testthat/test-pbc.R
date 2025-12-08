@@ -20,6 +20,11 @@ test_that('pbc works', {
                       chart = 'ms'))
 })
 
+test_that('target argument works', {
+  expect_no_error(pbc(csection$avg_delay,
+                      target = 30))
+})
+
 test_that('Faceting works', {
   # one-way faceting
   expect_no_error(pbc(month, deaths, cases, hospital,

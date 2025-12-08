@@ -18,6 +18,8 @@
 #' @param split Integer indicating the index of the last subgroup before
 #'              splitting the graph.
 #' @param exclude Integer vector of indices to exclude from calculations.
+#' @param target Number indicating the target value to be drawn as a horisontal
+#'               line.
 #' @param screenms Logical, screen moving standard deviations before calculating
 #'                 control limits by removing values above upper control limit
 #'                 (3.2665).
@@ -78,6 +80,7 @@ pbc <- function(x,
                 freeze   = NULL,
                 split    = NULL,
                 exclude  = NULL,
+                target   = NULL,
                 screenms = FALSE,
                 multiply = 1,
                 ncol     = NULL,
@@ -115,6 +118,7 @@ pbc <- function(x,
   num   <- eval(substitute(num), data, parent.frame())
   den   <- eval(substitute(den), data, parent.frame())
   facet <- eval(substitute(facet), data, parent.frame())
+  target <- eval(substitute(target), data, parent.frame())
 
   # Get chart function
   chart     <- match.arg(chart)
@@ -234,10 +238,11 @@ pbc <- function(x,
   d$cl  <- d$cl * multiply
   d$lcl <- d$lcl * multiply
   d$ucl <- d$ucl * multiply
+  d$target <- if (is.null(target)) NA_integer_ else target
 
   d <- d[order(d$facet, d$part, d$x),]
 
-  d <- d[c('facet', 'part', 'x', 'num', 'den', 'y',
+  d <- d[c('facet', 'part', 'x', 'num', 'den', 'y', 'target',
            'longest.run', 'longest.run.max', 'n.crossings', 'n.crossings.min',
            'lcl', 'cl', 'ucl', 'runs.signal', 'sigma.signal',
            'freeze', 'include', 'base', 'n.obs', 'n.useful')]
@@ -253,7 +258,7 @@ pbc <- function(x,
             exclude  = exclude,
             chart    = chart,
             data     = d)
-
+# return(d)
   # Draw plot.
   if (plot) {
     plot.pbc(d)
