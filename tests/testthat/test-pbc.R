@@ -44,7 +44,7 @@ test_that('Faceting works', {
                       xlab = 'Month',
                       ylim = c(0, NA)))
   # two-way faceting
-  expect_no_error(pbc(qrt, avg_days,
+  expect_no_error(pbc(quarter, avg_days,
                       facet = list(region, operation),
                       data = waiting_times))
 })

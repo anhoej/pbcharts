@@ -204,9 +204,9 @@ pbc(month, deaths, cases,
 
 Two-way faceted chart of average waiting times for 5 types of elective surgery in 5 regions.
 
-```{r, fig.height=8}
-pbc(qrt, avg_days,
-    facet = list(region, operation), # facet by region and operation
+```{r, fig.height=7}
+pbc(quarter, avg_days,
+    facet = list(operation, region), # facet by region and operation
     data  = waiting_times,
     title = 'Average waiting times for elective surgery',
     ylab  = 'Days',

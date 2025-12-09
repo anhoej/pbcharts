@@ -7,7 +7,7 @@
 \format{
 A dataframe with 630 rows and 5 variables.
 \describe{
-\item{qrt}{First day of quarter.}
+\item{quarter}{First day of quarter.}
 \item{region}{Region.}
 \item{operation}{Type of operation.}
 \item{avg_days}{Average waiting time in days.}

@@ -1,631 +1,796 @@
-"qrt","region","operation","avg_days","n"
-2020-01-01,"All regions","Gallstones",40.1557692307692,520
-2020-04-01,"All regions","Gallstones",46.1879518072289,415
-2020-07-01,"All regions","Gallstones",47.1975308641975,486
-2020-10-01,"All regions","Gallstones",41.3777777777778,585
-2021-01-01,"All regions","Gallstones",44.532416502947,509
-2021-04-01,"All regions","Gallstones",43.9963099630996,542
-2021-07-01,"All regions","Gallstones",55.4563953488372,344
-2021-10-01,"All regions","Gallstones",52.8239795918367,392
-2022-01-01,"All regions","Gallstones",63.6206261510129,543
-2022-04-01,"All regions","Gallstones",60.4482225656878,647
-2022-07-01,"All regions","Gallstones",59.8150406504065,492
-2022-10-01,"All regions","Gallstones",63.4903536977492,622
-2023-01-01,"All regions","Gallstones",56.3042876901798,723
-2023-04-01,"All regions","Gallstones",52.3426883308715,677
-2023-07-01,"All regions","Gallstones",55.8007054673721,567
-2023-10-01,"All regions","Gallstones",54.9219512195122,820
-2024-01-01,"All regions","Gallstones",46.2510176390773,737
-2024-04-01,"All regions","Gallstones",45.667496886675,803
-2024-07-01,"All regions","Gallstones",41.0819672131148,610
-2024-10-01,"All regions","Gallstones",42.5375375375375,666
-2025-01-01,"All regions","Gallstones",38.2601918465228,834
-2020-01-01,"All regions","Hernia",50.9148211243612,1174
-2020-04-01,"All regions","Hernia",70.8380952380952,735
-2020-07-01,"All regions","Hernia",63.5623800383877,1042
-2020-10-01,"All regions","Hernia",60.5267930750206,1213
-2021-01-01,"All regions","Hernia",69.6941694169417,909
-2021-04-01,"All regions","Hernia",66.3716038562664,1141
-2021-07-01,"All regions","Hernia",72.8371278458844,571
-2021-10-01,"All regions","Hernia",73.5253012048193,830
-2022-01-01,"All regions","Hernia",82.6964795432921,1051
-2022-04-01,"All regions","Hernia",74.998352553542,1214
-2022-07-01,"All regions","Hernia",76.2741116751269,985
-2022-10-01,"All regions","Hernia",74.3626126126126,1332
-2023-01-01,"All regions","Hernia",85.9083200847907,1887
-2023-04-01,"All regions","Hernia",77.4926958831341,1506
-2023-07-01,"All regions","Hernia",71.6598263614838,1267
-2023-10-01,"All regions","Hernia",76.319391634981,1578
-2024-01-01,"All regions","Hernia",76.9504531722054,1655
-2024-04-01,"All regions","Hernia",74.8881706528765,1547
-2024-07-01,"All regions","Hernia",68.5647451963241,1197
-2024-10-01,"All regions","Hernia",72.2323166774822,1541
-2025-01-01,"All regions","Hernia",67.2984650369528,1759
-2020-01-01,"All regions","Hip replacement",59.0164752870694,2003
-2020-04-01,"All regions","Hip replacement",81.2002861230329,1398
-2020-07-01,"All regions","Hip replacement",81.3758865248227,1974
-2020-10-01,"All regions","Hip replacement",63.3371569029087,2441
-2021-01-01,"All regions","Hip replacement",65.3906581740977,1884
-2021-04-01,"All regions","Hip replacement",58.147878268324,2333
-2021-07-01,"All regions","Hip replacement",69.4654510556622,1042
-2021-10-01,"All regions","Hip replacement",72.6592214422463,1567
-2022-01-01,"All regions","Hip replacement",86.50634765625,2048
-2022-04-01,"All regions","Hip replacement",86,2211
-2022-07-01,"All regions","Hip replacement",86.9508907077516,2077
-2022-10-01,"All regions","Hip replacement",77.045306122449,2450
-2023-01-01,"All regions","Hip replacement",73.3930961606199,2839
-2023-04-01,"All regions","Hip replacement",66.5461658841941,2556
-2023-07-01,"All regions","Hip replacement",64.6714953271028,2140
-2023-10-01,"All regions","Hip replacement",65.9414208558371,2407
-2024-01-01,"All regions","Hip replacement",66.7819732034105,2463
-2024-04-01,"All regions","Hip replacement",57.2250658637561,2657
-2024-07-01,"All regions","Hip replacement",56.1260770975057,2205
-2024-10-01,"All regions","Hip replacement",49.1255090707145,2701
-2025-01-01,"All regions","Hip replacement",48.0371466140697,3042
-2020-01-01,"All regions","Knee replacement",70.3406924234822,1993
-2020-04-01,"All regions","Knee replacement",97.6701570680628,1337
-2020-07-01,"All regions","Knee replacement",95.6327387198321,1906
-2020-10-01,"All regions","Knee replacement",81.9911894273128,2497
-2021-01-01,"All regions","Knee replacement",83.6196793808734,1809
-2021-04-01,"All regions","Knee replacement",72.3649388959123,2373
-2021-07-01,"All regions","Knee replacement",86.37564499484,969
-2021-10-01,"All regions","Knee replacement",91.6165680473373,1690
-2022-01-01,"All regions","Knee replacement",101.696146245059,2024
-2022-04-01,"All regions","Knee replacement",106.661837748344,2416
-2022-07-01,"All regions","Knee replacement",109.9057187017,1941
-2022-10-01,"All regions","Knee replacement",105.830865159782,2566
-2023-01-01,"All regions","Knee replacement",95.3396477234962,3009
-2023-04-01,"All regions","Knee replacement",93.2533849129594,2585
-2023-07-01,"All regions","Knee replacement",89.772327626099,2161
-2023-10-01,"All regions","Knee replacement",88.8171735241503,2795
-2024-01-01,"All regions","Knee replacement",83.7426568758344,2996
-2024-04-01,"All regions","Knee replacement",76.8308270676692,2926
-2024-07-01,"All regions","Knee replacement",70.8741171582883,2407
-2024-10-01,"All regions","Knee replacement",64.5489534098582,2962
-2025-01-01,"All regions","Knee replacement",60.1932352020044,3193
-2020-01-01,"All regions","Meniscus",34.6110283159463,671
-2020-04-01,"All regions","Meniscus",45.4756637168142,452
-2020-07-01,"All regions","Meniscus",46.7549575070822,706
-2020-10-01,"All regions","Meniscus",37.4251012145749,741
-2021-01-01,"All regions","Meniscus",41.8387596899225,645
-2021-04-01,"All regions","Meniscus",36.557463672391,757
-2021-07-01,"All regions","Meniscus",37.8629441624365,394
-2021-10-01,"All regions","Meniscus",45.3577712609971,682
-2022-01-01,"All regions","Meniscus",51.4828042328042,756
-2022-04-01,"All regions","Meniscus",43.8503311258278,755
-2022-07-01,"All regions","Meniscus",46.3031746031746,630
-2022-10-01,"All regions","Meniscus",45.6546666666667,750
-2023-01-01,"All regions","Meniscus",42.9631901840491,978
-2023-04-01,"All regions","Meniscus",40.0684754521964,774
-2023-07-01,"All regions","Meniscus",43.7641509433962,636
-2023-10-01,"All regions","Meniscus",41.7302204928664,771
-2024-01-01,"All regions","Meniscus",45.9289044289044,858
-2024-04-01,"All regions","Meniscus",39.2171779141104,815
-2024-07-01,"All regions","Meniscus",39.997138769671,699
-2024-10-01,"All regions","Meniscus",39.4353205849269,889
-2025-01-01,"All regions","Meniscus",43.4130434782609,874
-2020-01-01,"Capital","Gallstones",44.6618705035971,139
-2020-04-01,"Capital","Gallstones",52.5378151260504,119
-2020-07-01,"Capital","Gallstones",52.9411764705882,119
-2020-10-01,"Capital","Gallstones",50.4071856287425,167
-2021-01-01,"Capital","Gallstones",63.8053097345133,113
-2021-04-01,"Capital","Gallstones",59.3384615384615,130
-2021-07-01,"Capital","Gallstones",72.3114754098361,61
-2021-10-01,"Capital","Gallstones",61.3285714285714,70
-2022-01-01,"Capital","Gallstones",90.9237288135593,118
-2022-04-01,"Capital","Gallstones",84.6140350877193,114
-2022-07-01,"Capital","Gallstones",71.6435643564356,101
-2022-10-01,"Capital","Gallstones",94.5918367346939,147
-2023-01-01,"Capital","Gallstones",66.5988700564972,177
-2023-04-01,"Capital","Gallstones",59.6190476190476,147
-2023-07-01,"Capital","Gallstones",56.4237288135593,118
-2023-10-01,"Capital","Gallstones",65.2255319148936,235
-2024-01-01,"Capital","Gallstones",50.7076923076923,195
-2024-04-01,"Capital","Gallstones",44.7209302325581,215
-2024-07-01,"Capital","Gallstones",41.4525547445255,137
-2024-10-01,"Capital","Gallstones",47.1320754716981,159
-2025-01-01,"Capital","Gallstones",46.2333333333333,210
-2020-01-01,"Capital","Hernia",60.1362530413625,411
-2020-04-01,"Capital","Hernia",85.4900662251656,302
-2020-07-01,"Capital","Hernia",76.4872448979592,392
-2020-10-01,"Capital","Hernia",81.4682713347921,457
-2021-01-01,"Capital","Hernia",97.806916426513,347
-2021-04-01,"Capital","Hernia",92.468085106383,423
-2021-07-01,"Capital","Hernia",93.1578947368421,171
-2021-10-01,"Capital","Hernia",104.835390946502,243
-2022-01-01,"Capital","Hernia",112.193548387097,279
-2022-04-01,"Capital","Hernia",105.614886731392,309
-2022-07-01,"Capital","Hernia",89.1760563380282,284
-2022-10-01,"Capital","Hernia",90.6787330316742,442
-2023-01-01,"Capital","Hernia",117.751252086811,599
-2023-04-01,"Capital","Hernia",94.3807615230461,499
-2023-07-01,"Capital","Hernia",80.3892773892774,429
-2023-10-01,"Capital","Hernia",78.9794168096055,583
-2024-01-01,"Capital","Hernia",74.8610108303249,554
-2024-04-01,"Capital","Hernia",80.2272727272727,528
-2024-07-01,"Capital","Hernia",60.1980440097799,409
-2024-10-01,"Capital","Hernia",75.3444881889764,508
-2025-01-01,"Capital","Hernia",68.1122807017544,570
-2020-01-01,"Capital","Hip replacement",72.028,500
-2020-04-01,"Capital","Hip replacement",98.4670846394984,319
-2020-07-01,"Capital","Hip replacement",100.959051724138,464
-2020-10-01,"Capital","Hip replacement",79.4226804123711,582
-2021-01-01,"Capital","Hip replacement",79.5346062052506,419
-2021-04-01,"Capital","Hip replacement",72.4236983842011,557
-2021-07-01,"Capital","Hip replacement",79.3316582914573,199
-2021-10-01,"Capital","Hip replacement",92.0466472303207,343
-2022-01-01,"Capital","Hip replacement",103.706382978723,470
-2022-04-01,"Capital","Hip replacement",104.066098081023,469
-2022-07-01,"Capital","Hip replacement",100.212464589235,353
-2022-10-01,"Capital","Hip replacement",97.3365758754864,514
-2023-01-01,"Capital","Hip replacement",91.1866438356164,584
-2023-04-01,"Capital","Hip replacement",94.2678936605317,489
-2023-07-01,"Capital","Hip replacement",88.8875878220141,427
-2023-10-01,"Capital","Hip replacement",80.3619047619048,525
-2024-01-01,"Capital","Hip replacement",70.217803030303,528
-2024-04-01,"Capital","Hip replacement",55.5566037735849,636
-2024-07-01,"Capital","Hip replacement",49.8718535469108,437
-2024-10-01,"Capital","Hip replacement",44.2020725388601,579
-2025-01-01,"Capital","Hip replacement",42.9547511312217,663
-2020-01-01,"Capital","Knee replacement",88.5475352112676,568
-2020-04-01,"Capital","Knee replacement",118.272727272727,286
-2020-07-01,"Capital","Knee replacement",116.771698113208,530
-2020-10-01,"Capital","Knee replacement",102.572496263079,669
-2021-01-01,"Capital","Knee replacement",107.157333333333,375
-2021-04-01,"Capital","Knee replacement",93.6441605839416,548
-2021-07-01,"Capital","Knee replacement",102.494047619048,168
-2021-10-01,"Capital","Knee replacement",122.575757575758,363
-2022-01-01,"Capital","Knee replacement",130.637051039698,529
-2022-04-01,"Capital","Knee replacement",132.779151943463,566
-2022-07-01,"Capital","Knee replacement",135.029702970297,404
-2022-10-01,"Capital","Knee replacement",131.783450704225,568
-2023-01-01,"Capital","Knee replacement",119.173419773096,617
-2023-04-01,"Capital","Knee replacement",124.279932546374,593
-2023-07-01,"Capital","Knee replacement",117.413502109705,474
-2023-10-01,"Capital","Knee replacement",118.585144927536,552
-2024-01-01,"Capital","Knee replacement",96.3976897689769,606
-2024-04-01,"Capital","Knee replacement",81.7149187592319,677
-2024-07-01,"Capital","Knee replacement",74.8011695906433,513
-2024-10-01,"Capital","Knee replacement",68.6924265842349,647
-2025-01-01,"Capital","Knee replacement",57.5342902711324,627
-2020-01-01,"Capital","Meniscus",32.8857142857143,315
-2020-04-01,"Capital","Meniscus",55.8456790123457,162
-2020-07-01,"Capital","Meniscus",49.4624060150376,266
-2020-10-01,"Capital","Meniscus",36.3959731543624,298
-2021-01-01,"Capital","Meniscus",45.5222222222222,180
-2021-04-01,"Capital","Meniscus",40.8269896193772,289
-2021-07-01,"Capital","Meniscus",37.3963963963964,111
-2021-10-01,"Capital","Meniscus",51.6915887850467,214
-2022-01-01,"Capital","Meniscus",58.6370656370656,259
-2022-04-01,"Capital","Meniscus",45.0277777777778,216
-2022-07-01,"Capital","Meniscus",44.5904255319149,188
-2022-10-01,"Capital","Meniscus",44.497461928934,197
-2023-01-01,"Capital","Meniscus",39.2213740458015,262
-2023-04-01,"Capital","Meniscus",40.2639593908629,197
-2023-07-01,"Capital","Meniscus",44.820652173913,184
-2023-10-01,"Capital","Meniscus",46.1833333333333,180
-2024-01-01,"Capital","Meniscus",49.9411764705882,187
-2024-04-01,"Capital","Meniscus",40.2984293193717,191
-2024-07-01,"Capital","Meniscus",39.7222222222222,162
-2024-10-01,"Capital","Meniscus",38.9102040816327,245
-2025-01-01,"Capital","Meniscus",53.7663043478261,184
-2020-01-01,"Central","Gallstones",24.5819672131148,122
-2020-04-01,"Central","Gallstones",49.4672897196262,107
-2020-07-01,"Central","Gallstones",40.237037037037,135
-2020-10-01,"Central","Gallstones",30.0919540229885,174
-2021-01-01,"Central","Gallstones",38.0980392156863,153
-2021-04-01,"Central","Gallstones",34.8,160
-2021-07-01,"Central","Gallstones",45.8829787234043,94
-2021-10-01,"Central","Gallstones",44.6491228070175,114
-2022-01-01,"Central","Gallstones",61.5411764705882,170
-2022-04-01,"Central","Gallstones",60.4325842696629,178
-2022-07-01,"Central","Gallstones",64.2272727272727,132
-2022-10-01,"Central","Gallstones",61.4771241830065,153
-2023-01-01,"Central","Gallstones",67.2524752475248,202
-2023-04-01,"Central","Gallstones",56.2460732984293,191
-2023-07-01,"Central","Gallstones",54.5459183673469,196
-2023-10-01,"Central","Gallstones",54.9030837004405,227
-2024-01-01,"Central","Gallstones",44.3520408163265,196
-2024-04-01,"Central","Gallstones",47.0585585585586,222
-2024-07-01,"Central","Gallstones",36.1160220994475,181
-2024-10-01,"Central","Gallstones",41.7100591715976,169
-2025-01-01,"Central","Gallstones",36.2597402597403,231
-2020-01-01,"Central","Hernia",34.4448529411765,272
-2020-04-01,"Central","Hernia",45.8866666666667,150
-2020-07-01,"Central","Hernia",49.2126696832579,221
-2020-10-01,"Central","Hernia",42.6631205673759,282
-2021-01-01,"Central","Hernia",47.9205776173285,277
-2021-04-01,"Central","Hernia",45.5889328063241,253
-2021-07-01,"Central","Hernia",56.8347107438017,121
-2021-10-01,"Central","Hernia",70.4450867052023,173
-2022-01-01,"Central","Hernia",85.198738170347,317
-2022-04-01,"Central","Hernia",71.6972789115646,294
-2022-07-01,"Central","Hernia",78.5560165975104,241
-2022-10-01,"Central","Hernia",67.9933774834437,302
-2023-01-01,"Central","Hernia",74.1751824817518,411
-2023-04-01,"Central","Hernia",68.801749271137,343
-2023-07-01,"Central","Hernia",58.2440476190476,336
-2023-10-01,"Central","Hernia",65.4756756756757,370
-2024-01-01,"Central","Hernia",82.6589147286822,387
-2024-04-01,"Central","Hernia",76.0831168831169,385
-2024-07-01,"Central","Hernia",68.0618181818182,275
-2024-10-01,"Central","Hernia",70.8376811594203,345
-2025-01-01,"Central","Hernia",66.8140043763676,457
-2020-01-01,"Central","Hip replacement",47.0563674321503,479
-2020-04-01,"Central","Hip replacement",78.8006756756757,296
-2020-07-01,"Central","Hip replacement",70.9902912621359,412
-2020-10-01,"Central","Hip replacement",51.955,600
-2021-01-01,"Central","Hip replacement",51.93147751606,467
-2021-04-01,"Central","Hip replacement",50.3907056798623,581
-2021-07-01,"Central","Hip replacement",54.6989795918367,196
-2021-10-01,"Central","Hip replacement",61.9600997506234,401
-2022-01-01,"Central","Hip replacement",88.7872340425532,517
-2022-04-01,"Central","Hip replacement",79.6035031847134,628
-2022-07-01,"Central","Hip replacement",83.1802721088435,588
-2022-10-01,"Central","Hip replacement",75.2575039494471,633
-2023-01-01,"Central","Hip replacement",64.9377652050919,707
-2023-04-01,"Central","Hip replacement",60.7051282051282,702
-2023-07-01,"Central","Hip replacement",57.6862416107383,596
-2023-10-01,"Central","Hip replacement",58.5896656534954,658
-2024-01-01,"Central","Hip replacement",58.0365682137834,711
-2024-04-01,"Central","Hip replacement",42.1816901408451,710
-2024-07-01,"Central","Hip replacement",45.4982394366197,568
-2024-10-01,"Central","Hip replacement",39.309375,640
-2025-01-01,"Central","Hip replacement",49.4673024523161,734
-2020-01-01,"Central","Knee replacement",51.9299516908213,414
-2020-04-01,"Central","Knee replacement",72.9595588235294,272
-2020-07-01,"Central","Knee replacement",71.6534090909091,352
-2020-10-01,"Central","Knee replacement",55.7946768060837,526
-2021-01-01,"Central","Knee replacement",73.6188118811881,404
-2021-04-01,"Central","Knee replacement",60.1348314606741,534
-2021-07-01,"Central","Knee replacement",71.4275862068965,145
-2021-10-01,"Central","Knee replacement",96.0609756097561,328
-2022-01-01,"Central","Knee replacement",110.80686695279,466
-2022-04-01,"Central","Knee replacement",112.211038961039,616
-2022-07-01,"Central","Knee replacement",127.07240704501,511
-2022-10-01,"Central","Knee replacement",115.925501432665,698
-2023-01-01,"Central","Knee replacement",112.457692307692,780
-2023-04-01,"Central","Knee replacement",94.2976190476191,672
-2023-07-01,"Central","Knee replacement",87.7155797101449,552
-2023-10-01,"Central","Knee replacement",83.925877763329,769
-2024-01-01,"Central","Knee replacement",76.1056511056511,814
-2024-04-01,"Central","Knee replacement",65.7077826725404,681
-2024-07-01,"Central","Knee replacement",66.2017391304348,575
-2024-10-01,"Central","Knee replacement",64.0822102425876,742
-2025-01-01,"Central","Knee replacement",64.7259439707674,821
-2020-01-01,"Central","Meniscus",39.9831932773109,119
-2020-04-01,"Central","Meniscus",42.6530612244898,98
-2020-07-01,"Central","Meniscus",52.0718562874251,167
-2020-10-01,"Central","Meniscus",35.514450867052,173
-2021-01-01,"Central","Meniscus",40.390625,192
-2021-04-01,"Central","Meniscus",34.3229813664596,161
-2021-07-01,"Central","Meniscus",37.7790697674419,86
-2021-10-01,"Central","Meniscus",41.2044198895028,181
-2022-01-01,"Central","Meniscus",53.2283105022831,219
-2022-04-01,"Central","Meniscus",54.1153846153846,182
-2022-07-01,"Central","Meniscus",68.8611111111111,144
-2022-10-01,"Central","Meniscus",61.4646464646465,198
-2023-01-01,"Central","Meniscus",60.1637010676156,281
-2023-04-01,"Central","Meniscus",53.9333333333333,210
-2023-07-01,"Central","Meniscus",58.7564102564103,156
-2023-10-01,"Central","Meniscus",42.1168224299065,214
-2024-01-01,"Central","Meniscus",47.6423076923077,260
-2024-04-01,"Central","Meniscus",39.6244343891403,221
-2024-07-01,"Central","Meniscus",44.1666666666667,204
-2024-10-01,"Central","Meniscus",39.4466019417476,206
-2025-01-01,"Central","Meniscus",45.0558139534884,215
-2020-01-01,"East","Gallstones",46.8426966292135,89
-2020-04-01,"East","Gallstones",35.9365079365079,63
-2020-07-01,"East","Gallstones",53.6976744186046,86
-2020-10-01,"East","Gallstones",46.8375,80
-2021-01-01,"East","Gallstones",31.625,64
-2021-04-01,"East","Gallstones",36.4736842105263,95
-2021-07-01,"East","Gallstones",64.2794117647059,68
-2021-10-01,"East","Gallstones",63.7906976744186,86
-2022-01-01,"East","Gallstones",56.8301886792453,106
-2022-04-01,"East","Gallstones",55.0676691729323,133
-2022-07-01,"East","Gallstones",50.7647058823529,85
-2022-10-01,"East","Gallstones",55.9012345679012,81
-2023-01-01,"East","Gallstones",47.3069306930693,101
-2023-04-01,"East","Gallstones",51.125,88
-2023-07-01,"East","Gallstones",63.9342105263158,76
-2023-10-01,"East","Gallstones",57.3716814159292,113
-2024-01-01,"East","Gallstones",47.2612612612613,111
-2024-04-01,"East","Gallstones",59.0490196078431,102
-2024-07-01,"East","Gallstones",47.7096774193548,93
-2024-10-01,"East","Gallstones",37.2461538461539,130
-2025-01-01,"East","Gallstones",38.5705882352941,170
-2020-01-01,"East","Hernia",51.2307692307692,247
-2020-04-01,"East","Hernia",57.013986013986,143
-2020-07-01,"East","Hernia",48.8405172413793,232
-2020-10-01,"East","Hernia",54.6221198156682,217
-2021-01-01,"East","Hernia",47.3877551020408,98
-2021-04-01,"East","Hernia",45.2008368200837,239
-2021-07-01,"East","Hernia",71.9379310344828,145
-2021-10-01,"East","Hernia",58.7586206896552,203
-2022-01-01,"East","Hernia",54.027397260274,219
-2022-04-01,"East","Hernia",52.4015151515151,264
-2022-07-01,"East","Hernia",63.3483146067416,178
-2022-10-01,"East","Hernia",59.542735042735,234
-2023-01-01,"East","Hernia",70.9139465875371,337
-2023-04-01,"East","Hernia",59.0801526717557,262
-2023-07-01,"East","Hernia",76.34,200
-2023-10-01,"East","Hernia",83.5390625,256
-2024-01-01,"East","Hernia",77.9377162629758,289
-2024-04-01,"East","Hernia",63.4,210
-2024-07-01,"East","Hernia",72.1538461538462,221
-2024-10-01,"East","Hernia",72.1809210526316,304
-2025-01-01,"East","Hernia",64.1020408163265,343
-2020-01-01,"East","Hip replacement",68.4258760107817,371
-2020-04-01,"East","Hip replacement",85.345,200
-2020-07-01,"East","Hip replacement",97.9656084656085,378
-2020-10-01,"East","Hip replacement",71.105504587156,436
-2021-01-01,"East","Hip replacement",62.8819444444444,288
-2021-04-01,"East","Hip replacement",47.6310160427808,374
-2021-07-01,"East","Hip replacement",67.2357142857143,280
-2021-10-01,"East","Hip replacement",64.3386454183267,251
-2022-01-01,"East","Hip replacement",68.781862745098,408
-2022-04-01,"East","Hip replacement",67.5745856353591,362
-2022-07-01,"East","Hip replacement",55.542328042328,378
-2022-10-01,"East","Hip replacement",55.2857142857143,469
-2023-01-01,"East","Hip replacement",62.4934782608696,460
-2023-04-01,"East","Hip replacement",57.7647058823529,408
-2023-07-01,"East","Hip replacement",52.4092071611253,391
-2023-10-01,"East","Hip replacement",44.5919811320755,424
-2024-01-01,"East","Hip replacement",54.5546875,384
-2024-04-01,"East","Hip replacement",55.250626566416,399
-2024-07-01,"East","Hip replacement",49.737532808399,381
-2024-10-01,"East","Hip replacement",46.5878378378378,444
-2025-01-01,"East","Hip replacement",44.7142857142857,546
-2020-01-01,"East","Knee replacement",73.3247058823529,425
-2020-04-01,"East","Knee replacement",112.102941176471,204
-2020-07-01,"East","Knee replacement",115.304455445545,404
-2020-10-01,"East","Knee replacement",94.46875,512
-2021-01-01,"East","Knee replacement",80.3515358361775,293
-2021-04-01,"East","Knee replacement",62.6921241050119,419
-2021-07-01,"East","Knee replacement",73.0769230769231,260
-2021-10-01,"East","Knee replacement",70.4398907103825,366
-2022-01-01,"East","Knee replacement",64.4146341463415,410
-2022-04-01,"East","Knee replacement",70.8281622911694,419
-2022-07-01,"East","Knee replacement",58.9885057471264,348
-2022-10-01,"East","Knee replacement",64.4813953488372,430
-2023-01-01,"East","Knee replacement",63.131679389313,524
-2023-04-01,"East","Knee replacement",65.3163972286374,433
-2023-07-01,"East","Knee replacement",59.0380952380952,420
-2023-10-01,"East","Knee replacement",59.3667262969588,559
-2024-01-01,"East","Knee replacement",54.5262172284644,534
-2024-04-01,"East","Knee replacement",60.6565656565657,495
-2024-07-01,"East","Knee replacement",53.8409586056645,459
-2024-10-01,"East","Knee replacement",48.9093959731544,596
-2025-01-01,"East","Knee replacement",39.7688679245283,636
-2020-01-01,"East","Meniscus",31.5824175824176,91
-2020-04-01,"East","Meniscus",32.0833333333333,60
-2020-07-01,"East","Meniscus",50.2,75
-2020-10-01,"East","Meniscus",38.6117647058824,85
-2021-01-01,"East","Meniscus",42.6351351351351,74
-2021-04-01,"East","Meniscus",35.3203883495146,103
-2021-07-01,"East","Meniscus",34.21875,64
-2021-10-01,"East","Meniscus",45.4166666666667,108
-2022-01-01,"East","Meniscus",33.3229166666667,96
-2022-04-01,"East","Meniscus",38.5212765957447,94
-2022-07-01,"East","Meniscus",36.8089887640449,89
-2022-10-01,"East","Meniscus",35.8131868131868,91
-2023-01-01,"East","Meniscus",37.0265486725664,113
-2023-04-01,"East","Meniscus",32.9139784946237,93
-2023-07-01,"East","Meniscus",33.9,100
-2023-10-01,"East","Meniscus",35.2745098039216,102
-2024-01-01,"East","Meniscus",42.2391304347826,138
-2024-04-01,"East","Meniscus",38.7777777777778,135
-2024-07-01,"East","Meniscus",43.6476190476191,105
-2024-10-01,"East","Meniscus",38.0564516129032,124
-2025-01-01,"East","Meniscus",38.762962962963,135
-2020-01-01,"North","Gallstones",34.8620689655172,58
-2020-04-01,"North","Gallstones",24.7179487179487,39
-2020-07-01,"North","Gallstones",20,44
-2020-10-01,"North","Gallstones",18.1076923076923,65
-2021-01-01,"North","Gallstones",28.2307692307692,65
-2021-04-01,"North","Gallstones",18.3333333333333,45
-2021-07-01,"North","Gallstones",23.972972972973,37
-2021-10-01,"North","Gallstones",34.9545454545455,44
-2022-01-01,"North","Gallstones",27.1428571428571,63
-2022-04-01,"North","Gallstones",21.44,100
-2022-07-01,"North","Gallstones",36.9189189189189,74
-2022-10-01,"North","Gallstones",22.9404761904762,84
-2023-01-01,"North","Gallstones",22.7256637168142,113
-2023-04-01,"North","Gallstones",17.3522727272727,88
-2023-07-01,"North","Gallstones",24.9615384615385,52
-2023-10-01,"North","Gallstones",29.2906976744186,86
-2024-01-01,"North","Gallstones",34.7352941176471,68
-2024-04-01,"North","Gallstones",33.5252525252525,99
-2024-07-01,"North","Gallstones",32.2592592592593,81
-2024-10-01,"North","Gallstones",28.2571428571429,70
-2025-01-01,"North","Gallstones",25.2191780821918,73
-2020-01-01,"North","Hernia",43.4691358024691,81
-2020-04-01,"North","Hernia",81.3414634146341,41
-2020-07-01,"North","Hernia",61.90625,64
-2020-10-01,"North","Hernia",34.608,125
-2021-01-01,"North","Hernia",47.6543209876543,81
-2021-04-01,"North","Hernia",43.0659340659341,91
-2021-07-01,"North","Hernia",47.3921568627451,51
-2021-10-01,"North","Hernia",44.0090909090909,110
-2022-01-01,"North","Hernia",60.3829787234043,141
-2022-04-01,"North","Hernia",49.1616161616162,198
-2022-07-01,"North","Hernia",63.0569620253165,158
-2022-10-01,"North","Hernia",53.1132075471698,159
-2023-01-01,"North","Hernia",35.468253968254,252
-2023-04-01,"North","Hernia",35.046052631579,152
-2023-07-01,"North","Hernia",42.1428571428572,105
-2023-10-01,"North","Hernia",38.8521739130435,115
-2024-01-01,"North","Hernia",53.3833333333333,120
-2024-04-01,"North","Hernia",49.4352941176471,170
-2024-07-01,"North","Hernia",37.5954198473282,131
-2024-10-01,"North","Hernia",38.2424242424242,198
-2025-01-01,"North","Hernia",35.9426751592357,157
-2020-01-01,"North","Hip replacement",41.478813559322,236
-2020-04-01,"North","Hip replacement",65.4477611940299,201
-2020-07-01,"North","Hip replacement",61.0901287553648,233
-2020-10-01,"North","Hip replacement",37.3115384615385,260
-2021-01-01,"North","Hip replacement",50.7345132743363,226
-2021-04-01,"North","Hip replacement",45.5129151291513,271
-2021-07-01,"North","Hip replacement",72.1351351351351,74
-2021-10-01,"North","Hip replacement",71.2739726027397,146
-2022-01-01,"North","Hip replacement",82.9523809523809,189
-2022-04-01,"North","Hip replacement",93.6347826086957,230
-2022-07-01,"North","Hip replacement",97.5720524017467,229
-2022-10-01,"North","Hip replacement",76.3053097345133,226
-2023-01-01,"North","Hip replacement",60.3020833333333,384
-2023-04-01,"North","Hip replacement",45.2646048109966,291
-2023-07-01,"North","Hip replacement",38.11,200
-2023-10-01,"North","Hip replacement",56.0371900826446,242
-2024-01-01,"North","Hip replacement",59.8862068965517,290
-2024-04-01,"North","Hip replacement",54.1190476190476,294
-2024-07-01,"North","Hip replacement",41.7510548523207,237
-2024-10-01,"North","Hip replacement",40.1838709677419,310
-2025-01-01,"North","Hip replacement",34.7670454545455,352
-2020-01-01,"North","Knee replacement",53.6492890995261,211
-2020-04-01,"North","Knee replacement",79.722972972973,148
-2020-07-01,"North","Knee replacement",65.8917197452229,157
-2020-10-01,"North","Knee replacement",69.7802197802198,182
-2021-01-01,"North","Knee replacement",64.9365079365079,189
-2021-04-01,"North","Knee replacement",61.0867924528302,265
-2021-07-01,"North","Knee replacement",76.8181818181818,121
-2021-10-01,"North","Knee replacement",68.9801324503311,151
-2022-01-01,"North","Knee replacement",104.590909090909,176
-2022-04-01,"North","Knee replacement",102.311688311688,231
-2022-07-01,"North","Knee replacement",111.688524590164,183
-2022-10-01,"North","Knee replacement",117.417293233083,266
-2023-01-01,"North","Knee replacement",99.7877906976744,344
-2023-04-01,"North","Knee replacement",92.7931034482759,319
-2023-07-01,"North","Knee replacement",95.4393939393939,198
-2023-10-01,"North","Knee replacement",83.9452054794521,292
-2024-01-01,"North","Knee replacement",89.9279279279279,333
-2024-04-01,"North","Knee replacement",67.2316384180791,354
-2024-07-01,"North","Knee replacement",45.551724137931,232
-2024-10-01,"North","Knee replacement",46.3067729083665,251
-2025-01-01,"North","Knee replacement",47.3732590529248,359
-2020-01-01,"North","Meniscus",29.5666666666667,30
-2020-04-01,"North","Meniscus",34.9473684210526,19
-2020-07-01,"North","Meniscus",43.7567567567568,37
-2020-10-01,"North","Meniscus",43.25,36
-2021-01-01,"North","Meniscus",29.7297297297297,37
-2021-04-01,"North","Meniscus",30.8484848484848,66
-2021-07-01,"North","Meniscus",37.38,50
-2021-10-01,"North","Meniscus",43.0487804878049,41
-2022-01-01,"North","Meniscus",37.2222222222222,63
-2022-04-01,"North","Meniscus",27.1544715447154,123
-2022-07-01,"North","Meniscus",27.6896551724138,87
-2022-10-01,"North","Meniscus",33.4873949579832,119
-2023-01-01,"North","Meniscus",25.875,152
-2023-04-01,"North","Meniscus",25.0984848484849,132
-2023-07-01,"North","Meniscus",27.0365853658537,82
-2023-10-01,"North","Meniscus",32.9152542372881,118
-2024-01-01,"North","Meniscus",35.921052631579,114
-2024-04-01,"North","Meniscus",39.212962962963,108
-2024-07-01,"North","Meniscus",33.0888888888889,90
-2024-10-01,"North","Meniscus",38.1269841269841,126
-2025-01-01,"North","Meniscus",36.4802631578947,152
-2020-01-01,"South","Gallstones",48.9553571428572,112
-2020-04-01,"South","Gallstones",50.5172413793103,87
-2020-07-01,"South","Gallstones",55.9607843137255,102
-2020-10-01,"South","Gallstones",56.8484848484849,99
-2021-01-01,"South","Gallstones",50.6052631578947,114
-2021-04-01,"South","Gallstones",56.0178571428572,112
-2021-07-01,"South","Gallstones",60.6547619047619,84
-2021-10-01,"South","Gallstones",55.1282051282051,78
-2022-01-01,"South","Gallstones",65.3604651162791,86
-2022-04-01,"South","Gallstones",75.7295081967213,122
-2022-07-01,"South","Gallstones",66.68,100
-2022-10-01,"South","Gallstones",61.9426751592357,157
-2023-01-01,"South","Gallstones",61.4538461538462,130
-2023-04-01,"South","Gallstones",60.7546012269939,163
-2023-07-01,"South","Gallstones",65.064,125
-2023-10-01,"South","Gallstones",51.8427672955975,159
-2024-01-01,"South","Gallstones",47.2934131736527,167
-2024-04-01,"South","Gallstones",44.0424242424242,165
-2024-07-01,"South","Gallstones",49.1016949152542,118
-2024-10-01,"South","Gallstones",50.4855072463768,138
-2025-01-01,"South","Gallstones",36.1733333333333,150
-2020-01-01,"South","Hernia",58.3680981595092,163
-2020-04-01,"South","Hernia",79.5656565656566,99
-2020-07-01,"South","Hernia",75.7894736842105,133
-2020-10-01,"South","Hernia",60.4393939393939,132
-2021-01-01,"South","Hernia",72.0283018867924,106
-2021-04-01,"South","Hernia",76.7407407407407,135
-2021-07-01,"South","Hernia",71.5060240963855,83
-2021-10-01,"South","Hernia",65.2970297029703,101
-2022-01-01,"South","Hernia",86.9263157894737,95
-2022-04-01,"South","Hernia",92.3892617449664,149
-2022-07-01,"South","Hernia",77.6854838709677,124
-2022-10-01,"South","Hernia",82.3538461538461,195
-2023-01-01,"South","Hernia",98.1041666666667,288
-2023-04-01,"South","Hernia",100.812,250
-2023-07-01,"South","Hernia",86.51269035533,197
-2023-10-01,"South","Hernia",95.6968503937008,254
-2024-01-01,"South","Hernia",81.8393442622951,305
-2024-04-01,"South","Hernia",88.511811023622,254
-2024-07-01,"South","Hernia",110.950310559006,161
-2024-10-01,"South","Hernia",102.586021505376,186
-2025-01-01,"South","Hernia",92.198275862069,232
-2020-01-01,"South","Hip replacement",58.7074340527578,417
-2020-04-01,"South","Hip replacement",74.7591623036649,382
-2020-07-01,"South","Hip replacement",68.3326488706365,487
-2020-10-01,"South","Hip replacement",64.841918294849,563
-2021-01-01,"South","Hip replacement",74.4690082644628,484
-2021-04-01,"South","Hip replacement",65.2618181818182,550
-2021-07-01,"South","Hip replacement",74.098976109215,293
-2021-10-01,"South","Hip replacement",72.4976525821596,426
-2022-01-01,"South","Hip replacement",83.5754310344828,464
-2022-04-01,"South","Hip replacement",86.8773946360153,522
-2022-07-01,"South","Hip replacement",100.137996219282,529
-2022-10-01,"South","Hip replacement",78.8125,608
-2023-01-01,"South","Hip replacement",81.3863636363636,704
-2023-04-01,"South","Hip replacement",67.027027027027,666
-2023-07-01,"South","Hip replacement",72.1425855513308,526
-2023-10-01,"South","Hip replacement",81.5609318996416,558
-2024-01-01,"South","Hip replacement",86.9618181818182,550
-2024-04-01,"South","Hip replacement",78.9773462783172,618
-2024-07-01,"South","Hip replacement",81.2302405498282,582
-2024-10-01,"South","Hip replacement",67.0260989010989,728
-2025-01-01,"South","Hip replacement",59.8246318607764,747
-2020-01-01,"South","Knee replacement",69.0986666666667,375
-2020-04-01,"South","Knee replacement",98.9367681498829,427
-2020-07-01,"South","Knee replacement",82.585313174946,463
-2020-10-01,"South","Knee replacement",75.15625,608
-2021-01-01,"South","Knee replacement",83.0766423357664,548
-2021-04-01,"South","Knee replacement",75.5140032948929,607
-2021-07-01,"South","Knee replacement",101.189090909091,275
-2021-10-01,"South","Knee replacement",88.448132780083,482
-2022-01-01,"South","Knee replacement",90.9074492099323,443
-2022-04-01,"South","Knee replacement",102.926369863014,584
-2022-07-01,"South","Knee replacement",106.816161616162,495
-2022-10-01,"South","Knee replacement",94.0943708609272,604
-2023-01-01,"South","Knee replacement",78.255376344086,744
-2023-04-01,"South","Knee replacement",81.181338028169,568
-2023-07-01,"South","Knee replacement",89.4235976789168,517
-2023-10-01,"South","Knee replacement",97.1878009630819,623
-2024-01-01,"South","Knee replacement",100.794076163611,709
-2024-04-01,"South","Knee replacement",98.6286509040334,719
-2024-07-01,"South","Knee replacement",93.7484076433121,628
-2024-10-01,"South","Knee replacement",80.4793388429752,726
-2025-01-01,"South","Knee replacement",80.9106666666667,750
-2020-01-01,"South","Meniscus",37.4655172413793,116
-2020-04-01,"South","Meniscus",41.9380530973451,113
-2020-07-01,"South","Meniscus",35.8509316770186,161
-2020-10-01,"South","Meniscus",39.6174496644295,149
-2021-01-01,"South","Meniscus",41.8641975308642,162
-2021-04-01,"South","Meniscus",33.8768115942029,138
-2021-07-01,"South","Meniscus",41.6746987951807,83
-2021-10-01,"South","Meniscus",41.6231884057971,138
-2022-01-01,"South","Meniscus",54.8991596638655,119
-2022-04-01,"South","Meniscus",46.9357142857143,140
-2022-07-01,"South","Meniscus",42.5163934426229,122
-2022-10-01,"South","Meniscus",41.8,145
-2023-01-01,"South","Meniscus",39.5235294117647,170
-2023-04-01,"South","Meniscus",37.8943661971831,142
-2023-07-01,"South","Meniscus",42.2280701754386,114
-2023-10-01,"South","Meniscus",46.9171974522293,157
-2024-01-01,"South","Meniscus",48.7861635220126,159
-2024-04-01,"South","Meniscus",37.7375,160
-2024-07-01,"South","Meniscus",35.8840579710145,138
-2024-10-01,"South","Meniscus",41.8936170212766,188
-2025-01-01,"South","Meniscus",40.3457446808511,188
+# source: https://sundhedsdatabank.dk/behandling-og-pleje/ventetid
+#   Ventetid til behandling på sygehus (udgivet august 2025)
+
+Aar,Kvartal,REGION,Operationsgruppe,Antal,Gns_ventetid
+2020,1K20,Hele landet,Brok,1174,51
+2020,1K20,Hele landet,Resten,39684,42
+2020,1K20,Hele landet,Menisk,672,35
+2020,1K20,Hele landet,Kunstig hofte,2003,59
+2020,1K20,Hele landet,Galdesten,518,40
+2020,1K20,Hele landet,Kunstig knæ,1993,70
+2020,1K20,Region Hovedstaden,Galdesten,139,45
+2020,1K20,Region Hovedstaden,Brok,411,60
+2020,1K20,Region Hovedstaden,Resten,10817,40
+2020,1K20,Region Hovedstaden,Kunstig knæ,568,89
+2020,1K20,Region Hovedstaden,Menisk,315,33
+2020,1K20,Region Hovedstaden,Kunstig hofte,500,72
+2020,1K20,Region Midtjylland,Resten,9316,41
+2020,1K20,Region Midtjylland,Brok,272,34
+2020,1K20,Region Midtjylland,Galdesten,120,25
+2020,1K20,Region Midtjylland,Kunstig knæ,414,52
+2020,1K20,Region Midtjylland,Menisk,120,41
+2020,1K20,Region Midtjylland,Kunstig hofte,479,47
+2020,1K20,Region Nordjylland,Kunstig knæ,211,54
+2020,1K20,Region Nordjylland,Kunstig hofte,236,41
+2020,1K20,Region Nordjylland,Resten,4674,47
+2020,1K20,Region Nordjylland,Brok,81,43
+2020,1K20,Region Nordjylland,Menisk,30,30
+2020,1K20,Region Nordjylland,Galdesten,58,35
+2020,1K20,Region Sjælland,Resten,4974,44
+2020,1K20,Region Sjælland,Kunstig knæ,425,73
+2020,1K20,Region Sjælland,Brok,247,51
+2020,1K20,Region Sjælland,Galdesten,89,47
+2020,1K20,Region Sjælland,Kunstig hofte,371,68
+2020,1K20,Region Sjælland,Menisk,91,32
+2020,1K20,Region Syddanmark,Menisk,116,37
+2020,1K20,Region Syddanmark,Resten,9903,44
+2020,1K20,Region Syddanmark,Galdesten,112,49
+2020,1K20,Region Syddanmark,Kunstig hofte,417,59
+2020,1K20,Region Syddanmark,Brok,163,58
+2020,1K20,Region Syddanmark,Kunstig knæ,375,69
+2020,2K20,Hele landet,Menisk,452,45
+2020,2K20,Hele landet,Kunstig knæ,1338,98
+2020,2K20,Hele landet,Kunstig hofte,1398,81
+2020,2K20,Hele landet,Brok,736,71
+2020,2K20,Hele landet,Resten,31057,51
+2020,2K20,Hele landet,Galdesten,417,46
+2020,2K20,Region Hovedstaden,Kunstig hofte,319,98
+2020,2K20,Region Hovedstaden,Menisk,162,56
+2020,2K20,Region Hovedstaden,Kunstig knæ,287,118
+2020,2K20,Region Hovedstaden,Resten,8309,51
+2020,2K20,Region Hovedstaden,Galdesten,119,53
+2020,2K20,Region Hovedstaden,Brok,302,85
+2020,2K20,Region Midtjylland,Kunstig hofte,296,79
+2020,2K20,Region Midtjylland,Resten,7265,55
+2020,2K20,Region Midtjylland,Kunstig knæ,272,73
+2020,2K20,Region Midtjylland,Brok,151,46
+2020,2K20,Region Midtjylland,Galdesten,109,49
+2020,2K20,Region Midtjylland,Menisk,98,43
+2020,2K20,Region Nordjylland,Brok,41,81
+2020,2K20,Region Nordjylland,Menisk,19,35
+2020,2K20,Region Nordjylland,Kunstig hofte,201,65
+2020,2K20,Region Nordjylland,Kunstig knæ,148,80
+2020,2K20,Region Nordjylland,Resten,3717,53
+2020,2K20,Region Nordjylland,Galdesten,39,25
+2020,2K20,Region Sjælland,Kunstig hofte,200,85
+2020,2K20,Region Sjælland,Galdesten,63,36
+2020,2K20,Region Sjælland,Resten,3419,45
+2020,2K20,Region Sjælland,Kunstig knæ,204,112
+2020,2K20,Region Sjælland,Menisk,60,32
+2020,2K20,Region Sjælland,Brok,143,57
+2020,2K20,Region Syddanmark,Resten,8347,51
+2020,2K20,Region Syddanmark,Kunstig hofte,382,75
+2020,2K20,Region Syddanmark,Brok,99,80
+2020,2K20,Region Syddanmark,Galdesten,87,51
+2020,2K20,Region Syddanmark,Kunstig knæ,427,99
+2020,2K20,Region Syddanmark,Menisk,113,42
+2020,3K20,Hele landet,Menisk,708,47
+2020,3K20,Hele landet,Kunstig knæ,1905,96
+2020,3K20,Hele landet,Resten,37170,55
+2020,3K20,Hele landet,Kunstig hofte,1974,81
+2020,3K20,Hele landet,Galdesten,486,47
+2020,3K20,Hele landet,Brok,1042,64
+2020,3K20,Region Hovedstaden,Brok,392,76
+2020,3K20,Region Hovedstaden,Kunstig hofte,464,101
+2020,3K20,Region Hovedstaden,Resten,10182,52
+2020,3K20,Region Hovedstaden,Galdesten,119,51
+2020,3K20,Region Hovedstaden,Menisk,266,49
+2020,3K20,Region Hovedstaden,Kunstig knæ,530,117
+2020,3K20,Region Midtjylland,Kunstig knæ,351,72
+2020,3K20,Region Midtjylland,Brok,221,49
+2020,3K20,Region Midtjylland,Resten,9062,57
+2020,3K20,Region Midtjylland,Menisk,169,52
+2020,3K20,Region Midtjylland,Kunstig hofte,412,71
+2020,3K20,Region Midtjylland,Galdesten,135,40
+2020,3K20,Region Nordjylland,Galdesten,44,20
+2020,3K20,Region Nordjylland,Kunstig hofte,233,61
+2020,3K20,Region Nordjylland,Kunstig knæ,157,66
+2020,3K20,Region Nordjylland,Menisk,37,44
+2020,3K20,Region Nordjylland,Resten,4186,61
+2020,3K20,Region Nordjylland,Brok,64,62
+2020,3K20,Region Sjælland,Kunstig knæ,404,115
+2020,3K20,Region Sjælland,Galdesten,86,54
+2020,3K20,Region Sjælland,Brok,232,49
+2020,3K20,Region Sjælland,Resten,4501,56
+2020,3K20,Region Sjælland,Menisk,75,50
+2020,3K20,Region Sjælland,Kunstig hofte,378,98
+2020,3K20,Region Syddanmark,Kunstig knæ,463,83
+2020,3K20,Region Syddanmark,Galdesten,102,56
+2020,3K20,Region Syddanmark,Brok,133,76
+2020,3K20,Region Syddanmark,Menisk,161,36
+2020,3K20,Region Syddanmark,Kunstig hofte,487,68
+2020,3K20,Region Syddanmark,Resten,9239,52
+2020,4K20,Hele landet,Kunstig hofte,2442,63
+2020,4K20,Hele landet,Kunstig knæ,2496,82
+2020,4K20,Hele landet,Galdesten,584,41
+2020,4K20,Hele landet,Brok,1214,61
+2020,4K20,Hele landet,Resten,45019,50
+2020,4K20,Hele landet,Menisk,741,37
+2020,4K20,Region Hovedstaden,Galdesten,167,50
+2020,4K20,Region Hovedstaden,Menisk,298,36
+2020,4K20,Region Hovedstaden,Resten,12099,49
+2020,4K20,Region Hovedstaden,Brok,457,81
+2020,4K20,Region Hovedstaden,Kunstig knæ,668,103
+2020,4K20,Region Hovedstaden,Kunstig hofte,582,79
+2020,4K20,Region Midtjylland,Galdesten,173,30
+2020,4K20,Region Midtjylland,Menisk,173,36
+2020,4K20,Region Midtjylland,Kunstig hofte,601,52
+2020,4K20,Region Midtjylland,Resten,10816,48
+2020,4K20,Region Midtjylland,Kunstig knæ,526,56
+2020,4K20,Region Midtjylland,Brok,283,43
+2020,4K20,Region Nordjylland,Resten,5129,54
+2020,4K20,Region Nordjylland,Menisk,36,43
+2020,4K20,Region Nordjylland,Galdesten,65,18
+2020,4K20,Region Nordjylland,Kunstig knæ,182,70
+2020,4K20,Region Nordjylland,Kunstig hofte,260,37
+2020,4K20,Region Nordjylland,Brok,125,35
+2020,4K20,Region Sjælland,Resten,5540,54
+2020,4K20,Region Sjælland,Menisk,85,39
+2020,4K20,Region Sjælland,Kunstig knæ,512,94
+2020,4K20,Region Sjælland,Galdesten,80,47
+2020,4K20,Region Sjælland,Kunstig hofte,436,71
+2020,4K20,Region Sjælland,Brok,217,55
+2020,4K20,Region Syddanmark,Kunstig knæ,608,75
+2020,4K20,Region Syddanmark,Brok,132,60
+2020,4K20,Region Syddanmark,Menisk,149,40
+2020,4K20,Region Syddanmark,Galdesten,99,57
+2020,4K20,Region Syddanmark,Resten,11435,50
+2020,4K20,Region Syddanmark,Kunstig hofte,563,65
+2021,1K21,Hele landet,Menisk,645,42
+2021,1K21,Hele landet,Resten,40445,47
+2021,1K21,Hele landet,Kunstig knæ,1809,84
+2021,1K21,Hele landet,Kunstig hofte,1884,65
+2021,1K21,Hele landet,Galdesten,510,45
+2021,1K21,Hele landet,Brok,909,70
+2021,1K21,Region Hovedstaden,Kunstig hofte,419,80
+2021,1K21,Region Hovedstaden,Resten,10381,48
+2021,1K21,Region Hovedstaden,Menisk,180,46
+2021,1K21,Region Hovedstaden,Kunstig knæ,375,107
+2021,1K21,Region Hovedstaden,Brok,347,98
+2021,1K21,Region Hovedstaden,Galdesten,113,64
+2021,1K21,Region Midtjylland,Resten,9691,44
+2021,1K21,Region Midtjylland,Kunstig hofte,467,52
+2021,1K21,Region Midtjylland,Kunstig knæ,404,74
+2021,1K21,Region Midtjylland,Galdesten,153,38
+2021,1K21,Region Midtjylland,Brok,277,48
+2021,1K21,Region Midtjylland,Menisk,192,40
+2021,1K21,Region Nordjylland,Brok,81,48
+2021,1K21,Region Nordjylland,Resten,5082,49
+2021,1K21,Region Nordjylland,Menisk,37,30
+2021,1K21,Region Nordjylland,Kunstig knæ,189,65
+2021,1K21,Region Nordjylland,Kunstig hofte,226,51
+2021,1K21,Region Nordjylland,Galdesten,65,28
+2021,1K21,Region Sjælland,Kunstig knæ,293,80
+2021,1K21,Region Sjælland,Resten,4470,46
+2021,1K21,Region Sjælland,Kunstig hofte,288,63
+2021,1K21,Region Sjælland,Menisk,74,43
+2021,1K21,Region Sjælland,Galdesten,65,32
+2021,1K21,Region Sjælland,Brok,98,47
+2021,1K21,Region Syddanmark,Resten,10821,48
+2021,1K21,Region Syddanmark,Kunstig knæ,548,83
+2021,1K21,Region Syddanmark,Kunstig hofte,484,74
+2021,1K21,Region Syddanmark,Menisk,162,42
+2021,1K21,Region Syddanmark,Galdesten,114,51
+2021,1K21,Region Syddanmark,Brok,106,72
+2021,2K21,Hele landet,Kunstig knæ,2373,72
+2021,2K21,Hele landet,Brok,1141,66
+2021,2K21,Hele landet,Galdesten,542,44
+2021,2K21,Hele landet,Kunstig hofte,2333,58
+2021,2K21,Hele landet,Resten,42935,49
+2021,2K21,Hele landet,Menisk,758,37
+2021,2K21,Region Hovedstaden,Kunstig hofte,557,72
+2021,2K21,Region Hovedstaden,Brok,423,92
+2021,2K21,Region Hovedstaden,Resten,11651,51
+2021,2K21,Region Hovedstaden,Galdesten,130,59
+2021,2K21,Region Hovedstaden,Menisk,289,41
+2021,2K21,Region Hovedstaden,Kunstig knæ,548,94
+2021,2K21,Region Midtjylland,Galdesten,160,35
+2021,2K21,Region Midtjylland,Kunstig hofte,581,50
+2021,2K21,Region Midtjylland,Menisk,162,34
+2021,2K21,Region Midtjylland,Resten,10420,46
+2021,2K21,Region Midtjylland,Kunstig knæ,534,60
+2021,2K21,Region Midtjylland,Brok,253,46
+2021,2K21,Region Nordjylland,Brok,91,43
+2021,2K21,Region Nordjylland,Resten,4999,48
+2021,2K21,Region Nordjylland,Menisk,66,31
+2021,2K21,Region Nordjylland,Kunstig knæ,265,61
+2021,2K21,Region Nordjylland,Kunstig hofte,271,46
+2021,2K21,Region Nordjylland,Galdesten,45,18
+2021,2K21,Region Sjælland,Menisk,103,35
+2021,2K21,Region Sjælland,Kunstig knæ,419,63
+2021,2K21,Region Sjælland,Kunstig hofte,374,48
+2021,2K21,Region Sjælland,Galdesten,95,36
+2021,2K21,Region Sjælland,Brok,239,45
+2021,2K21,Region Sjælland,Resten,5697,60
+2021,2K21,Region Syddanmark,Kunstig knæ,607,76
+2021,2K21,Region Syddanmark,Resten,10168,45
+2021,2K21,Region Syddanmark,Menisk,138,34
+2021,2K21,Region Syddanmark,Brok,135,77
+2021,2K21,Region Syddanmark,Kunstig hofte,550,65
+2021,2K21,Region Syddanmark,Galdesten,112,56
+2021,3K21,Hele landet,Menisk,394,38
+2021,3K21,Hele landet,Resten,28720,46
+2021,3K21,Hele landet,Kunstig knæ,969,86
+2021,3K21,Hele landet,Galdesten,343,55
+2021,3K21,Hele landet,Brok,572,73
+2021,3K21,Hele landet,Kunstig hofte,1041,69
+2021,3K21,Region Hovedstaden,Resten,6689,46
+2021,3K21,Region Hovedstaden,Kunstig hofte,199,79
+2021,3K21,Region Hovedstaden,Menisk,111,37
+2021,3K21,Region Hovedstaden,Kunstig knæ,168,102
+2021,3K21,Region Hovedstaden,Brok,171,93
+2021,3K21,Region Hovedstaden,Galdesten,61,72
+2021,3K21,Region Midtjylland,Kunstig hofte,195,55
+2021,3K21,Region Midtjylland,Kunstig knæ,145,71
+2021,3K21,Region Midtjylland,Resten,7006,45
+2021,3K21,Region Midtjylland,Galdesten,94,46
+2021,3K21,Region Midtjylland,Menisk,86,38
+2021,3K21,Region Midtjylland,Brok,122,57
+2021,3K21,Region Nordjylland,Menisk,50,37
+2021,3K21,Region Nordjylland,Resten,3852,44
+2021,3K21,Region Nordjylland,Kunstig knæ,121,77
+2021,3K21,Region Nordjylland,Kunstig hofte,74,72
+2021,3K21,Region Nordjylland,Galdesten,37,24
+2021,3K21,Region Nordjylland,Brok,51,47
+2021,3K21,Region Sjælland,Resten,4270,52
+2021,3K21,Region Sjælland,Menisk,64,34
+2021,3K21,Region Sjælland,Kunstig knæ,260,73
+2021,3K21,Region Sjælland,Kunstig hofte,280,67
+2021,3K21,Region Sjælland,Galdesten,67,61
+2021,3K21,Region Sjælland,Brok,145,72
+2021,3K21,Region Syddanmark,Resten,6903,44
+2021,3K21,Region Syddanmark,Menisk,83,42
+2021,3K21,Region Syddanmark,Kunstig knæ,275,101
+2021,3K21,Region Syddanmark,Kunstig hofte,293,74
+2021,3K21,Region Syddanmark,Galdesten,84,61
+2021,3K21,Region Syddanmark,Brok,83,72
+2021,4K21,Hele landet,Kunstig hofte,1567,73
+2021,4K21,Hele landet,Kunstig knæ,1690,92
+2021,4K21,Hele landet,Galdesten,392,53
+2021,4K21,Hele landet,Brok,830,73
+2021,4K21,Hele landet,Resten,37496,55
+2021,4K21,Hele landet,Menisk,684,46
+2021,4K21,Region Hovedstaden,Resten,9474,59
+2021,4K21,Region Hovedstaden,Menisk,214,52
+2021,4K21,Region Hovedstaden,Kunstig knæ,363,123
+2021,4K21,Region Hovedstaden,Kunstig hofte,343,92
+2021,4K21,Region Hovedstaden,Galdesten,70,61
+2021,4K21,Region Hovedstaden,Brok,243,104
+2021,4K21,Region Midtjylland,Resten,9393,54
+2021,4K21,Region Midtjylland,Menisk,183,42
+2021,4K21,Region Midtjylland,Kunstig knæ,328,96
+2021,4K21,Region Midtjylland,Kunstig hofte,401,62
+2021,4K21,Region Midtjylland,Galdesten,114,45
+2021,4K21,Region Midtjylland,Brok,173,70
+2021,4K21,Region Nordjylland,Resten,4511,50
+2021,4K21,Region Nordjylland,Menisk,41,43
+2021,4K21,Region Nordjylland,Kunstig knæ,151,69
+2021,4K21,Region Nordjylland,Kunstig hofte,146,71
+2021,4K21,Region Nordjylland,Galdesten,44,35
+2021,4K21,Region Nordjylland,Brok,110,44
+2021,4K21,Region Sjælland,Resten,4770,53
+2021,4K21,Region Sjælland,Menisk,108,45
+2021,4K21,Region Sjælland,Kunstig knæ,366,70
+2021,4K21,Region Sjælland,Kunstig hofte,251,64
+2021,4K21,Region Sjælland,Galdesten,86,64
+2021,4K21,Region Sjælland,Brok,203,59
+2021,4K21,Region Syddanmark,Resten,9348,53
+2021,4K21,Region Syddanmark,Menisk,138,42
+2021,4K21,Region Syddanmark,Kunstig knæ,482,88
+2021,4K21,Region Syddanmark,Kunstig hofte,426,72
+2021,4K21,Region Syddanmark,Galdesten,78,55
+2021,4K21,Region Syddanmark,Brok,101,65
+2022,1K22,Hele landet,Kunstig hofte,2049,87
+2022,1K22,Hele landet,Kunstig knæ,2024,102
+2022,1K22,Hele landet,Galdesten,542,64
+2022,1K22,Hele landet,Brok,1053,83
+2022,1K22,Hele landet,Resten,41261,64
+2022,1K22,Hele landet,Menisk,756,51
+2022,1K22,Region Hovedstaden,Resten,10848,74
+2022,1K22,Region Hovedstaden,Menisk,259,59
+2022,1K22,Region Hovedstaden,Kunstig knæ,529,131
+2022,1K22,Region Hovedstaden,Kunstig hofte,470,104
+2022,1K22,Region Hovedstaden,Galdesten,118,91
+2022,1K22,Region Hovedstaden,Brok,279,112
+2022,1K22,Region Midtjylland,Resten,10203,62
+2022,1K22,Region Midtjylland,Menisk,219,53
+2022,1K22,Region Midtjylland,Kunstig knæ,466,111
+2022,1K22,Region Midtjylland,Kunstig hofte,517,89
+2022,1K22,Region Midtjylland,Galdesten,170,62
+2022,1K22,Region Midtjylland,Brok,317,85
+2022,1K22,Region Nordjylland,Kunstig hofte,189,83
+2022,1K22,Region Nordjylland,Galdesten,62,27
+2022,1K22,Region Nordjylland,Brok,141,60
+2022,1K22,Region Nordjylland,Resten,4816,54
+2022,1K22,Region Nordjylland,Menisk,63,37
+2022,1K22,Region Nordjylland,Kunstig knæ,176,105
+2022,1K22,Region Sjælland,Resten,5434,56
+2022,1K22,Region Sjælland,Menisk,96,33
+2022,1K22,Region Sjælland,Kunstig knæ,410,64
+2022,1K22,Region Sjælland,Kunstig hofte,408,69
+2022,1K22,Region Sjælland,Galdesten,106,57
+2022,1K22,Region Sjælland,Brok,219,54
+2022,1K22,Region Syddanmark,Resten,9960,67
+2022,1K22,Region Syddanmark,Menisk,119,55
+2022,1K22,Region Syddanmark,Kunstig knæ,443,91
+2022,1K22,Region Syddanmark,Kunstig hofte,465,84
+2022,1K22,Region Syddanmark,Galdesten,86,65
+2022,1K22,Region Syddanmark,Brok,97,87
+2022,2K22,Hele landet,Resten,41041,64
+2022,2K22,Hele landet,Galdesten,651,60
+2022,2K22,Hele landet,Brok,1217,75
+2022,2K22,Hele landet,Menisk,755,44
+2022,2K22,Hele landet,Kunstig knæ,2415,107
+2022,2K22,Hele landet,Kunstig hofte,2211,86
+2022,2K22,Region Hovedstaden,Resten,10228,73
+2022,2K22,Region Hovedstaden,Menisk,216,45
+2022,2K22,Region Hovedstaden,Kunstig knæ,566,133
+2022,2K22,Region Hovedstaden,Kunstig hofte,469,104
+2022,2K22,Region Hovedstaden,Galdesten,114,85
+2022,2K22,Region Hovedstaden,Brok,309,106
+2022,2K22,Region Midtjylland,Resten,10125,61
+2022,2K22,Region Midtjylland,Menisk,182,54
+2022,2K22,Region Midtjylland,Kunstig knæ,614,112
+2022,2K22,Region Midtjylland,Kunstig hofte,628,80
+2022,2K22,Region Midtjylland,Galdesten,179,60
+2022,2K22,Region Midtjylland,Brok,295,72
+2022,2K22,Region Nordjylland,Resten,5133,52
+2022,2K22,Region Nordjylland,Menisk,123,27
+2022,2K22,Region Nordjylland,Kunstig knæ,231,102
+2022,2K22,Region Nordjylland,Kunstig hofte,230,94
+2022,2K22,Region Nordjylland,Galdesten,100,21
+2022,2K22,Region Nordjylland,Brok,198,49
+2022,2K22,Region Sjælland,Resten,5643,60
+2022,2K22,Region Sjælland,Menisk,94,39
+2022,2K22,Region Sjælland,Kunstig knæ,419,71
+2022,2K22,Region Sjælland,Kunstig hofte,362,68
+2022,2K22,Region Sjælland,Galdesten,133,55
+2022,2K22,Region Sjælland,Brok,264,52
+2022,2K22,Region Syddanmark,Menisk,140,47
+2022,2K22,Region Syddanmark,Resten,9912,68
+2022,2K22,Region Syddanmark,Kunstig knæ,585,103
+2022,2K22,Region Syddanmark,Kunstig hofte,522,87
+2022,2K22,Region Syddanmark,Galdesten,125,75
+2022,2K22,Region Syddanmark,Brok,151,92
+2022,3K22,Hele landet,Resten,36736,63
+2022,3K22,Hele landet,Kunstig hofte,2077,87
+2022,3K22,Hele landet,Menisk,633,46
+2022,3K22,Hele landet,Kunstig knæ,1943,110
+2022,3K22,Hele landet,Galdesten,492,60
+2022,3K22,Hele landet,Brok,986,76
+2022,3K22,Region Hovedstaden,Resten,9004,73
+2022,3K22,Region Hovedstaden,Menisk,188,45
+2022,3K22,Region Hovedstaden,Kunstig knæ,404,135
+2022,3K22,Region Hovedstaden,Kunstig hofte,353,100
+2022,3K22,Region Hovedstaden,Galdesten,101,72
+2022,3K22,Region Hovedstaden,Brok,284,89
+2022,3K22,Region Midtjylland,Galdesten,132,64
+2022,3K22,Region Midtjylland,Menisk,145,69
+2022,3K22,Region Midtjylland,Resten,9058,64
+2022,3K22,Region Midtjylland,Kunstig knæ,512,127
+2022,3K22,Region Midtjylland,Kunstig hofte,586,83
+2022,3K22,Region Midtjylland,Brok,241,79
+2022,3K22,Region Nordjylland,Resten,4961,52
+2022,3K22,Region Nordjylland,Menisk,87,28
+2022,3K22,Region Nordjylland,Kunstig knæ,183,112
+2022,3K22,Region Nordjylland,Kunstig hofte,229,98
+2022,3K22,Region Nordjylland,Galdesten,75,37
+2022,3K22,Region Nordjylland,Brok,157,63
+2022,3K22,Region Sjælland,Resten,4995,53
+2022,3K22,Region Sjælland,Menisk,90,37
+2022,3K22,Region Sjælland,Kunstig knæ,348,59
+2022,3K22,Region Sjælland,Kunstig hofte,378,56
+2022,3K22,Region Sjælland,Galdesten,85,51
+2022,3K22,Region Sjælland,Brok,178,63
+2022,3K22,Region Syddanmark,Resten,8718,65
+2022,3K22,Region Syddanmark,Menisk,123,42
+2022,3K22,Region Syddanmark,Kunstig knæ,496,107
+2022,3K22,Region Syddanmark,Kunstig hofte,531,101
+2022,3K22,Region Syddanmark,Galdesten,99,66
+2022,3K22,Region Syddanmark,Brok,126,78
+2022,4K22,Hele landet,Kunstig knæ,2567,106
+2022,4K22,Hele landet,Galdesten,625,64
+2022,4K22,Hele landet,Brok,1333,74
+2022,4K22,Hele landet,Menisk,751,46
+2022,4K22,Hele landet,Kunstig hofte,2451,77
+2022,4K22,Hele landet,Resten,44445,65
+2022,4K22,Region Hovedstaden,Resten,10705,72
+2022,4K22,Region Hovedstaden,Menisk,197,44
+2022,4K22,Region Hovedstaden,Kunstig knæ,568,132
+2022,4K22,Region Hovedstaden,Kunstig hofte,514,97
+2022,4K22,Region Hovedstaden,Galdesten,147,95
+2022,4K22,Region Hovedstaden,Brok,442,91
+2022,4K22,Region Midtjylland,Resten,10823,63
+2022,4K22,Region Midtjylland,Menisk,199,61
+2022,4K22,Region Midtjylland,Kunstig knæ,698,116
+2022,4K22,Region Midtjylland,Kunstig hofte,633,75
+2022,4K22,Region Midtjylland,Galdesten,154,61
+2022,4K22,Region Midtjylland,Brok,303,68
+2022,4K22,Region Nordjylland,Resten,6124,61
+2022,4K22,Region Nordjylland,Menisk,119,33
+2022,4K22,Region Nordjylland,Kunstig knæ,266,117
+2022,4K22,Region Nordjylland,Kunstig hofte,226,76
+2022,4K22,Region Nordjylland,Galdesten,84,23
+2022,4K22,Region Nordjylland,Brok,159,53
+2022,4K22,Region Sjælland,Resten,5822,56
+2022,4K22,Region Sjælland,Menisk,91,36
+2022,4K22,Region Sjælland,Kunstig knæ,430,64
+2022,4K22,Region Sjælland,Kunstig hofte,469,55
+2022,4K22,Region Sjælland,Galdesten,81,56
+2022,4K22,Region Sjælland,Brok,234,60
+2022,4K22,Region Syddanmark,Resten,10971,68
+2022,4K22,Region Syddanmark,Menisk,145,42
+2022,4K22,Region Syddanmark,Kunstig knæ,605,94
+2022,4K22,Region Syddanmark,Kunstig hofte,609,79
+2022,4K22,Region Syddanmark,Galdesten,159,63
+2022,4K22,Region Syddanmark,Brok,195,82
+2023,1K23,Hele landet,Kunstig knæ,3008,95
+2023,1K23,Hele landet,Galdesten,723,56
+2023,1K23,Hele landet,Brok,1891,86
+2023,1K23,Hele landet,Resten,51412,65
+2023,1K23,Hele landet,Menisk,984,43
+2023,1K23,Hele landet,Kunstig hofte,2839,73
+2023,1K23,Region Hovedstaden,Resten,12448,68
+2023,1K23,Region Hovedstaden,Menisk,262,39
+2023,1K23,Region Hovedstaden,Kunstig knæ,617,119
+2023,1K23,Region Hovedstaden,Kunstig hofte,584,91
+2023,1K23,Region Hovedstaden,Galdesten,177,67
+2023,1K23,Region Hovedstaden,Brok,599,118
+2023,1K23,Region Midtjylland,Kunstig hofte,706,65
+2023,1K23,Region Midtjylland,Galdesten,202,67
+2023,1K23,Region Midtjylland,Brok,414,74
+2023,1K23,Region Midtjylland,Resten,12424,68
+2023,1K23,Region Midtjylland,Kunstig knæ,780,112
+2023,1K23,Region Midtjylland,Menisk,286,60
+2023,1K23,Region Nordjylland,Resten,7489,61
+2023,1K23,Region Nordjylland,Menisk,152,26
+2023,1K23,Region Nordjylland,Brok,252,35
+2023,1K23,Region Nordjylland,Kunstig knæ,343,100
+2023,1K23,Region Nordjylland,Kunstig hofte,384,60
+2023,1K23,Region Nordjylland,Galdesten,113,23
+2023,1K23,Region Sjælland,Kunstig hofte,460,62
+2023,1K23,Region Sjælland,Brok,337,71
+2023,1K23,Region Sjælland,Galdesten,101,47
+2023,1K23,Region Sjælland,Menisk,113,37
+2023,1K23,Region Sjælland,Kunstig knæ,524,63
+2023,1K23,Region Sjælland,Resten,6377,55
+2023,1K23,Region Syddanmark,Resten,12674,67
+2023,1K23,Region Syddanmark,Galdesten,130,62
+2023,1K23,Region Syddanmark,Menisk,171,39
+2023,1K23,Region Syddanmark,Brok,289,98
+2023,1K23,Region Syddanmark,Kunstig hofte,705,81
+2023,1K23,Region Syddanmark,Kunstig knæ,744,78
+2023,2K23,Hele landet,Resten,45963,59
+2023,2K23,Hele landet,Kunstig knæ,2589,93
+2023,2K23,Hele landet,Kunstig hofte,2557,67
+2023,2K23,Hele landet,Galdesten,679,53
+2023,2K23,Hele landet,Brok,1509,77
+2023,2K23,Hele landet,Menisk,780,40
+2023,2K23,Region Hovedstaden,Resten,11705,60
+2023,2K23,Region Hovedstaden,Menisk,197,40
+2023,2K23,Region Hovedstaden,Kunstig knæ,593,124
+2023,2K23,Region Hovedstaden,Galdesten,147,60
+2023,2K23,Region Hovedstaden,Brok,499,94
+2023,2K23,Region Hovedstaden,Kunstig hofte,489,94
+2023,2K23,Region Midtjylland,Resten,11038,64
+2023,2K23,Region Midtjylland,Menisk,215,53
+2023,2K23,Region Midtjylland,Kunstig knæ,672,94
+2023,2K23,Region Midtjylland,Kunstig hofte,703,61
+2023,2K23,Region Midtjylland,Galdesten,191,56
+2023,2K23,Region Midtjylland,Brok,343,69
+2023,2K23,Region Nordjylland,Resten,6473,54
+2023,2K23,Region Nordjylland,Menisk,132,25
+2023,2K23,Region Nordjylland,Kunstig knæ,319,93
+2023,2K23,Region Nordjylland,Kunstig hofte,291,45
+2023,2K23,Region Nordjylland,Galdesten,88,17
+2023,2K23,Region Nordjylland,Brok,151,35
+2023,2K23,Region Sjælland,Resten,5976,52
+2023,2K23,Region Sjælland,Menisk,93,33
+2023,2K23,Region Sjælland,Kunstig knæ,435,66
+2023,2K23,Region Sjælland,Kunstig hofte,408,58
+2023,2K23,Region Sjælland,Galdesten,88,51
+2023,2K23,Region Sjælland,Brok,262,59
+2023,2K23,Region Syddanmark,Resten,10771,60
+2023,2K23,Region Syddanmark,Menisk,143,38
+2023,2K23,Region Syddanmark,Kunstig knæ,570,81
+2023,2K23,Region Syddanmark,Kunstig hofte,666,67
+2023,2K23,Region Syddanmark,Galdesten,165,62
+2023,2K23,Region Syddanmark,Brok,254,100
+2023,3K23,Hele landet,Resten,40562,60
+2023,3K23,Hele landet,Menisk,636,44
+2023,3K23,Hele landet,Kunstig knæ,2161,90
+2023,3K23,Hele landet,Kunstig hofte,2139,65
+2023,3K23,Hele landet,Galdesten,569,56
+2023,3K23,Hele landet,Brok,1267,71
+2023,3K23,Region Hovedstaden,Resten,10031,61
+2023,3K23,Region Hovedstaden,Menisk,184,45
+2023,3K23,Region Hovedstaden,Kunstig knæ,474,117
+2023,3K23,Region Hovedstaden,Kunstig hofte,427,89
+2023,3K23,Region Hovedstaden,Galdesten,118,56
+2023,3K23,Region Hovedstaden,Brok,428,80
+2023,3K23,Region Midtjylland,Resten,9882,64
+2023,3K23,Region Midtjylland,Menisk,156,59
+2023,3K23,Region Midtjylland,Kunstig knæ,552,88
+2023,3K23,Region Midtjylland,Kunstig hofte,595,58
+2023,3K23,Region Midtjylland,Galdesten,196,55
+2023,3K23,Region Midtjylland,Brok,336,58
+2023,3K23,Region Nordjylland,Resten,5508,57
+2023,3K23,Region Nordjylland,Menisk,82,27
+2023,3K23,Region Nordjylland,Kunstig knæ,198,95
+2023,3K23,Region Nordjylland,Kunstig hofte,200,38
+2023,3K23,Region Nordjylland,Galdesten,52,25
+2023,3K23,Region Nordjylland,Brok,105,42
+2023,3K23,Region Sjælland,Resten,5336,55
+2023,3K23,Region Sjælland,Menisk,100,34
+2023,3K23,Region Sjælland,Kunstig knæ,420,59
+2023,3K23,Region Sjælland,Kunstig hofte,390,53
+2023,3K23,Region Sjælland,Galdesten,77,64
+2023,3K23,Region Sjælland,Brok,200,76
+2023,3K23,Region Syddanmark,Resten,9805,59
+2023,3K23,Region Syddanmark,Menisk,114,42
+2023,3K23,Region Syddanmark,Kunstig knæ,517,89
+2023,3K23,Region Syddanmark,Kunstig hofte,527,72
+2023,3K23,Region Syddanmark,Galdesten,126,65
+2023,3K23,Region Syddanmark,Brok,198,86
+2023,4K23,Hele landet,Resten,48388,62
+2023,4K23,Hele landet,Kunstig knæ,2797,89
+2023,4K23,Hele landet,Kunstig hofte,2408,66
+2023,4K23,Hele landet,Galdesten,822,55
+2023,4K23,Hele landet,Brok,1581,77
+2023,4K23,Hele landet,Menisk,774,42
+2023,4K23,Region Hovedstaden,Resten,11863,61
+2023,4K23,Region Hovedstaden,Menisk,180,46
+2023,4K23,Region Hovedstaden,Kunstig knæ,553,119
+2023,4K23,Region Hovedstaden,Kunstig hofte,526,80
+2023,4K23,Region Hovedstaden,Galdesten,235,65
+2023,4K23,Region Hovedstaden,Brok,583,79
+2023,4K23,Region Midtjylland,Resten,11839,68
+2023,4K23,Region Midtjylland,Menisk,215,42
+2023,4K23,Region Midtjylland,Kunstig knæ,769,84
+2023,4K23,Region Midtjylland,Kunstig hofte,658,59
+2023,4K23,Region Midtjylland,Galdesten,227,55
+2023,4K23,Region Midtjylland,Brok,371,66
+2023,4K23,Region Nordjylland,Resten,6593,57
+2023,4K23,Region Nordjylland,Menisk,119,33
+2023,4K23,Region Nordjylland,Kunstig knæ,292,84
+2023,4K23,Region Nordjylland,Kunstig hofte,242,56
+2023,4K23,Region Nordjylland,Galdesten,85,30
+2023,4K23,Region Nordjylland,Brok,115,39
+2023,4K23,Region Sjælland,Resten,6381,55
+2023,4K23,Region Sjælland,Menisk,102,35
+2023,4K23,Region Sjælland,Kunstig knæ,560,60
+2023,4K23,Region Sjælland,Kunstig hofte,424,45
+2023,4K23,Region Sjælland,Galdesten,113,57
+2023,4K23,Region Sjælland,Brok,256,84
+2023,4K23,Region Syddanmark,Resten,11712,62
+2023,4K23,Region Syddanmark,Menisk,158,47
+2023,4K23,Region Syddanmark,Kunstig knæ,623,97
+2023,4K23,Region Syddanmark,Kunstig hofte,558,82
+2023,4K23,Region Syddanmark,Galdesten,162,53
+2023,4K23,Region Syddanmark,Brok,256,98
+2024,1K24,Hele landet,Resten,51054,60
+2024,1K24,Hele landet,Menisk,858,46
+2024,1K24,Hele landet,Kunstig knæ,2999,84
+2024,1K24,Hele landet,Kunstig hofte,2458,67
+2024,1K24,Hele landet,Galdesten,736,46
+2024,1K24,Hele landet,Brok,1662,77
+2024,1K24,Region Hovedstaden,Resten,12604,60
+2024,1K24,Region Hovedstaden,Menisk,187,50
+2024,1K24,Region Hovedstaden,Kunstig knæ,607,97
+2024,1K24,Region Hovedstaden,Kunstig hofte,527,70
+2024,1K24,Region Hovedstaden,Galdesten,194,51
+2024,1K24,Region Hovedstaden,Brok,554,75
+2024,1K24,Region Midtjylland,Resten,12446,67
+2024,1K24,Region Midtjylland,Menisk,260,48
+2024,1K24,Region Midtjylland,Kunstig knæ,814,76
+2024,1K24,Region Midtjylland,Kunstig hofte,711,58
+2024,1K24,Region Midtjylland,Galdesten,195,44
+2024,1K24,Region Midtjylland,Brok,390,82
+2024,1K24,Region Nordjylland,Resten,7018,57
+2024,1K24,Region Nordjylland,Menisk,114,36
+2024,1K24,Region Nordjylland,Kunstig knæ,333,90
+2024,1K24,Region Nordjylland,Kunstig hofte,290,60
+2024,1K24,Region Nordjylland,Galdesten,68,35
+2024,1K24,Region Nordjylland,Brok,120,53
+2024,1K24,Region Sjælland,Resten,6651,53
+2024,1K24,Region Sjælland,Menisk,138,42
+2024,1K24,Region Sjælland,Kunstig knæ,535,55
+2024,1K24,Region Sjælland,Kunstig hofte,384,55
+2024,1K24,Region Sjælland,Galdesten,111,47
+2024,1K24,Region Sjælland,Brok,289,78
+2024,1K24,Region Syddanmark,Resten,12335,59
+2024,1K24,Region Syddanmark,Menisk,159,49
+2024,1K24,Region Syddanmark,Kunstig knæ,710,101
+2024,1K24,Region Syddanmark,Kunstig hofte,546,87
+2024,1K24,Region Syddanmark,Galdesten,168,48
+2024,1K24,Region Syddanmark,Brok,309,81
+2024,2K24,Hele landet,Resten,52732,56
+2024,2K24,Hele landet,Menisk,820,39
+2024,2K24,Hele landet,Kunstig knæ,2927,77
+2024,2K24,Hele landet,Kunstig hofte,2656,57
+2024,2K24,Hele landet,Galdesten,806,46
+2024,2K24,Hele landet,Brok,1556,75
+2024,2K24,Region Hovedstaden,Brok,528,80
+2024,2K24,Region Hovedstaden,Resten,12823,55
+2024,2K24,Region Hovedstaden,Menisk,192,40
+2024,2K24,Region Hovedstaden,Kunstig knæ,677,82
+2024,2K24,Region Hovedstaden,Kunstig hofte,636,56
+2024,2K24,Region Hovedstaden,Galdesten,215,45
+2024,2K24,Region Midtjylland,Resten,12878,63
+2024,2K24,Region Midtjylland,Menisk,222,39
+2024,2K24,Region Midtjylland,Kunstig knæ,681,66
+2024,2K24,Region Midtjylland,Kunstig hofte,710,42
+2024,2K24,Region Midtjylland,Galdesten,221,47
+2024,2K24,Region Midtjylland,Brok,390,76
+2024,2K24,Region Nordjylland,Resten,7076,52
+2024,2K24,Region Nordjylland,Menisk,110,38
+2024,2K24,Region Nordjylland,Kunstig knæ,354,67
+2024,2K24,Region Nordjylland,Kunstig hofte,294,54
+2024,2K24,Region Nordjylland,Galdesten,99,34
+2024,2K24,Region Nordjylland,Brok,171,49
+2024,2K24,Region Sjælland,Resten,6812,53
+2024,2K24,Region Sjælland,Menisk,134,38
+2024,2K24,Region Sjælland,Kunstig knæ,495,61
+2024,2K24,Region Sjælland,Kunstig hofte,399,55
+2024,2K24,Region Sjælland,Galdesten,102,59
+2024,2K24,Region Sjælland,Brok,210,63
+2024,2K24,Region Syddanmark,Resten,13143,55
+2024,2K24,Region Syddanmark,Menisk,162,38
+2024,2K24,Region Syddanmark,Kunstig knæ,720,99
+2024,2K24,Region Syddanmark,Kunstig hofte,617,79
+2024,2K24,Region Syddanmark,Galdesten,169,46
+2024,2K24,Region Syddanmark,Brok,257,88
+2024,3K24,Hele landet,Resten,43938,52
+2024,3K24,Hele landet,Menisk,704,40
+2024,3K24,Hele landet,Kunstig knæ,2407,71
+2024,3K24,Hele landet,Galdesten,609,41
+2024,3K24,Hele landet,Brok,1206,68
+2024,3K24,Hele landet,Kunstig hofte,2207,56
+2024,3K24,Region Hovedstaden,Resten,10246,52
+2024,3K24,Region Hovedstaden,Menisk,161,40
+2024,3K24,Region Hovedstaden,Kunstig knæ,513,75
+2024,3K24,Region Hovedstaden,Kunstig hofte,437,50
+2024,3K24,Region Hovedstaden,Galdesten,137,41
+2024,3K24,Region Hovedstaden,Brok,409,60
+2024,3K24,Region Midtjylland,Resten,10834,56
+2024,3K24,Region Midtjylland,Menisk,208,45
+2024,3K24,Region Midtjylland,Kunstig knæ,575,66
+2024,3K24,Region Midtjylland,Kunstig hofte,571,46
+2024,3K24,Region Midtjylland,Galdesten,181,36
+2024,3K24,Region Midtjylland,Brok,281,67
+2024,3K24,Region Nordjylland,Resten,5863,50
+2024,3K24,Region Nordjylland,Menisk,91,34
+2024,3K24,Region Nordjylland,Kunstig knæ,232,46
+2024,3K24,Region Nordjylland,Kunstig hofte,237,42
+2024,3K24,Region Nordjylland,Galdesten,81,32
+2024,3K24,Region Nordjylland,Brok,131,38
+2024,3K24,Region Sjælland,Resten,5813,54
+2024,3K24,Region Sjælland,Menisk,105,44
+2024,3K24,Region Sjælland,Kunstig knæ,459,54
+2024,3K24,Region Sjælland,Kunstig hofte,381,50
+2024,3K24,Region Sjælland,Galdesten,93,48
+2024,3K24,Region Sjælland,Brok,221,72
+2024,3K24,Region Syddanmark,Resten,11182,49
+2024,3K24,Region Syddanmark,Menisk,139,36
+2024,3K24,Region Syddanmark,Kunstig knæ,628,94
+2024,3K24,Region Syddanmark,Kunstig hofte,581,81
+2024,3K24,Region Syddanmark,Galdesten,117,49
+2024,3K24,Region Syddanmark,Brok,164,110
+2024,4K24,Hele landet,Resten,51649,54
+2024,4K24,Hele landet,Kunstig knæ,2958,65
+2024,4K24,Hele landet,Kunstig hofte,2702,49
+2024,4K24,Hele landet,Galdesten,673,43
+2024,4K24,Hele landet,Brok,1551,72
+2024,4K24,Hele landet,Menisk,900,39
+2024,4K24,Region Hovedstaden,Resten,12075,53
+2024,4K24,Region Hovedstaden,Menisk,244,39
+2024,4K24,Region Hovedstaden,Kunstig knæ,645,69
+2024,4K24,Region Hovedstaden,Kunstig hofte,579,44
+2024,4K24,Region Hovedstaden,Galdesten,159,47
+2024,4K24,Region Hovedstaden,Brok,510,76
+2024,4K24,Region Midtjylland,Resten,12745,57
+2024,4K24,Region Midtjylland,Menisk,209,39
+2024,4K24,Region Midtjylland,Kunstig knæ,741,64
+2024,4K24,Region Midtjylland,Kunstig hofte,641,39
+2024,4K24,Region Midtjylland,Galdesten,172,42
+2024,4K24,Region Midtjylland,Brok,350,71
+2024,4K24,Region Nordjylland,Resten,6512,51
+2024,4K24,Region Nordjylland,Menisk,129,38
+2024,4K24,Region Nordjylland,Kunstig knæ,251,46
+2024,4K24,Region Nordjylland,Kunstig hofte,310,40
+2024,4K24,Region Nordjylland,Galdesten,70,28
+2024,4K24,Region Nordjylland,Brok,199,38
+2024,4K24,Region Sjælland,Resten,6871,57
+2024,4K24,Region Sjælland,Menisk,125,38
+2024,4K24,Region Sjælland,Kunstig knæ,596,49
+2024,4K24,Region Sjælland,Kunstig hofte,444,47
+2024,4K24,Region Sjælland,Galdesten,130,37
+2024,4K24,Region Sjælland,Brok,302,72
+2024,4K24,Region Syddanmark,Resten,13446,50
+2024,4K24,Region Syddanmark,Menisk,193,41
+2024,4K24,Region Syddanmark,Kunstig knæ,725,80
+2024,4K24,Region Syddanmark,Kunstig hofte,728,67
+2024,4K24,Region Syddanmark,Galdesten,142,50
+2024,4K24,Region Syddanmark,Brok,190,100
+2025,1K25,Hele landet,Resten,56324,51
+2025,1K25,Hele landet,Menisk,892,43
+2025,1K25,Hele landet,Kunstig knæ,3203,60
+2025,1K25,Hele landet,Kunstig hofte,3047,48
+2025,1K25,Hele landet,Galdesten,846,38
+2025,1K25,Hele landet,Brok,1767,68
+2025,1K25,Region Hovedstaden,Resten,13673,49
+2025,1K25,Region Hovedstaden,Menisk,186,53
+2025,1K25,Region Hovedstaden,Kunstig knæ,628,57
+2025,1K25,Region Hovedstaden,Kunstig hofte,665,43
+2025,1K25,Region Hovedstaden,Galdesten,212,46
+2025,1K25,Region Hovedstaden,Brok,571,68
+2025,1K25,Region Midtjylland,Resten,13333,54
+2025,1K25,Region Midtjylland,Menisk,221,45
+2025,1K25,Region Midtjylland,Kunstig knæ,824,64
+2025,1K25,Region Midtjylland,Kunstig hofte,736,49
+2025,1K25,Region Midtjylland,Galdesten,236,37
+2025,1K25,Region Midtjylland,Brok,465,67
+2025,1K25,Region Nordjylland,Resten,7502,53
+2025,1K25,Region Nordjylland,Menisk,154,36
+2025,1K25,Region Nordjylland,Kunstig knæ,360,47
+2025,1K25,Region Nordjylland,Kunstig hofte,350,35
+2025,1K25,Region Nordjylland,Galdesten,78,24
+2025,1K25,Region Nordjylland,Brok,157,36
+2025,1K25,Region Sjælland,Resten,7199,58
+2025,1K25,Region Sjælland,Menisk,137,39
+2025,1K25,Region Sjælland,Kunstig knæ,640,40
+2025,1K25,Region Sjælland,Kunstig hofte,547,45
+2025,1K25,Region Sjælland,Galdesten,170,38
+2025,1K25,Region Sjælland,Brok,341,64
+2025,1K25,Region Syddanmark,Resten,14617,46
+2025,1K25,Region Syddanmark,Menisk,194,41
+2025,1K25,Region Syddanmark,Kunstig knæ,751,81
+2025,1K25,Region Syddanmark,Kunstig hofte,749,60
+2025,1K25,Region Syddanmark,Galdesten,150,34
+2025,1K25,Region Syddanmark,Brok,233,94
+2025,2K25,Hele landet,Resten,49260,44
+2025,2K25,Hele landet,Menisk,721,37
+2025,2K25,Hele landet,Kunstig knæ,2804,50
+2025,2K25,Hele landet,Kunstig hofte,2703,38
+2025,2K25,Hele landet,Galdesten,654,38
+2025,2K25,Hele landet,Brok,1480,61
+2025,2K25,Region Hovedstaden,Resten,11769,42
+2025,2K25,Region Hovedstaden,Menisk,165,44
+2025,2K25,Region Hovedstaden,Kunstig knæ,569,46
+2025,2K25,Region Hovedstaden,Kunstig hofte,578,40
+2025,2K25,Region Hovedstaden,Galdesten,182,46
+2025,2K25,Region Hovedstaden,Brok,536,62
+2025,2K25,Region Midtjylland,Resten,12025,47
+2025,2K25,Region Midtjylland,Menisk,162,38
+2025,2K25,Region Midtjylland,Kunstig knæ,697,54
+2025,2K25,Region Midtjylland,Kunstig hofte,626,35
+2025,2K25,Region Midtjylland,Galdesten,159,41
+2025,2K25,Region Midtjylland,Brok,365,59
+2025,2K25,Region Nordjylland,Resten,6298,44
+2025,2K25,Region Nordjylland,Menisk,107,25
+2025,2K25,Region Nordjylland,Kunstig knæ,333,54
+2025,2K25,Region Nordjylland,Kunstig hofte,338,32
+2025,2K25,Region Nordjylland,Galdesten,78,23
+2025,2K25,Region Nordjylland,Brok,153,29
+2025,2K25,Region Sjælland,Resten,6321,52
+2025,2K25,Region Sjælland,Menisk,121,40
+2025,2K25,Region Sjælland,Kunstig knæ,513,33
+2025,2K25,Region Sjælland,Kunstig hofte,495,34
+2025,2K25,Region Sjælland,Galdesten,103,37
+2025,2K25,Region Sjælland,Brok,258,64
+2025,2K25,Region Syddanmark,Resten,12847,39
+2025,2K25,Region Syddanmark,Menisk,166,35
+2025,2K25,Region Syddanmark,Kunstig knæ,692,61
+2025,2K25,Region Syddanmark,Kunstig hofte,666,45
+2025,2K25,Region Syddanmark,Galdesten,132,34
+2025,2K25,Region Syddanmark,Brok,168,91
