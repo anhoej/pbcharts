@@ -25,7 +25,10 @@ plot.pbc <- function(x, ...) {
   col4       <- 'gray'       # ignored datapoints
   col5       <- 'darkgreen'  # target line
   cex.adj    <- 0.9
-  facet.grid <- nchar(d$facet[1]) - nchar(gsub('\\|', '', d$facet[1])) == 1
+
+  facet.char <- as.character(d$facet[1])
+  facet.grid <- nchar(facet.char) -
+    nchar(gsub('\\|', '', facet.char)) == 1
 
   # Prepare canvas -------------------------------------------------------------
   # Calculate facets layout.

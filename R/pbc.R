@@ -145,7 +145,9 @@ pbc <- function(x,
       ncol <- length(unique(facet[[2]]))
     }
 
-    facet <- do.call(paste, c(facet, sep = ' | '))
+    facet.order <- do.call(order, facet)
+    facet       <- do.call(paste, c(facet, sep = ' | '))
+    facet       <- factor(facet, levels = unique(facet[facet.order]))
   }
 
   # Make sure that the num and den vectors are of the same length.
