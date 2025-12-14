@@ -32,7 +32,7 @@ pbc.i <- function(x, screenms) {
 
   # Standard deviation
   if (all(is.na(x$sd))) {
-    s          <- c(NA, moving.s(x$y, x$den))
+    s          <- c(NA, moving.s(x$y[x$base], x$den))
     sbar       <- mean(s[x$base], na.rm = TRUE)
 
     if (screenms) {
