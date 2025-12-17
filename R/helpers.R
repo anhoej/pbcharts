@@ -39,7 +39,7 @@ pbc.i <- function(x, screenms) {
       # Remove values above upper control limit
       uls        <- sbar * 3.2665
       s[s > uls] <- NA
-      sbar       <- mean(s[x$base], na.rm = TRUE)
+      sbar       <- mean(s, na.rm = TRUE)
     }
 
     stdev <- sbar * sqrt(1 / x$den)
