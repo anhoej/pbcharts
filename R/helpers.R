@@ -32,8 +32,8 @@ pbc.i <- function(x, screenms) {
 
   # Standard deviation
   if (all(is.na(x$sd))) {
-    s          <- c(NA, moving.s(x$y[x$base], x$den))
-    sbar       <- mean(s[x$base], na.rm = TRUE)
+    s          <- c(NA, moving.s(x$y[x$base], x$den[x$base]))
+    sbar       <- mean(s, na.rm = TRUE)
 
     if (screenms) {
       # Remove values above upper control limit
@@ -150,10 +150,10 @@ make.parts <- function(x, n) {
 #
 format_labs <- function(x, ypct) {
   if (ypct) {
-    x <- formatC(x * 100, digits = 2, format = 'fg')
+    x <- formatC(x * 100, digits = 3, format = 'fg')
     x <- paste0(x, '%')
   } else {
-    x <- formatC(x, digits = 2, format = 'fg')
+    x <- formatC(x, digits = 3, format = 'fg')
   }
 
   x
