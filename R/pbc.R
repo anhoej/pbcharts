@@ -94,6 +94,10 @@ pbc <- function(x,
                 ylab     = 'Value',
                 plot     = TRUE) {
 
+  # Get chart function
+  chart     <- match.arg(chart)
+  chart.fun <- get(paste0('pbc.', chart))
+
   # Build title
   if (!is.null(title) && title == '') {
     title <- deparse(substitute(num))
@@ -109,7 +113,7 @@ pbc <- function(x,
     if (multiply != 1)
       title <- paste(title, 'x', multiply)
 
-    title <- paste(toupper(match.arg(chart)), 'chart of', title)
+    title <- paste(toupper(chart), 'chart of', title)
   }
 
   # Get data from data frame if data argument is provided, or else get data
@@ -119,10 +123,6 @@ pbc <- function(x,
   den    <- eval(substitute(den), data, parent.frame())
   facet  <- eval(substitute(facet), data, parent.frame())
   target <- eval(substitute(target), data, parent.frame())
-
-  # Get chart function
-  chart     <- match.arg(chart)
-  chart.fun <- get(paste0('pbc.', chart))
 
   # If num argument is missing, use x instead.
   if (is.null(num)) {
