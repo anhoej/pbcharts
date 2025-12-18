@@ -18,11 +18,11 @@
 #' @param split Integer indicating the index of the last subgroup before
 #'              splitting the graph.
 #' @param exclude Integer vector of indices to exclude from calculations.
-#' @param target Number indicating the target value to be drawn as a horisontal
-#'               line.
+#' @param target Numeric, indicating the target value to be drawn as a
+#'               horisontal line.
 #' @param screenms Logical, screen moving standard deviations before calculating
 #'                 control limits by removing values above upper control limit
-#'                 (3.2665).
+#'                 (3.2665 x SD).
 #' @param multiply Number to multiply y axis by, e.g. 100 to get percentages
 #'                 rather than proportions.
 #' @param ncol Number of columns in faceted plot.
@@ -98,8 +98,8 @@ pbc <- function(x,
   if (!is.null(title) && title == '') {
     title <- deparse(substitute(num))
 
-    if (title == 'NULL')
-      title <- deparse(substitute(x))
+    # if (title == 'NULL')
+    #   title <- deparse(substitute(x))
 
     denominator <- deparse(substitute(den))
 
@@ -114,10 +114,10 @@ pbc <- function(x,
 
   # Get data from data frame if data argument is provided, or else get data
   # from the parent environment.
-  x     <- eval(substitute(x), data, parent.frame())
-  num   <- eval(substitute(num), data, parent.frame())
-  den   <- eval(substitute(den), data, parent.frame())
-  facet <- eval(substitute(facet), data, parent.frame())
+  x      <- eval(substitute(x), data, parent.frame())
+  num    <- eval(substitute(num), data, parent.frame())
+  den    <- eval(substitute(den), data, parent.frame())
+  facet  <- eval(substitute(facet), data, parent.frame())
   target <- eval(substitute(target), data, parent.frame())
 
   # Get chart function
@@ -162,7 +162,7 @@ pbc <- function(x,
   den[xna] <- NA
 
   # Ignore invalid exclude argument
-  if (any(exclude > length(unique(x))) || any(exclude < 1)) {
+  if (any(exclude > x.len) || any(exclude < 1)) {
     exclude <- NULL
     message('Invalid exclude argument, ignoring.')
   }
@@ -202,6 +202,7 @@ pbc <- function(x,
 
     x
   })
+
   d <- do.call(rbind, args = c(d, make.row.names = FALSE))
 
   # Helper variables
@@ -236,12 +237,13 @@ pbc <- function(x,
   d$ucl[is.na(d$y)] <- NA
 
   # Multiply y coordinates if needed.
-  d$y   <- d$y * multiply
-  d$cl  <- d$cl * multiply
-  d$lcl <- d$lcl * multiply
-  d$ucl <- d$ucl * multiply
+  d$y      <- d$y * multiply
+  d$cl     <- d$cl * multiply
+  d$lcl    <- d$lcl * multiply
+  d$ucl    <- d$ucl * multiply
   d$target <- if (is.null(target)) NA_integer_ else target
 
+  # Finish pbc object
   d <- d[order(d$facet, d$part, d$x),]
 
   d <- d[c('facet', 'part', 'x', 'num', 'den', 'y', 'target',
@@ -260,7 +262,7 @@ pbc <- function(x,
             exclude  = exclude,
             chart    = chart,
             data     = d)
-# return(d)
+
   # Draw plot.
   if (plot) {
     plot.pbc(d)

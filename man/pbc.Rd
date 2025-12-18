@@ -53,12 +53,12 @@ splitting the graph.}
 
 \item{exclude}{Integer vector of indices to exclude from calculations.}
 
-\item{target}{Number indicating the target value to be drawn as a horisontal
-line.}
+\item{target}{Numeric, indicating the target value to be drawn as a
+horisontal line.}
 
 \item{screenms}{Logical, screen moving standard deviations before calculating
 control limits by removing values above upper control limit
-(3.2665).}
+(3.2665 x SD).}
 
 \item{multiply}{Number to multiply y axis by, e.g. 100 to get percentages
 rather than proportions.}
