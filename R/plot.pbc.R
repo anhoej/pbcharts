@@ -26,9 +26,8 @@ plot.pbc <- function(x, ...) {
   col5       <- 'darkgreen'  # target line
   cex.adj    <- 0.9
 
-  facet.char <- as.character(d$facet[1])
-  facet.grid <- nchar(facet.char) -
-    nchar(gsub('\\|', '', facet.char)) == 1
+  facet_char <- as.character(d$facet[1])
+  facet_grid <- nchar(facet_char) - nchar(gsub('\\|', '', facet_char)) == 1
 
   # Prepare canvas -------------------------------------------------------------
   # Calculate facets layout.
@@ -39,24 +38,23 @@ plot.pbc <- function(x, ...) {
   n_rows   <- ceiling(n_facets / n_cols)
   mfrow    <- c(n_rows, n_cols)
 
-  # Get indices of bottommost and leftmost facets for tick labels.
-  outer_x  <- seq(n_facets - n_cols + 1, n_facets)
-  outer_y  <- seq(1, n_facets, by = n_cols)
-
+  # Get indices of outer facets for tick labels.
+  outer_x   <- seq(n_facets - n_cols + 1, n_facets)
+  outer_y   <- seq(1, n_facets, by = n_cols)
   outer_top <- 1:n_cols
-  outer_left <- seq(n_cols, n_facets, by = n_cols)
+  outer_right <- seq(n_cols, n_facets, by = n_cols)
 
   # Set graphical parameters
   op <- graphics::par(
     mfrow    = mfrow,
     mar      = c(1.5,
                  1.5,
-                 ifelse(n_facets > 1 && !facet.grid, 1.5, 0.2),
+                 ifelse(n_facets > 1 && !facet_grid, 1.5, 0.2),
                  ifelse(yfixed, 1, 2.7)),
     oma      = c(2.5,
                  2.8,
                  ifelse(is.null(x$title), 1, 3),
-                 ifelse(facet.grid, 1.7, 0)),
+                 ifelse(facet_grid, 1.7, 0)),
     cex      = cex.adj,
     cex.axis = cex.adj,
     cex.main = cex.adj,
@@ -155,6 +153,10 @@ plot.pbc <- function(x, ...) {
       dotcol[ip$sigma.signal] <- col3
       dotcol[ip$y == ip$cl]   <- col4
 
+      # Lines and points
+      graphics::lines(ip$x, ip$target,     # target line
+                      col = col5,
+                      lty = 'dashed')
       graphics::lines(ip$x, ip$cl,         # centre line
                       col = clcol,
                       lty = cltyp)
@@ -170,32 +172,27 @@ plot.pbc <- function(x, ...) {
                        col = dotcol,
                        pch = 19)
 
-      # testing target line
-      graphics::lines(ip$x, ip$target,     # target line
-                      col = col5,
-                      lty = 'dashed')
-      # end testing target line
-
+      # Line labels.
       clval     <- ip$cl[1]
       lclval    <- mean(ip$lcl, na.rm = TRUE)
       uclval    <- mean(ip$ucl, na.rm = TRUE)
       targetval <- ip$target[nrow(ip)]
 
-      graphics::text(max(ip$x), clval,  # centre line label
+      graphics::text(max(ip$x), clval,      # centre line label
                      labels = format_labs(clval, ypct),
                      xpd    = NA,
                      adj    = -0.2,
                      las    = 1,
                      cex    = 0.7)
 
-      graphics::text(max(ip$x), uclval,  # UCL label
+      graphics::text(max(ip$x), uclval,     # UCL label
                      labels = format_labs(uclval, ypct),
                      xpd    = NA,
                      adj    = -0.2,
                      las    = 1,
                      cex    = 0.7)
 
-      graphics::text(max(ip$x), lclval,  # LCL label
+      graphics::text(max(ip$x), lclval,     # LCL label
                      labels = format_labs(lclval, ypct),
                      xpd    = NA,
                      adj    = -0.2,
@@ -209,45 +206,37 @@ plot.pbc <- function(x, ...) {
                      las    = 1,
                      cex    = 0.7)
 
-      # Add facet labels.
-      # ---- testing two-way faceting ----
-      if (facet.grid) {
-        facet.row <- sub(' \\|.*$', '', ip$facet[1])
-        facet.col <- sub('^.* \\| ', '', ip$facet[1])
+    }
+  }
 
-        if (j %in% outer_left) {
-          graphics::text(graphics::par('usr')[2],
-                         mean(graphics::par('usr')[3:4]),
-                         labels = facet.row,
-                         xpd = NA,
-                         srt = -90,
-                         adj = c(0.5, -3),
-                         cex = 0.8)
-        }
+  # Facet labels.
+  if (facet_grid) {
+    facet_row <- sub(' \\|.*$', '', ip$facet[1])
+    facet_col <- sub('^.* \\| ', '', ip$facet[1])
 
-        if (j %in% outer_top) {
-          graphics::title(main      = facet.col,
-                          xpd       = NA,
-                          adj       = 0,
-                          font.main = 1,
-                          line      = 0.6)
-        }
-
-      } else if (n_facets > 1) {
-        graphics::title(main      = i$facet[1],
-                        adj       = 0,
-                        font.main = 1,
-                        line      = 0.8)
-      }
-      # ---- end testing ----
+    if (j %in% outer_right) {
+      graphics::text(graphics::par('usr')[2],
+                     mean(graphics::par('usr')[3:4]),
+                     labels = facet_row,
+                     xpd = NA,
+                     srt = -90,
+                     adj = c(0.5, -3),
+                     cex = 0.8)
     }
 
-    # if (n_facets > 1 && !facet.grid) {
-    #   graphics::title(main      = i$facet[1],
-    #                   adj       = 0,
-    #                   font.main = 1,
-    #                   line      = 0.8)
-    # }
+    if (j %in% outer_top) {
+      graphics::title(main      = facet_col,
+                      xpd       = NA,
+                      adj       = 0,
+                      font.main = 1,
+                      line      = 0.6)
+    }
+
+  } else if (n_facets > 1) {
+    graphics::title(main      = i$facet[1],
+                    adj       = 0,
+                    font.main = 1,
+                    line      = 0.8)
   }
 
   # Finish plot ----------------------------------------------------------------
