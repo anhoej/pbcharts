@@ -205,38 +205,38 @@ plot.pbc <- function(x, ...) {
                      adj    = -0.2,
                      las    = 1,
                      cex    = 0.7)
-
-    }
-  }
-
-  # Facet labels.
-  if (facet_grid) {
-    facet_row <- sub(' \\|.*$', '', ip$facet[1])
-    facet_col <- sub('^.* \\| ', '', ip$facet[1])
-
-    if (j %in% outer_right) {
-      graphics::text(graphics::par('usr')[2],
-                     mean(graphics::par('usr')[3:4]),
-                     labels = facet_row,
-                     xpd = NA,
-                     srt = -90,
-                     adj = c(0.5, -3),
-                     cex = 0.8)
     }
 
-    if (j %in% outer_top) {
-      graphics::title(main      = facet_col,
-                      xpd       = NA,
+    # Facet labels.
+    if (facet_grid) {
+      facet_row <- sub(' \\|.*$', '', ip$facet[1])
+      facet_col <- sub('^.* \\| ', '', ip$facet[1])
+
+      if (j %in% outer_right) {
+        graphics::text(graphics::par('usr')[2],
+                       mean(graphics::par('usr')[3:4]),
+                       labels = facet_row,
+                       xpd = NA,
+                       srt = -90,
+                       adj = c(0.5, -3),
+                       cex = 0.8)
+      }
+
+      if (j %in% outer_top) {
+        graphics::title(main      = facet_col,
+                        xpd       = NA,
+                        adj       = 0,
+                        font.main = 1,
+                        line      = 0.6)
+      }
+
+    } else if (n_facets > 1) {
+      graphics::title(main      = i$facet[1],
                       adj       = 0,
                       font.main = 1,
-                      line      = 0.6)
+                      line      = 0.8)
     }
 
-  } else if (n_facets > 1) {
-    graphics::title(main      = i$facet[1],
-                    adj       = 0,
-                    font.main = 1,
-                    line      = 0.8)
   }
 
   # Finish plot ----------------------------------------------------------------
