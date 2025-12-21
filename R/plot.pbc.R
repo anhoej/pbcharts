@@ -101,7 +101,7 @@ plot.pbc <- function(x, ...) {
                     na.rm = TRUE)
     }
 
-    # Prepare canvas.
+    # Prepare plotting region
     plot(i$x, i$y,
          type = 'n',
          axes = FALSE,
@@ -236,7 +236,6 @@ plot.pbc <- function(x, ...) {
                       font.main = 1,
                       line      = 0.8)
     }
-
   }
 
   # Finish plot ----------------------------------------------------------------
