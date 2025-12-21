@@ -35,8 +35,8 @@ pbc.i <- function(x, screenms) {
     s          <- c(NA, moving.s(x$y[x$base], x$den[x$base]))
     sbar       <- mean(s, na.rm = TRUE)
 
+    # Remove values above upper moving S limit
     if (screenms) {
-      # Remove values above upper control limit
       uls        <- sbar * 3.2665
       s[s > uls] <- NA
       sbar       <- mean(s, na.rm = TRUE)
@@ -122,10 +122,10 @@ runs.analysis <- function(x) {
 # den: Denominator values.
 #
 moving.s <- function(y, den) {
-  l     <- length(y)
-  d1    <- abs(diff(y, na.rm = TRUE))
-  d2    <- sqrt((1 / den[1:(l - 1)]) + (1 / den[2:l]))
-  s     <- sqrt(pi / 2) * d1 / d2
+  l  <- length(y)
+  d1 <- abs(diff(y, na.rm = TRUE))
+  d2 <- sqrt((1 / den[1:(l - 1)]) + (1 / den[2:l]))
+  s  <- sqrt(pi / 2) * d1 / d2
   s
 }
 
