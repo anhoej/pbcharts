@@ -13,6 +13,7 @@ summary.pbc <- function(object, ...) {
   d <- object$data
 
   d <- split(d, ~ facet + part)
+
   d <- lapply(d, function(x) {
     data.frame(facet           = x$facet[1],
                part            = x$part[1],
@@ -28,5 +29,6 @@ summary.pbc <- function(object, ...) {
                n.crossings     = x$n.crossings[1],
                n.crossings.min = x$n.crossings.min[1])
   })
+
   do.call(rbind, c(d, make.row.names = FALSE))
 }

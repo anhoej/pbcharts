@@ -5,15 +5,12 @@
 \alias{bacteremia_mortality}
 \title{Bacteremia Mortality}
 \format{
-\subsection{\code{bacteremia_mortality}}{
-
 A data frame with 143 rows and 4 columns:
 \describe{
 \item{hospital}{Hospital code.}
 \item{month}{First day of month}
 \item{deaths}{Number of bacteremia patients who died within 30 days from infection.}
 \item{cases}{Number of patients with bacteremia.}
-}
 }
 }
 \usage{

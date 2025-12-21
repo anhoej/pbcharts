@@ -5,14 +5,11 @@
 \alias{ontime_ct}
 \title{On-time CT scan}
 \format{
-\subsection{\code{ontime_ct}}{
-
 A data frame with 24 rows and 3 columns:
 \describe{
 \item{month}{First day of month.}
 \item{ontime}{Number of patients scanned within 3 hours.}
 \item{cases}{Number of patients with acute abdomen.}
-}
 }
 }
 \usage{

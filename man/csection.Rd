@@ -5,14 +5,11 @@
 \alias{csection}
 \title{Ceasearian Section Delay}
 \format{
-\subsection{\code{csection}}{
-
 A data frame with 24 rows and 3 columns:
 \describe{
 \item{month}{First day of month.}
 \item{avg_delay}{Time in minutes from decision to delivery.}
 \item{n}{Number of C-sections.}
-}
 }
 }
 \usage{
